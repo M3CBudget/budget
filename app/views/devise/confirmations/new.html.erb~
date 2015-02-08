@@ -3,7 +3,6 @@
   <div class="panel-heading">
     <h4><%= t('.resend_confirmation_instructions', :default => 'Resend confirmation instructions') %></h4>
   </div>
-  <p>Moritz hat was geändert</p>
   <div class="panel-body">
     <%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post, role: "form" }) do |f| %>
       <div class="form-group">
