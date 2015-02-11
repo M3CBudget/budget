@@ -15,7 +15,10 @@
 /log/*.log
 /tmp
 
+#Directory Based Ignore
+.idea/
+
 # Ignore idea hashes
-/.idea/dataSources.ids
-/.idea/dataSources.xml
-/.idea/workspace.xml
+.idea/dataSources.ids
+.idea/dataSources.xml
+.idea/workspace.xml
