@@ -5,7 +5,10 @@ RSpec.describe "baskets/edit", :type => :view do
     @basket = assign(:basket, Basket.create!(
       :notice => "MyString",
       :amount => "9.99",
-      :document => ""
+      :document => "",
+      :user => nil,
+      :payment => nil,
+      :vendor => nil
     ))
   end
 
@@ -19,6 +22,12 @@ RSpec.describe "baskets/edit", :type => :view do
       assert_select "input#basket_amount[name=?]", "basket[amount]"
 
       assert_select "input#basket_document[name=?]", "basket[document]"
+
+      assert_select "input#basket_user_id[name=?]", "basket[user_id]"
+
+      assert_select "input#basket_payment_id[name=?]", "basket[payment_id]"
+
+      assert_select "input#basket_vendor_id[name=?]", "basket[vendor_id]"
     end
   end
 end

@@ -15,5 +15,20 @@
   <%= @basket.document %>
 </p>
 
+<p>
+  <strong>User:</strong>
+  <%= @basket.user %>
+</p>
+
+<p>
+  <strong>Payment:</strong>
+  <%= @basket.payment %>
+</p>
+
+<p>
+  <strong>Vendor:</strong>
+  <%=  Vendor.find(@basket.vendor_id).name %>
+</p>
+
 <%= link_to 'Edit', edit_basket_path(@basket) %> |
 <%= link_to 'Back', baskets_path %>

@@ -6,12 +6,18 @@ RSpec.describe "baskets/index", :type => :view do
       Basket.create!(
         :notice => "Notice",
         :amount => "9.99",
-        :document => ""
+        :document => "",
+        :user => nil,
+        :payment => nil,
+        :vendor => nil
       ),
       Basket.create!(
         :notice => "Notice",
         :amount => "9.99",
-        :document => ""
+        :document => "",
+        :user => nil,
+        :payment => nil,
+        :vendor => nil
       )
     ])
   end
@@ -21,5 +27,8 @@ RSpec.describe "baskets/index", :type => :view do
     assert_select "tr>td", :text => "Notice".to_s, :count => 2
     assert_select "tr>td", :text => "9.99".to_s, :count => 2
     assert_select "tr>td", :text => "".to_s, :count => 2
+    assert_select "tr>td", :text => nil.to_s, :count => 2
+    assert_select "tr>td", :text => nil.to_s, :count => 2
+    assert_select "tr>td", :text => nil.to_s, :count => 2
   end
 end

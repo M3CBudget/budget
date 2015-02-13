@@ -4,6 +4,9 @@ class CreateBaskets < ActiveRecord::Migration
       t.string :notice
       t.decimal :amount
       t.binary :document
+      t.references :user, index: true
+      t.references :payment, index: true
+      t.references :vendor, index: true
 
       t.timestamps
     end

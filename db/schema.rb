@@ -11,10 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150211120307) do
+ActiveRecord::Schema.define(version: 20150213132128) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "accounts", force: true do |t|
+    t.string   "number"
+    t.string   "bic"
+    t.string   "name"
+    t.boolean  "active"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "accounts", ["user_id"], name: "index_accounts_on_user_id", using: :btree
 
   create_table "articles", force: true do |t|
     t.string   "name"
@@ -28,14 +40,31 @@ ActiveRecord::Schema.define(version: 20150211120307) do
     t.string   "notice"
     t.decimal  "amount"
     t.binary   "document"
+    t.integer  "user_id"
+    t.integer  "payment_id"
+    t.integer  "vendor_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "baskets", ["payment_id"], name: "index_baskets_on_payment_id", using: :btree
+  add_index "baskets", ["user_id"], name: "index_baskets_on_user_id", using: :btree
+  add_index "baskets", ["vendor_id"], name: "index_baskets_on_vendor_id", using: :btree
 
   create_table "items", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "payments", force: true do |t|
+    t.string   "name"
+    t.boolean  "active"
+    t.integer  "account_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "payments", ["account_id"], name: "index_payments_on_account_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

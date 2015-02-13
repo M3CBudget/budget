@@ -23,6 +23,18 @@
     <%= f.label :document %><br>
     <%= f.text_field :document %>
   </div>
+  <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.text_field :user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :payment_id %><br>
+    <%= f.text_field :payment_id %>
+  </div>
+  <div class="field">
+    <%= f.label :vendor_id %><br>
+    <%= f.collection_select :vendor_id, Vendor.all, :id, :name, multiple: false %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

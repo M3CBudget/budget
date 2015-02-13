@@ -6,6 +6,9 @@
       <th>Notice</th>
       <th>Amount</th>
       <th>Document</th>
+      <th>User</th>
+      <th>Payment</th>
+      <th>Vendor</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,6 +19,9 @@
         <td><%= basket.notice %></td>
         <td><%= basket.amount %></td>
         <td><%= basket.document %></td>
+        <td><%= basket.user %></td>
+        <td><%= basket.payment %></td>
+        <td><%= Vendor.find(basket.vendor_id).name %></td>
         <td><%= link_to 'Show', basket %></td>
         <td><%= link_to 'Edit', edit_basket_path(basket) %></td>
         <td><%= link_to 'Destroy', basket, method: :delete, data: { confirm: 'Are you sure?' } %></td>
