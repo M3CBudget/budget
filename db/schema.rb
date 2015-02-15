@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150213132128) do
+ActiveRecord::Schema.define(version: 20150215203216) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,11 +30,14 @@ ActiveRecord::Schema.define(version: 20150213132128) do
 
   create_table "articles", force: true do |t|
     t.string   "name"
-    t.decimal  "standard_price"
-    t.string   "active_boolean"
+    t.decimal  "price"
+    t.boolean  "active"
+    t.integer  "category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "articles", ["category_id"], name: "index_articles_on_category_id", using: :btree
 
   create_table "baskets", force: true do |t|
     t.string   "notice"
@@ -51,10 +54,35 @@ ActiveRecord::Schema.define(version: 20150213132128) do
   add_index "baskets", ["user_id"], name: "index_baskets_on_user_id", using: :btree
   add_index "baskets", ["vendor_id"], name: "index_baskets_on_vendor_id", using: :btree
 
-  create_table "items", force: true do |t|
+  create_table "categories", force: true do |t|
+    t.string   "name"
+    t.boolean  "notice"
+    t.boolean  "active"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "items", force: true do |t|
+    t.integer  "basket_id"
+    t.integer  "category_id"
+    t.integer  "article_id"
+    t.integer  "user_id"
+    t.string   "name"
+    t.decimal  "quantity"
+    t.string   "notice"
+    t.boolean  "income"
+    t.boolean  "expense"
+    t.integer  "period"
+    t.date     "launch"
+    t.date     "finish"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "items", ["article_id"], name: "index_items_on_article_id", using: :btree
+  add_index "items", ["basket_id"], name: "index_items_on_basket_id", using: :btree
+  add_index "items", ["category_id"], name: "index_items_on_category_id", using: :btree
+  add_index "items", ["user_id"], name: "index_items_on_user_id", using: :btree
 
   create_table "payments", force: true do |t|
     t.string   "name"

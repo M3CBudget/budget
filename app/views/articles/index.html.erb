@@ -4,8 +4,9 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Standard price</th>
-      <th>Active boolean</th>
+      <th>Price</th>
+      <th>Active</th>
+      <th>Category</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,8 +15,9 @@
     <% @articles.each do |article| %>
       <tr>
         <td><%= article.name %></td>
-        <td><%= article.standard_price %></td>
-        <td><%= article.active_boolean %></td>
+        <td><%= article.price %></td>
+        <td><%= article.active %></td>
+        <td><%= article.category %></td>
         <td><%= link_to 'Show', article %></td>
         <td><%= link_to 'Edit', edit_article_path(article) %></td>
         <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>

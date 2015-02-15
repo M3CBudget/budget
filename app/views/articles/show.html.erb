@@ -6,13 +6,18 @@
 </p>
 
 <p>
-  <strong>Standard price:</strong>
-  <%= @article.standard_price %>
+  <strong>Price:</strong>
+  <%= @article.price %>
 </p>
 
 <p>
-  <strong>Active boolean:</strong>
-  <%= @article.active_boolean %>
+  <strong>Active:</strong>
+  <%= @article.active %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @article.category %>
 </p>
 
 <%= link_to 'Edit', edit_article_path(@article) %> |

@@ -11,6 +11,54 @@
     </div>
   <% end %>
 
+  <div class="field">
+    <%= f.label :basket_id %><br>
+    <%= f.text_field :basket_id %>
+  </div>
+  <div class="field">
+    <%= f.label :category_id %><br>
+    <%= f.text_field :category_id %>
+  </div>
+  <div class="field">
+    <%= f.label :article_id %><br>
+    <%= f.text_field :article_id %>
+  </div>
+  <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.text_field :user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :quantity %><br>
+    <%= f.text_field :quantity %>
+  </div>
+  <div class="field">
+    <%= f.label :notice %><br>
+    <%= f.text_field :notice %>
+  </div>
+  <div class="field">
+    <%= f.label :income %><br>
+    <%= f.check_box :income %>
+  </div>
+  <div class="field">
+    <%= f.label :expense %><br>
+    <%= f.check_box :expense %>
+  </div>
+  <div class="field">
+    <%= f.label :period %><br>
+    <%= f.number_field :period %>
+  </div>
+  <div class="field">
+    <%= f.label :launch %><br>
+    <%= f.date_select :launch %>
+  </div>
+  <div class="field">
+    <%= f.label :finish %><br>
+    <%= f.date_select :finish %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

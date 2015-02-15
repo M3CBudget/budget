@@ -42,6 +42,6 @@ class ArticlesController < ApplicationController
     end
 
     def article_params
-      params.require(:article).permit(:name, :standard_price, :active_boolean)
+      params.require(:article).permit(:name, :price, :active, :category_id)
     end
 end

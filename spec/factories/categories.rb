@@ -1,9 +1,8 @@
 FactoryGirl.define do
-  factory :article do
+  factory :category do
     name "MyString"
-price "9.99"
+notice false
 active false
-category nil
   end
 
 end
