@@ -35,6 +35,15 @@
     <%= f.label :vendor_id %><br>
     <%= f.collection_select :vendor_id, Vendor.all, :id, :name, multiple: false %>
   </div>
+  <div class="field">
+    <%= f.fields_for :items do |items_form| %>
+    <li>
+       <%= items_form.label :name %>
+       <%= items_form.text_field :name %>
+    </li>
+    <% end %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
