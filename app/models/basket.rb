@@ -4,5 +4,5 @@ class Basket < ActiveRecord::Base
   belongs_to :vendor
   has_many :items
   accepts_nested_attributes_for :items
-  validates :notice, :amount, :user_id, :payment_id, :vendor_id, presence: true
+  validates :amount, :user_id, :vendor_id, presence: true
 end

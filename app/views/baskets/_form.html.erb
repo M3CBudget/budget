@@ -36,12 +36,21 @@
     <%= f.collection_select :vendor_id, Vendor.all, :id, :name, multiple: false %>
   </div>
   <div class="field">
-    <%= f.fields_for :items do |items_form| %>
-    <li>
-       <%= items_form.label :name %>
-       <%= items_form.text_field :name %>
-    </li>
-    <% end %>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Quantity</th>
+      </tr>
+      <%= f.fields_for :items do |items_form| %>
+          <tr>
+            <td><%= items_form.text_field :name %></td>
+            <td><%= items_form.text_field :price %></td>
+            <td><%= items_form.text_field :quantity %></td>
+          </tr>
+      <% end %>
+    </table>
+
   </div>
 
   <div class="actions">

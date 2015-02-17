@@ -7,9 +7,9 @@ class CreateItems < ActiveRecord::Migration
       t.references :user, index: true
       t.string :name
       t.decimal :quantity
+      t.decimal :price
       t.string :notice
       t.boolean :income
-      t.boolean :expense
       t.integer :period
       t.date :launch
       t.date :finish

@@ -10,9 +10,9 @@ RSpec.describe "items/index", :type => :view do
         :user => nil,
         :name => "Name",
         :quantity => "9.99",
+        :price => "9.99",
         :notice => "Notice",
         :income => false,
-        :expense => false,
         :period => 1
       ),
       Item.create!(
@@ -22,9 +22,9 @@ RSpec.describe "items/index", :type => :view do
         :user => nil,
         :name => "Name",
         :quantity => "9.99",
+        :price => "9.99",
         :notice => "Notice",
         :income => false,
-        :expense => false,
         :period => 1
       )
     ])
@@ -38,8 +38,8 @@ RSpec.describe "items/index", :type => :view do
     assert_select "tr>td", :text => nil.to_s, :count => 2
     assert_select "tr>td", :text => "Name".to_s, :count => 2
     assert_select "tr>td", :text => "9.99".to_s, :count => 2
+    assert_select "tr>td", :text => "9.99".to_s, :count => 2
     assert_select "tr>td", :text => "Notice".to_s, :count => 2
-    assert_select "tr>td", :text => false.to_s, :count => 2
     assert_select "tr>td", :text => false.to_s, :count => 2
     assert_select "tr>td", :text => 1.to_s, :count => 2
   end

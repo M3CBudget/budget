@@ -9,9 +9,9 @@ RSpec.describe "items/new", :type => :view do
       :user => nil,
       :name => "MyString",
       :quantity => "9.99",
+      :price => "9.99",
       :notice => "MyString",
       :income => false,
-      :expense => false,
       :period => 1
     ))
   end
@@ -33,11 +33,11 @@ RSpec.describe "items/new", :type => :view do
 
       assert_select "input#item_quantity[name=?]", "item[quantity]"
 
+      assert_select "input#item_price[name=?]", "item[price]"
+
       assert_select "input#item_notice[name=?]", "item[notice]"
 
       assert_select "input#item_income[name=?]", "item[income]"
-
-      assert_select "input#item_expense[name=?]", "item[expense]"
 
       assert_select "input#item_period[name=?]", "item[period]"
     end
