@@ -1,4 +1,4 @@
 class Vendor < ActiveRecord::Base
   has_many :baskets
-  validates :name
+  validates :name, presence: true
 end
