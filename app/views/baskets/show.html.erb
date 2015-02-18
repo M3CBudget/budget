@@ -29,6 +29,16 @@
   <strong>Vendor:</strong>
   <%=  Vendor.find(@basket.vendor_id).name %>
 </p>
-
+<p class="field">
+  <strong>Items:</strong>
+  <table border="1">
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>Category</th>
+    </tr>
+  </table>
+</p>
 <%= link_to 'Edit', edit_basket_path(@basket) %> |
 <%= link_to 'Back', baskets_path %>

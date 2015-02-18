@@ -41,12 +41,16 @@
         <th>Name</th>
         <th>Price</th>
         <th>Quantity</th>
+        <th>Category</th>
+        <th>Delete</th>
       </tr>
       <%= f.fields_for :items do |items_form| %>
           <tr>
             <td><%= items_form.text_field :name %></td>
             <td><%= items_form.text_field :price %></td>
             <td><%= items_form.text_field :quantity %></td>
+            <td><%= items_form.text_field :category_id %></td>
+            <td><%= items_form.check_box :_destroy%></td>
           </tr>
       <% end %>
     </table>
