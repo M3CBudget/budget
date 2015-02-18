@@ -1,4 +1,4 @@
-<!-- hshshs -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -19,7 +19,7 @@
     <!-- Size should be 144 x 144 pixels -->
     <%= favicon_link_tag 'apple-touch-icon-144x144-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '144x144' %>
 
-    <!-- For iPhone with high-resolution Retina display: -->
+    <!-- For iPhone with high-resolution Retina display: -->g
     <!-- Size should be 114 x 114 pixels -->
     <%= favicon_link_tag 'apple-touch-icon-114x114-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '114x114' %>
 
@@ -77,33 +77,14 @@
         <div class="col-lg-9">
           <%= bootstrap_flash %>
 
-          <!-- Einbinden von Alerts z.B. generiert durch Devise-->
+          <!-- Einbinden von Alerts z.B. generiert durch Devise, evtl in den einzelnen Views lassen?-->
           <% if notice %>
               <p class="alert alert-success"><%= notice %></p>
           <% end %>
-          <!--
-          <% if alert %>
-              <p class="alert alert-danger"><%= alert %></p>
-          <% end %>
-          -->
+
 
           <%= yield %>
         </div><!--.col-lg-9-->
-
-
-        <!-- Finde die Sitebar unnötig!-->
-        <div class="col-lg-3">
-          <div class="well sidebar-nav">
-            <h3>Sidebar</h3>
-            <h4>finde ich überflüssig</h4>
-            <ul class="nav nav-list">
-              <!-- <li class="nav-header">Sidebar</li> -->
-              <li>Shortcut Item <%= link_to "Kategorie 1", "/items"  %></li>
-              <li>Shortcut Kategorie 2</li>
-              <li>Shortcut Kategorie 3</li>
-            </ul>
-          </div><!--.well -->
-        </div><!--.col-lg3-->
       </div><!--.row-->
 
       <footer>
