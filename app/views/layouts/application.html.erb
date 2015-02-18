@@ -46,13 +46,28 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">BudgetV1</a>
+        <a class="navbar-brand" href="/">BudgetV1</a>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
-            <li><%= link_to "Link1", "/path1"  %></li>
-            <li><%= link_to "Link2", "/path2"  %></li>
-            <li><%= link_to "Link3", "/path3"  %></li>
+            <li><%= link_to "Baskets", "/baskets"  %></li>
+            <li><%= link_to "Vendors", "/vendors"  %></li>
+            <li><%= link_to "Payments", "/payments"  %></li>
+            <li><%= link_to "Categories", "/categories"  %></li>
+            <li><%= link_to "Items", "/items"  %></li>
           </ul>
+          <p class="navbar-text pull-right">
+            <% if user_signed_in? %>
+                <span class="glyphicon glyphicon-user" aria-hidden="true" alt="Log in"></span>
+                <strong>
+                    <%= link_to current_user.email, edit_user_registration_path, :class => 'navbar-link' %> |
+                </strong>
+
+                <span class="glyphicon glyphicon-log-out" aria-hidden="true" alt="Log out"></span>
+                <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+            <% else %>
+                <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+                <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+            <% end %>
         </div>
       </div>
     </div>
@@ -61,28 +76,45 @@
       <div class="row">
         <div class="col-lg-9">
           <%= bootstrap_flash %>
+
+          <!-- Einbinden von Alerts z.B. generiert durch Devise-->
+          <% if notice %>
+              <p class="alert alert-success"><%= notice %></p>
+          <% end %>
+          <!--
+          <% if alert %>
+              <p class="alert alert-danger"><%= alert %></p>
+          <% end %>
+          -->
+
           <%= yield %>
-        </div>
+        </div><!--.col-lg-9-->
+
+
+        <!-- Finde die Sitebar unnötig!-->
         <div class="col-lg-3">
           <div class="well sidebar-nav">
             <h3>Sidebar</h3>
+            <h4>finde ich überflüssig</h4>
             <ul class="nav nav-list">
               <!-- <li class="nav-header">Sidebar</li> -->
-              <li><%= link_to "Baskets", "/baskets"  %></li>
-              <li><%= link_to "Vendors", "/vendors"  %></li>
-              <li><%= link_to "Payments", "/payments"  %></li>
-              <li><%= link_to "Categories", "/categories"  %></li>
-              <li><%= link_to "Items", "/items"  %></li>
+              <li>Shortcut Item <%= link_to "Kategorie 1", "/items"  %></li>
+              <li>Shortcut Kategorie 2</li>
+              <li>Shortcut Kategorie 3</li>
             </ul>
-          </div><!--/.well -->
-        </div><!--/span-->
-      </div><!--/row-->
+          </div><!--.well -->
+        </div><!--.col-lg3-->
+      </div><!--.row-->
 
       <footer>
-        <p>&copy; Company 2015</p>
+        <ul>
+          <li> <%= link_to "Help", "/help"  %> </li>
+          <li> <%= link_to "Impressum", "/impressum"  %> </li>
+        </ul>
+        <p>Budget 2015</p>
       </footer>
 
-    </div> <!-- /container -->
+    </div> <!--.container -->
 
   </body>
 </html>
