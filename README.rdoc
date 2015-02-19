@@ -8,5 +8,9 @@ Nächstes Meeting Sonntag 22. Feburar
 - Welcome Page ohne Login
 - Welcome Page mit Signup Form
 - Generell Userstorys
-- Destroy Function von Items im Basket reparieren
 - Dynamische Erweiterung der Items zeilen im neuen Basket
+- Einbindung des Artikel an das Item
+
+
+== Done
+- Destroy Function von Items im Basket reparieren

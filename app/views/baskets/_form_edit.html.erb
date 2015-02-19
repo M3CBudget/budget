@@ -42,6 +42,7 @@
       </tr>
       <%= f.fields_for :items do |items_form| %>
           <tr>
+            <%= items_form.hidden_field :id %>
             <td><%= items_form.text_field :name %></td>
             <td><%= items_form.text_field :price %></td>
             <td><%= items_form.text_field :quantity %></td>
