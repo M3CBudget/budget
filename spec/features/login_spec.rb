@@ -5,7 +5,7 @@ describe 'Sign in' do
     let!(:user) { FactoryGirl.create(:user) }
     it 'allows to sign in' do
       visit root_path
-      click_link 'Sign in'
+      click_link 'Login'
       fill_in 'user_email', with: user.email
       fill_in 'user_password', with: 'Spacken123'
       click_button 'Sign in'
@@ -14,7 +14,7 @@ describe 'Sign in' do
     end
     it 'allows to sign out' do
       visit root_path
-      click_link 'Sign in'
+      click_link 'Login'
       fill_in 'user_email', with: user.email
       fill_in 'user_password', with: 'Spacken123'
       click_button 'Sign in'
