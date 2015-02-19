@@ -3,7 +3,6 @@
 Nächstes Meeting Sonntag 22. Feburar
 
 == TODO
-- Glypicons wie werden diese eingebunden?
 - How to CSS?
 - Welcome Page ohne Login
 - Welcome Page mit Signup Form
@@ -14,3 +13,4 @@ Nächstes Meeting Sonntag 22. Feburar
 
 == Done
 - Destroy Function von Items im Basket reparieren
+- Glypicons wie werden diese eingebunden?
