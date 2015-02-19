@@ -19,7 +19,7 @@
     <!-- Size should be 144 x 144 pixels -->
     <%= favicon_link_tag 'apple-touch-icon-144x144-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '144x144' %>
 
-    <!-- For iPhone with high-resolution Retina display: -->g
+    <!-- For iPhone with high-resolution Retina display: -->
     <!-- Size should be 114 x 114 pixels -->
     <%= favicon_link_tag 'apple-touch-icon-114x114-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '114x114' %>
 
@@ -64,7 +64,7 @@
                 <span class="glyphicon glyphicon-log-out" aria-hidden="true" alt="Log out"></span>
                 <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
             <% else %>
-                <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+                <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link' %> |
                 <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
             <% end %>
         </div>

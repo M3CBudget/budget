@@ -4,7 +4,7 @@ RSpec.describe "categories/new", :type => :view do
   before(:each) do
     assign(:category, Category.new(
       :name => "MyString",
-      :notice => false,
+      :notice => "MyString",
       :active => false
     ))
   end

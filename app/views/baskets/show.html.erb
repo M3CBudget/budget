@@ -16,19 +16,33 @@
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @basket.user %>
-</p>
-
-<p>
   <strong>Payment:</strong>
-  <%= @basket.payment %>
+  <%= show_payment_name(@basket.payment_id) %>
 </p>
 
 <p>
   <strong>Vendor:</strong>
-  <%=  Vendor.find(@basket.vendor_id).name %>
+  <%= show_vendor_name(@basket.vendor_id) %>
 </p>
+<p class="field">
+  <strong>Items:</strong>
+  <table border="1">
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>Category</th>
+    </tr>
+    <% find_items_of_basket(@basket).each do |item| %>
+        <tr>
+          <td><%= item.name %></td>
+          <td><%= item.price %></td>
+          <td><%= item.quantity %></td>
+          <td><%= show_category_name(item.category_id) %></td>
+        </tr>
+    <% end %>
 
+  </table>
+</p>
 <%= link_to 'Edit', edit_basket_path(@basket) %> |
 <%= link_to 'Back', baskets_path %>

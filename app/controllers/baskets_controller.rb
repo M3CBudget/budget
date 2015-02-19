@@ -14,7 +14,7 @@ class BasketsController < ApplicationController
 
   def new
     @basket = Basket.new
-    5.times { @basket.items.build}
+    1.times { @basket.items.build}
     respond_with(@basket, @item)
   end
 
@@ -43,6 +43,6 @@ class BasketsController < ApplicationController
     end
 
     def basket_params
-      params.require(:basket).permit(:notice, :amount, :document, :user_id, :payment_id, :vendor_id, items_attributes: [:name, :price, :quantity])
+      params.require(:basket).permit(:notice, :amount, :document, :user_id, :payment_id, :vendor_id, items_attributes: [:name, :price, :quantity, :category_id, :_destroy])
     end
 end
