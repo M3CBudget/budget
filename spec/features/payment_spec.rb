@@ -18,8 +18,8 @@ describe 'Payment' do
 
   it 'allows to mount new payments' do
     fill_in 'payment_name', with: 'Giro'
-    check('category_active')
-    fill_in 'payment_account', with: 1
+    check('payment_active')
+    fill_in 'payment_account_id', with: 1
 
     expect { click_button 'Create Payment' }.to change {Payment.count}.by(1)
 
