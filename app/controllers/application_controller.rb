@@ -27,6 +27,6 @@ class ApplicationController < ActionController::Base
   end
 
   def find_items_of_basket(basket_id)
-    Items.find(basket_id)
+    Item.where(:basket_id => basket_id)
   end
 end

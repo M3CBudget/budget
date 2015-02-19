@@ -33,6 +33,14 @@
       <th>Quantity</th>
       <th>Category</th>
     </tr>
+    <% find_items_of_basket(@basket).each do |item| %>
+        <tr>
+          <td><%= item.name %></td>
+          <td><%= item.price %></td>
+          <td><%= item.quantity %></td>
+          <td><%= show_category_name(item.category_id) %></td>
+        </tr>
+    <% end %>
 
   </table>
 </p>
