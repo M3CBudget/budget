@@ -2,9 +2,9 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-  before_action :authenticate_user!
+ # before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
-  helper_method :show_vendor_name, :show_category_name, :find_items_of_basket
+  helper_method :show_vendor_name, :show_category_name, :find_items_of_basket, :show_payment_name
 
   protected
 
@@ -20,6 +20,10 @@ class ApplicationController < ActionController::Base
 
   def show_category_name(category_id)
     Category.find(category_id).name
+  end
+
+  def show_payment_name(payment_id)
+    Payment.find(payment_id).name
   end
 
   def find_items_of_basket(basket_id)

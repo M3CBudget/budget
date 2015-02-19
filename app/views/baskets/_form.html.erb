@@ -29,7 +29,7 @@
   </div>
   <div class="field">
     <%= f.label :payment_id %><br>
-    <%= f.text_field :payment_id %>
+    <%= f.collection_select :payment_id, Payment.all, :id, :name, multiple: false %>
   </div>
   <div class="field">
     <%= f.label :vendor_id %><br>

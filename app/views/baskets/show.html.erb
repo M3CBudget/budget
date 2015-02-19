@@ -16,13 +16,8 @@
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @basket.user %>
-</p>
-
-<p>
   <strong>Payment:</strong>
-  <%= @basket.payment %>
+  <%= show_payment_name(@basket.payment_id) %>
 </p>
 
 <p>
