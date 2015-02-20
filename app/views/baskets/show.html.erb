@@ -31,14 +31,18 @@
       <th>Name</th>
       <th>Price</th>
       <th>Quantity</th>
+      <th>Notice</th>
       <th>Category</th>
+      <th>Launch Date</th>
     </tr>
     <% find_items_of_basket(@basket).each do |item| %>
         <tr>
           <td><%= item.name %></td>
           <td><%= item.price %></td>
           <td><%= item.quantity %></td>
+          <td><%= item.notice %></td>
           <td><%= show_category_name(item.category_id) %></td>
+          <td><%= item.launch %></td>
         </tr>
     <% end %>
 

@@ -37,6 +37,7 @@
         <th>Name</th>
         <th>Price</th>
         <th>Quantity</th>
+        <th>Notice</th>
         <th>Category</th>
         <th>Delete</th>
       </tr>
@@ -46,6 +47,7 @@
             <td><%= items_form.text_field :name %></td>
             <td><%= items_form.text_field :price %></td>
             <td><%= items_form.text_field :quantity %></td>
+            <td><%= items_form.text_field :notice %></td>
             <td><%= items_form.collection_select :category_id, Category.all, :id, :name, multiple: false %></td>
             <td><%= items_form.check_box :_destroy %></td>
           </tr>
