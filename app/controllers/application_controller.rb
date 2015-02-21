@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
-  helper_method :sum_amount, :show_vendor_name, :show_category_name, :find_items_of_basket, :show_payment_name
+  helper_method :sum_amount, :show_vendor_name, :show_category_name, :find_items_of_basket, :show_payment_name, :find_items_of_category
 
   protected
 
@@ -27,7 +27,11 @@ class ApplicationController < ActionController::Base
   end
 
   def find_items_of_basket(basket_id)
-    Item.where(:basket_id => basket_id)
+    Item.where(:basket_id => basket_id, :user_id => current_user.id)
+  end
+
+  def find_items_of_category(category_id)
+    Item.where(:category_id => category_id, :user_id => current_user.id)
   end
 
   def sum_amount(baskets)

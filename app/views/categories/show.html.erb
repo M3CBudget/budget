@@ -19,5 +19,27 @@
   <%= @category.income %>
 </p>
 
+<div class="field">
+  <table>
+    <tr>
+      <th>Date</th>
+      <th>Name</th>
+      <th>Notice</th>
+      <th>Quantity</th>
+      <th>Price</th>
+    </tr>
+    <%= find_items_of_category(@category.id).each do |item| %>
+        <tr>
+          <td><%= item.launch %></td>
+          <td><%= item.name %></td>
+          <td><%= item.notice %></td>
+          <td><%= item.quantity %></td>
+          <td><%= item.price  %></td>
+        </tr>
+    <% end %>
+  </table>
+
+</div>
+
 <%= link_to 'Edit', edit_category_path(@category) %> |
 <%= link_to 'Back', categories_path %>

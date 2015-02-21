@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :baskets
+  has_many :categories
   has_many :payments
   has_many :items
   #attr_accessor :email
