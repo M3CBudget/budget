@@ -47,17 +47,16 @@
         <a class="navbar-brand" href="/">Bud$et</a>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
-            <li><%= link_to "/baskets" do %><i class="fa fa-shopping-cart"></i> Baskets <% end %> </li>
-            <li><%= link_to "/vendors" do %><i class="fa fa-building-o"></i> Vendors <% end %> </li>
-            <li><%= link_to "/accounts" do %><i class="fa fa-credit-card"></i> Accounts <% end %> </li>
-            <li><%= link_to "/categories" do %><i class="fa fa-files-o"></i> Categories <% end %> </li>
-            <li><%= link_to "/incomes" do %><i class="fa fa-files-o"></i> Incomes <% end %> </li>
+            <li><%= link_to new_basket_path do %><i class="fa fa-shopping-cart"></i> Baskets <% end %> </li>
+            <li><%= link_to new_vendor_path do %><i class="fa fa-building-o"></i> Vendors <% end %> </li>
+            <li><%= link_to new_account_path do %><i class="fa fa-credit-card"></i> Accounts <% end %> </li>
+            <li><%= link_to new_category_path do %><i class="fa fa-files-o"></i> Categories <% end %> </li>
           </ul>
           <p class="navbar-text pull-right">
             <% if user_signed_in? %>
                 <i class="fa fa-user"></i>
                 <strong>
-                    <%= link_to current_user.email, edit_user_registration_path, :class => 'navbar-link' %> |
+                    <%= link_to current_user.first_name, edit_user_registration_path, :class => 'navbar-link' %> |
                 </strong>
                 <i class="fa fa-sign-out"></i>
                 <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
@@ -72,19 +71,37 @@
       </div>
     </div>
 
-    <div class="container">
-      <div class="row">
+    <section class="container">
+
+
         <div class="col-lg-9">
           <%= bootstrap_flash %>
-
-          <!-- Einbinden von Alerts z.B. generiert durch Devise, evtl in den einzelnen Views lassen?-->
-          <% if notice %>
-              <p class="alert alert-success"><%= notice %></p>
-          <% end %>
-
           <%= yield %>
         </div><!--.col-lg-9-->
-      </div><!--.row-->
+
+        <div class="col-lg-3">
+            <div class="off-canvas sidebar-nav">
+
+              <h3>Menu</h3>
+
+              <form class="form-inline">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="exampleInputName2" placeholder="Suche">
+                </div><!--/.form-group-->
+              </form>
+
+              <ul class="nav nav-list">
+                <li class="nav-header">Show</li>
+                <li><%= link_to "/baskets" do %><i class="fa fa-shopping-cart"></i> Baskets <% end %> </li>
+                <li><%= link_to "/vendors" do %><i class="fa fa-building-o"></i> Vendors <% end %> </li>
+                <li><%= link_to "/accounts" do %><i class="fa fa-credit-card"></i> Accounts <% end %> </li>
+                <li><%= link_to "/categories" do %><i class="fa fa-files-o"></i> Categories <% end %> </li>
+                <li><%= link_to "/incomes" do %><i class="fa fa-files-o"></i> Incomes <% end %> </li>
+              </ul>
+            </div><!--/.off-canvas  -->
+        </div>
+
+
 
       <footer>
         <p class="navbar-text">Bud$et 2015</p>
@@ -95,6 +112,6 @@
 
       </footer>
 
-    </div> <!--.container -->
+    </section> <!--.container -->
   </body>
 </html>
