@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   respond_to :html
 
   def index
-    @items = Item.all
+    @items = Item.where(:user_id => current_user.id)
     respond_with(@items)
   end
 

@@ -4,7 +4,7 @@ class VendorsController < ApplicationController
   respond_to :html
 
   def index
-    @vendors = Vendor.all
+    @vendors = Vendor.where(:user_id => current_user.id)
     respond_with(@vendors)
   end
 
@@ -42,6 +42,6 @@ class VendorsController < ApplicationController
     end
 
     def vendor_params
-      params.require(:vendor).permit(:name, :logo)
+      params.require(:vendor).permit(:name, :logo, :user_id)
     end
 end

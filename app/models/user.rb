@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   has_many :categories
   has_many :payments
   has_many :items
+  has_many :vendors
   #attr_accessor :email
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

@@ -6,13 +6,13 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Vendor.create!([  {name: 'Aldi'},
-                  {name: 'REWE'},
-                  {name: 'EDEKA'},
-                  {name: 'Sport Verein'},
-                  {name: 'Vermieter'},
-                  {name: 'Westfalen Gas'},
-                  {name: 'Amazon'}
+Vendor.create!([  {name: 'Aldi', user_id:1},
+                  {name: 'REWE', user_id:2},
+                  {name: 'EDEKA', user_id:1},
+                  {name: 'Sport Verein', user_id:1},
+                  {name: 'Vermieter', user_id:1},
+                  {name: 'Westfalen Gas', user_id:1},
+                  {name: 'Amazon', user_id:1}
                ])
 
 Payment.create!([  {name: 'Sparkasse', number:'1634001234', bic:'26550150', active:true, user_id:1},

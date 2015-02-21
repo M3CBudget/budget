@@ -4,7 +4,7 @@ class BasketsController < ApplicationController
   respond_to :html
 
   def index
-    @baskets = Basket.all
+    @baskets = Basket.where(:user_id => current_user.id)
     respond_with(@baskets)
   end
 
