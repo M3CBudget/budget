@@ -1,33 +1,41 @@
-<h1>Listing accounts</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Number</th>
-      <th>Bic</th>
-      <th>Name</th>
-      <th>Active</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @accounts.each do |account| %>
-      <tr>
-        <td><%= account.number %></td>
-        <td><%= account.bic %></td>
-        <td><%= account.name %></td>
-        <td><%= account.active %></td>
-        <td><%= account.user %></td>
-        <td><%= link_to 'Show', account %></td>
-        <td><%= link_to 'Edit', edit_account_path(account) %></td>
-        <td><%= link_to 'Destroy', account, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="page-header">
+  <h1> Accounts
+  <i class="fa fa-credit-card pull-right"></i>
+      </h1>
+</div>
+
+<% @accounts.each do |account| %>
+    <div class="col-xs-6 col-lg-4">
+      <% if (account.active) %>
+      <div class="panel panel-success">
+      <% else %>
+          <div class="panel panel-warning">
+      <% end %>
+
+        <div class="panel-heading">
+          <h3 class="panel-title"><%= account.name %>
+          <% if (account.active) %>
+              <i class="fa fa-check pull-right" data-toggle="tooltip" data-placement="left" title="Account ist aktiv"></i>
+          <% else %>
+              <i class="fa fa-times pull-right" data-toggle="tooltip" data-placement="left" title="Account ist inaktiv"></i>
+          <% end %>
+          </h3>
+        </div>
+        <div class="panel-body">
+
+          <p><%= account.number %></p>
+          <p><%= account.bic %></p>
+          <%= link_to 'Edit', edit_account_path(account), :class => 'btn btn-default', :role => 'button' %>
+          <%= link_to 'Destroy', account, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-default', :role => 'button' %>
+        </div>
+      </div>
+    </div>
+<% end %>
+
+
 
 <br>
 
-<%= link_to 'New Account', new_account_path %>
+<%= link_to '+', new_account_path, :class => 'btn btn-default', :role => 'button' %>

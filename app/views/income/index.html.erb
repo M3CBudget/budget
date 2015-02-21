@@ -1,39 +1,34 @@
-<h1>Listing incomes</h1>
+<div class="page-header">
+  <h1>  Incomes<i class="fa fa-money pull-right"></i>
+  </h1>
+</div>
 
-<table>
-  <thead>
-  <tr>
-    <th>Name</th>
-    <th>Price</th>
-    <th>Category</th>
-    <th>Notice</th>
-    <th>Income</th>
-    <th>Period</th>
-    <th>Launch</th>
-    <th>Finish</th>
-    <th colspan="3"></th>
-  </tr>
-  </thead>
+<% @incomes.each do |income| %>
+    <div class="col-xs-6 col-lg-4">
+      <% if (true) #incomes.active %>
+          <div class="panel panel-success">
+      <% else %>
+          <div class="panel panel-warning">
+      <% end %>
 
-  <tbody>
-  <% @incomes.each do |income| %>
-      <tr>
-        <td><%= income.name %></td>
-        <td><%= income.price %></td>
-        <td><%= show_category_name(income.category) %></td>
-        <td><%= income.notice %></td>
-        <td><%= income.income %></td>
-        <td><%= income.period %></td>
-        <td><%= income.launch %></td>
-        <td><%= income.finish %></td>
-        <td><%= link_to 'Show', income %></td>
-        <td><%= link_to 'Edit', "incomes/edit/#{income.id}" %></td>
-        <td><%= link_to 'Destroy', income, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-  <% end %>
-  </tbody>
-</table>
+        <div class="panel-heading">
+          <h3 class="panel-title"><%= income.name %></h3>
+        </div>
+        <div class="panel-body">
+            <p><%= income.price %> &euro;</p>
+          <p><small><%= income.notice %></small></p>
+          <p>Perioden: <%= income.period %></p>
+          <p><%= income.launch %> - <%= income.finish %></p>
+
+          <td><%= link_to 'Edit', "incomes/edit/#{income.id}", :class => 'btn btn-default', :role => 'button' %></td>
+          <td><%= link_to 'Destroy', income, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-default', :role => 'button' %></td>
+        </div>
+      </div>
+    </div>
+<% end %>
+
+
 
 <br>
 
-<%= link_to 'New Income', income_new_path %>
+<%= link_to '+', income_new_path, :class => 'btn btn-default', :role => 'button' %>

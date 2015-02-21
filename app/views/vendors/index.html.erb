@@ -1,27 +1,27 @@
-<h1>Listing vendors</h1>
+<div class="page-header">
+  <h1>  Vendors  <i class="fa fa-building-o pull-right"></i>
+  </h1>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Logo</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<% @vendors.each do |vendor| %>
+    <div class="col-xs-6 col-lg-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><%= vendor.name %></h3>
+        </div>
+        <div class="panel-body">
+          <% if(vendor.logo.present?) %>
+              <img class="image-responsive" src="<%= vendor.logo %>"> </img>
+          <% end %>
+          <td><%= link_to 'Edit', edit_vendor_path(vendor), :class => 'btn btn-default', :role => 'button' %></td>
+          <td><%= link_to 'Destroy', vendor, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-default', :role => 'button' %></td>
+        </div>
+      </div>
+    </div>
+<% end %>
 
-  <tbody>
-    <% @vendors.each do |vendor| %>
-      <tr>
-        <td><%= vendor.name %></td>
-        <td><%= vendor.logo %></td>
-        <td><%= link_to 'Show', vendor %></td>
-        <td><%= link_to 'Edit', edit_vendor_path(vendor) %></td>
-        <td><%= link_to 'Destroy', vendor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+
 
 <br>
 
-<%= link_to 'New Vendor', new_vendor_path %>
+<%= link_to '+', new_vendor_path, :class => 'btn btn-default', :role => 'button' %>
