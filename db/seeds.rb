@@ -20,15 +20,15 @@ Payment.create!([  {name: 'Sparkasse', number:'1634001234', bic:'26550150', acti
                    {name: 'Barzahlung', number:'0', bic:'0', active:true, user_id:1}
                 ])
 
-Category.create!([  {name: 'Haushalt', notice:'Kategorie für Haushalt', active:'true', income:'false'},
-                    {name: 'Sport', notice:'Kategorie für Sport', active:'true', income:'false'},
-                    {name: 'Sprit', notice:'Kategorie für Sprit', active:'true', income:'false'},
-                    {name: 'Drogerie', notice:'Kategorie für Drogerie', active:'true', income:'false'},
-                    {name: 'Sonstige', notice:'Kategorie für Sonstige Dinge', active:'true', income:'false'},
-                    {name: 'Geschenk', notice:'Einnahmen durch Geschenke', active:'true', income:'true'},
-                    {name: 'Gehalt', notice:'Einnahmen durch Gehälter', active:'true', income:'true'},
-                    {name: 'Gewinne', notice:'Einnahmen durch Gewinne', active:'true', income:'true'},
-                    {name: 'Sonstige', notice:'Sonstige Einnahmen', active:'true', income:'true'}
+Category.create!([  {name: 'Haushalt', notice:'Kategorie für Haushalt', active:'true', income:'false', user_id:1},
+                    {name: 'Sport', notice:'Kategorie für Sport', active:'true', income:'false', user_id:1},
+                    {name: 'Sprit', notice:'Kategorie für Sprit', active:'true', income:'false', user_id:1},
+                    {name: 'Drogerie', notice:'Kategorie für Drogerie', active:'true', income:'false', user_id:1},
+                    {name: 'Sonstige', notice:'Kategorie für Sonstige Dinge', active:'true', income:'false', user_id:2},
+                    {name: 'Geschenk', notice:'Einnahmen durch Geschenke', active:'true', income:'true', user_id:1},
+                    {name: 'Gehalt', notice:'Einnahmen durch Gehälter', active:'true', income:'true', user_id:1},
+                    {name: 'Gewinne', notice:'Einnahmen durch Gewinne', active:'true', income:'true', user_id:2},
+                    {name: 'Sonstige', notice:'Sonstige Einnahmen', active:'true', income:'true', user_id:1}
                 ])
 
 User.create!([    { email: '0@web.de', password:'12345678', first_name:'Günther', last_name:'Gurke'},
