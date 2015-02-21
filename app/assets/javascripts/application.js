@@ -24,8 +24,6 @@ $(document).ready(function () {
 });
 
 function addItemRow() {
-
-
     var mSec = 0;
 
     idAttributName =
