@@ -9,6 +9,7 @@ Nächstes Meeting Sonntag 22. Feburar
 - Generell Userstorys
 - Dynamische Erweiterung der Items zeilen im neuen Basket
 - Einbindung des Artikel an das Item
+- Null Prüfung
 
 
 == Done

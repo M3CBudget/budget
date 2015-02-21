@@ -15,15 +15,13 @@
           <p><i class="fa fa-credit-card"></i> <small><%= show_payment_name(basket.payment_id) %></small></p>
         </div>
         <div class="panel-footer">
-          <%= link_to 'Edit',  edit_basket_path(basket), :class => 'btn btn-default', :role => 'button' %>
-          <%= link_to 'Destroy', basket, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-default', :role => 'button' %>
+          <%= link_to basket do %>  <button class="btn btn-default"> <i class="fa fa-bars"></i></i> Anzeigen </button> <% end %>
+          <%= link_to edit_basket_path(basket) do %>  <button class="btn btn-default"> <i class="fa fa-pencil-square-o"></i> Ändern </button> <% end %>
+          <%= link_to basket, method: :delete, data: { confirm: 'Are you sure?' } do %> <button class="btn btn-default"> <i class="fa fa-trash-o"></i> Löschen </button>  <% end %>
         </div>
       </div>
     </div>
 <% end %>
 
-
-
-<br>
 
 <%= link_to '+', new_basket_path, :class => 'btn btn-default', :role => 'button' %>

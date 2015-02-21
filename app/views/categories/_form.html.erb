@@ -11,23 +11,31 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+
+<div class="form-group">
+
+  <div class="col-xs-6">
+    <%= f.check_box :income %>
+    <%= f.label :income %>
   </div>
-  <div class="field">
-    <%= f.label :notice %><br>
-    <%= f.text_field :notice %>
+  <div class="col-xs-6">
+    <%= f.check_box :active, :checked => true %>
+    <%= f.label :active %>
   </div>
-  <div class="field">
-    <%= f.label :active %><br>
-    <%= f.check_box :active %>
-  </div>
-    <div class="field">
-      <%= f.label :income %><br>
-      <%= f.check_box :income %>
+
+    <div class="col-xs-12">
+
+      <div class="input-group">
+        <div class="input-group-addon"><i class="fa fa-font"></i></div>
+        <%= f.text_field :name, :class =>"form-control", :placeholder => "Kategorie Name" %>
+      </div>
+      <div class="input-group">
+        <div class="input-group-addon"><i class="fa fa-file-text-o"></i></div>
+        <%= f.text_field :notice, :class =>"form-control", :placeholder => "Kategorie Notiz" %>
+      </div>
+      <%= f.submit "Ändern" , :class => "btn btn-default" %>
+
     </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+</div>
 <% end %>
+
