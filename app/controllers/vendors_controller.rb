@@ -4,7 +4,7 @@ class VendorsController < ApplicationController
   respond_to :html
 
   def index
-    @vendors = Vendor.all
+    @vendors = Vendor.where(:user_id => current_user.id)
     respond_with(@vendors)
   end
 

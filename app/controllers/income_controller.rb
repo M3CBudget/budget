@@ -4,7 +4,7 @@ class IncomeController < ApplicationController
   respond_to :html
 
   def index
-    @incomes = Item.where(:income => true)
+    @incomes = Item.where(:user_id => current_user.id, :income => true)
     respond_with(@incomess)
   end
 

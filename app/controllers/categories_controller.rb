@@ -4,7 +4,7 @@ class CategoriesController < ApplicationController
   respond_to :html
 
   def index
-    @categories = Category.all
+    @categories = Category.where(:user_id => current_user.id)
     respond_with(@categories)
   end
 

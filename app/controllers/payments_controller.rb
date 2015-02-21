@@ -4,7 +4,7 @@ class PaymentsController < ApplicationController
   respond_to :html
 
   def index
-    @payments = Payment.all
+    @payments = Payment.where(:user_id => current_user.id)
     respond_with(@payments)
   end
 
