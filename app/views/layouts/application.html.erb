@@ -36,73 +36,75 @@
         <%= javascript_include_tag "application" %>
       </head>
       <body>
-
-        <nav class="navbar navbar-default navbar-static-top">
+        <nav class="navbar navbar-default navbar-fixed-top">
           <div class="container">
-            <button type="button" class="navbar-toggle" data-toggle="offcanvas"  data-target=".navbar-responsive-collapse">
-              <!-- data-toggle="offcanvas" -->
-              <!-- data-toggle="collapse" -->
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">Bud$et</a>
-            <div class="navbar-collapse collapse navbar-responsive-collapse">
-              <ul class="nav navbar-nav">
-                <li><%= link_to new_basket_path do %><i class="fa fa-shopping-cart"></i> Basket <% end %> </li>
-                <li><%= link_to new_vendor_path do %><i class="fa fa-building-o"></i> Vendor <% end %> </li>
-                <li><%= link_to new_account_path do %><i class="fa fa-credit-card"></i> Account <% end %> </li>
-                <li><%= link_to new_category_path do %><i class="fa fa-files-o"></i> Categorie <% end %> </li>
-                <li><%= link_to income_new_path do %><i class="fa fa-files-o"></i> Income <% end %> </li>
-              </ul>
-              <p class="navbar-text pull-right">
-                <% if user_signed_in? %>
-                    <i class="fa fa-user"></i>
-                    <strong>
+              <button type="button" class="navbar-toggle" data-toggle="offcanvas">
+                <!-- data-toggle="offcanvas" -->
+                <!-- data-toggle="collapse" -->
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="/">Bud$et</a><div class="navbar-collapse collapse navbar-responsive-collapse">
+                <ul class="nav navbar-nav">
+                  <li><%= link_to new_basket_path do %><i class="fa fa-shopping-cart"></i><span class="hidden-xs hidden-sm">Ausgabe </span> <% end %> </li>
+                  <li><%= link_to income_new_path do %><i class="fa fa-files-o"></i> <span class="hidden-xs hidden-sm">Einnahme </span><% end %> </li>
+                  <li><%= link_to new_category_path do %><i class="fa fa-files-o"></i> <span class="hidden-xs hidden-sm">Kategorie </span><% end %> </li>
+                  <li><%= link_to new_vendor_path do %><i class="fa fa-building-o"></i> <span class="hidden-xs hidden-sm">Händler </span><% end %> </li>
+                  <li><%= link_to new_payment_path do %><i class="fa fa-credit-card"></i> <span class="hidden-xs hidden-sm">Zahlung </span><% end %> </li>
+                </ul>
+
+                <p class="navbar-text pull-right hidden-xs">
+                  <% if user_signed_in? %>
+                      <i class="fa fa-user"></i>
+                      <strong>
                         <%= link_to current_user.first_name, edit_user_registration_path, :class => 'navbar-link' %> |
-                    </strong>
-                    <i class="fa fa-sign-out"></i>
-                    <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-                <% else %>
-                    <i class="fa fa-user-plus"></i>
-                    <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link' %> |
-                    <i class="fa fa-sign-in"></i>
-                    <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-                <% end %>
-              </p>
+                      </strong>
+                      <i class="fa fa-sign-out"></i>
+                      <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+                  <% else %>
+                      <i class="fa fa-user-plus"></i>
+                      <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link' %> |
+                      <i class="fa fa-sign-in"></i>
+                      <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+                  <% end %>
+                </p>
+              </div>
+              </div>
             </div>
           </div>
         </nav>
         <section class="container">
           <div class="row row-offcanvas row-offcanvas-right active">
             <!-- yield -->
-            <div class="col-xs-12 col-lg-9">
+            <div class="col-xs-12 col-sm-9">
               <%= bootstrap_flash %>
               <%= yield %>
             </div>
-            <div id="sidebar" class="col-lg-3 sidebar-offcanvas">
+            <div id="sidebar" class="col-xs-6 col-sm-3 sidebar-offcanvas">
+              <ul class="nav nav-list">
+                <li class="nav-header"><h4>Show</h4></li>
+                <li><%= link_to "/baskets"  do %><i class="fa fa-shopping-cart"></i> Ausgaben <% end %> </li>
+                <li><%= link_to "/payments" do %><i class="fa fa-files-o"></i> Einnahmen <% end %> </li>
+                <li><%= link_to "/categories" do %><i class="fa fa-files-o"></i> Kategorien <% end %> </li>
+                <li><%= link_to "/vendors" do %><i class="fa fa-building-o"></i> Händler <% end %> </li>
+                <li><%= link_to "/accounts" do %><i class="fa fa-credit-card"></i> Zahlungs Möglichkeiten <% end %> </li>
 
-                      <ul class="nav nav-list">
-                        <li class="nav-header"><h4>Show</h4></li>
-                        <li><%= link_to "/baskets"  do %><i class="fa fa-shopping-cart"></i> Baskets <% end %> </li>
-                        <li><%= link_to "/vendors" do %><i class="fa fa-building-o"></i> Vendors <% end %> </li>
-                        <li><%= link_to "/accounts" do %><i class="fa fa-credit-card"></i> Accounts <% end %> </li>
-                        <li><%= link_to "/categories" do %><i class="fa fa-files-o"></i> Categories <% end %> </li>
-                        <li><%= link_to "/incomes" do %><i class="fa fa-files-o"></i> Incomes <% end %> </li>
-                      </ul>
-
+              </ul>
             </div>
           </div>
         </section> <!--.container -->
 
-        <footer>
-          <div class="container">
-          <p class="navbar-text">Bud$et 2015</p>
-          <ul class="nav navbar-nav  pull-right">
-            <li><%= link_to "/help" do %><i class="fa fa-question"></i> Help <% end %> </li>
-            <li><%= link_to "/impressum" do %><i class="fa fa-info"></i> Impressum <% end %> </li>
-          </ul>
-        </div>
+        <footer class="container">
+          <div class="col-xs-12 col-lg-9">
+            <hr>
+            <p class="navbar-text">Bud$et 2015</p>
+            <ul class="nav navbar-nav  pull-right">
+              <li><%= link_to "/help" do %><i class="fa fa-question"></i> Help <% end %> </li>
+              <li><%= link_to "/impressum" do %><i class="fa fa-info"></i> Impressum <% end %> </li>
+            </ul>
+          </div>
         </footer>
       </body>
     </html>

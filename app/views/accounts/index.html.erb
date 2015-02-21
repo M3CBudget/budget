@@ -24,8 +24,8 @@
         </div>
 
       <div class="panel-footer">
-        <%= link_to 'Edit', edit_account_path(account), :class => 'btn btn-default', :role => 'button' %>
-        <%= link_to 'Destroy', account, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-default', :role => 'button' %>
+        <%= link_to edit_account_path(account) do %>  <button class="btn btn-default"> <i class="fa fa-pencil-square-o"></i> Ändern </button> <% end %>
+        <%= link_to account, method: :delete, data: { confirm: 'Are you sure?' } do %> <button class="btn btn-default"> <i class="fa fa-trash-o"></i> Löschen </button>  <% end %>
       </div>
       </div>
     </div>

@@ -42,6 +42,6 @@ class VendorsController < ApplicationController
     end
 
     def vendor_params
-      params.require(:vendor).permit(:name, :logo)
+      params.require(:vendor).permit(:name, :logo, :user_id)
     end
 end
