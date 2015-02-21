@@ -31,9 +31,11 @@ class ApplicationController < ActionController::Base
   end
 
   def sum_amount(baskets)
+    sum = 0
     baskets.each do |b|
-    #  sum += BigDecimal(b.amount)
+      sum = sum + b.amount
     end
+    return sum
   end
 
 end
