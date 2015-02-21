@@ -35,19 +35,19 @@
     <%= f.collection_select :vendor_id, Vendor.all, :id, :name, multiple: false %>
   </div>
   <div class="field">
-    <table>
+    <table id="items">
       <tr>
         <th>Name</th>
+        <th>Qunatity</th>
         <th>Price</th>
-        <th>Quantity</th>
         <th>Notice</th>
         <th>Category</th>
       </tr>
       <%= f.fields_for :items do |items_form| %>
           <tr>
             <td><%= items_form.text_field :name %></td>
-            <td><%= items_form.text_field :price %></td>
             <td><%= items_form.text_field :quantity %></td>
+            <td><%= items_form.text_field :price %></td>
             <td><%= items_form.text_field :notice %></td>
             <td><%= items_form.collection_select :category_id, Category.where(:income => false, :user_id => current_user.id), :id, :name, multiple: false %></td>
             <td><%= items_form.hidden_field :income, :value => false %></td>
@@ -55,6 +55,8 @@
           </tr>
       <% end %>
     </table>
+    <%= submit_tag "Neuer Artikel", :type => 'button', :id => 'addItem',
+                   :onclick => 'addItemRow()' %>
 
   </div>
 
