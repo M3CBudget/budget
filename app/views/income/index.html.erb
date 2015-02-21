@@ -16,12 +16,16 @@
         <div class="panel-body">
             <p><%= income.price %> &euro;</p>
           <p><small><%= income.notice %></small></p>
+          <% if(income.period) %>
           <p>Perioden: <%= income.period %></p>
+          <% end %>
+          <% if(income.finish) %>
           <p><%= income.launch %> - <%= income.finish %></p>
+          <% end %>
         </div>
       <div class="panel-footer">
-        <%= link_to 'Edit', "incomes/edit/#{income.id}", :class => 'btn btn-default', :role => 'button' %>
-        <%= link_to 'Destroy', income, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-default', :role => 'button' %>
+        <%= link_to "items/#{income.id}/edit" do %>  <button class="btn btn-default"> <i class="fa fa-pencil-square-o"></i> Ändern </button> <% end %>
+        <%= link_to income, method: :delete, data: { confirm: 'Are you sure?' } do %> <button class="btn btn-default"> <i class="fa fa-trash-o"></i> Löschen </button>  <% end %>
       </div>
       </div>
     </div>
