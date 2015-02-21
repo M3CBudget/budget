@@ -1,0 +1,56 @@
+<%= form_for(@income) do |f| %>
+<% if @income.errors.any? %>
+<div id="error_explanation">
+    <h2><%= pluralize(@income.errors.count, "error") %> prohibited this item from being saved:</h2>
+
+    <ul>
+        <% @income.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+    </ul>
+</div>
+<% end %>
+
+
+<div class="field">
+    <%= f.label :category_id %><br>
+    <%= f.collection_select :category_id, Category.all, :id, :name, multiple: false %>
+</div>
+<div class="field">
+    <%= f.label :article_id %><br>
+    <%= f.text_field :article_id %>
+</div>
+<div class="field">
+    <%= f.hidden_field :user_id %>
+</div>
+<div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+</div>
+<div class="field">
+    <%= f.label :value %><br>
+    <%= f.text_field :price %>
+</div>
+<div class="field">
+    <%= f.label :notice %><br>
+    <%= f.text_field :notice %>
+</div>
+<div class="field">
+    <%= f.hidden_field :income, :value => true %>
+</div>
+<div class="field">
+    <%= f.label :period %><br>
+    <%= f.number_field :period %>
+</div>
+<div class="field">
+    <%= f.label :launch %><br>
+    <%= f.date_select :launch %>
+</div>
+<div class="field">
+    <%= f.label :finish %><br>
+    <%= f.date_select :finish %>
+</div>
+<div class="actions">
+    <%= f.submit %>
+</div>
+<% end %>

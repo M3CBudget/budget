@@ -1,16 +1,15 @@
 Rails.application.routes.draw do
+  get 'income/new', to: 'income#new'
+  get 'income/show', to: 'income#show'
+  get 'income/edit', to: 'income#edit'
+  get 'incomes/', to: 'income#index'
+
   resources :categories
-
   resources :payments
-
   resources :accounts
-
   resources :articles
-
   resources :items
-
   resources :vendors
-
   resources :baskets
 
   get 'welcome/index'

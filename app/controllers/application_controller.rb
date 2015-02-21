@@ -4,15 +4,13 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
-  helper_method :show_vendor_name, :show_category_name, :find_items_of_basket, :show_payment_name
+  helper_method :sum_amount, :show_vendor_name, :show_category_name, :find_items_of_basket, :show_payment_name
 
   protected
 
   def configure_permitted_parameters
-    # rauskommentiert aufgrund der stack overflow empfehlung
-    #devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :email, :password, :password_confirmation, :first_name, :last_name) }
-    #devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:login, :username, :email, :password, :remember_me) }
-    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit( :first_name, :last_name) }
+    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :email, :password, :password_confirmation, :first_name, :last_name) }
+    devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:login, :username, :email, :password, :remember_me) }
     devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:username, :email, :password, :password_confirmation, :current_password, :first_name, :last_name) }
   end
 
@@ -31,4 +29,11 @@ class ApplicationController < ActionController::Base
   def find_items_of_basket(basket_id)
     Item.where(:basket_id => basket_id)
   end
+
+  def sum_amount(baskets)
+    baskets.each do |b|
+    #  sum += BigDecimal(b.amount)
+    end
+  end
+
 end
