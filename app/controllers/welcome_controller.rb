@@ -3,6 +3,7 @@ class WelcomeController < ApplicationController
 
   def index
     @lastBaskets = Basket.last(5)
-    respond_with(@lastBaskets )
+    @lastCategories = Category.last(5)
+    respond_with(@lastBaskets, @lastCategories )
   end
 end

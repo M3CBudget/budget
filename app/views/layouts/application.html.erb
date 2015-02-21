@@ -47,10 +47,11 @@
         <a class="navbar-brand" href="/">Bud$et</a>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
-            <li><%= link_to new_basket_path do %><i class="fa fa-shopping-cart"></i> Baskets <% end %> </li>
-            <li><%= link_to new_vendor_path do %><i class="fa fa-building-o"></i> Vendors <% end %> </li>
-            <li><%= link_to new_account_path do %><i class="fa fa-credit-card"></i> Accounts <% end %> </li>
-            <li><%= link_to new_category_path do %><i class="fa fa-files-o"></i> Categories <% end %> </li>
+            <li><%= link_to new_basket_path do %><i class="fa fa-shopping-cart"></i> Basket <% end %> </li>
+            <li><%= link_to new_vendor_path do %><i class="fa fa-building-o"></i> Vendor <% end %> </li>
+            <li><%= link_to new_account_path do %><i class="fa fa-credit-card"></i> Account <% end %> </li>
+            <li><%= link_to new_category_path do %><i class="fa fa-files-o"></i> Categorie <% end %> </li>
+            <li><%= link_to income_new_path do %><i class="fa fa-files-o"></i> Income <% end %> </li>
           </ul>
           <p class="navbar-text pull-right">
             <% if user_signed_in? %>
