@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 20150218172155) do
     t.string   "name"
     t.string   "notice"
     t.boolean  "active"
+    t.boolean  "income"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
