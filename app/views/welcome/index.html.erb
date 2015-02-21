@@ -38,8 +38,8 @@
     <div class="panel-heading">Categories</div>
     <div class="panel-body">
         <div class="col-lg-6">
-          <% @lastCategories.each do |categorie| %>
-              <%= link_to category.name, new_article_path, :class => 'btn btn-default', :role => 'button' %>
+          <% @lastCategories.each do |category| %>
+              <%= link_to category.name, category_path(category), :class => 'btn btn-default', :role => 'button' %>
           <% end %>
         </div>
           <div class="col-lg-6">
