@@ -1,6 +1,7 @@
-<h1>Editing payment</h1>
+<div class="page-header">
 
+  <h1> <%= link_to payments_path do %>  <i class="fa fa-arrow-left"></i> <% end %>Zahlungsmethode Ändern</h1>
+
+</div>
 <%= render 'form' %>
 
-<%= link_to 'Show', @payment %> |
-<%= link_to 'Back', payments_path %>

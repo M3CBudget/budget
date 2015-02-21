@@ -11,27 +11,33 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.text_field :user_id %>
-  </div>
-  <div class="field">
-    <%= f.label :number %><br>
-    <%= f.text_field :number %>
-  </div>
-  <div class="field">
-    <%= f.label :bic %><br>
-    <%= f.text_field :bic %>
-  </div>
-  <div class="field">
+<div class="form-group">
+
+  <div class="col-xs-6">
+    <%= f.check_box :active, :checked => true %>
     <%= f.label :active %><br>
-    <%= f.check_box :active %>
   </div>
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+  <div class="col-xs-6">
+    <%= f.hidden_field :user_id, :value => current_user.id %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+
+  <div class="col-xs-12">
+
+    <div class="input-group">
+      <div class="input-group-addon"><i class="fa fa-file-text"></i></div>
+      <%= f.text_field :name, :class =>"form-control", :placeholder => "Name" %>
+    </div>
+    <div class="input-group">
+      <div class="input-group-addon"><i class="fa fa fa-university"></i></div>
+      <%= f.text_field :number, :class =>"form-control", :placeholder => "IBAN" %>
+    </div>
+    <div class="input-group">
+      <div class="input-group-addon"><i class="fa fa-university"></i></div>
+      <%= f.text_field :bic, :class =>"form-control", :placeholder => "BIC" %>
+    </div>
+
+    <%= f.submit "Speichern" , :class => "btn btn-default" %>
+
   </div>
+</div>
 <% end %>

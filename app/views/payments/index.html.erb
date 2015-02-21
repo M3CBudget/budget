@@ -1,17 +1,17 @@
 <div class="page-header">
-  <h1>Zahlung<i class="fa fa-credit-card pull-right"></i></h1>
+  <h1>Zahlungsmethoden<i class="fa fa-credit-card pull-right"></i></h1>
 </div>
 
-<% @payments.each do |account| %>
+<% @payments.each do |payment| %>
     <div class="col-xs-6 col-lg-4">
-      <% if (account.active) %>
+      <% if (payment.active) %>
           <div class="panel panel-success">
       <% else %>
           <div class="panel panel-warning">
       <% end %>
       <div class="panel-heading">
-        <h3 class="panel-title"><%= account.name %>
-          <% if (account.active) %>
+        <h3 class="panel-title"><%= payment.name %>
+          <% if (payment.active) %>
               <i class="fa fa-check pull-right" data-toggle="tooltip" data-placement="left" title="Account ist aktiv"></i>
           <% else %>
               <i class="fa fa-times pull-right" data-toggle="tooltip" data-placement="left" title="Account ist inaktiv"></i>
@@ -19,13 +19,15 @@
         </h3>
       </div>
       <div class="panel-body">
-        <p><%= account.number %></p>
-        <p><%= account.bic %></p>
+        <% unless payment.number == 0 %>
+        <p><i class="fa fa-university"></i> Nummer <%= payment.number %></p>
+        <p><i class="fa fa-university"></i> BIC <%= payment.bic %></p>
+        <% end %>
       </div>
 
       <div class="panel-footer">
-        <%= link_to edit_account_path(account) do %>  <button class="btn btn-default"> <i class="fa fa-pencil-square-o"></i> Ändern </button> <% end %>
-        <%= link_to account, method: :delete, data: { confirm: 'Are you sure?' } do %> <button class="btn btn-default"> <i class="fa fa-trash-o"></i> Löschen </button>  <% end %>
+        <%= link_to edit_payment_path(payment) do %>  <button class="btn btn-default"> <i class="fa fa-pencil-square-o"></i> Ändern </button> <% end %>
+        <%= link_to payment, method: :delete, data: { confirm: 'Are you sure?' } do %> <button class="btn btn-default"> <i class="fa fa-trash-o"></i> Löschen </button>  <% end %>
       </div>
       </div>
       </div>

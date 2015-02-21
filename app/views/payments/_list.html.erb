@@ -1,0 +1,17 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Zahlungsmethoden</h3>
+  </div>
+  <div class="panel-body">
+
+    <% Payment.all.each do |payment| %>
+        <div class="col-lg-6">
+          <%= link_to payment.name, payment_path(payment), :class => 'btn btn-default', :role => 'button' %>
+        </div>
+    <% end %>
+
+    <div class="col-lg-6">
+      <%= link_to '+', new_payment_path, :class => 'btn btn-default', :role => 'button' %>
+    </div>
+  </div>
+</div>

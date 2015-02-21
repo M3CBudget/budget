@@ -5,32 +5,30 @@
 <div class="col-lg-8">
     <div class="panel panel-default">
       <div class="panel-heading">
-      <h3 class="panel-title">Purchases</h3>
+      <h3 class="panel-title">Ausgaben</h3>
       </div>
       <div class="panel-body">
         <div class="table-responsive">
-          <table class="table">
+          <table class="table table-hover">
             <thead>
             <tr>
-              <th>Date</th>
-              <th>Vendor</th>
-              <th>Amount</th>
-              <th colspan="1"></th>
+              <th><i class="fa fa-calendar"></i> Datum</th>
+              <th><i class="fa fa-building-o"></i> Händler</th>
+              <th><i class="fa fa-euro"></i> Wert</th>
             </tr>
             </thead>
             <tbody>
             <% @lastBaskets.each do |basket| %>
-                <tr>
+                <tr onclick="location.href='baskets/<%= basket.id %>'">
                   <td><%= basket.created_at.strftime("%d/%m/%Y")  %></td>
                   <td><%= show_vendor_name(basket.vendor_id) %></td>
-                  <td><%= basket.amount %></td>
-                  <td><%= link_to 'Show', basket, :class => 'btn btn-primary', :role => 'button' %></td>
+                  <td><%= basket.amount %> &euro;</td>
                 </tr>
             <% end %>
+
             <tr>
               <td colspan="2"><strong>Sum</strong></td>
-              <td> <%= sum_amount(@lastBaskets) %></td>
-              <td></td>
+              <td> <%= sum_amount(@lastBaskets) %> &euro; </td>
             </tr>
             </tbody>
           </table>
@@ -42,14 +40,16 @@
 <div class="col-lg-4">
   <div class="panel panel-default">
     <div class="panel-heading">
-        <h3 class="panel-title">Categories</h3>
+        <h3 class="panel-title">Kategorien</h3>
     </div>
     <div class="panel-body">
-        <div class="col-lg-6">
+
           <% @lastCategories.each do |category| %>
-              <%= link_to category.name, category_path(category), :class => 'btn btn-default', :role => 'button' %>
-          <% end %>
-        </div>
+          <div class="col-lg-6">
+            <%= link_to category_path(category) do %><button class="btn btn-default" role="button"> <i class="fa <%= category.glyphicon %> "></i> <%= category.name %> </span></button> <% end %>
+          </div>
+         <% end %>
+
           <div class="col-lg-6">
             <%= link_to '+', new_category_path, :class => 'btn btn-default', :role => 'button' %>
           </div>
