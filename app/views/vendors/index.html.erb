@@ -6,7 +6,9 @@
     <div class="col-xs-6 col-lg-4">
       <div class="panel panel-default">
         <div class="panel-heading">
+          <%= link_to vendor do%>
           <h3 class="panel-title"><%= vendor.name %></h3>
+          <% end %>
         </div>
         <div class="panel-body">
           <% if(vendor.logo.present?) %>

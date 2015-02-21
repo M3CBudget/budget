@@ -14,6 +14,7 @@
 
 
       <div class="panel-heading">
+        <%= link_to category do %>
         <h3 class="panel-title text-center">
           <% if (category.income) %>
               <i class="fa fa-plus pull-left" data-toggle="tooltip" data-placement="left" title="Einnahme"></i>
@@ -30,6 +31,7 @@
               <i class="fa fa-times pull-right" data-toggle="tooltip" data-placement="left" title="Category ist inaktiv"></i>
           <% end %>
         </h3>
+        <% end %>
       </div>
 
 

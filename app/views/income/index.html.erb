@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h1>Incomes<i class="fa fa-money pull-right"></i></h1>
+  <h1>Einnahmen<i class="fa fa-money pull-right"></i></h1>
 </div>
 
 <% @incomes.each do |income| %>
@@ -11,7 +11,9 @@
       <% end %>
 
         <div class="panel-heading">
+          <%= link_to income do %>
           <h3 class="panel-title"><%= income.name %></h3>
+          <% end %>
         </div>
         <div class="panel-body">
             <p><%= income.price %> &euro;</p>
