@@ -1,9 +1,5 @@
-
-
 <div class="page-header">
-  <h1> Accounts
-  <i class="fa fa-credit-card pull-right"></i>
-      </h1>
+  <h1>Accounts<i class="fa fa-credit-card pull-right"></i></h1>
 </div>
 
 <% @accounts.each do |account| %>
@@ -13,7 +9,6 @@
       <% else %>
           <div class="panel panel-warning">
       <% end %>
-
         <div class="panel-heading">
           <h3 class="panel-title"><%= account.name %>
           <% if (account.active) %>
@@ -24,12 +19,14 @@
           </h3>
         </div>
         <div class="panel-body">
-
           <p><%= account.number %></p>
           <p><%= account.bic %></p>
-          <%= link_to 'Edit', edit_account_path(account), :class => 'btn btn-default', :role => 'button' %>
-          <%= link_to 'Destroy', account, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-default', :role => 'button' %>
         </div>
+
+      <div class="panel-footer">
+        <%= link_to 'Edit', edit_account_path(account), :class => 'btn btn-default', :role => 'button' %>
+        <%= link_to 'Destroy', account, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-default', :role => 'button' %>
+      </div>
       </div>
     </div>
 <% end %>

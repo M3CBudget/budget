@@ -1,6 +1,5 @@
 <div class="page-header">
-  <h1>  Vendors  <i class="fa fa-building-o pull-right"></i>
-  </h1>
+  <h1>Vendors<i class="fa fa-building-o pull-right"></i></h1>
 </div>
 
 <% @vendors.each do |vendor| %>
@@ -13,8 +12,10 @@
           <% if(vendor.logo.present?) %>
               <img class="image-responsive" src="<%= vendor.logo %>"> </img>
           <% end %>
-          <td><%= link_to 'Edit', edit_vendor_path(vendor), :class => 'btn btn-default', :role => 'button' %></td>
-          <td><%= link_to 'Destroy', vendor, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-default', :role => 'button' %></td>
+        </div>
+        <div class="panel-footer">
+          <%= link_to 'Edit', edit_vendor_path(vendor), :class => 'btn btn-default', :role => 'button' %>
+          <%= link_to 'Destroy', vendor, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-default', :role => 'button' %>
         </div>
       </div>
     </div>

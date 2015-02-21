@@ -13,8 +13,10 @@
           <p><%= basket.amount %> &euro;</p>
           <p><i class="fa fa-building-o"></i> <small><%= show_vendor_name(basket.vendor_id) %></small></p>
           <p><i class="fa fa-credit-card"></i> <small><%= show_payment_name(basket.payment_id) %></small></p>
-          <td><%= link_to 'Edit',  edit_basket_path(basket), :class => 'btn btn-default', :role => 'button' %></td>
-          <td><%= link_to 'Destroy', basket, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-default', :role => 'button' %></td>
+        </div>
+        <div class="panel-footer">
+          <%= link_to 'Edit',  edit_basket_path(basket), :class => 'btn btn-default', :role => 'button' %>
+          <%= link_to 'Destroy', basket, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-default', :role => 'button' %>
         </div>
       </div>
     </div>
