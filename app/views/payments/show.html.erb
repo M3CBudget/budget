@@ -1,8 +1,18 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
-  <%= @payment.name %>
+  <strong>User:</strong>
+  <%= @payment.user %>
+</p>
+
+<p>
+  <strong>Number:</strong>
+  <%= @payment.number %>
+</p>
+
+<p>
+  <strong>Bic:</strong>
+  <%= @payment.bic %>
 </p>
 
 <p>
@@ -11,8 +21,8 @@
 </p>
 
 <p>
-  <strong>Account:</strong>
-  <%= @payment.account %>
+  <strong>Name:</strong>
+  <%= @payment.name %>
 </p>
 
 <%= link_to 'Edit', edit_payment_path(@payment) %> |

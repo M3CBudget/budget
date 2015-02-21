@@ -1,8 +1,10 @@
 FactoryGirl.define do
   factory :payment do
-    name "MyString"
+    user nil
+number "MyString"
+bic "MyString"
 active false
-account nil
+name "MyString"
   end
 
 end

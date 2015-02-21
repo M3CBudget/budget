@@ -18,7 +18,7 @@ require 'rails_helper'
 # Message expectations are only used when there is no simpler way to specify
 # that an instance is receiving a specific message.
 
-RSpec.describe PaymentsController, :type => :controller do
+RSpec.describe PaymentsController, type: :controller do
 
   # This should return the minimal set of attributes required to create a valid
   # Payment. As you add validations to Payment, be sure to
@@ -36,7 +36,7 @@ RSpec.describe PaymentsController, :type => :controller do
   # PaymentsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
-  describe "GET index" do
+  describe "GET #index" do
     it "assigns all payments as @payments" do
       payment = Payment.create! valid_attributes
       get :index, {}, valid_session
@@ -44,7 +44,7 @@ RSpec.describe PaymentsController, :type => :controller do
     end
   end
 
-  describe "GET show" do
+  describe "GET #show" do
     it "assigns the requested payment as @payment" do
       payment = Payment.create! valid_attributes
       get :show, {:id => payment.to_param}, valid_session
@@ -52,14 +52,14 @@ RSpec.describe PaymentsController, :type => :controller do
     end
   end
 
-  describe "GET new" do
+  describe "GET #new" do
     it "assigns a new payment as @payment" do
       get :new, {}, valid_session
       expect(assigns(:payment)).to be_a_new(Payment)
     end
   end
 
-  describe "GET edit" do
+  describe "GET #edit" do
     it "assigns the requested payment as @payment" do
       payment = Payment.create! valid_attributes
       get :edit, {:id => payment.to_param}, valid_session
@@ -67,8 +67,8 @@ RSpec.describe PaymentsController, :type => :controller do
     end
   end
 
-  describe "POST create" do
-    describe "with valid params" do
+  describe "POST #create" do
+    context "with valid params" do
       it "creates a new Payment" do
         expect {
           post :create, {:payment => valid_attributes}, valid_session
@@ -87,7 +87,7 @@ RSpec.describe PaymentsController, :type => :controller do
       end
     end
 
-    describe "with invalid params" do
+    context "with invalid params" do
       it "assigns a newly created but unsaved payment as @payment" do
         post :create, {:payment => invalid_attributes}, valid_session
         expect(assigns(:payment)).to be_a_new(Payment)
@@ -100,8 +100,8 @@ RSpec.describe PaymentsController, :type => :controller do
     end
   end
 
-  describe "PUT update" do
-    describe "with valid params" do
+  describe "PUT #update" do
+    context "with valid params" do
       let(:new_attributes) {
         skip("Add a hash of attributes valid for your model")
       }
@@ -126,7 +126,7 @@ RSpec.describe PaymentsController, :type => :controller do
       end
     end
 
-    describe "with invalid params" do
+    context "with invalid params" do
       it "assigns the payment as @payment" do
         payment = Payment.create! valid_attributes
         put :update, {:id => payment.to_param, :payment => invalid_attributes}, valid_session
@@ -141,7 +141,7 @@ RSpec.describe PaymentsController, :type => :controller do
     end
   end
 
-  describe "DELETE destroy" do
+  describe "DELETE #destroy" do
     it "destroys the requested payment" do
       payment = Payment.create! valid_attributes
       expect {

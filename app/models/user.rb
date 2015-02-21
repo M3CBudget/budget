@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   has_many :baskets
-  has_many :accounts
+  has_many :payments
   has_many :items
   #attr_accessor :email
   # Include default devise modules. Others available are:

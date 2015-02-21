@@ -42,6 +42,6 @@ class PaymentsController < ApplicationController
     end
 
     def payment_params
-      params.require(:payment).permit(:name, :active, :account_id)
+      params.require(:payment).permit(:user_id, :number, :bic, :active, :name)
     end
 end

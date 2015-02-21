@@ -15,15 +15,9 @@ Vendor.create!([  {name: 'Aldi'},
                   {name: 'Amazon'}
                ])
 
-Account.create!([  {name: 'Sparkasse', number:'1634001234', bic:'26550150', active:true, user_id:1},
+Payment.create!([  {name: 'Sparkasse', number:'1634001234', bic:'26550150', active:true, user_id:1},
                    {name: 'Volksbank IBAN', number:'AL90208110080000001039531801', bic:'AL9020811008', active:true, user_id:2},
                    {name: 'Barzahlung', number:'0', bic:'0', active:true, user_id:1}
-                ])
-
-Payment.create!([
-                    {name: 'Sparkasse', active:true, account_id:1},
-                    {name: 'Volksbank IBAN', active:true, account_id:2},
-                    {name: 'Barzahlung', active:true, account_id:3},
                 ])
 
 Category.create!([  {name: 'Haushalt', notice:'Kategorie für Haushalt', active:'true', income:'false'},
@@ -37,8 +31,9 @@ Category.create!([  {name: 'Haushalt', notice:'Kategorie für Haushalt', active:
                     {name: 'Sonstige', notice:'Sonstige Einnahmen', active:'true', income:'true'}
                 ])
 
-User.create!([    { email: '0123456@web.de', password:'12345678', first_name:'Günther', last_name:'Gurke'},
-                  { email: 'd.duese@web.de', password:'12345678', first_name:'Daniel', last_name:'Düsentrieb'}
+User.create!([    { email: '0@web.de', password:'12345678', first_name:'Günther', last_name:'Gurke'},
+                  { email: 'd.duese@web.de', password:'12345678', first_name:'Daniel', last_name:'Düsentrieb'},
+                  { email: 'otto@test.de', password:'ottotest', first_name:'Otto', last_name:'Test'}
              ])
 
 
