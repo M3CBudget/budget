@@ -2,7 +2,6 @@
   <% if @category.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@category.errors.count, "error") %> prohibited this category from being saved:</h2>
-
       <ul>
       <% @category.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -17,14 +16,15 @@
   <div class="col-xs-6">
     <%= f.check_box :income %>
     <%= f.label :income %>
+    <% f.hidden_field :user_id, :value => current_user.id %>
   </div>
+
   <div class="col-xs-6">
     <%= f.check_box :active, :checked => true %>
     <%= f.label :active %>
   </div>
 
     <div class="col-xs-12">
-
       <div class="input-group">
         <div class="input-group-addon"><i class="fa fa-font"></i></div>
         <%= f.text_field :name, :class =>"form-control", :placeholder => "Kategorie Name" %>
