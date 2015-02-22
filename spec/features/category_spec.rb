@@ -1,28 +1,44 @@
 require 'rails_helper'
 
 describe 'Category' do
+  let!(:user) { FactoryGirl.create(:user) }
+  let!(:category) { FactoryGirl.create(:category) }
   before(:each) do
-      visit root_path
-      click_link 'Sign up'
-      fill_in 'user_first_name', with: 'Dieter'
-      fill_in 'user_last_name', with: 'Müller'
-      fill_in 'user_email', with: 'hallo@gmx.de'
-      fill_in 'user_password', with: 'Spacken123'
-      fill_in 'user_password_confirmation', with: 'Spacken123'
-      click_button 'Sign up'
+    visit root_path
+
+    click_link 'Login'
+    fill_in 'user_email', with: user.email
+    fill_in 'user_password', with: 'Spacken123'
+    click_button 'Sign in'
 
       visit ('/categories/new')
-      expect(page).to have_content 'New category'
+      expect(page).to have_content 'Kategorie Hinzufügen'
   end
 
 
   it 'allows to mount new categories' do
-    fill_in 'category_name', with: 'Food'
-    fill_in 'category_notice', with: 'Something to eat'
-    check('category_active')
+    fill_in 'category_name', with: category.name
+    fill_in 'category_notice', with: category.notice
 
-    expect { click_button 'Create Category' }.to change {Category.count}.by(1)
+    expect { click_button 'Speichern' }.to change {Category.count}.by(1)
 
-    expect(page).to have_content 'Food'
+    expect(page).to have_content category.name
+    expect(page).to have_content category.notice
+  end
+  it 'allows to change categories' do
+    fill_in 'category_name', with: category.name
+    fill_in 'category_notice', with: category.notice
+    click_button 'Speichern'
+
+    visit ("/categories/#{category.id}/edit")
+    fill_in 'category_name', with: 'Lebensmittel123'
+    uncheck('category_active')
+    click_button 'Speichern'
+
+    expect(page).to have_content 'Lebensmittel123'
+
+
+
+
   end
 end

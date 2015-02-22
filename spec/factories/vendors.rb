@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :vendor do
-    name "MyString"
-logo ""
+    name "EBAY"
+    logo ""
   end
 
 end

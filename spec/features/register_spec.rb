@@ -16,6 +16,6 @@ describe 'Sign up' do
 
     expect { click_button 'Sign up' }.to change {User.count}.by(1)
 
-    expect(page).to have_content 'hallo@gmx.de'
+    expect(page).to have_content 'Dieter'
   end
 end
