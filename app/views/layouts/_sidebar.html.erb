@@ -1,18 +1,11 @@
-<div class="col-lg-3">
-  <div class="off-canvas sidebar-nav">
-    <h3>Menu</h3>
-    <form class="form-inline">
-      <div class="form-group">
-        <input type="text" class="form-control" id="exampleInputName2" placeholder="Suche">
-      </div><!--/.form-group-->
-    </form>
-    <ul class="nav nav-list">
-      <li class="nav-header"><h4>Show</h4></li>
-      <li><%= link_to "/baskets" do %><i class="fa fa-shopping-cart"></i> Baskets <% end %> </li>
-      <li><%= link_to "/vendors" do %><i class="fa fa-building-o"></i> Vendors <% end %> </li>
-      <li><%= link_to "/accounts" do %><i class="fa fa-credit-card"></i> Accounts <% end %> </li>
-      <li><%= link_to "/categories" do %><i class="fa fa-files-o"></i> Categories <% end %> </li>
-      <li><%= link_to "/incomes" do %><i class="fa fa-files-o"></i> Incomes <% end %> </li>
-    </ul>
-  </div>
+<div id="sidebar" class="col-xs-6 col-sm-3 sidebar-offcanvas">
+  <ul class="nav nav-list">
+    <li class="nav-header"><h4>Show</h4></li>
+    <li><%= link_to "/baskets"  do %><i class="fa fa-shopping-cart"></i> Ausgaben <% end %> </li>
+    <li><%= link_to "/incomes" do %><i class="fa fa-money"></i> Einnahmen <% end %> </li>
+    <li><%= link_to "/categories" do %><i class="fa fa-files-o"></i> Kategorien <% end %> </li>
+    <li><%= link_to "/vendors" do %><i class="fa fa-building-o"></i> Händler <% end %> </li>
+    <li><%= link_to "/payments" do %><i class="fa fa-credit-card"></i> Zahlungsmethoden <% end %> </li>
+  </ul>
+</div>
 </div>

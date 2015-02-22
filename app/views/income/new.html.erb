@@ -1,5 +1,12 @@
-<h1>New income</h1>
+<div class="page-header">
 
-<%= render 'form' %>
+  <h1> <%= link_to incomes_path do %>  <i class="fa fa-arrow-left"></i> <% end %>Einnahme anlegen</h1>
 
-<%= link_to 'Back', incomes_path %>
+</div>
+<div class="col-lg-8">
+  <%= render 'form' %>
+</div>
+<div class="col-lg-4">
+  <%= render 'list' %>
+</div>
+
