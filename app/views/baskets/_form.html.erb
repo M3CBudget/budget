@@ -11,62 +11,184 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :notice %><br>
-    <%= f.text_field :notice %>
-  </div>
-  <div class="field">
-    <%= f.label :amount %><br>
-    <%= f.text_field :amount %>
-  </div>
-  <div class="field">
-    <%= f.label :document %><br>
-    <%= f.text_field :document %>
-  </div>
-  <div class="field">
-    <%= f.hidden_field :user_id, :value => current_user.id %>
-  </div>
-  <div class="field">
-    <%= f.label :payment_id %><br>
-    <%= f.collection_select :payment_id, Payment.all, :id, :name, multiple: false %>
-  </div>
-  <div class="field">
-    <%= f.label :vendor_id %><br>
-    <%= f.collection_select :vendor_id, Vendor.all, :id, :name, multiple: false %>
-  </div>
-  <div class="field">
-      <%= f.label :purchase_date %><br>
-      <%= f.date_field :purchase_date, :value => Time.now.to_s(:db) %>
-  </div>
-  <div class="field">
-    <table id="items">
-      <tr>
-        <th>Name</th>
-        <th>Qunatity</th>
-        <th>Price</th>
-        <th>Notice</th>
-        <th>Category</th>
-      </tr>
-      <%= f.fields_for :items do |items_form| %>
-          <tr>
-            <td><%= items_form.text_field :name %></td>
-            <td><%= items_form.text_field :quantity %></td>
-            <td><%= items_form.text_field :price %></td>
-            <td><%= items_form.text_field :notice %></td>
-            <td><%= items_form.collection_select :category_id, Category.where(:income => false, :user_id => current_user.id), :id, :name, multiple: false %></td>
-            <td><%= items_form.hidden_field :income, :value => false %></td>
-            <td><%= items_form.hidden_field :launch, :value => @getPurchaseDate %></td>
-            <td><%= items_form.hidden_field :user_id, :value => current_user.id %></td>
-          </tr>
-      <% end %>
-    </table>
+    <form class="form-inline">
+      <div class="form-group">
+        <label class="" for="">Händler wählen</label>
+        <%= f.collection_select :vendor_id, Vendor.all, :id, :name, multiple: false, :class =>"form-control" %>
+      </div>
+      <div class="form-group">
+        <label class="" for="">Einkaufsdatum</label>
+        <!-- Datepicker einfügen /*TODO*/ -->
+        <%= f.date_field :purchase_date, :value => Time.now.to_s(:db), :class =>"form-control"  %>
+      </div>
+    </form>
 
-    <%= submit_tag "Neuer Artikel", :type => 'button', :id => 'addItem',
-                   :onclick => 'addItemRow()' %>
+    <%= f.fields_for :items do |items_form| %>
 
-  </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Artikel hinzufügen</h3>
+          </div>
 
-  <div class="actions">
-    <%= f.submit %>
+          <div class="panel-body">
+            <%= items_form.hidden_field :income, :value => false %>
+            <%= items_form.hidden_field :launch, :value => @getPurchaseDate %>
+            <%= items_form.hidden_field :user_id, :value => current_user.id %>
+
+
+            <div class="col-xs-12">
+              <div class="form-group">
+                <label class="" for="">Name</label>
+                <div class="input-group">
+                  <div class="input-group-addon"><i class="fa fa-file-text"></i></div>
+                  <%= items_form.text_field :name, :class =>"form-control", :placeholder => "Name" %>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xs-6">
+              <div class="form-group">
+                <label class="" for="">Preis und Menge</label>
+                <div class="input-group">
+                  <div class="input-group-addon"><i class="fa fa-euro"></i></div>
+                  <%= items_form.text_field :price, :class =>"form-control", :placeholder => "Preis" %>
+                  <%= items_form.text_field :quantity, :class =>"form-control", :placeholder => "Menge" %>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xs-6">
+              <div class="form-group">
+                <label class="" for="">Categorie</label>
+                <div class="input-group">
+                  <div class="input-group-addon"><i class="fa fa-files-o"></i></div>
+                  <%= items_form.collection_select :category_id, Category.where(:income => false, :user_id => current_user.id), :id, :name, multiple: false %>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12">
+              <div class="form-group">
+                <label class="" for="">Notiz</label>
+
+                <div class="input-group form-inline">
+
+                  <div class="input-group-addon"><i class="fa fa-file-text"></i></div>
+                  <%= items_form.text_field :notice, :class =>"form-control", :placeholder => "Notiz", :disabled => "ture" %>
+                  <div class="input-group-addon">
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox" value="" aria-label="Notiz">
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+          </div>
+          <div class="panel-footer">
+            <%= submit_tag "Neuer Artikel", :type => 'button', :id => 'addItem',
+                           :onclick => 'addItemRow()', :class => 'btn btn-default' %>
+          </div>
+        </div>
+
+
+<div class="field">
+  <table id="items">
+    <tr>
+      <th>Name</th>
+      <th>Qunatity</th>
+      <th>Price</th>
+      <th>Notice</th>
+      <th>Category</th>
+    </tr>
+
+    <tr>
+      <td><%= items_form.text_field :name %></td>
+      <td><%= items_form.text_field :quantity %></td>
+      <td><%= items_form.text_field :price %></td>
+      <td><%= items_form.text_field :notice %></td>
+      <td><%= items_form.collection_select :category_id, Category.where(:income => false, :user_id => current_user.id), :id, :name, multiple: false %></td>
+      <td><%= items_form.hidden_field :income, :value => false %></td>
+      <td><%= items_form.hidden_field :launch, :value => @getPurchaseDate %></td>
+      <td><%= items_form.hidden_field :user_id, :value => current_user.id %></td>
+    </tr>
+<% end %>
+</table>
+
+<%= submit_tag "Neuer Artikel", :type => 'button', :id => 'addItem', :onclick => 'addItemRow()' %>
+
+</div>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">
+  <i class="fa fa-save"></i> Anlegen
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Ausgabe bestätigen</h4>
+      </div>
+
+      <div class="modal-body">
+        <div class="form-group">
+          <div class="col-xs-12">
+
+            <div class="form-group form-inline">
+              <label class="" for="">Summe der Ausgaben</label>
+              <div class="input-group pull-right">
+                <div class="input-group-addon"><i class="fa fa-money"></i></div>
+                <%= f.text_field :amount, :class =>"form-control", :placeholder => "Summe der Ausgabe" %>
+              </div>
+            </div>
+
+            <div class="form-group form-inline">
+              <label class="" for="">Zahlungsmethode</label>
+              <div class="input-group pull-right">
+                <div class="input-group-addon"><i class="fa fa-credit-card"></i></div>
+                <%= f.collection_select :payment_id, Payment.all, :id, :name, multiple: false , :class =>"form-control"%>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="" for="">Notiz</label>
+              <div class="input-group form-inline">
+                <div class="input-group-addon"><i class="fa fa-file-text"></i></div>
+                <%= f.text_field :notice, :class =>"form-control", :placeholder => "Notiz", :disabled => "true" %>
+                <div class="input-group-addon">
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox" value="" aria-label="Notiz">
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <!-- Moritz Form für Dateiupload -->
+            <div class="field">
+              <%= f.label :document %><br>
+              <%= f.text_field :document %>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <%= f.submit "Speichern" , :class => "btn btn-default pull-left" %>
+      </div>
+
+    </div>
   </div>
+</div>
 <% end %>
