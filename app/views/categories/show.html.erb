@@ -43,7 +43,7 @@
                   </tr>
               </thead>
               <tbody>
-              <%= find_items_of_category(@category.id).each do |item| %>
+              <% find_items_of_category(@category.id).each do |item| %>
                   <tr onclick="location.href='/items/<%= item.id %>'">
                     <td><%= item.launch %></td>
                     <td><%= item.name %></td>
@@ -61,3 +61,4 @@
     </div>
   </div>
   </div>
+</div>
