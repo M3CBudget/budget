@@ -43,6 +43,6 @@ class BasketsController < ApplicationController
     end
 
     def basket_params
-      params.require(:basket).permit(:notice, :amount, :document, :user_id, :payment_id, :vendor_id, items_attributes: [:id, :name, :price, :quantity, :notice, :category_id, :launch, :income, :_destroy])
+      params.require(:basket).permit(:notice, :amount, :document, :user_id, :payment_id, :vendor_id, :purchase_date, items_attributes: [:id, :name, :price, :quantity, :notice, :category_id, :launch, :income, :user_id, :_destroy])
     end
 end

@@ -9,7 +9,8 @@ class VendorsController < ApplicationController
   end
 
   def show
-    respond_with(@vendor)
+    @filteredBaskets = Basket.where(:vendor_id => @vendor.id, :user_id => current_user.id)
+    respond_with(@vendor, @filteredBaskets)
   end
 
   def new

@@ -35,6 +35,10 @@
     <%= f.collection_select :vendor_id, Vendor.all, :id, :name, multiple: false %>
   </div>
   <div class="field">
+      <%= f.label :purchase_date %><br>
+      <%= f.date_field :purchase_date %>
+  </div>
+  <div class="field">
     <table id="items">
       <tr>
         <th>Name</th>
@@ -52,6 +56,7 @@
             <td><%= items_form.collection_select :category_id, Category.where(:income => false, :user_id => current_user.id), :id, :name, multiple: false %></td>
             <td><%= items_form.hidden_field :income, :value => false %></td>
             <td><%= items_form.hidden_field :launch, :value => Time.now.to_formatted_s(:db) %></td>
+            <td><%= items_form.hidden_field :user_id, :value => current_user.id %></td>
           </tr>
       <% end %>
     </table>

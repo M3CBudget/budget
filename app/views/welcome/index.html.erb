@@ -48,7 +48,7 @@
 
           <% @lastCategories.each do |category| %>
           <div class="col-lg-6">
-            <%= link_to category_path(category) do %><button class="btn btn-default" role="button"> <i class="fa <%= category.glyphicon %> "></i> <%= category.name %> </span></button> <% end %>
+            <%= link_to category_path(category) do %><button class="btn btn-default" role="button"> <i class="fa <%= category.glyphicon %> "></i> <%= category.name %></button> <% end %>
           </div>
          <% end %>
 
