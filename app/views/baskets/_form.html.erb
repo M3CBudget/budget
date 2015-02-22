@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :document %><br>
-    <%= f.text_field :document %>
+    <%= f.file_field :document %>
   </div>
   <div class="field">
     <%= f.hidden_field :user_id, :value => current_user.id %>
