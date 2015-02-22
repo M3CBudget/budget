@@ -52,10 +52,10 @@ Item.create!([
              ])
 
 Basket.create!([
-                   {notice: '', amount: 100, vendor_id: 1, user_id: 1, payment_id: 3},
-                   {notice: '', amount: 50, vendor_id: 6, user_id: 1, payment_id: 1},
-                   {notice: '', amount: 100, vendor_id: 4, user_id: 1, payment_id: 3},
-                   {notice: '', amount: 53.80, vendor_id: 2, user_id: 2, payment_id: 2}
+                   {notice: '', amount: 100, vendor_id: 1, user_id: 1, payment_id: 3, purchase_date:'2015-02-12'},
+                   {notice: '', amount: 50, vendor_id: 6, user_id: 1, payment_id: 1, purchase_date:'2015-01-12'},
+                   {notice: '', amount: 100, vendor_id: 4, user_id: 1, payment_id: 3, purchase_date:'2014-12-12'},
+                   {notice: '', amount: 53.80, vendor_id: 2, user_id: 2, payment_id: 2, purchase_date:'2015-02-12'}
 
                ])
 
