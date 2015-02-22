@@ -1,52 +1,87 @@
-<p id="notice"><%= notice %></p>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Basket Übersicht</h3>
+    <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Notice:</strong>
-  <%= @basket.notice %>
-</p>
+  </div>
 
-<p>
-  <strong>Amount:</strong>
-  <%= @basket.amount %>
-</p>
+  <div class="panel-body">
 
-<p>
-  <strong>Document:</strong>
-  <%= image_tag @basket.document if @basket.document? %>
-</p>
+    <div class="col-xs-12">
+        <div class="form-group">
+          <label class="" for="">Notiz:</label>
+          <input id="notice" class="form-control" type="text" value="<%= @basket.notice %>" placeholder="<%= @basket.notice %>" disabled="disabled">
+        </div>
+    </div>
 
-<p>
-  <strong>Payment:</strong>
-  <%= show_payment_name(@basket.payment_id) %>
-</p>
+    <div class="col-xs-6">
+      <div class="form-group">
+        <label class="" for="">Dokument:</label>
+        <%= image_tag @basket.document if @basket.document? %>
+      </div>
+    </div>
 
-<p>
-  <strong>Vendor:</strong>
-  <%= show_vendor_name(@basket.vendor_id) %>
-</p>
-<p class="field">
-  <strong>Items:</strong>
-  <table border="1">
-    <tr>
-      <th>Name</th>
-      <th>Price</th>
-      <th>Quantity</th>
-      <th>Notice</th>
-      <th>Category</th>
-      <th>Launch Date</th>
-    </tr>
-    <% find_items_of_basket(@basket).each do |item| %>
-        <tr>
-          <td><%= item.name %></td>
-          <td><%= item.price %></td>
-          <td><%= item.quantity %></td>
-          <td><%= item.notice %></td>
-          <td><%= show_category_name(item.category_id) %></td>
-          <td><%= item.launch %></td>
-        </tr>
-    <% end %>
+    <div class="col-xs-6">
+      <div class="form-group">
+        <label class="" for="">Vendor:</label>
+        <%= show_vendor_name(@basket.vendor_id) %>
+        <input id="vendor_id" class="form-control" type="text" value="<%= show_vendor_name(@basket.vendor_id) %>" placeholder="<%= show_vendor_name(@basket.vendor_id) %>" disabled="disabled">
+      </div>
+    </div>
 
-  </table>
-</p>
-<%= link_to 'Edit', edit_basket_path(@basket) %> |
-<%= link_to 'Back', baskets_path %>
+
+    <div class="col-xs-6">
+      <div class="form-group">
+        <label class="" for="">Amount:</label>
+        <%= @basket.amount %>
+        <input id="amount" class="form-control" type="text" value="<%= @basket.amount %>" placeholder="<%= @basket.amount %>" disabled="disabled">
+      </div>
+    </div>
+
+    <div class="col-xs-6">
+      <div class="form-group">
+        <label class="" for="">Payment:</label>
+        <%= show_payment_name(@basket.payment_id) %>
+        <input id="amount" class="form-control" type="text" value="<%= show_payment_name(@basket.payment_id) %>" placeholder="<%= show_payment_name(@basket.payment_id) %>" disabled="disabled">
+      </div>
+    </div>
+
+
+
+    <div class="col-xs-12">
+      <div class="form-group">
+        <label class="" for="">Items:</label>
+          <table border="1">
+            <tr>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Notice</th>
+              <th>Category</th>
+              <th>Launch Date</th>
+            </tr>
+            <% find_items_of_basket(@basket).each do |item| %>
+                <tr>
+                  <td><%= item.name %></td>
+                  <td><%= item.price %></td>
+                  <td><%= item.quantity %></td>
+                  <td><%= item.notice %></td>
+                  <td><%= show_category_name(item.category_id) %></td>
+                  <td><%= item.launch %></td>
+                </tr>
+            <% end %>
+
+          </table>
+        </div>
+     </div>
+  </div>
+
+  <div class="panel-footer">
+    <%= link_to 'Edit', edit_basket_path(@basket) %> |
+    <%= link_to 'Back', baskets_path %>
+  </div>
+
+</div>
+
+
+
