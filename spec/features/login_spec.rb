@@ -10,7 +10,7 @@ describe 'Sign in' do
       fill_in 'user_password', with: 'Spacken123'
       click_button 'Sign in'
 
-      expect(page).to have_content user.email
+      expect(page).to have_content user.first_name
     end
     it 'allows to sign out' do
       visit root_path
@@ -18,11 +18,11 @@ describe 'Sign in' do
       fill_in 'user_email', with: user.email
       fill_in 'user_password', with: 'Spacken123'
       click_button 'Sign in'
+      expect(page).to have_content user.first_name
 
-      click_link 'Sign out'
-
-      expect(page).to_not have_content user.email
-      expect(page).to have_content 'Sign in'
+      click_link 'Logout'
+      expect(page).to have_content 'Sign up'
+      expect(page).to have_content 'Login'
     end
   end
 end
