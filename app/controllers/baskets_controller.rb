@@ -1,6 +1,6 @@
 class BasketsController < ApplicationController
   before_action :set_basket, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   respond_to :html
 
   def index

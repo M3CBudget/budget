@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+
+
+  get 'passthrough/index'
+
   get 'income/new', to: 'income#new'
   get 'income/show', to: 'income#show'
   get 'income/edit', to: 'income#edit'
@@ -13,14 +17,15 @@ Rails.application.routes.draw do
   resources :baskets
 
   get 'welcome/index'
+  get 'landing/index'
 
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'welcome#index'
 
+  root 'passthrough#index'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150222162400) do
+ActiveRecord::Schema.define(version: 20150222175935) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,11 +90,13 @@ ActiveRecord::Schema.define(version: 20150222162400) do
     t.date     "finish"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "period_id"
   end
 
   add_index "items", ["article_id"], name: "index_items_on_article_id", using: :btree
   add_index "items", ["basket_id"], name: "index_items_on_basket_id", using: :btree
   add_index "items", ["category_id"], name: "index_items_on_category_id", using: :btree
+  add_index "items", ["period_id"], name: "index_items_on_period_id", using: :btree
   add_index "items", ["user_id"], name: "index_items_on_user_id", using: :btree
 
   create_table "payments", force: true do |t|
@@ -108,6 +110,13 @@ ActiveRecord::Schema.define(version: 20150222162400) do
   end
 
   add_index "payments", ["user_id"], name: "index_payments_on_user_id", using: :btree
+
+  create_table "periods", force: true do |t|
+    t.string   "name"
+    t.integer  "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

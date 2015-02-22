@@ -1,6 +1,6 @@
 class IncomeController < ApplicationController
   before_action :set_income, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   respond_to :html
 
   def index
@@ -42,6 +42,6 @@ class IncomeController < ApplicationController
   end
 
   def income_params
-    params.require(:item).permit( :category_id, :article_id, :user_id, :name, :quantity, :price, :notice, :income, :period, :launch, :finish)
+    params.require(:item).permit( :category_id, :article_id, :user_id, :name, :quantity, :price, :notice, :income, :launch, :finish, :period_id)
   end
 end
