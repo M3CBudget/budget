@@ -20,14 +20,15 @@
             </tr>
             </thead>
             <tbody>
-            <% @lastBaskets.each do |basket| %>
-                <tr onclick="location.href='/baskets/<%= basket.id %>'">
-                  <td><%= basket.purchase_date.strftime("%d/%m/%Y")  %></td>
-                  <td><%= show_vendor_name(basket.vendor_id) %></td>
-                  <td><%= basket.amount %> &euro;</td>
-                </tr>
+            <% if !@lastBaskets.nil? %>
+                 <% @lastBaskets.each do |basket| %>
+                    <tr onclick="location.href='/baskets/<%= basket.id %>'">
+                      <td><%= basket.purchase_date.strftime("%d/%m/%Y")  %></td>
+                      <td><%= show_vendor_name(basket.vendor_id) %></td>
+                      <td><%= basket.amount %> &euro;</td>
+                    </tr>
+                <% end %>
             <% end %>
-
             <tr>
               <td colspan="2"><strong>Sum</strong></td>
               <td> <%= sum_amount(@lastBaskets) %> &euro; </td>
@@ -45,13 +46,13 @@
         <h3 class="panel-title">Kategorien</h3>
     </div>
     <div class="panel-body">
-
+        <% if !@lastBaskets.nil? %>
           <% @lastCategories.each do |category| %>
           <div class="col-xs-6">
             <%= link_to category_path(category) do %><button class="btn btn-default" role="button"> <i class="fa <%= category.glyphicon %> "></i> <%= category.name %></button> <% end %>
           </div>
          <% end %>
-
+        <%end%>
           <div class="col-xs-6">
             <%= link_to '+', new_category_path, :class => 'btn btn-default', :role => 'button' %>
           </div>

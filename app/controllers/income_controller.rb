@@ -23,11 +23,13 @@ class IncomeController < ApplicationController
   def create
     @income = Item.new(income_params)
     @income.save
+    redirect_to income_show_path
     respond_with(@income)
   end
 
   def update
     @income.update(income_params)
+    redirect_to income_show_path
     respond_with(@income)
   end
 

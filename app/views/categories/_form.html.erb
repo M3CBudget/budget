@@ -17,6 +17,7 @@
   <div class="col-xs-6">
     <%= f.check_box :income %>
     <%= f.label :income %>
+    <% f.hidden_field :user_id, :value => current_user.id %>
   </div>
   <div class="col-xs-6">
     <%= f.check_box :active, :checked => true %>
