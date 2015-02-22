@@ -1,64 +1,55 @@
 <p id="notice"><%= notice %></p>
+<div class="page-header">
 
-<p>
-  <strong>Basket:</strong>
-  <%= @item.basket %>
-</p>
+  <h1> <%= link_to items_path do %>  <i class="fa fa-arrow-left"></i> <% end %> Artikel Details</h1>
 
-<p>
-  <strong>Category:</strong>
-  <%= show_category_name(@item.category) %>
-</p>
+</div>
+<div class="col-xs-12">
+  <% if (true)#(@item.active) %>
+      <div class="panel panel-success">
+  <% else %>
+      <div class="panel panel-warning">
+  <% end %>
+  <div class="panel-heading">
+    <%= link_to @item do %>
+        <h3 class="panel-title text-center">
+          <% if (@item.income) %>
+              <i class="fa fa-plus pull-left" data-toggle="tooltip" data-placement="left" title="Einnahme"></i>
+          <% else %>
+              <i class="fa fa-minus pull-left" data-toggle="tooltip" data-placement="left" title="Ausgabe"></i>
+          <% end %>
+            <% if (@item.quantity != 1) %>
+          <%= @item.quantity %> x
+              <% end %>
+          <%= @item.name %>
 
-<p>
-  <strong>Article:</strong>
-  <%= @item.article %>
-</p>
+          <% if (true)#(@item.active) %>
+              <i class="fa fa-check pull-right" data-toggle="tooltip" data-placement="left" title="Category ist aktiv"></i>
+          <% else %>
+              <i class="fa fa-times pull-right" data-toggle="tooltip" data-placement="left" title="Category ist inaktiv"></i>
+          <% end %>
+        </h3>
+    <% end %>
+    <small class="pull-right"><%= @item.launch %></small>
+  </div>
+  <div class="panel-body">
+    <div class="col-xs-4">
+      <%= show_category_name(@item.category) %>
+    </div>
+    <div class="col-xs-4">
+      <% unless @item.finish.nil? %>
+          <%= @item.launch %> - <%= @item.finish %>
+          <%= @item.period %>
+          <% end %>
+    </div>
+    <div class="col-xs-4">
+      <%= @item.price %> &euro;
+    </div>
+    <div class="col-xs-12"><%= @item.notice %></div>
 
-<p>
-  <strong>User:</strong>
-  <%= @item.user_id %>
-</p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @item.name %>
-</p>
-
-<p>
-  <strong>Quantity:</strong>
-  <%= @item.quantity %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @item.price %>
-</p>
-
-<p>
-  <strong>Notice:</strong>
-  <%= @item.notice %>
-</p>
-
-<p>
-  <strong>Income:</strong>
-  <%= @item.income %>
-</p>
-
-<p>
-  <strong>Period:</strong>
-  <%= @item.period %>
-</p>
-
-<p>
-  <strong>Launch:</strong>
-  <%= @item.launch %>
-</p>
-
-<p>
-  <strong>Finish:</strong>
-  <%= @item.finish %>
-</p>
-
-<%= link_to 'Edit', edit_item_path(@item) %> |
-<%= link_to 'Back', items_path %>
+  </div>
+  <div class="panel-footer">
+    <%= link_to edit_item_path(@item) do %>  <button class="btn btn-default"> <i class="fa fa-pencil-square-o"></i> Ändern </button> <% end %>
+  </div>
+  </div>
+  </div>
