@@ -1,45 +1,63 @@
 <p id="notice"><%= notice %></p>
+<div class="page-header">
 
-<p>
-  <strong>Name:</strong>
-  <%= @category.name %>
-</p>
-
-<p>
-  <strong>Notice:</strong>
-  <%= @category.notice %>
-</p>
-
-<p>
-  <strong>Active:</strong>
-  <%= @category.active %>
-</p>
-<p>
-  <strong>Income:</strong>
-  <%= @category.income %>
-</p>
-
-<div class="field">
-  <table>
-    <tr>
-      <th>Date</th>
-      <th>Name</th>
-      <th>Notice</th>
-      <th>Quantity</th>
-      <th>Price</th>
-    </tr>
-    <%= find_items_of_category(@category.id).each do |item| %>
-        <tr>
-          <td><%= item.launch %></td>
-          <td><%= item.name %></td>
-          <td><%= item.notice %></td>
-          <td><%= item.quantity %></td>
-          <td><%= item.price  %></td>
-        </tr>
-    <% end %>
-  </table>
+  <h1> <%= link_to categories_path do %>  <i class="fa fa-arrow-left"></i> <% end %> Kategorie Details</h1>
 
 </div>
+<div class="col-xs-12">
+  <% if (@category.active) %>
+      <div class="panel panel-success">
+  <% else %>
+      <div class="panel panel-warning">
+  <% end %>
+  <div class="panel-heading">
+    <%= link_to @category do %>
+        <h3 class="panel-title text-center">
+          <% if (@category.income) %>
+              <i class="fa fa-plus pull-left" data-toggle="tooltip" data-placement="left" title="Einnahme"></i>
+          <% else %>
+              <i class="fa fa-minus pull-left" data-toggle="tooltip" data-placement="left" title="Ausgabe"></i>
+          <% end %>
 
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>
+          <%= @category.name %>
+          <% if (@category.active) %>
+              <i class="fa fa-check pull-right" data-toggle="tooltip" data-placement="left" title="Category ist aktiv"></i>
+          <% else %>
+              <i class="fa fa-times pull-right" data-toggle="tooltip" data-placement="left" title="Category ist inaktiv"></i>
+          <% end %>
+        </h3>
+    <% end %>
+  </div>
+      <div class="panel-body">
+       <caption><strong><%= @category.notice %></strong></caption>
+        <div class="table">
+            <table class="table table-hover">
+              <thead>
+                  <tr>
+                    <th>Datum</th>
+                    <th>Name</th>
+                    <th>Notiz</th>
+                    <th>Anzahl</th>
+                    <th>Preis</th>
+                    <th></th>
+                  </tr>
+              </thead>
+              <tbody>
+              <%= find_items_of_category(@category.id).each do |item| %>
+                  <tr onclick="location.href='/items/<%= item.id %>'">
+                    <td><%= item.launch %></td>
+                    <td><%= item.name %></td>
+                    <td><%= item.notice %></td>
+                    <td><%= item.quantity %></td>
+                    <td><%= item.price  %> &euro;</td>
+                  </tr>
+              <% end %>
+              </tbody>
+            </table>
+        </div>
+      </div>
+    <div class="panel-footer">
+      <%= link_to edit_category_path(@category) do %>  <button class="btn btn-default"> <i class="fa fa-pencil-square-o"></i> Ändern </button> <% end %>
+    </div>
+  </div>
+  </div>

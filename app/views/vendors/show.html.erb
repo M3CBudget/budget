@@ -1,34 +1,44 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @vendor.name %>
-</p>
+<div class="page-header">
 
-<p>
-  <strong>Logo:</strong>
-  <%= @vendor.logo %>
-</p>
-
-<div class="field">
-  <table>
-    <tr>
-      <th>Date</th>
-      <th>Notice</th>
-      <th>Amount</th>
-      <td colspan="1"> </td>
-    </tr>
-    <%= find_baskets_of_vendor(@vendor.id).each do |basket| %>
-        <tr>
-          <td><%= basket.created_at %></td>
-          <td><%= basket.notice %> </td>
-          <td><%= basket.amount %></td>
-          <td><%= link_to 'Edit', edit_basket_path(basket.id) %> |</td>
-        </tr>
-    <% end %>
-  </table>
-
+  <h1> <%= link_to vendors_path do %>  <i class="fa fa-arrow-left"></i> <% end %> Händler Details</h1>
 </div>
 
-<%= link_to 'Edit', edit_vendor_path(@vendor) %> |
-<%= link_to 'Back', vendors_path %>
+<div class="col-xs-12">
+  <div class="panel panel-default">
+  <div class="panel-heading">
+        <h3 class="panel-title text-center">
+          <%= @vendor.name %>
+        </h3>
+  </div>
+  <div class="panel-body">
+    <% # unless @vendor.logo %>
+    <img src=" <%= @vendor.logo %>"></img>
+    <% # end %>
+    <div class="table">
+      <table class="table table-hover">
+        <thead>
+        <tr>
+          <th>Datum</th>
+          <th>Notiz</th>
+          <th>Preis</th>
+        </tr>
+        </thead>
+        <tbody>
+        <%= find_baskets_of_vendor(@vendor.id).each do |basket| %>
+            <tr onclick="location.href='/baskets/<%= basket.id %>'">
+              <td><%= basket.created_at %></td>
+              <td><%= basket.notice %> </td>
+              <td><%= basket.amount %> &euro;</td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="panel-footer">
+    <%= link_to edit_vendor_path(@vendor) do %>  <button class="btn btn-default"> <i class="fa fa-pencil-square-o"></i> Ändern </button> <% end %>
+  </div>
+  </div>
+  </div>

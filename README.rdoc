@@ -10,7 +10,18 @@ Nächstes Meeting Sonntag 22. Feburar
 - Dynamische Erweiterung der Items zeilen im neuen Basket
 - Einbindung des Artikel an das Item
 - Null Prüfung
-
+- Summe über Zahlungsmethoden -> in Zahlungsmethoden index View und Detail
+- Summe über Kategorien -> ""
+- Summe über ...
+- Einnahmen und Ausgaben _form View
+- + Button CSSn
+- highcharts einbinden in Dash
+- hochrechnung
+- autocomplete
+- angular items Erweiterung
+- modal prüfung des baskets (bestätigung)
+- landing page (Ohne Login auf Seite -> wie ? Anmeldung Required? In Landingpage einbinden?)
+- Todo in Quelltext wie?
 
 == Done
 - Destroy Function von Items im Basket reparieren

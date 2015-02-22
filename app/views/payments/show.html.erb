@@ -1,50 +1,56 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>User:</strong>
-  <%= @payment.user %>
-</p>
+<div class="page-header">
 
-<p>
-  <strong>Number:</strong>
-  <%= @payment.number %>
-</p>
-
-<p>
-  <strong>Bic:</strong>
-  <%= @payment.bic %>
-</p>
-
-<p>
-  <strong>Active:</strong>
-  <%= @payment.active %>
-</p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @payment.name %>
-</p>
-
-
-<div class="field">
-  <table>
-    <tr>
-      <th>Date</th>
-      <th>Notice</th>
-      <th>Amount</th>
-      <td colspan="1"> </td>
-    </tr>
-    <%= find_baskets_of_payment(@payment.id).each do |basket| %>
-        <tr>
-          <td><%= basket.created_at %></td>
-          <td><%= basket.notice %> </td>
-          <td><%= basket.amount %></td>
-          <td><%= link_to 'Edit', edit_basket_path(basket.id) %> |</td>
-        </tr>
-    <% end %>
-  </table>
+  <h1> <%= link_to payments_path do %>  <i class="fa fa-arrow-left"></i> <% end %> Zahlungsmethoden Details</h1>
 
 </div>
-
-<%= link_to 'Edit', edit_payment_path(@payment) %> |
-<%= link_to 'Back', payments_path %>
+<div class="col-xs-12">
+  <% if (@payment.active) %>
+      <div class="panel panel-success">
+  <% else %>
+      <div class="panel panel-warning">
+  <% end %>
+  <div class="panel-heading">
+    <%= link_to @payment do %>
+        <h3 class="panel-title text-center">
+          <%= @payment.name %>
+          <% if (@payment.active) %>
+              <i class="fa fa-check pull-right" data-toggle="tooltip" data-placement="left" title="Category ist aktiv"></i>
+          <% else %>
+              <i class="fa fa-times pull-right" data-toggle="tooltip" data-placement="left" title="Category ist inaktiv"></i>
+          <% end %>
+        </h3>
+    <% end %>
+  </div>
+  <div class="panel-body">
+    <% # unless @payment.number %>
+    <div class="col-xs-6"><caption><strong><i class="fa fa-university"></i> IBAN: <%= @payment.number %></strong></caption></div>
+    <div class="col-xs-6"><strong><i class="fa fa-university"></i>  BIC: <%= @payment.bic %></strong></div>
+    <% # end %>
+    <div class="table">
+      <table class="table table-hover">
+        <thead>
+        <tr>
+          <th>Datum</th>
+          <th>Notiz</th>
+          <th>Preis</th>
+        </tr>
+        </thead>
+        <tbody>
+        <%= find_baskets_of_payment(@payment.id).each do |basket| %>
+            <tr onclick="location.href='/baskets/<%= basket.id %>'">
+              <td><%= basket.created_at %></td>
+              <td><%= basket.notice %> </td>
+              <td><%= basket.amount %></td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="panel-footer">
+    <%= link_to edit_payment_path(@payment) do %>  <button class="btn btn-default"> <i class="fa fa-pencil-square-o"></i> Ändern </button> <% end %>
+  </div>
+  </div>
+  </div>
