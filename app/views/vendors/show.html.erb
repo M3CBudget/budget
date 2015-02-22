@@ -10,5 +10,25 @@
   <%= @vendor.logo %>
 </p>
 
+<div class="field">
+  <table>
+    <tr>
+      <th>Date</th>
+      <th>Notice</th>
+      <th>Amount</th>
+      <td colspan="1"> </td>
+    </tr>
+    <%= find_baskets_of_vendor(@vendor.id).each do |basket| %>
+        <tr>
+          <td><%= basket.created_at %></td>
+          <td><%= basket.notice %> </td>
+          <td><%= basket.amount %></td>
+          <td><%= link_to 'Edit', edit_basket_path(basket.id) %> |</td>
+        </tr>
+    <% end %>
+  </table>
+
+</div>
+
 <%= link_to 'Edit', edit_vendor_path(@vendor) %> |
 <%= link_to 'Back', vendors_path %>
