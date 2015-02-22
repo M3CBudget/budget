@@ -24,13 +24,13 @@
     </form>
 
     <%= f.fields_for :items do |items_form| %>
-
         <div class="panel panel-default">
           <div class="panel-heading">
             <h3 class="panel-title">Artikel hinzufügen</h3>
           </div>
 
           <div class="panel-body">
+
             <%= items_form.hidden_field :income, :value => false %>
             <%= items_form.hidden_field :launch, :value => @getPurchaseDate %>
             <%= items_form.hidden_field :user_id, :value => current_user.id %>
@@ -66,12 +66,11 @@
                 </div>
               </div>
             </div>
+
             <div class="col-xs-12">
               <div class="form-group">
                 <label class="" for="">Notiz</label>
-
                 <div class="input-group form-inline">
-
                   <div class="input-group-addon"><i class="fa fa-file-text"></i></div>
                   <%= items_form.text_field :notice, :class =>"form-control", :placeholder => "Notiz", :disabled => "ture" %>
                   <div class="input-group-addon">
@@ -104,7 +103,6 @@
       <th>Notice</th>
       <th>Category</th>
     </tr>
-
     <tr>
       <td><%= items_form.text_field :name %></td>
       <td><%= items_form.text_field :quantity %></td>
@@ -115,12 +113,11 @@
       <td><%= items_form.hidden_field :launch, :value => @getPurchaseDate %></td>
       <td><%= items_form.hidden_field :user_id, :value => current_user.id %></td>
     </tr>
-<% end %>
 </table>
-
 <%= submit_tag "Neuer Artikel", :type => 'button', :id => 'addItem', :onclick => 'addItemRow()' %>
-
 </div>
+
+    <% end %>
 
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">
