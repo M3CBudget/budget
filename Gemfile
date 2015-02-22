@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 # Insert ruby Version to Gemfile, for heroku-deploy wal
 ruby '2.1.2'
 
+gem 'rails_12factor'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.8'
 # Use postgresql as the database for Active Record
@@ -54,3 +56,7 @@ end
   gem 'therubyracer'
   gem 'twitter-bootstrap-rails'
   gem 'less-rails'
+
+  gem 'carrierwave'
+  gem 'mini_magick'
+

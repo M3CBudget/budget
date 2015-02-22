@@ -22,7 +22,6 @@
         <%= f.date_field :purchase_date, :value => Time.now.to_s(:db), :class =>"form-control"  %>
       </div>
     </form>
-
     <%= f.fields_for :items do |items_form| %>
         <div class="panel panel-default">
           <div class="panel-heading">
