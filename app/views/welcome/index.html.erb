@@ -22,7 +22,7 @@
             <tbody>
             <% @lastBaskets.each do |basket| %>
                 <tr onclick="location.href='baskets/<%= basket.id %>'">
-                  <td><%= basket.created_at.strftime("%d/%m/%Y")  %></td>
+                  <td><%= basket.purchase_date.strftime("%d/%m/%Y")  %></td>
                   <td><%= show_vendor_name(basket.vendor_id) %></td>
                   <td><%= basket.amount %> &euro;</td>
                 </tr>

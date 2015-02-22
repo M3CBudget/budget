@@ -125,3 +125,8 @@ function addItemRow() {
     document.getElementById("items").appendChild(tr);
 
 }
+
+function getPurchaseDate(){
+    var currentPurchaseDate = document.getElementbyId("basket_purchase_date");
+    return currentPurchaseDate;
+}
