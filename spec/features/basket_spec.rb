@@ -1,17 +1,16 @@
 require 'rails_helper'
-
+#nicht fertig. erst Basket view vollständig fertigen
 describe 'Payment' do
+  let!(:user) { FactoryGirl.create(:user) }
   before(:each) do
     visit root_path
-    click_link 'Sign up'
-    fill_in 'user_first_name', with: 'Dieter'
-    fill_in 'user_last_name', with: 'Müller'
-    fill_in 'user_email', with: 'hallo@gmx.de'
-    fill_in 'user_password', with: 'Spacken123'
-    fill_in 'user_password_confirmation', with: 'Spacken123'
-    click_button 'Sign up'
 
-    visit ('/vendors/new')
+    click_link 'Login'
+    fill_in 'user_email', with: user.email
+    fill_in 'user_password', with: 'Spacken123'
+    click_button 'Sign in'
+
+    visit ('/basket/new')
     fill_in 'vendor_name', with: 'REWE'
     click_button 'Create Vendor'
     visit ('/baskets/new')
