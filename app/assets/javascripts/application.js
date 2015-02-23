@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require turbolinks
+//= require angular
 //= require_tree .
 
 
@@ -22,7 +23,7 @@ $(document).ready(function () {
         $('.row-offcanvas').toggleClass('active')
     });
 });
-
+/*
 function addItemRow() {
     var mSec = 0;
 
@@ -124,9 +125,45 @@ function addItemRow() {
 
     document.getElementById("items").appendChild(tr);
 
-}
-
+}*/
+/*
 function getPurchaseDate(){
     var currentPurchaseDate = document.getElementbyId("basket_purchase_date");
     return currentPurchaseDate;
 }
+*/
+
+angular.module('app', []).config(function() { });
+
+angular.module('app').controller('ItemController', function ($scope) {
+
+    $scope.items = [];
+
+    $scope.item = [];
+
+    $scope.add = function() {
+
+        if($scope.itemName !=''){
+            $scope.item.push($scope.itemName);
+        }
+        if($scope.itemPrice !=''){
+            $scope.item.push($scope.itemPrice);
+        }
+        if($scope.itemAmount !=''){
+            $scope.item.push($scope.itemAmount);
+        }
+        if($scope.itemCategorie !=''){
+            $scope.item.push($scope.itemCategorie);
+        }
+        if($scope.itemNotice !=''){
+            $scope.item.push($scope.itemNotice);
+        }
+
+        $scope.items.push($scope.item);
+
+    };
+
+    $scope.rem = function($index) {
+        $scope.items.splice($index, 1);
+    };
+});
