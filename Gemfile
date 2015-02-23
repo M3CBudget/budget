@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 # Insert ruby Version to Gemfile, for heroku-deploy wal
 ruby '2.1.2'
-
 gem 'rails_12factor'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -58,10 +57,11 @@ end
   gem 'twitter-bootstrap-rails'
   gem 'less-rails'
 
+  #Image_Uploader gems
   gem 'carrierwave'
   gem 'mini_magick'
 
-gem 'angularjs-rails'
-gem 'bootstrap-datepicker-rails'
-gem 'lazy_high_charts'
-gem 'bootstrap-select-rails'
+  gem 'angularjs-rails'
+  gem 'bootstrap-datepicker-rails'
+  gem 'lazy_high_charts'
+  gem 'bootstrap-select-rails'

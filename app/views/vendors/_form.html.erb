@@ -23,7 +23,7 @@
   <div class="col-xs-12">
 
     <div class="input-group">
-        <%= image_tag @vendor.logo if @vendor.logo? %>
+        <%= image_tag @vendor.logo.url(:normal) if @vendor.logo? %>
     </div>
 
     <div class="input-group">
