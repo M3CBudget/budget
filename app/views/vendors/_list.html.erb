@@ -1,17 +1,12 @@
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">Händler</h3>
+    <h3 class="panel-title">Erstellt</h3>
   </div>
   <div class="panel-body">
-
+    <div class="list-group">
     <% Vendor.where(:user_id => current_user.id).each do |vendor| %>
-        <div class="col-lg-6">
-          <%= link_to vendor.name, vendor_path(vendor), :class => 'btn btn-default', :role => 'button' %>
-        </div>
+          <%= link_to vendor.name, vendor_path(vendor), :class => 'list-group-item' %>
     <% end %>
-
-    <div class="col-lg-6">
-      <%= link_to '+', new_vendor_path, :class => 'btn btn-default', :role => 'button' %>
-    </div>
+  </div>
   </div>
 </div>

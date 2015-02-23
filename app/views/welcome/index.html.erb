@@ -43,20 +43,18 @@
 <div class="col-lg-4 hidden-xs hidden-sm">
   <div class="panel panel-default">
     <div class="panel-heading">
-        <h3 class="panel-title">Kategorien</h3>
+        <h3 class="panel-title">Einnahmen</h3>
     </div>
     <div class="panel-body">
+      <div class="list-group">
         <% if !@lastBaskets.nil? %>
-          <% @lastCategories.each do |category| %>
-          <div class="col-xs-6">
-            <%= link_to category_path(category) do %><button class="btn btn-default" role="button"> <i class="fa <%= category.glyphicon %> "></i> <%= category.name %></button> <% end %>
-          </div>
+          <% @lastIncomes.each do |income| %>
+                <%= link_to income.name, item_path(income) , :class => 'list-group-item', :role => 'button' %>
          <% end %>
         <%end%>
-          <div class="col-xs-6">
-            <%= link_to '+', new_category_path, :class => 'btn btn-default', :role => 'button' %>
-          </div>
+        <%= link_to '+', income_new_path , :class => 'list-group-item', :role => 'button' %>
       </div>
+    </div>
    </div>
 </div>
 
@@ -64,6 +62,19 @@
   <div class="panel panel-default">
     <div class="panel-heading">
       <h3 class="panel-title">Übersicht</h3>
+    </div>
+    <div class="panel-body">
+      <%= %>
+      Hier bitte Verlauf der Baskets eintragen wie oben in der Tabelle
+    </div>
+  </div>
+</div>
+
+<div class="col-lg-4">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Übersicht</h3>
+
     </div>
     <div class="panel-body">
       <%= high_chart("my_id", @chart) %>

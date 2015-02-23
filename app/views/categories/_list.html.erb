@@ -1,16 +1,18 @@
-  <div class="panel panel-default">
+<div class="panel panel-default">
 
     <div class="panel-heading">
-      <h3 class="panel-title">Liste</h3>
+        <h3 class="panel-title">Liste</h3>
     </div>
 
     <div class="panel-body">
-      <div class="list-group">
-        <% Category.where(:user_id => current_user.id).each do |category| %>
-        <%= link_to category.name, category_path(category), :class => 'list-group-item'%>
-        <%end%>
-      </div>
+
+        <div class="list-group">
+            <% Category.where(:user_id => current_user.id).each do |category| %>
+            <%= link_to category.name, category_path(category), :class => 'list-group-item'%>
+            <%end%>
+        </div>
+
     </div>
 
-  </div>
+</div>
 
