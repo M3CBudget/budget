@@ -21,29 +21,35 @@
     <div class="panel-body">
 
         <div class="col-xs-6">
-            <%= f.check_box :income %>
-            <%= f.label :income %>
+            <label>Einnahme: </label> <%= f.check_box :income %>
             <%= f.hidden_field :user_id, :value => current_user.id %>
         </div>
 
         <div class="col-xs-6">
             <div class="form-group">
+              <label>Aktiv: </label>
                 <%= f.check_box :active, :checked => true %>
-                <%= f.label :active %>
+
             </div>
         </div>
 
-        <div class="col-xs-6">
+        <div class="col-xs-12">
             <div class="form-group">
-                <label class="" for="">Name:</label>
-                <%= f.text_field :name, :class =>"form-control", :placeholder => "Kategorie Name" %>
+                <label class="" for="">Name: </label>
+              <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-file-text"></i></div>
+                <%= f.text_field :name, :class =>"form-control", :placeholder => "Name" %>
+              </div>
             </div>
         </div>
 
-        <div class="col-xs-6">
+        <div class="col-xs-12">
             <div class="form-group">
-                <label class="" for="">Name:</label>
-                <%= f.text_field :notice, :class =>"form-control", :placeholder => "Kategorie Notiz" %>
+                <label class="" for="">Notiz: </label>
+              <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-file-text"></i></div>
+                <%= f.text_area :notice, :class =>"form-control", :placeholder => "Notiz" %>
+              </div>
             </div>
         </div>
 
@@ -52,7 +58,7 @@
 
     <div class="panel-footer">
       <%= f.submit "Speichern" , :class => "btn btn-default" %>
-    <div>
+    </div>
 
 </div>
 

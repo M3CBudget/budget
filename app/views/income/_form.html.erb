@@ -14,53 +14,88 @@
 
 
 
-<div class="form-group">
 
-  <div class="col-xs-6">
-    <%= f.hidden_field :income, :value => true %>
-    <%= f.hidden_field :user_id, :value => current_user.id %>
-  </div>
+    <div class="panel panel-default">
 
-  <div class="col-xs-6">
-  </div>
 
-  <div class="col-xs-12">
-
-    <div class="input-group">
-      <div class="input-group-addon"><i class="fa fa-font"></i></div>
-      <%= f.text_field :name, :class =>"form-control", :placeholder => "Name" %>
-    </div>
-    <div class="input-group">
-      <div class="input-group-addon"><i class="fa fa-money"></i></div>
-      <%= f.text_field :price, :class =>"form-control", :placeholder => "Preis" %>
-    </div>
-
-    <div class="input-group">
-      <div class="input-group-addon"><i class="fa fa-files-o"></i></div>
-      <%= f.collection_select(:category_id, Category.where(:income => true, :user_id => current_user.id ), :id, :name, {multiple: false}, {:class=>'selectpicker'}) %>
-    </div>
-
-    <div class="input-group">
-      <%= f.label :period_id %><br>
-      <%= f.collection_select(:period_id, Period.all, :id, :name,  {multiple: false}, {:class=>'selectpicker'}) %>
-    </div>
-
-    <div class="col-xs-6">
-      <div class="input-group">
-        <%= f.label :launch %><br>
-        <%= f.text_field :launch, :data => {:provide => "datepicker"} %>
+      <div class="panel-heading">
+        <h3 class="panel-title">Anlegen</h3>
       </div>
-    </div>
-    <div class="col-xs-6">
-      <div class="input-group">
-        <%= f.label :finish %><br>
-        <%= f.text_field :launch, :data => {:provide => "datepicker"} %>
+
+      <div class="panel-body">
+        <%= f.hidden_field :income, :value => true %>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+
+
+
+        <div class="col-xs-6">
+          <div class="form-group">
+            <label class="" for="">Name:</label>
+            <div class="input-group">
+              <div class="input-group-addon"><i class="fa fa-file-text"></i></div>
+              <%= f.text_field :name, :class =>"form-control", :placeholder => "Name" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-6">
+          <div class="form-group">
+            <label class="" for="">Kategorie:</label>
+            <div class="input-group">
+              <%= f.collection_select(:category_id, Category.where(:income => true, :user_id => current_user.id ), :id, :name, {multiple: false}, {:class=>'selectpicker'}) %>
+            </div>
+          </div>
+        </div>
+
+
+
+
+        <div class="col-xs-4">
+          <div class="form-group">
+            <label class="" for="">Start:</label>
+            <div class="input-group">
+              <%= f.text_field :launch, :data => {:provide => "datepicker"} %>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-4">
+        <div class="form-group">
+          <label class="" for="">End:</label>
+          <div class="input-group">
+            <%= f.text_field :finish, :data => {:provide => "datepicker"} %>
+          </div>
+        </div>
       </div>
+
+        <div class="col-xs-4">
+          <div class="form-group">
+            <label class="" for="">Intervall:</label>
+            <div class="input-group">
+              <%= f.collection_select(:period_id, Period.all, :id, :name,  {multiple: false}, {:class=>'selectpicker'}) %>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label class="" for="">Notiz:</label>
+            <div class="input-group">
+              <div class="input-group-addon"><i class="fa fa-money"></i></div>
+              <%= f.text_area :price, :class =>"form-control", :placeholder => "Notiz" %>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div class="panel-footer">
+        <%= f.submit "Speichern" , :class => "btn btn-default" %>
+      </div>
+
     </div>
-
-
-    <%= f.submit "Speichern" , :class => "btn btn-default" %>
-
-  </div>
-</div>
 <% end %>
+
+

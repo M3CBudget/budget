@@ -31,9 +31,8 @@
       <%= image_tag @vendor.logo.url(:normal) if @vendor.logo? %>
     </div>
 
-    <div class="col-xs-12">
 
-      <div class="col-xs-6">
+      <div class="col-xs-12">
         <div class="form-group">
           <label>Logo upload:</label>
           <%= f.file_field :logo, :class =>"form-control btn btn-default btn-file", :placeholder => "Logo" %>
@@ -41,15 +40,11 @@
       </div>
 
       <div class="col-xs-6">
-        <label>Logo löschen:</label>
-        <div class="checkbox">
-          <label>
+        <label>Logo Löschen:</label>
             <%= f.check_box :remove_logo %>
-          </label>
-        </div>
       </div>
 
-    </div>
+
 
 
 

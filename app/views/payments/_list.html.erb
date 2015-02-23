@@ -3,15 +3,10 @@
     <h3 class="panel-title">Zahlungsmethoden</h3>
   </div>
   <div class="panel-body">
-
+    <div class="list-group">
     <% Payment.where(:user_id => current_user.id).each do |payment| %>
-        <div class="col-lg-6">
-          <%= link_to payment.name, payment_path(payment), :class => 'btn btn-default', :role => 'button' %>
-        </div>
+          <%= link_to payment.name, payment_path(payment), :class => 'list-group-item' %>
     <% end %>
-
-    <div class="col-lg-6">
-      <%= link_to '+', new_payment_path, :class => 'btn btn-default', :role => 'button' %>
     </div>
   </div>
 </div>
