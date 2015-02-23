@@ -5,4 +5,6 @@ class Vendor < ActiveRecord::Base
 
 
   mount_uploader :logo, DocumentUploader
+
+
 end

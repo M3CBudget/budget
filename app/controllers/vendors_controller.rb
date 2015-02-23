@@ -28,6 +28,12 @@ class VendorsController < ApplicationController
   end
 
   def update
+    # Logo-Deletion, only Logolink = null, filedelete not implemented
+    if vendor_params[:remove_logo] == "1"
+      @logo = vendor_params[:logo]
+      @logo.nil?
+
+    end
     @vendor.update(vendor_params)
     respond_with(@vendor)
   end
@@ -43,6 +49,6 @@ class VendorsController < ApplicationController
     end
 
     def vendor_params
-      params.require(:vendor).permit(:name, :logo, :user_id)
+      params.require(:vendor).permit(:name, :logo, :remove_logo, :user_id)
     end
 end
