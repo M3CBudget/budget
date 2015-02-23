@@ -23,10 +23,12 @@ Nächstes Meeting Sonntag 22. Feburar
 - landing page designen
 - Standard Datensätze um nullpointer zu verhinden (Kategorien / Zahlungsmethoden / Vendors) -> null prüfung dann standard form rendern
 - Category Index: Falsche ANzeige. 7tes Feld ist leer
+- highcharts
 
 == Done
 - Destroy Function von Items im Basket reparieren
 - Glypicons wie werden diese eingebunden?
+- is_active Methode
 
 == Konfiguration
 
