@@ -136,7 +136,7 @@ function getPurchaseDate(){
 angular.module('app', []).config(function() { });
 
 angular.module('app').controller('ItemController', function ($scope) {
-    
+
     $id = 0;
 
     $scope.items = [];
@@ -154,7 +154,8 @@ angular.module('app').controller('ItemController', function ($scope) {
                 price: $scope.price,
                 quantity: $scope.quantity,
                 categorie: $scope.category,
-                notice: $scope.notice
+                notice: $scope.notice,
+                hasNotice: $scope.hasNotice
             });
         $scope.reset;
     };
