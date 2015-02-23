@@ -26,5 +26,6 @@ describe 'Payment' do
     expect(page).to have_content payment.name
     expect(page).to have_content payment.number
     expect(page).to have_content payment.bic
+    expect(page).to have_css('.fa-check')
   end
 end

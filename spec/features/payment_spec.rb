@@ -20,11 +20,27 @@ describe 'Payment' do
     expect(page).to have_content payment.name
   end
 
-  it 'allows to change payments' do
+  it 'allows to change payment name' do
     visit ("/payments/#{payment.id}/edit")
     fill_in 'payment_name', with: 'Kreditkarte'
     click_button 'Speichern'
     visit("/payments/#{payment.id}")
     expect(page).to have_content 'Kreditkarte'
   end
+
+  it 'allows to change payment active' do
+    visit ("/payments/#{payment.id}/edit")
+    check('payment_active')
+    click_button 'Speichern'
+    visit("/payments/#{payment.id}")
+    expect(page).to have_css('.fa-check')
+    expect(page).to_not have_css('.fa-times')
+    visit ("/payments/#{payment.id}/edit")
+    uncheck('payment_active')
+    click_button 'Speichern'
+    visit("/payments/#{payment.id}")
+    expect(page).to have_css('.fa-times')
+    expect(page).to_not have_css('.fa-check')
+  end
+
 end
