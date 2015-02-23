@@ -17,7 +17,6 @@
 //= require angular
 //= require bootstrap-select
 //= require bootstrap-datepicker
-//= require highcharts
 //= require_tree .
 
 
