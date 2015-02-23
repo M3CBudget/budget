@@ -136,34 +136,42 @@ function getPurchaseDate(){
 angular.module('app', []).config(function() { });
 
 angular.module('app').controller('ItemController', function ($scope) {
+    
+    $id = 0;
 
     $scope.items = [];
 
-    $scope.item = [];
-
     $scope.add = function() {
 
-        if($scope.itemName !=''){
-            $scope.item.push($scope.itemName);
-        }
-        if($scope.itemPrice !=''){
-            $scope.item.push($scope.itemPrice);
-        }
-        if($scope.itemAmount !=''){
-            $scope.item.push($scope.itemAmount);
-        }
-        if($scope.itemCategorie !=''){
-            $scope.item.push($scope.itemCategorie);
-        }
-        if($scope.itemNotice !=''){
-            $scope.item.push($scope.itemNotice);
-        }
+        $id++;
 
-        $scope.items.push($scope.item);
-
+        $scope.items.push(
+            {
+                id: $id,
+                launch: $scope.launch,
+                user_id: $scope.user_id,
+                name: $scope.name,
+                price: $scope.price,
+                quantity: $scope.quantity,
+                categorie: $scope.category,
+                notice: $scope.notice
+            });
+        $scope.reset;
     };
 
     $scope.rem = function($index) {
         $scope.items.splice($index, 1);
+        $scope.id--;
+    };
+
+    $scope.reset = function () {
+        $scope.id = '',
+        $scope.launch = '',
+        $scope.user_id = '',
+        $scope.name = '',
+        $scope.price = '',
+        $scope.quantity = '',
+        $scope.category = '',
+        $scope.notice= ''
     };
 });
