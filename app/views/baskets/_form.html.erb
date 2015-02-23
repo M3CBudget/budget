@@ -101,10 +101,7 @@
     </div>
     <div class="form-group">
       <label class="" for="">Einkaufsdatum</label>
-      <!-- Datepicker einfügen /*TODO*/ -->
-      <%= f.date_field :purchase_date, :value => Time.now.to_s(:db)%>
-      <input type="text" data-provide='datepicker' >
-      <!-- http://eternicode.github.io/bootstrap-datepicker/?markup=component&format=&weekStart=&startDate=&endDate=&startView=0&minViewMode=0&todayBtn=false&clearBtn=false&language=en&orientation=auto&multidate=&multidateSeparator=&keyboardNavigation=on&forceParse=on#sandbox -->
+      <%= f.text_field :purchase_date, :value => Time.now.to_s(:db), :data => {:provide => "datepicker"} %>
     </div>
 
 

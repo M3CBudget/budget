@@ -10,51 +10,57 @@
     </ul>
 </div>
 <% end %>
-<div class="field">
 
-    <%= f.label :category_id %><br>
-    <%= f.collection_select :category_id, Category.where(:income => true), :id, :name, multiple: false %>
-  <select class="selectpicker"></select>
-</div>
 
-<div class="field">
-   <%= f.label :name %><br>
-   <%= f.text_field :name %>
-</div>
-    
-<div class="field">
-    <%= f.label :category_id %><br>
-    <%= f.collection_select :category_id, Category.where(:income => true, :user_id => current_user.id ), :id, :name, multiple: false %>
-</div>
-<div class="field">
-  <%= f.hidden_field :user_id, :value => current_user.id %>
-</div>
-<div class="field">
-   <%= f.label :notice %><br>
-   <%= f.text_field :notice %>
-</div>
-<div class="field">
-    <%= f.label :value %><br>
-    <%= f.text_field :price %>
-</div>
-<div class="field">
+
+
+<div class="form-group">
+
+  <div class="col-xs-6">
     <%= f.hidden_field :income, :value => true %>
-</div>
-<div class="field">
-    <%= f.label :period_id %><br>
-    <%= f.collection_select :period_id, Period.all, :id, :name, multiple:false %>
-</div>
-<div class="field">
-    <%= f.label :launch %><br>
-    <%= f.date_select :launch %>
-  <input type="text" data-provide='datepicker' >
-</div>
-<div class="field">
-    <%= f.label :finish %><br>
-    <%= f.date_select :finish %>
-  <input type="text" data-provide='datepicker' >
-</div>
-<div class="actions">
-    <%= f.submit "Einnahme anlegen" %>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+  </div>
+
+  <div class="col-xs-6">
+  </div>
+
+  <div class="col-xs-12">
+
+    <div class="input-group">
+      <div class="input-group-addon"><i class="fa fa-font"></i></div>
+      <%= f.text_field :name, :class =>"form-control", :placeholder => "Name" %>
+    </div>
+    <div class="input-group">
+      <div class="input-group-addon"><i class="fa fa-money"></i></div>
+      <%= f.text_field :price, :class =>"form-control", :placeholder => "Preis" %>
+    </div>
+
+    <div class="input-group">
+      <div class="input-group-addon"><i class="fa fa-files-o"></i></div>
+      <%= f.collection_select(:category_id, Category.where(:income => true, :user_id => current_user.id ), :id, :name, {multiple: false}, {:class=>'selectpicker'}) %>
+    </div>
+
+    <div class="input-group">
+      <%= f.label :period_id %><br>
+      <%= f.collection_select(:period_id, Period.all, :id, :name,  {multiple: false}, {:class=>'selectpicker'}) %>
+    </div>
+
+    <div class="col-xs-6">
+      <div class="input-group">
+        <%= f.label :launch %><br>
+        <%= f.text_field :launch, :data => {:provide => "datepicker"} %>
+      </div>
+    </div>
+    <div class="col-xs-6">
+      <div class="input-group">
+        <%= f.label :finish %><br>
+        <%= f.text_field :launch, :data => {:provide => "datepicker"} %>
+      </div>
+    </div>
+
+
+    <%= f.submit "Speichern" , :class => "btn btn-default" %>
+
+  </div>
 </div>
 <% end %>
