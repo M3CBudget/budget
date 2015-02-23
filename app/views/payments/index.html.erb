@@ -24,6 +24,7 @@
         <% unless payment.number == 0 %>
         <p><i class="fa fa-university"></i> Nummer <%= payment.number %></p>
         <p><i class="fa fa-university"></i> BIC <%= payment.bic %></p>
+        <p><i class="fa fa-info"></i> Summe <%= sum_amount(find_baskets_of_payment(payment.id)) %> &euro;</p>
         <% end %>
       </div>
 
