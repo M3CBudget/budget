@@ -1,18 +1,16 @@
   <div class="panel panel-default">
+
     <div class="panel-heading">
-      <h3 class="panel-title">Kategorien</h3>
+      <h3 class="panel-title">Liste</h3>
     </div>
 
     <div class="panel-body">
+      <div class="list-group">
         <% Category.where(:user_id => current_user.id).each do |category| %>
-          <div class="col-xs-6">
-            <%= link_to category.name, category_path(category), :class => 'btn btn-default', :role => 'button' %>
-          </div>
-      <% end %>
-      <div class="col-xs-6">
-        <%= link_to '+', new_category_path, :class => 'btn btn-default', :role => 'button' %>
+        <%= link_to category.name, category_path(category), :class => 'list-group-item'%>
+        <%end%>
       </div>
-
     </div>
 
   </div>
+
