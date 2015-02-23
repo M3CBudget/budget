@@ -15,6 +15,7 @@
 <div class="field">
     <%= f.label :category_id %><br>
     <%= f.collection_select :category_id, Category.where(:income => true), :id, :name, multiple: false %>
+  <select class="selectpicker"></select>
 </div>
 <div class="field">
     <%= f.label :article_id %><br>
@@ -50,10 +51,12 @@
 <div class="field">
     <%= f.label :launch %><br>
     <%= f.date_select :launch %>
+  <input type="text" data-provide='datepicker' >
 </div>
 <div class="field">
     <%= f.label :finish %><br>
     <%= f.date_select :finish %>
+  <input type="text" data-provide='datepicker' >
 </div>
 <div class="actions">
     <%= f.submit %>

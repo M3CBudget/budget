@@ -49,18 +49,18 @@
           <a class="navbar-brand" href="/">Bud$et</a>
           <div class="navbar-collapse collapse navbar-responsive">
           <ul class="nav navbar-nav">
-            <li><%= link_to new_basket_path do %><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm">Ausgabe</span> <% end %> </li>
-            <li><%= link_to income_new_path do %><i class="fa fa-money"></i> <span class="hidden-xs hidden-sm">Einnahme</span><% end %> </li>
-            <li><%= link_to new_category_path do %><i class="fa fa-files-o"></i> <span class="hidden-xs hidden-sm">Kategorie</span><% end %> </li>
-            <li><%= link_to new_vendor_path do %><i class="fa fa-building-o"></i> <span class="hidden-xs hidden-sm">Händler</span><% end %> </li>
-            <li><%= link_to new_payment_path do %><i class="fa fa-credit-card"></i> <span class="hidden-xs hidden-sm">Zahlungsmethode</span><% end %> </li>
+            <li data-toggle="tooltip" data-placement="bottom" title="Ausgabe anlegen"><%= link_to new_basket_path do %><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm">Ausgabe</span> <% end %> </li>
+            <li data-toggle="tooltip" data-placement="bottom" title="Einnahme anlegen"><%= link_to income_new_path do %><i class="fa fa-money"></i> <span class="hidden-xs hidden-sm">Einnahme</span><% end %> </li>
+            <li data-toggle="tooltip" data-placement="bottom" title="Kategorie anlegen"><%= link_to new_category_path do %><i class="fa fa-files-o"></i> <span class="hidden-xs hidden-sm">Kategorie</span><% end %> </li>
+            <li data-toggle="tooltip" data-placement="bottom" title="Händler anlegen"><%= link_to new_vendor_path do %><i class="fa fa-building-o"></i> <span class="hidden-xs hidden-sm">Händler</span><% end %> </li>
+            <li data-toggle="tooltip" data-placement="bottom" title="Zahlungsmethode anlegen"><%= link_to new_payment_path do %><i class="fa fa-credit-card"></i> <span class="hidden-xs hidden-sm">Zahlungsmethode</span><% end %> </li>
           </ul>
 
           <p class="navbar-text pull-right hidden-xs">
             <% if user_signed_in? %>
                 <i class="fa fa-user"></i>
-                <strong>
-                  <%= link_to current_user.first_name, edit_user_registration_path, :class => 'navbar-link' %> |
+                <strong data-toggle="tooltip" data-placement="bottom" title="Nutzermenü">
+                  <%= link_to current_user.first_name, edit_user_registration_path, :class => 'navbar-link'  %> |
                 </strong>
                 <i class="fa fa-sign-out"></i>
                 <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
@@ -86,11 +86,11 @@
             <div id="sidebar" class="col-xs-6 col-sm-3 sidebar-offcanvas">
               <ul class="nav nav-list">
                 <li class="nav-header"><h4>Show</h4></li>
-                <li><%= link_to "/baskets"  do %><i class="fa fa-shopping-cart"></i> Ausgaben <% end %> </li>
-                <li><%= link_to "/incomes" do %><i class="fa fa-money"></i> Einnahmen <% end %> </li>
-                <li><%= link_to "/categories" do %><i class="fa fa-files-o"></i> Kategorien <% end %> </li>
-                <li><%= link_to "/vendors" do %><i class="fa fa-building-o"></i> Händler <% end %> </li>
-                <li><%= link_to "/payments" do %><i class="fa fa-credit-card"></i> Zahlungsmethoden <% end %> </li>
+                <li data-toggle="tooltip" data-placement="left" title="Ausgaben anzeigen"><%= link_to "/baskets"  do %><i class="fa fa-shopping-cart"></i> Ausgaben <% end %> </li>
+                <li data-toggle="tooltip" data-placement="left" title="Einnahmen anzeigen"><%= link_to "/incomes" do %><i class="fa fa-money"></i> Einnahmen <% end %> </li>
+                <li data-toggle="tooltip" data-placement="left" title="Kategorien anzeigen"><%= link_to "/categories" do %><i class="fa fa-files-o"></i> Kategorien <% end %> </li>
+                <li data-toggle="tooltip" data-placement="left" title="Händler anzeigen"><%= link_to "/vendors" do %><i class="fa fa-building-o"></i> Händler <% end %> </li>
+                <li data-toggle="tooltip" data-placement="left" title="Zahlungsmethoden anzeigen"><%= link_to "/payments" do %><i class="fa fa-credit-card"></i> Zahlungsmethoden <% end %> </li>
               </ul>
             </div>
           </div>

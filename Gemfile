@@ -62,3 +62,6 @@ end
   gem 'mini_magick'
 
 gem 'angularjs-rails'
+gem 'bootstrap-datepicker-rails'
+gem 'highcharts-rails', '~> 4.0.4.1'
+gem 'bootstrap-select-rails'
