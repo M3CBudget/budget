@@ -36,11 +36,13 @@
         <label class="" for="">Kategorie</label>
         <div class="input-group">
           <div class="input-group-addon"><i class="fa fa-files-o"></i></div>
-          <select ng-model="category">
+          <select class="selectpicker" data-live-search="true" ng-model="category">
+            <!-- http://silviomoreto.github.io/bootstrap-select/ -->
             <% Category.where(:income => false, :user_id => current_user.id).each do |category| %>
                 <option> <%= category.name %> </option>
             <% end %>
           </select>
+
         </div>
       </div>
     </div>
@@ -101,6 +103,8 @@
       <label class="" for="">Einkaufsdatum</label>
       <!-- Datepicker einfügen /*TODO*/ -->
       <%= f.date_field :purchase_date, :value => Time.now.to_s(:db)%>
+      <input type="text" data-provide='datepicker' >
+      <!-- http://eternicode.github.io/bootstrap-datepicker/?markup=component&format=&weekStart=&startDate=&endDate=&startView=0&minViewMode=0&todayBtn=false&clearBtn=false&language=en&orientation=auto&multidate=&multidateSeparator=&keyboardNavigation=on&forceParse=on#sandbox -->
     </div>
 
 
@@ -231,7 +235,7 @@
                 <label class="" for="">Zahlungsmethode</label>
                 <div class="input-group pull-right">
                   <div class="input-group-addon"><i class="fa fa-credit-card"></i></div>
-                  <%= f.collection_select :payment_id, Payment.all, :id, :name, multiple: false , :class =>"form-control"%>
+                  <%= f.collection_select :payment_id, Payment.all, :id, :name, multiple: false, :class=>'selection'%>
                 </div>
               </div>
 

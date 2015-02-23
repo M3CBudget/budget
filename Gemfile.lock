@@ -30,6 +30,9 @@ GEM
     angularjs-rails (1.3.10)
     arel (5.0.1.20140414130214)
     bcrypt (3.1.10)
+    bootstrap-datepicker-rails (1.3.1.1)
+      railties (>= 3.0)
+    bootstrap-select-rails (1.6.3)
     builder (3.2.2)
     capybara (2.4.4)
       mime-types (>= 1.16)
@@ -87,6 +90,8 @@ GEM
       guard (~> 2.1)
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
+    highcharts-rails (4.0.4.1)
+      railties (>= 3.1)
     hike (1.2.3)
     hitimes (1.2.2)
     i18n (0.7.0)
@@ -235,6 +240,8 @@ PLATFORMS
 
 DEPENDENCIES
   angularjs-rails
+  bootstrap-datepicker-rails
+  bootstrap-select-rails
   capybara
   carrierwave
   coffee-rails (~> 4.0.0)
@@ -243,6 +250,7 @@ DEPENDENCIES
   factory_girl_rails
   faker
   guard-rspec
+  highcharts-rails (~> 4.0.4.1)
   jbuilder (~> 2.0)
   jquery-rails
   less-rails

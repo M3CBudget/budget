@@ -11,9 +11,17 @@
 </div>
 <% end %>
 <div class="field">
+
+    <%= f.label :category_id %><br>
+    <%= f.collection_select :category_id, Category.where(:income => true), :id, :name, multiple: false %>
+  <select class="selectpicker"></select>
+</div>
+
+<div class="field">
    <%= f.label :name %><br>
    <%= f.text_field :name %>
 </div>
+    
 <div class="field">
     <%= f.label :category_id %><br>
     <%= f.collection_select :category_id, Category.where(:income => true, :user_id => current_user.id ), :id, :name, multiple: false %>
@@ -39,10 +47,12 @@
 <div class="field">
     <%= f.label :launch %><br>
     <%= f.date_select :launch %>
+  <input type="text" data-provide='datepicker' >
 </div>
 <div class="field">
     <%= f.label :finish %><br>
     <%= f.date_select :finish %>
+  <input type="text" data-provide='datepicker' >
 </div>
 <div class="actions">
     <%= f.submit "Einnahme anlegen" %>

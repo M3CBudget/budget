@@ -13,6 +13,8 @@
  *= require_tree .
  *= require_self
  *= require devise_bootstrap_views
+ *= require bootstrap-select
+ *= require bootstrap-datepicker3
  */
 /*
  * Style tweaks
