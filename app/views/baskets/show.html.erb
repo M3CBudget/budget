@@ -46,7 +46,8 @@
     <div class="col-xs-6">
       <div class="form-group">
         <label class="" for="">Dokument:</label>
-        <%= image_tag @basket.document if @basket.document? %>
+        <br>
+        <%= image_tag @basket.document.url(:normal), :class => "thumbnail" if @basket.document? %>
       </div>
     </div>
 

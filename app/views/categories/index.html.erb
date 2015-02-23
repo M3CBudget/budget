@@ -37,15 +37,19 @@
 
 
       <div class="panel-body">
-        <p><%= category.notice %></p>
-        <p><i class="fa fa-info"></i> Summe <%= sum_price(find_items_of_category(category.id)) %> &euro; </p>
-      </div>
 
+        <div class="text-center">
+          <h4 data-toggle="tooltip" data-placement="bottom" title="Summe der bisherigen Ausgaben beim Händler">  <%=sum_price(find_items_of_category(category.id)) %> <i class="fa fa-euro"></i></h4>
+        </div>
+        <hr>
+        <p><i class="fa fa-file-text"></i> <small><%= category.notice %></small></p>
+      </div>
 
       <div class="panel-footer">
         <%= link_to edit_category_path(category) do %>  <button class="btn btn-default"> <i class="fa fa-pencil-square-o"></i> Ändern </button> <% end %>
         <%= link_to category, method: :delete, data: { confirm: 'Are you sure?' } do %> <button class="btn btn-default"> <i class="fa fa-trash-o"></i> Löschen </button>  <% end %>
-        </div>
+      </div>
+
       </div>
     </div>
 <% end %>

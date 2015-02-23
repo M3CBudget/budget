@@ -9,7 +9,11 @@
           <%= link_to basket do %><h3 class="panel-title text-center"><i class="fa fa-calendar pull-left"></i> <%= basket.created_at.strftime("%d/%m/%Y")  %></h3><% end %>
         </div>
         <div class="panel-body">
-          <p><%= basket.amount %> &euro;</p>
+
+          <div class="text-center">
+            <h4 data-toggle="tooltip" data-placement="bottom" title="Summe der Artikel"> <%= basket.amount %> <i class="fa fa-euro"></i></h4>
+          </div>
+          <hr>
           <p><i class="fa fa-building-o"></i> <small><%= show_vendor_name(basket.vendor_id) %></small></p>
           <p><i class="fa fa-credit-card"></i> <small><%= show_payment_name(basket.payment_id) %></small></p>
         </div>
