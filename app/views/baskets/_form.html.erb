@@ -1,4 +1,79 @@
+<!-- Artikel hinzufügen angular -->
+
+<div class="panel panel-default" >
+  <div class="panel-heading">
+    <h3 class="panel-title">Artikel hinzufügen</h3>
+  </div>
+
+  <div class="panel-body">
+
+    <input hidden ng-model="itemIncome" value="false"></input>
+    <input hidden ng-model="itemLaunch" value="<%=@getPurchaseDate%>"></input>
+    <input hidden ng-model="itemUser_id" value="<%= current_user.id %>"></input>
+
+    <div class="col-xs-12">
+      <div class="form-group">
+        <label class="" for="">Name</label>
+        <div class="input-group">
+          <div class="input-group-addon"><i class="fa fa-file-text"></i></div>
+          <input ng-model="itemName" placeholder="Name" class="form-control"></input>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xs-6">
+      <div class="form-group">
+        <label class="" for="">Preis und Menge</label>
+        <div class="input-group">
+          <div class="input-group-addon"><i class="fa fa-euro"></i></div>
+          <input ng-model="itemPrice" placeholder="Preis" class="form-control"></input>
+          <input ng-model="itemQuantity" placeholder="Menge" class="form-control"></input>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xs-6">
+      <div class="form-group">
+        <label class="" for="">Kategorie</label>
+        <div class="input-group">
+          <div class="input-group-addon"><i class="fa fa-files-o"></i></div>
+          <select ng-model="itemCategory"></select>
+          <!-- Category for User Item in Angular Model -->
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xs-12">
+      <div class="form-group">
+        <label class="" for="">Notiz</label>
+        <div class="input-group form-inline">
+          <div class="input-group-addon"><i class="fa fa-file-text"></i></div>
+          <textarea ng-model="itemNotice" class="form-control" placeholder="Notiz" disabled></textarea>
+          <div class="input-group-addon">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" value="" aria-label="Notiz">
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="panel-footer">
+    <button ng-click="add()" class="btn btn-default">Hinzufügen</button>
+  </div>
+</div>
+
+
+<h4>Artikel</h4>
+<ul>
+  <li ng-repeat="item in items"> {{ itemName }} <a href="" ng-click="rem($index)">x</a></li>
+</ul>
+
 <%= form_for(@basket) do |f| %>
+
   <% if @basket.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@basket.errors.count, "error") %> prohibited this basket from being saved:</h2>
@@ -11,90 +86,34 @@
     </div>
   <% end %>
 
-    <form class="form-inline">
-      <div class="form-group">
-        <label class="" for="">Händler wählen</label>
-        <%= f.collection_select :vendor_id, Vendor.all, :id, :name, multiple: false, :class =>"form-control" %>
-      </div>
-      <div class="form-group">
-        <label class="" for="">Einkaufsdatum</label>
-        <!-- Datepicker einfügen /*TODO*/ -->
-        <%= f.date_field :purchase_date, :value => Time.now.to_s(:db), :class =>"form-control"  %>
-      </div>
-    </form>
-    <%= f.fields_for :items do |items_form| %>
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">Artikel hinzufügen</h3>
-          </div>
-
-          <div class="panel-body">
-
-            <%= items_form.hidden_field :income, :value => false %>
-            <%= items_form.hidden_field :launch, :value => @getPurchaseDate %>
-            <%= items_form.hidden_field :user_id, :value => current_user.id %>
-
-
-            <div class="col-xs-12">
-              <div class="form-group">
-                <label class="" for="">Name</label>
-                <div class="input-group">
-                  <div class="input-group-addon"><i class="fa fa-file-text"></i></div>
-                  <%= items_form.text_field :name, :class =>"form-control", :placeholder => "Name" %>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-xs-6">
-              <div class="form-group">
-                <label class="" for="">Preis und Menge</label>
-                <div class="input-group">
-                  <div class="input-group-addon"><i class="fa fa-euro"></i></div>
-                  <%= items_form.text_field :price, :class =>"form-control", :placeholder => "Preis" %>
-                  <%= items_form.text_field :quantity, :class =>"form-control", :placeholder => "Menge" %>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-xs-6">
-              <div class="form-group">
-                <label class="" for="">Categorie</label>
-                <div class="input-group">
-                  <div class="input-group-addon"><i class="fa fa-files-o"></i></div>
-                  <%= items_form.collection_select :category_id, Category.where(:income => false, :user_id => current_user.id), :id, :name, multiple: false %>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-xs-12">
-              <div class="form-group">
-                <label class="" for="">Notiz</label>
-                <div class="input-group form-inline">
-                  <div class="input-group-addon"><i class="fa fa-file-text"></i></div>
-                  <%= items_form.text_field :notice, :class =>"form-control", :placeholder => "Notiz", :disabled => "ture" %>
-                  <div class="input-group-addon">
-                    <div class="checkbox">
-                      <label>
-                        <input type="checkbox" value="" aria-label="Notiz">
-                      </label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
 
 
 
-          </div>
-          <div class="panel-footer">
-            <%= submit_tag "Neuer Artikel", :type => 'button', :id => 'addItem',
-                           :onclick => 'addItemRow()', :class => 'btn btn-default' %>
-          </div>
-        </div>
 
 
-<div class="field">
-  <table id="items">
+  <div class="form-group">
+    <label class="" for="">Händler wählen</label>
+    <%= f.collection_select :vendor_id, Vendor.all, :id, :name, multiple: false, :class =>"form-control" %>
+  </div>
+  <div class="form-group">
+    <label class="" for="">Einkaufsdatum</label>
+    <!-- Datepicker einfügen /*TODO*/ -->
+    <%= f.date_field :purchase_date, :value => Time.now.to_s(:db)%>
+  </div>
+
+
+
+
+
+
+
+
+
+
+<%= f.fields_for :items do |items_form| %>
+<div class="table table-hover">
+  <table class="table">
+    <thead>
     <tr>
       <th>Name</th>
       <th>Qunatity</th>
@@ -102,26 +121,44 @@
       <th>Notice</th>
       <th>Category</th>
     </tr>
-    <tr>
-      <td><%= items_form.text_field :name %></td>
-      <td><%= items_form.text_field :quantity %></td>
-      <td><%= items_form.text_field :price %></td>
-      <td><%= items_form.text_field :notice %></td>
+    </thead>
+    <tbody>
+    <tr ng-repeat="item in items" ng-click="rem($index)">
+      <td><%= items_form.text_field :name, :value => "{{ itemName }}"%></td>
+      <td><%= items_form.text_field :quantity, :value => "{{ itemQuantity }}" %></td>
+      <td><%= items_form.text_field :price, :value => "{{ itemPrice }}" %></td>
+      <td><%= items_form.text_field :notice, :value => "{{ itemNotice }}" %></td>
       <td><%= items_form.collection_select :category_id, Category.where(:income => false, :user_id => current_user.id), :id, :name, multiple: false %></td>
       <td><%= items_form.hidden_field :income, :value => false %></td>
       <td><%= items_form.hidden_field :launch, :value => @getPurchaseDate %></td>
       <td><%= items_form.hidden_field :user_id, :value => current_user.id %></td>
     </tr>
-</table>
-<%= submit_tag "Neuer Artikel", :type => 'button', :id => 'addItem', :onclick => 'addItemRow()' %>
+    </tbody>
+  </table>
 </div>
+        <%= submit_tag "Neuer Artikel", :type => 'button', :id => 'addItem', :onclick => 'addItemRow()' %>
+<% end %>
 
-    <% end %>
+
+
+
 
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">
   <i class="fa fa-save"></i> Anlegen
 </button>
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -133,8 +170,8 @@
       </div>
 
       <div class="modal-body">
+
         <div class="form-group">
-          <div class="col-xs-12">
 
             <div class="form-group form-inline">
               <label class="" for="">Summe der Ausgaben</label>
@@ -167,15 +204,16 @@
               </div>
             </div>
 
-
             <!-- Moritz Form für Dateiupload -->
             <div class="field">
               <%= f.label :document %><br>
               <%= f.file_field :document %>
             </div>
 
-          </div>
         </div>
+
+
+
       </div>
 
       <div class="modal-footer">
