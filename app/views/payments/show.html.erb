@@ -45,6 +45,10 @@
               <td><%= basket.amount %></td>
             </tr>
         <% end %>
+        <tr>
+          <td colspan="2"><strong>Summe:</strong></td>
+          <td> <%= sum_amount(find_baskets_of_payment(@payment.id))  %> &euro; </td>
+        </tr>
         </tbody>
       </table>
     </div>

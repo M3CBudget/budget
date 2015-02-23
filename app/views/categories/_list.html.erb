@@ -4,7 +4,7 @@
     </div>
 
     <div class="panel-body">
-        <% Category.all.each do |category| %>
+        <% Category.where(:user_id => current_user.id).each do |category| %>
           <div class="col-xs-6">
             <%= link_to category.name, category_path(category), :class => 'btn btn-default', :role => 'button' %>
           </div>
