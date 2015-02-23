@@ -153,7 +153,7 @@ angular.module('app').controller('ItemController', function ($scope) {
                 name: $scope.name,
                 price: $scope.price,
                 quantity: $scope.quantity,
-                categorie: $scope.category,
+                category: $scope.category,
                 notice: $scope.notice,
                 hasNotice: $scope.hasNotice
             });
