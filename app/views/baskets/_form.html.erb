@@ -31,18 +31,16 @@
         </div>
       </div>
     </div>
-
     <div class="col-xs-6">
       <div class="form-group">
         <label class="" for="">Kategorie</label>
         <div class="input-group">
           <div class="input-group-addon"><i class="fa fa-files-o"></i></div>
           <select ng-model="category">
-            <% Category.where(:income => false, :user_id => current_user.id) do |categorie| %>
-                <option> <%= categorie %> </option>
+            <% Category.where(:income => false, :user_id => current_user.id).each do |category| %>
+                <option> <%= category.name %> </option>
             <% end %>
           </select>
-          <!-- Category for User Item in Angular Model -->
         </div>
       </div>
     </div>
