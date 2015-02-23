@@ -17,20 +17,47 @@ describe 'Category' do
     click_button 'Speichern'
   end
 
-  it 'allows to change categories' do
+  it 'allows to change category name' do
     visit ("/categories/#{category.id}/edit")
     fill_in 'category_name', with: 'Lebensmittel123'
-    check('category_income')
     click_button 'Speichern'
     visit("/categories/#{category.id}")
     expect(page).to have_content 'Lebensmittel123'
+  end
 
+  it 'allows to change category income' do
+    visit ("/categories/#{category.id}/edit")
+    check('category_income')
+    click_button 'Speichern'
+    visit("/categories/#{category.id}")
+    expect(page).to have_css('.fa-plus')
+    expect(page).to_not have_css('.fa-minus')
+    visit ("/categories/#{category.id}/edit")
+    uncheck('category_income')
+    click_button 'Speichern'
+    visit("/categories/#{category.id}")
+    expect(page).to have_css('.fa-minus')
+    expect(page).to_not have_css('.fa-plus')
+  end
+
+  it 'allows to change category active' do
+    visit ("/categories/#{category.id}/edit")
+    check('category_active')
+    click_button 'Speichern'
+    visit("/categories/#{category.id}")
+    expect(page).to have_css('.fa-check')
+    expect(page).to_not have_css('.fa-times')
+    visit ("/categories/#{category.id}/edit")
+    uncheck('category_active')
+    click_button 'Speichern'
+    visit("/categories/#{category.id}")
+    expect(page).to have_css('.fa-times')
+    expect(page).to_not have_css('.fa-check')
   end
 
   it 'allows to delete categories' do
 
     visit ('/categories/')
     find_button('Löschen').click
-
   end
 end
