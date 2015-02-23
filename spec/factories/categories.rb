@@ -3,6 +3,7 @@ FactoryGirl.define do
     name "Lebensmittel"
     notice "Food"
     active true
+    income false
   end
 
 end

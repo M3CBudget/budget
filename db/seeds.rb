@@ -23,7 +23,8 @@ Category.create!([
   {name: "Flohmarkt", notice: "Kategorie für Einnahmen von Verkäufen", active: true, income: true, user_id: 1, glyphicon_id: nil},
   {name: "WG", notice: "Kategorie für den WG Bedarf", active: true, income: false, user_id: 1, glyphicon_id: nil},
   {name: "Versicherung", notice: "Kategorie für Versicherungen", active: true, income: false, user_id: 1, glyphicon_id: nil},
-  {name: "Steuerrückzahlung", notice: "Kategorie für Steuerrückzahlungen", active: true, income: true, user_id: 1, glyphicon_id: nil}
+  {name: "Steuerrückzahlung", notice: "Kategorie für Steuerrückzahlungen", active: true, income: true, user_id: 1, glyphicon_id: nil},
+  {name: "Lebensmittel", notice: "Kategorie für Ausgaben für Lebensmittel", active: true, income: false, user_id: 1, glyphicon_id: nil}
 ])
 Item.create!([
   {basket_id: 1, category_id: 1, article_id: nil, user_id: 1, name: "Quark", quantity: "5.0", price: "0.99", notice: "Quark für Mark", income: false, period: nil, launch: "2015-02-22", finish: nil, period_id: nil},
@@ -54,5 +55,7 @@ Vendor.create!([
   {name: "Sport Verein", logo: nil, user_id: 1},
   {name: "Vermieter", logo: nil, user_id: 1},
   {name: "Westfalen Gas", logo: nil, user_id: 1},
-  {name: "Amazon", logo: nil, user_id: 1}
+  {name: "Amazon", logo: nil, user_id: 1},
+  {name: "Kaufpark", logo: nil, user_id: 2},
+  {name: "Kaufpark", logo: nil, user_id: 1}
 ])

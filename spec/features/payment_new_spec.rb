@@ -13,18 +13,18 @@ describe 'Payment' do
 
     visit ('/payments/new')
     expect(page).to have_content 'Zahlungsmethode anlegen'
+  end
+
+
+  it 'allows to mount new payments' do
     fill_in 'payment_name', with: payment.name
     fill_in 'payment_number', with: payment.number
     fill_in 'payment_bic', with: payment.bic
-    click_button 'Speichern'
-    expect(page).to have_content payment.name
-  end
 
-  it 'allows to change payments' do
-    visit ("/payments/#{payment.id}/edit")
-    fill_in 'payment_name', with: 'Kreditkarte'
-    click_button 'Speichern'
-    visit("/payments/#{payment.id}")
-    expect(page).to have_content 'Kreditkarte'
+    expect { click_button 'Speichern' }.to change {Payment.count}.by(1)
+
+    expect(page).to have_content payment.name
+    expect(page).to have_content payment.number
+    expect(page).to have_content payment.bic
   end
 end
