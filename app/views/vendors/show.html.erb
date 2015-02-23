@@ -31,9 +31,16 @@
               <td><%= basket.amount %> &euro;</td>
             </tr>
         <% end %>
+        <tr>
+          <td colspan="2"><strong>Summe:</strong></td>
+          <td> <%= sum_amount(@filteredBaskets)  %> &euro; </td>
+        </tr>
         </tbody>
       </table>
     </div>
+    <!-- NEU -->
+
+    <!-- ENDE -->
   </div>
   <div class="panel-footer">
     <%= link_to edit_vendor_path(@vendor) do %>  <button class="btn btn-default"> <i class="fa fa-pencil-square-o"></i> Ändern </button> <% end %>

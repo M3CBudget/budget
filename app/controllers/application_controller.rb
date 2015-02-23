@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   helper_method :sum_amount, :show_vendor_name, :show_category_name, :find_items_of_basket, :show_payment_name, :find_items_of_category
   helper_method :find_baskets_of_vendor
-  helper_method :find_baskets_of_payment, :is_active
+  helper_method :find_baskets_of_payment, :is_active, :sum_price
 
   protected
 
@@ -47,6 +47,14 @@ class ApplicationController < ActionController::Base
     sum = 0
     baskets.each do |b|
       sum = sum + b.amount
+    end
+    return sum
+  end
+
+  def sum_price(items)
+    sum = 0
+    items.each do |b|
+      sum = sum + (b.price * b.quantity)
     end
     return sum
   end

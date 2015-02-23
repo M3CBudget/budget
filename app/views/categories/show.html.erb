@@ -39,7 +39,6 @@
                     <th>Notiz</th>
                     <th>Anzahl</th>
                     <th>Preis</th>
-                    <th></th>
                   </tr>
               </thead>
               <tbody>
@@ -52,6 +51,10 @@
                     <td><%= item.price  %> &euro;</td>
                   </tr>
               <% end %>
+              <tr>
+                <td colspan="4"><strong>Summe:</strong></td>
+                <td> <%= sum_price(find_items_of_category(@category.id)) %> &euro; </td>
+              </tr>
               </tbody>
             </table>
         </div>
