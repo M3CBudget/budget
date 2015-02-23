@@ -1,7 +1,7 @@
 User.create!([
-  {email: "d.duese@web.de", encrypted_password: "$2a$10$QqHkzwwP/koteuQgQqec3uWozb9O9iue7TE9yi1Qn4x6qsXPxnA/2", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, first_name: "Daniel", last_name: "Düsentrieb"},
-  {email: "otto@test.de", encrypted_password: "$2a$10$gjtDSQzbrfBfj.hcg5vxfu.uh0VCYQGxRkieWN7GAmtYxjogLIy1e", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, first_name: "Otto", last_name: "Test"},
-  {email: "0@web.de", encrypted_password: "$2a$10$ooKG1KgwyxUFrOprCxZoouks3HGwxZxaXLamgKlXTbtNle0BdYUKa", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2015-02-22 19:23:28", last_sign_in_at: "2015-02-22 19:23:28", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1", first_name: "Günther", last_name: "Gurke"}
+  {email: "d.duese@web.de", password: "12345678", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, first_name: "Daniel", last_name: "Düsentrieb"},
+  {email: "otto@test.de", password: "12345678", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, first_name: "Otto", last_name: "Test"},
+  {email: "0@web.de", password: "12345678", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2015-02-22 19:23:28", last_sign_in_at: "2015-02-22 19:23:28", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1", first_name: "Günther", last_name: "Gurke"}
 ])
 Basket.create!([
   {notice: "", amount: "100.0", document: nil, user_id: 1, payment_id: 3, vendor_id: 1, purchase_date: "2015-02-12"},
