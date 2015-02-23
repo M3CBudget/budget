@@ -12,6 +12,7 @@
         </div>
         <div class="panel-body">
           <%= image_tag vendor.logo.url(:thumb), :class => 'image-responsive' if vendor.logo? %>
+          <p><i class="fa fa-info"></i> Summe <%= sum_amount(find_baskets_of_vendor(vendor.id)) %> &euro;</p>
         </div>
         <div class="panel-footer">
           <%= link_to edit_vendor_path(vendor) do %>  <button class="btn btn-default"> <i class="fa fa-pencil-square-o"></i> Ändern </button> <% end %>

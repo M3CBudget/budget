@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   helper_method :sum_amount, :show_vendor_name, :show_category_name, :find_items_of_basket, :show_payment_name, :find_items_of_category
   helper_method :find_baskets_of_vendor
-  helper_method :find_baskets_of_payment, :is_active, :sum_price
+  helper_method :find_baskets_of_payment, :is_active, :sum_price, :find_baskets_of_user, :items_of_user
 
   protected
 
@@ -41,6 +41,14 @@ class ApplicationController < ActionController::Base
 
   def find_baskets_of_payment(payment_id)
     Basket.where(:payment_id => payment_id, :user_id => current_user.id)
+  end
+
+  def find_baskets_of_user
+    Basket.where(:user_id => current_user.id)
+  end
+
+  def find_incomes_of_user
+    Item.where(:user_id => current_user.id, :income => true)
   end
 
   def sum_amount(baskets)
