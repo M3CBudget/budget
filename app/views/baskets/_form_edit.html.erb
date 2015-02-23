@@ -11,55 +11,93 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :notice %><br>
-    <%= f.text_field :notice %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Übersicht</h3>
+    <p id="notice"><%= notice %></p>
   </div>
+
+  <div class="panel-body">
+
+      <div class="col-xs-12">
+        <div class="tables tables-hover">
+          <label class="" for="">Artikel:</label>
+          <table class="table">
+            <tr>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Notice</th>
+              <th>Category</th>
+              <th>Delete</th>
+            </tr>
+            <%= f.fields_for :items do |items_form| %>
+                <tr>
+                  <%= items_form.hidden_field :id %>
+                  <td><%= items_form.text_field :name %></td>
+                  <td><%= items_form.text_field :price %></td>
+                  <td><%= items_form.text_field :quantity %></td>
+                  <td><%= items_form.text_field :notice %></td>
+                  <td><%= items_form.collection_select :category_id, Category.where(:income => false, :user_id => current_user.id), :id, :name, multiple: false %></td>
+                  <td><%= items_form.check_box :_destroy %></td>
+                </tr>
+            <% end %>
+          </table>
+        </div>
+      </div>
+
+      <div class="col-xs-6">
+          <div class="form-group">
+                <label class="" for="">Dokument:</label>
+                <br>
+                <%= image_tag @basket.document.url(:normal), :class => "thumbnail" if @basket.document? %>
+                <div class="field">
+                  <%= f.file_field :document %>
+                </div>
+          </div>
+      </div>
+
+      <div class="col-xs-6">
+        <div class="form-group">
+            <%= f.label :vendor_id %><br>
+            <%= f.collection_select :vendor_id, Vendor.all, :id, :name, multiple: false %>
+        </div>
+      </div>
+
+      <div class="col-xs-6">
+        <div class="form-group">
+            <label class="" for="">Amount:</label>
+            <%= f.text_field :amount ,:class =>"form-control" %>
+        </div>
+      </div>
+
+      <div class="col-xs-6">
+        <div class="form-group">
+            <%= f.label :payment_id %><br>
+            <%= f.collection_select :payment_id , Payment.all, :id, :name, multiple: false   %>
+        </div>
+      </div>
+
+      <div class="col-xs-12">
+        <div class="form-group">
+            <label class="" for="">Notiz:</label>
+            <%= f.text_field :notice ,:class =>"form-control" %>
+        </div>
+      </div>
+
+  </div>
+
+  <div class="panel-footer">
+      <%= f.submit %>
+  </div>
+
+</div>
+
+
     <div class="field">
       <%= f.hidden_field :user_id, :value => current_user.id %>
     </div>
-  <div class="field">
-    <%= f.label :amount %><br>
-    <%= f.text_field :amount %>
-  </div>
-  <div class="field">
-    <%= f.label :document %><br>
-    <%= f.text_field :document %>
-  </div>
-  <div class="field">
-    <%= f.label :payment_id %><br>
-    <%= f.collection_select :payment_id, Payment.all, :id, :name, multiple: false %>
-  </div>
-  <div class="field">
-    <%= f.label :vendor_id %><br>
-    <%= f.collection_select :vendor_id, Vendor.all, :id, :name, multiple: false %>
-  </div>
-  <div class="field">
-    <table>
-      <tr>
-        <th>Name</th>
-        <th>Price</th>
-        <th>Quantity</th>
-        <th>Notice</th>
-        <th>Category</th>
-        <th>Delete</th>
-      </tr>
-      <%= f.fields_for :items do |items_form| %>
-          <tr>
-            <%= items_form.hidden_field :id %>
-            <td><%= items_form.text_field :name %></td>
-            <td><%= items_form.text_field :price %></td>
-            <td><%= items_form.text_field :quantity %></td>
-            <td><%= items_form.text_field :notice %></td>
-            <td><%= items_form.collection_select :category_id, Category.where(:income => false, :user_id => current_user.id), :id, :name, multiple: false %></td>
-            <td><%= items_form.check_box :_destroy %></td>
-          </tr>
-      <% end %>
-    </table>
 
-  </div>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
 <% end %>
