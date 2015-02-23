@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   helper_method :sum_amount, :show_vendor_name, :show_category_name, :find_items_of_basket, :show_payment_name, :find_items_of_category
   helper_method :find_baskets_of_vendor
-  helper_method :find_baskets_of_payment
+  helper_method :find_baskets_of_payment, :is_active
 
   protected
 
@@ -49,6 +49,15 @@ class ApplicationController < ActionController::Base
       sum = sum + b.amount
     end
     return sum
+  end
+
+  def is_active(id) Item.find(id)
+    if Item.find(id).finish.to_s < Time.now.to_s
+      active = false
+    else
+      active = true
+    end
+    return active
   end
 
 end
