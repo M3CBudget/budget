@@ -2,7 +2,7 @@
 
 <div class="panel panel-default" >
   <div class="panel-heading">
-    <h3 class="panel-title">Artikel hinzufügen</h3>
+    <h3 class="panel-title">hinzufügen</h3>
   </div>
 
   <div class="panel-body">
@@ -232,7 +232,7 @@
                 <label class="" for="">Zahlungsmethode</label>
                 <div class="input-group pull-right">
                   <div class="input-group-addon"><i class="fa fa-credit-card"></i></div>
-                  <%= f.collection_select :payment_id, Payment.all, :id, :name, multiple: false, :class=>'selection'%>
+                  <%= f.collection_select(:payment_id, Payment.all, :id, :name, {multiple: false}, :class=>'selectpicker')%>
                 </div>
               </div>
 

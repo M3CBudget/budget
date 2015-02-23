@@ -1,6 +1,12 @@
+<div class="page-header">
+
+      <h1> <%= link_to baskets_path do %>  <i class="fa fa-arrow-left"></i> <% end %> Ausgabe Details</h1>
+
+</div>
+
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">Basket Übersicht</h3>
+    <h3 class="panel-title">Übersicht</h3>
     <p id="notice"><%= notice %></p>
 
   </div>
@@ -8,10 +14,33 @@
   <div class="panel-body">
 
     <div class="col-xs-12">
-        <div class="form-group">
-          <label class="" for="">Notiz:</label>
-          <input id="notice" class="form-control" type="text" value="<%= @basket.notice %>" placeholder="<%= @basket.notice %>" disabled="disabled">
-        </div>
+      <div class="tables tables-hover">
+        <label class="" for="">Artikel:</label>
+        <table class="table">
+          <thead>
+          <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Notice</th>
+            <th>Category</th>
+            <th>Launch Date</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% find_items_of_basket(@basket).each do |item| %>
+              <tr>
+                <td><%= item.name %></td>
+                <td><%= item.price %></td>
+                <td><%= item.quantity %></td>
+                <td><%= item.notice %></td>
+                <td><%= show_category_name(item.category_id) %></td>
+                <td><%= item.launch %></td>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
 
     <div class="col-xs-6">
@@ -46,34 +75,12 @@
       </div>
     </div>
 
-
-
     <div class="col-xs-12">
       <div class="form-group">
-        <label class="" for="">Items:</label>
-          <table border="1">
-            <tr>
-              <th>Name</th>
-              <th>Price</th>
-              <th>Quantity</th>
-              <th>Notice</th>
-              <th>Category</th>
-              <th>Launch Date</th>
-            </tr>
-            <% find_items_of_basket(@basket).each do |item| %>
-                <tr>
-                  <td><%= item.name %></td>
-                  <td><%= item.price %></td>
-                  <td><%= item.quantity %></td>
-                  <td><%= item.notice %></td>
-                  <td><%= show_category_name(item.category_id) %></td>
-                  <td><%= item.launch %></td>
-                </tr>
-            <% end %>
-
-          </table>
-        </div>
-     </div>
+        <label class="" for="">Notiz:</label>
+        <input id="notice" class="form-control" type="text" value="<%= @basket.notice %>" placeholder="<%= @basket.notice %>" disabled="disabled">
+      </div>
+    </div>
   </div>
 
   <div class="panel-footer">
