@@ -22,3 +22,8 @@
 .idea/dataSources.ids
 .idea/dataSources.xml
 .idea/workspace.xml
+
+
+# Ignore Upload Pics
+
+/public/uploads/*
