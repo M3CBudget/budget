@@ -45,16 +45,20 @@ class ApplicationController < ActionController::Base
 
   def sum_amount(baskets)
     sum = 0
-    baskets.each do |b|
-      sum = sum + b.amount
+    if !baskets.nil?
+      baskets.each do |b|
+        sum = sum + b.amount
+      end
     end
     return sum
   end
 
   def sum_price(items)
     sum = 0
-    items.each do |b|
-      sum = sum + (b.price * b.quantity)
+    if !items.nil?
+      items.each do |b|
+        sum = sum + (b.price * b.quantity)
+      end
     end
     return sum
   end

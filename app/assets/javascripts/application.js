@@ -17,7 +17,6 @@
 //= require angular
 //= require bootstrap-select
 //= require bootstrap-datepicker
-//= require highcharts
 //= require_tree .
 
 
@@ -178,65 +177,4 @@ angular.module('app').controller('ItemController', function ($scope) {
         $scope.category = '',
         $scope.notice= ''
     };
-});
-$(function () {
-    $('#container').highcharts({
-        chart: {
-            type: 'areaspline'
-        },
-        title: {
-            text: 'Ausgaben und Einnahmen im Verlauf...'
-        },
-        legend: {
-            layout: 'vertical',
-            align: 'left',
-            verticalAlign: 'top',
-            x: 150,
-            y: 100,
-            floating: true,
-            borderWidth: 1,
-            backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
-        },
-        xAxis: {
-            categories: [
-                '12/02/2015',
-                '12/01/2015',
-                '12/12/2014',
-                '12/12/2014',
-                '12/12/2014',
-                '12/12/2014',
-                '12/12/2014'
-            ],
-            plotBands: [{ // visualize the weekend
-                from: 4.5,
-                to: 6.5,
-                color: 'rgba(68, 170, 213, .2)'
-            }]
-        },
-        yAxis: {
-            title: {
-                text: 'Wert'
-            }
-        },
-        tooltip: {
-            shared: true,
-            valueSuffix: ' &euro;'
-        },
-        credits: {
-            enabled: false
-        },
-        plotOptions: {
-            areaspline: {
-                fillOpacity: 0.5
-            }
-        },
-        series: [{
-            name: 'Ausgaben',
-            data: [100, 50, 100, 200, 300, 30, 40]
-        }, {
-            name: 'Einnahmen',
-            data: [10, 20, 40, 80, 160, 320, 0]
-        }
-        ]
-    });
 });

@@ -63,5 +63,5 @@ end
 
 gem 'angularjs-rails'
 gem 'bootstrap-datepicker-rails'
-gem 'highcharts-rails', '~> 4.0.4.1'
+gem 'lazy_high_charts'
 gem 'bootstrap-select-rails'

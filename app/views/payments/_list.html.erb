@@ -4,7 +4,7 @@
   </div>
   <div class="panel-body">
 
-    <% Payment.all.each do |payment| %>
+    <% Payment.where(:user_id => current_user.id).each do |payment| %>
         <div class="col-lg-6">
           <%= link_to payment.name, payment_path(payment), :class => 'btn btn-default', :role => 'button' %>
         </div>

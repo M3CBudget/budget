@@ -4,7 +4,7 @@
   </div>
   <div class="panel-body">
 
-    <% Vendor.all.each do |vendor| %>
+    <% Vendor.where(:user_id => current_user.id).each do |vendor| %>
         <div class="col-lg-6">
           <%= link_to vendor.name, vendor_path(vendor), :class => 'btn btn-default', :role => 'button' %>
         </div>
