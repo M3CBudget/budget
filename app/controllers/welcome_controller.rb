@@ -5,21 +5,11 @@ class WelcomeController < ApplicationController
     @lastBaskets = Basket.where(:user_id => current_user.id).last(5)
     @lastCategories = Category.where(:user_id => current_user.id).last(5)
 
-    @chart = LazyHighCharts::HighChart.new('graph') do |f|
-      f.title(:text => "Population vs GDP For 5 Big Countries [2009]")
-      f.xAxis(:categories => ["United States", "Japan", "China", "Germany", "France"])
-      f.series(:name => "GDP in Billions", :yAxis => 0, :data => [14119, 5068, 4985, 3339, 2656])
-      f.series(:name => "Population in Millions", :yAxis => 1, :data => [310, 127, 1340, 81, 65])
-
-      f.yAxis [
-                  {:title => {:text => "GDP in Billions", :margin => 70} },
-                  {:title => {:text => "Population in Millions"}, :opposite => true},
-              ]
-
-      f.legend(:align => 'right', :verticalAlign => 'top', :y => 75, :x => -50, :layout => 'vertical',)
-      f.chart({:defaultSeriesType=>"column"})
+    @h = LazyHighCharts::HighChart.new('graph') do |f|
+      f.series(:name=>'John', :data=>[3, 20, 3, 5, 4, 10, 12 ,3, 5,6,7,7,80,9,9])
+      f.series(:name=>'Jane', :data=> [1, 3, 4, 3, 3, 5, 4,-46,7,8,8,9,9,0,0,9] )
     end
 
-    respond_with(@lastBaskets, @lastCategories, @chart )
+    respond_with(@lastBaskets, @lastCategories, @h)
   end
 end
