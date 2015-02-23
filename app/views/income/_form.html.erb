@@ -10,39 +10,28 @@
     </ul>
 </div>
 <% end %>
-
-
 <div class="field">
-    <%= f.label :category_id %><br>
-    <%= f.collection_select :category_id, Category.where(:income => true), :id, :name, multiple: false %>
+   <%= f.label :name %><br>
+   <%= f.text_field :name %>
 </div>
 <div class="field">
-    <%= f.label :article_id %><br>
-    <%= f.text_field :article_id %>
+    <%= f.label :category_id %><br>
+    <%= f.collection_select :category_id, Category.where(:income => true, :user_id => current_user.id ), :id, :name, multiple: false %>
 </div>
 <div class="field">
   <%= f.hidden_field :user_id, :value => current_user.id %>
 </div>
 <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+   <%= f.label :notice %><br>
+   <%= f.text_field :notice %>
 </div>
 <div class="field">
     <%= f.label :value %><br>
     <%= f.text_field :price %>
 </div>
 <div class="field">
-    <%= f.label :notice %><br>
-    <%= f.text_field :notice %>
-</div>
-<div class="field">
     <%= f.hidden_field :income, :value => true %>
 </div>
-    <div class="field">
-      <%= f.label "Anzahl" %><br>
-      <%= f.text_field :period %>
-    </div>
-
 <div class="field">
     <%= f.label :period_id %><br>
     <%= f.collection_select :period_id, Period.all, :id, :name, multiple:false %>
@@ -56,6 +45,6 @@
     <%= f.date_select :finish %>
 </div>
 <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Einnahme anlegen" %>
 </div>
 <% end %>

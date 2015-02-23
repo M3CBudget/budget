@@ -1,10 +1,12 @@
 <p id="notice"><%= notice %></p>
 <div class="page-header">
-
-  <h1> <%= link_to items_path do %>  <i class="fa fa-arrow-left"></i> <% end %> Artikel Details</h1>
-
-</div>
-<div class="col-xs-12">
+  <% if (@item.income) %>
+        <h1> <%= link_to "/incomes" do %>  <i class="fa fa-arrow-left"></i> <% end %> Einnahme Details</h1>
+  <% else %>
+        <h1> <%= link_to items_path do %>  <i class="fa fa-arrow-left"></i> <% end %> Ausgabe Details</h1>
+  <%end %>
+  </div>
+ <div class="col-xs-12">
   <% if is_active(@item.id) %>
       <div class="panel panel-success">
   <% else %>
@@ -52,4 +54,4 @@
     <%= link_to edit_item_path(@item) do %>  <button class="btn btn-default"> <i class="fa fa-pencil-square-o"></i> Ändern </button> <% end %>
   </div>
   </div>
-  </div>
+</div>

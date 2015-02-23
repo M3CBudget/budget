@@ -5,7 +5,7 @@ class IncomeController < ApplicationController
 
   def index
     @incomes = Item.where(:user_id => current_user.id, :income => true)
-    respond_with(@incomess)
+    respond_with(@incomes)
   end
 
   def show
@@ -23,13 +23,11 @@ class IncomeController < ApplicationController
   def create
     @income = Item.new(income_params)
     @income.save
-    redirect_to income_show_path
     respond_with(@income)
   end
 
   def update
     @income.update(income_params)
-    redirect_to income_show_path
     respond_with(@income)
   end
 
