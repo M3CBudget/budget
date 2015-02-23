@@ -22,6 +22,7 @@ Nächstes Meeting Sonntag 22. Feburar
 - modal prüfung des baskets (bestätigung)
 - landing page designen
 - Standard Datensätze um nullpointer zu verhinden (Kategorien / Zahlungsmethoden / Vendors) -> null prüfung dann standard form rendern
+- Category Index: Falsche ANzeige. 7tes Feld ist leer
 
 == Done
 - Destroy Function von Items im Basket reparieren
@@ -33,7 +34,7 @@ ruby version 2.1.2
 rails version 4.1.8
 postgres version 0.17
 
-== Anleitung Einbdingun
+== Anleitung Einbindung
 
 rake db:drop
 rake db:create
