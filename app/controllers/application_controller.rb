@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
   end
 
   def find_items_of_category(category_id)
-    Item.where(:category_id => category_id, :user_id => current_user.id)
+    Item.where(:category_id => category_id, :user_id => current_user.id, :income => false)
   end
 
   def find_baskets_of_vendor(vendor_id)
@@ -54,7 +54,7 @@ class ApplicationController < ActionController::Base
   end
 
   def sum_price(items)
-    sum = 0
+    sum = 0.0
     if !items.nil?
       items.each do |b|
         sum = sum + (b.price * b.quantity)
