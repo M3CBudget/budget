@@ -23,6 +23,7 @@
         <div class="tables tables-hover">
           <label class="" for="">Artikel:</label>
           <table class="table">
+            <thead>
             <tr>
               <th>Name</th>
               <th>Price</th>
@@ -31,6 +32,8 @@
               <th>Category</th>
               <th>Delete</th>
             </tr>
+            </thead>
+            <tbody>
             <%= f.fields_for :items do |items_form| %>
                 <tr>
                   <%= items_form.hidden_field :id %>
@@ -42,8 +45,13 @@
                   <td><%= items_form.check_box :_destroy %></td>
                 </tr>
             <% end %>
+            </tbody>
           </table>
+
+
         </div>
+
+
       </div>
 
       <div class="col-xs-6">
