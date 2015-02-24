@@ -1,5 +1,10 @@
 <div class="page-header">
-  <h1>Händler<i class="fa fa-building-o pull-right"></i></h1>
+
+  <h1>
+    <%= link_to '+', new_vendor_path, :class => 'btn btn-success ', :role => 'button' %>
+    Händler
+    <i class="fa fa-building-o pull-right"></i>
+  </h1>
 
 
 </div>
@@ -74,4 +79,3 @@
 
 
 
-<%= link_to '+ Anlegen', new_vendor_path, :class => 'btn btn-default', :role => 'button' %>
