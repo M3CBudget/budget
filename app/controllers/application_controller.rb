@@ -44,6 +44,25 @@ class ApplicationController < ActionController::Base
     Basket.where(:user_id => current_user.id, :purchase_date => (start_date..end_date))
   end
 
+  def find_baskets_for_month
+    date = Date.now
+    start_date = date.beginn_of_month
+    return find_basket_for_time_period(start_date, date)
+  end
+
+  def forecast_costs_for_month
+    date = Date.now
+    start_date = date.beginn_of_month
+    sum = sum_amount(find_basket_for_time_period(start_date, date))
+    dif = (date - start_date).to_i
+    month = date.to_a[4]
+    year = year.to_a[5]
+    days_in_month = Time.days_in_month(month, year)
+    cost_per_day = (sum / dif)
+    costs_of_this_month = (sum + cost_per_day * (days_in_month - dif))
+    return costs_of_this_month
+  end
+
   def find_baskets_of_payment(payment_id)
     Basket.where(:payment_id => payment_id, :user_id => current_user.id)
   end

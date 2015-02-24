@@ -60,6 +60,6 @@ Vendor.create!([
   {name: "Kaufpark", logo: nil, user_id: 1}
 ])
 
-Gylpicon.create!([
+Glyphicon.create!([
  {name:fa-address-book}
 ])
