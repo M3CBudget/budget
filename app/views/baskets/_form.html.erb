@@ -254,7 +254,7 @@
                 <label class="" for="">Summe der Ausgaben</label>
                 <div class="input-group">
                   <div class="input-group-addon"><i class="fa fa-money"></i></div>
-                  <%= f.text_field :amount, :class =>"form-control", :placeholder => "Summe der Ausgabe" %>
+                  <%= f.number_field :amount, :class =>"form-control", :placeholder => "Summe der Ausgabe", :step =>'any' :value => "{{sum}}"%>
                 </div>
               </div>
             </div>

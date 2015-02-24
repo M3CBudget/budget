@@ -30,7 +30,7 @@
           <% find_items_of_basket(@basket).each do |item| %>
               <tr>
                 <td><%= item.name %></td>
-                <td><%= item.price %></td>
+                <td><%= item.price %> &euro;</td>
                 <td><%= item.quantity %></td>
                 <td><%= item.notice %></td>
                 <td><%= show_category_name(item.category_id) %></td>
@@ -52,7 +52,7 @@
 
     <div class="col-xs-6">
       <div class="form-group">
-        <label class="" for="">Vendor:</label>
+        <label class="" for="">Händler:</label>
         <%= show_vendor_name(@basket.vendor_id) %>
         <input id="vendor_id" class="form-control" type="text" value="<%= show_vendor_name(@basket.vendor_id) %>" placeholder="<%= show_vendor_name(@basket.vendor_id) %>" disabled="disabled">
       </div>
@@ -61,15 +61,15 @@
 
     <div class="col-xs-6">
       <div class="form-group">
-        <label class="" for="">Amount:</label>
-        <%= @basket.amount %>
-        <input id="amount" class="form-control" type="text" value="<%= @basket.amount %>" placeholder="<%= @basket.amount %>" disabled="disabled">
+        <label class="" for="">Summe:</label>
+        <%= @basket.amount %> &euro;
+        <input id="amount" class="form-control" type="text" value="<%= @basket.amount %> &euro;" placeholder="<%= @basket.amount %>" disabled="disabled">
       </div>
     </div>
 
     <div class="col-xs-6">
       <div class="form-group">
-        <label class="" for="">Payment:</label>
+        <label class="" for="">Zahlungsmethode:</label>
         <%= show_payment_name(@basket.payment_id) %>
         <input id="amount" class="form-control" type="text" value="<%= show_payment_name(@basket.payment_id) %>" placeholder="<%= show_payment_name(@basket.payment_id) %>" disabled="disabled">
       </div>

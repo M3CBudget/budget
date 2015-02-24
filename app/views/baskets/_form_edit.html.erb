@@ -48,11 +48,11 @@
             <thead>
             <tr>
               <th>Name</th>
-              <th>Price</th>
-              <th>Quantity</th>
-              <th>Notice</th>
-              <th>Category</th>
-              <th>Delete</th>
+              <th>Preis</th>
+              <th>Menge</th>
+              <th>Notiz</th>
+              <th>Kategorie</th>
+              <th>Löschen</th>
             </tr>
             </thead>
             <tbody>
@@ -60,8 +60,8 @@
                 <tr>
                   <%= items_form.hidden_field :id %>
                   <td><%= items_form.text_field :name %></td>
-                  <td><%= items_form.text_field :price %></td>
-                  <td><%= items_form.text_field :quantity %></td>
+                  <td><%= items_form.number_field :price, :step => 'any' %></td>
+                  <td><%= items_form.number_field :quantity, :min => 1 %></td>
                   <td><%= items_form.text_field :notice %></td>
                   <td><%= items_form.collection_select :category_id, Category.where(:income => false, :user_id => current_user.id), :id, :name, multiple: false %></td>
                   <td><%= items_form.check_box :_destroy %></td>
@@ -92,8 +92,8 @@
 
       <div class="col-xs-6">
         <div class="form-group">
-            <label class="" for="">Amount:</label>
-            <%= f.text_field :amount ,:class =>"form-control" %>
+            <label class="" for="">Summe:</label>
+            <%= f.number_field :amount ,:class =>"form-control", :step => 'any' %>
         </div>
       </div>
 
