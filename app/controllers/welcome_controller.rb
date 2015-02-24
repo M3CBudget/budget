@@ -12,6 +12,15 @@ class WelcomeController < ApplicationController
       f.plot_options({:column=>{:stacking=>"normal"}})
     end
 
-    respond_with(@lastBaskets, @lastCategories, @chart)
+
+
+    @chartGraph = LazyHighCharts::HighChart.new('graph') do |f|
+      f.options[:xAxis][:categories] = ['Apples', 'Oranges', 'Pears', 'Bananas', 'Plums']
+      f.series(:type=> 'column',:name=> 'Einnahmen',:data=> [3, 2, 1, 3, 4])
+      f.series(:type=> 'column',:name=> 'Ausgaben',:data=> [2, 3, 5, 7, 6])
+      f.series(:type=> 'spline',:name=> 'Average', :data=> [3, 2.67, 3, 6.33, 3.33])
+    end
+
+    respond_with(@lastBaskets, @lastCategories, @chart, @chartGraph)
   end
 end
