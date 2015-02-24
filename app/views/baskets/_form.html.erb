@@ -6,8 +6,6 @@
     </div>
 
     <div class="panel-body">
-      <label>User id:</label>
-      <%=   current_user.id   %>
       <input hidden ng-model="income" value="false"></input>
       <input hidden ng-model="launch" value="<%=@getPurchaseDate%>"></input>
       <input hidden ng-model="user_id" value="<%= current_user.id %>"></input>
@@ -40,7 +38,7 @@
             <select class="selectpicker" data-live-search="true" ng-model="category">
               <!-- http://silviomoreto.github.io/bootstrap-select/ -->
               <% Category.where(:income => false, :user_id => current_user.id).each do |category| %>
-                  <option value="<%= category.id %>" > <%= category.name %> </option>
+                  <option value="<%= category.id %>" ><%= category.name %></option>
               <% end %>
             </select>
 
@@ -85,6 +83,7 @@
                   <li><%= message %></li>
               <% end %>
             </ul>
+            {{sum}}
           </div>
       <% end %>
 
@@ -139,23 +138,23 @@
                                     <input id="basket_items_attributes_{{item.id}}_price" name="basket[items_attributes][{{item.id}}][price]" value="{{ item.price }}" type="text"></input>
                                 </td>
                                 <td>
+                                    <button class="btn btn-default" ng-click="rem($index)" data-toggle="tooltip" data-placement="bottom" title="Artikel löschen"><i class="fa fa-times"> </i></button>
+                                </td>
+                                  <td>
                                     <input id="basket_items_attributes_{{item.id}}_notice" name="basket[items_attributes][{{item.id}}][notice]" value="{{ item.notice }}" type="hidden"></input>
-                                </td>
-                                <td>
+                                  </td>
+                                  <td>
                                     <input id="basket_items_attributes_{{item.id}}_category_id" name="basket[items_attributes][{{item.id}}][category_id]" value="{{ item.category }}" type="hidden"></input>
-                                </td>
-                                <td>
+                                  </td>
+                                  <td>
                                     <input id="basket_items_attributes_{{item.id}}_income" name="basket[items_attributes][{{item.id}}][income]" value="false" type="hidden"></input>
-                                </td>
-                                <td>
+                                  </td>
+                                  <td>
                                     <input id="basket_items_attributes_{{item.id}}_launch" name="basket[items_attributes][{{item.id}}][launch]" type="hidden" value=""></input>
-                                </td>
-                                <td>
+                                  </td>
+                                  <td>
                                     <input id="basket_items_attributes_{{item.id}}_user_id" name="basket[items_attributes][{{item.id}}][user_id]" value="<%=current_user.id%>" type="hidden"></input>
-                                </td>
-                                <td>
-                                    <button class="btn btn-default" ng-click="rem($index)"><i class="fa fa-times"> </i></button>
-                                </td>
+                                  </td>
                             </tr>
                         </tbody>
                     </table>
@@ -227,8 +226,13 @@
                     {{item.price}} &euro;
                   </td>
                   <td>
-                    <button type="button" class="btn btn-default" ng-click="rem($index)"><i class="fa fa-times" ></i></button>
+                    <button type="button" class="btn btn-default" ng-click="rem($index)" data-toggle="tooltip" data-placement="bottom" title="Artikel löschen"><i class="fa fa-times" ></i></button>
                   </td>
+                </tr>
+                <tr>
+                  <td colspan="2"><strong>Summe</strong></td>
+                  <td><strong>{{sum}} &euro;</strong></td>
+                  <td></td>
                 </tr>
                 </tbody>
               </table>

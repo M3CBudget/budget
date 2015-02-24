@@ -6,7 +6,7 @@
 
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">Übersicht</h3>
+    <h3 class="panel-title"> <%= @basket.purchase_date %> </h3>
     <p id="notice"><%= notice %></p>
 
   </div>
@@ -20,11 +20,10 @@
           <thead>
           <tr>
             <th>Name</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Notice</th>
-            <th>Category</th>
-            <th>Launch Date</th>
+            <th>Preis</th>
+            <th>Anzahl</th>
+            <th>Notiz</th>
+            <th>Kategorie</th>
           </tr>
           </thead>
           <tbody>
@@ -35,7 +34,6 @@
                 <td><%= item.quantity %></td>
                 <td><%= item.notice %></td>
                 <td><%= show_category_name(item.category_id) %></td>
-                <td><%= item.launch %></td>
               </tr>
           <% end %>
           </tbody>

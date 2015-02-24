@@ -162,6 +162,8 @@ angular.module('app').controller('ItemController', function ($scope) {
 
     $id = 0;
 
+    $scope.sum = 0;
+
     $scope.items = [];
 
     $scope.add = function() {
@@ -188,10 +190,6 @@ angular.module('app').controller('ItemController', function ($scope) {
             $scope.hasNotice = false;
         }
 
-        $scope.name = $scope.name.substring(1, $scope.name.length-1);
-        $scope.notice = $scope.notice.substring(1, $scope.notice.length-1);
-        $scope.category = $scope.category.substring(1, $scope.category.length-1);
-
         // Push Input Data to Model
         $scope.items.push(
             {
@@ -206,6 +204,9 @@ angular.module('app').controller('ItemController', function ($scope) {
                 hasNotice: $scope.hasNotice
             }
         );
+
+        $scope.sum = $scope.sum();
+        $scope.sum = Math.round($scope.sum * 100) / 100;
 
         $scope.reset();
     };
@@ -235,7 +236,16 @@ angular.module('app').controller('ItemController', function ($scope) {
         return true;
     };
 
+    $scope.sum = function(){
+        var sum = 0;
+        for (var item in $scope.items) {
+            sum += (item.quantity * item.price);
+        }
+        return sum;
+    };
+
     $scope.reset();
 
 });
 
+// $('.selectpicker').selectpicker('val', 'Mustard');
