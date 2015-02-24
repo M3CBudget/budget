@@ -1,37 +1,77 @@
 <div class="page-header">
   <h1>Händler<i class="fa fa-building-o pull-right"></i></h1>
+
+
 </div>
 
-<% @vendors.each do |vendor| %>
-    <div class="col-xs-6 col-lg-4">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <%= link_to vendor do%>
-          <h3 class="panel-title"><%= vendor.name %></h3>
-          <% end %>
-        </div>
-        <div class="panel-body">
-          <div class="col-xs-12">
-            <% if vendor.logo? %>
-            <%= image_tag vendor.logo.url(:thumb), :class => 'image-responsive'%>
-              <hr>
-          <% end %>
-          </div>
-          <div class="text-center">
-            <h4 data-toggle="tooltip" data-placement="bottom" title="Summe der bisherigen Ausgaben beim Händler">  <%= sum_amount(find_baskets_of_vendor(vendor.id)) %> <i class="fa fa-euro"></i></h4>
-          </div>
+<div role="tabpanel">
 
-        </div>
-        <div class="panel-footer">
-          <%= link_to edit_vendor_path(vendor) do %>  <button class="btn btn-default"> <i class="fa fa-pencil-square-o"></i> Ändern </button> <% end %>
-          <%= link_to vendor, method: :delete, data: { confirm: 'Are you sure?' } do %> <button class="btn btn-default"> <i class="fa fa-trash-o"></i> Löschen </button>  <% end %>
-        </div>
-      </div>
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active">
+        <a href="#grid" aria-controls="grid" role="tab" data-toggle="tab">
+            <i class="fa fa-th"></i> Grid
+        </a>
+    </li>
+    <li role="presentation">
+        <a href="#list" aria-controls="list" role="tab" data-toggle="tab">
+            <i class="fa fa-bars"></i> List
+        </a>
+    </li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+
+    <div role="tabpanel" class="tab-pane fade active" id="grid">
+      <% @vendors.each do |vendor| %>
+          <div class="col-xs-6 col-lg-4">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <%= link_to vendor do%>
+                    <h3 class="panel-title"><%= vendor.name %></h3>
+                <% end %>
+              </div>
+              <div class="panel-body">
+                <div class="col-xs-12">
+                  <% if vendor.logo? %>
+                      <%= image_tag vendor.logo.url(:thumb), :class => 'image-responsive'%>
+                      <hr>
+                  <% end %>
+                </div>
+                <div class="text-center">
+                  <h4 data-toggle="tooltip" data-placement="bottom" title="Summe der bisherigen Ausgaben beim Händler">  <%= sum_amount(find_baskets_of_vendor(vendor.id)) %> <i class="fa fa-euro"></i></h4>
+                </div>
+
+              </div>
+              <div class="panel-footer">
+                <%= link_to edit_vendor_path(vendor) do %>  <button class="btn btn-default"> <i class="fa fa-pencil-square-o"></i> Ändern </button> <% end %>
+                <%= link_to vendor, method: :delete, data: { confirm: 'Are you sure?' } do %> <button class="btn btn-default"> <i class="fa fa-trash-o"></i> Löschen </button>  <% end %>
+              </div>
+            </div>
+          </div>
+      <% end %>
     </div>
-<% end %>
+
+
+    <div role="tabpanel" class="tab-pane fade" id="list">
+          <div class="list-group">
+            <% Vendor.where(:user_id => current_user.id).each do |vendor| %>
+                <%= link_to vendor_path(vendor) do %>
+                    <li class="list-group-item">
+                      <%= vendor.name %>
+                      <span class="badge pull-right"> <%= sum_amount(find_baskets_of_vendor(vendor.id)) %> &euro;</span>
+                    </li>
+                <% end %>
+            <% end %>
+          </div>
+    </div>
+
+
+  </div>
+
+</div>
 
 
 
-<br>
-
-<%= link_to '+', new_vendor_path, :class => 'btn btn-default', :role => 'button' %>
+<%= link_to '+ Anlegen', new_vendor_path, :class => 'btn btn-default', :role => 'button' %>
