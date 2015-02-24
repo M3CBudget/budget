@@ -46,6 +46,18 @@ rake db:create
 rake db:migrate
 rake db:seeds
 
+
+Für Bildresizing - ImageMagick installieren
+
+Für Mac: Mit Homebrew installieren. Im Terminal:
+brew install imagemagick
+
+
+Für Linux:
+sudo apt-get install imagemagick
+
+
+
 == Anleitung Git
 git add . (Alles) git add folder/files
 
