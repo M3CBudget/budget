@@ -70,7 +70,9 @@ class ApplicationController < ActionController::Base
     sum = 0.0
     if !items.nil?
       items.each do |b|
+        if !b.quantity.nil?
         sum = sum + (b.price * b.quantity)
+          end
       end
     end
     return sum
