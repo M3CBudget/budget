@@ -6,7 +6,7 @@
 
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">Übersicht</h3>
+    <h3 class="panel-title"> <%= @basket.purchase_date %> </h3>
     <p id="notice"><%= notice %></p>
 
   </div>
@@ -20,11 +20,10 @@
           <thead>
           <tr>
             <th>Name</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Notice</th>
-            <th>Category</th>
-            <th>Launch Date</th>
+            <th>Preis</th>
+            <th>Anzahl</th>
+            <th>Notiz</th>
+            <th>Kategorie</th>
           </tr>
           </thead>
           <tbody>
@@ -35,7 +34,6 @@
                 <td><%= item.quantity %></td>
                 <td><%= item.notice %></td>
                 <td><%= show_category_name(item.category_id) %></td>
-                <td><%= item.launch %></td>
               </tr>
           <% end %>
           </tbody>
@@ -43,7 +41,7 @@
       </div>
     </div>
 
-    <div class="col-xs-6">
+    <div class="col-xs-12 col-sm-12 col-md-6">
       <div class="form-group">
         <label class="" for="">Dokument:</label>
         <div class="foto_enlarge">
@@ -93,24 +91,6 @@
 
 </div>
 
-<script type="text/javascript">
-
-    $('.foto_enlarge img').on('click', function(){
-        img_src = $(this).attr('src');
-        if(img_src.indexOf('normal_') > 0)
-        {
-            $(this).attr('src', img_src.replace("normal_", ""));
-            $(this).attr('class','img-responsive');
-        }
-        else
-        {
-            $(this).attr('src', img_src.replace("org_", "normal_org_"));
-            $(this).attr('class','thumbnail');
-        }
-    });
-
-
-</script>
 
 
 

@@ -27,7 +27,30 @@ $(document).ready(function () {
     $('[data-toggle="offcanvas"]').click(function () {
         $('.row-offcanvas').toggleClass('active')
     });
+
+    $('.foto_enlarge img').on('click', function(){
+        img_src = $(this).attr('src');
+        if(img_src.indexOf('normal_') > 0)
+        {
+            $(this).attr('src', img_src.replace("normal_", ""));
+            $(this).attr('class','img-responsive');
+        }
+        else
+        {
+            $(this).attr('src', img_src.replace("org_", "normal_org_"));
+            $(this).attr('class','thumbnail');
+        }
+    });
+
+    $(".popover-top").popover({
+        placement : 'top'
+    });
+
+    $(".popover-bottom").popover({
+        placement : 'bottom'
+    });
 });
+
 /*
 function addItemRow() {
     var mSec = 0;
@@ -142,13 +165,20 @@ angular.module('app', []).config(function() { });
 
 angular.module('app').controller('ItemController', function ($scope) {
 
+   // Clear Category initial
+    $scope.category = '';
+
     $id = 0;
+
+    $scope.sum = 0;
 
     $scope.items = [];
 
     $scope.add = function() {
         // Count Items
         $id++;
+
+
 
         // Validation
         if(!$scope.valid()) {
@@ -168,10 +198,6 @@ angular.module('app').controller('ItemController', function ($scope) {
             $scope.hasNotice = false;
         }
 
-        $scope.name = $scope.name.substring(1, $scope.name.length-1);
-        $scope.notice = $scope.notice.substring(1, $scope.notice.length-1);
-        $scope.category = $scope.category.substring(1, $scope.category.length-1);
-
         // Push Input Data to Model
         $scope.items.push(
             {
@@ -187,6 +213,9 @@ angular.module('app').controller('ItemController', function ($scope) {
             }
         );
 
+        $scope.sum = $scope.sum();
+        $scope.sum = Math.round($scope.sum * 100) / 100;
+
         $scope.reset();
     };
 
@@ -197,12 +226,11 @@ angular.module('app').controller('ItemController', function ($scope) {
 
     // Clear
     $scope.reset = function () {
-        $scope.id = '',
-        $scope.name = '',
-        $scope.price = '',
-        $scope.quantity = 1,
-        $scope.category = '',
-        $scope.notice= ''
+        $scope.id = '';
+        $scope.name = '';
+        $scope.price = '';
+        $scope.quantity = 1;
+        $scope.notice= '';
     };
 
     $scope.error = function() {
@@ -216,7 +244,16 @@ angular.module('app').controller('ItemController', function ($scope) {
         return true;
     };
 
+    $scope.sum = function(){
+        var sum = 0;
+        for (var item in $scope.items) {
+            sum += (item.quantity * item.price);
+        }
+        return sum;
+    };
+
     $scope.reset();
 
 });
 
+// $('.selectpicker').selectpicker('val', 'Mustard');

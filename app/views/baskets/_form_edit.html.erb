@@ -103,7 +103,7 @@
         <div class="input-group">
           <select class="selectpicker" data-live-search="true">
             <% Payment.where(:user_id => current_user.id, :active => true).each do |payment| %>
-                <option> <%= payment.name %> </option>
+                <option <%= "selected" if payment.id == @basket.payment_id %> value="<%= payment.id %>"><%= payment.name %></option>
             <% end %>
           </select>
         </div>

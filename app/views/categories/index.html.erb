@@ -6,9 +6,13 @@
     <div class="col-xs-6 col-lg-4">
 
       <% if (category.active) %>
-          <div class="panel panel-success">
+          <% if (category.income) %>
+            <div class="panel panel-success">
+          <% else %>
+            <div class="panel panel-danger">
+          <% end %>
       <% else %>
-          <div class="panel panel-warning">
+          <div class="panel panel-primary">
       <% end %>
 
 
@@ -42,7 +46,8 @@
           <h4 data-toggle="tooltip" data-placement="bottom" title="Summe der bisherigen Ausgaben beim Händler">  <%=sum_price(find_items_of_category(category.id)) %> <i class="fa fa-euro"></i></h4>
         </div>
         <hr>
-        <p><i class="fa fa-file-text"></i> <small><%= category.notice %></small></p>
+        <button type="button" class="btn btn-primary btn-xs btn-block popover-top" data-toggle="popover" title="Notiz" data-content="<%= category.notice %>"><i class="fa fa-file-text"></i>  Notiz </button>
+
       </div>
 
       <div class="panel-footer">
