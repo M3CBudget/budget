@@ -1,5 +1,9 @@
 <div class="page-header">
-  <h1>  Ausgaben  <i class="fa fa-building-o pull-right"></i> </h1>
+  <h1>
+    <%= link_to '+', new_basket_path, :class => 'btn btn-success', :role => 'button' %>
+    Ausgaben
+    <i class="fa fa-building-o pull-right"></i>
+  </h1>
 </div>
 
 <% @baskets.each do |basket| %>
@@ -16,7 +20,9 @@
           <hr>
           <p><i class="fa fa-building-o"></i> <small><%= show_vendor_name(basket.vendor_id) %></small></p>
           <p><i class="fa fa-credit-card"></i> <small><%= show_payment_name(basket.payment_id) %></small></p>
-          <button type="button" class="btn btn-primary btn-xs btn-block popover-top" data-toggle="popover" title="Notiz" data-content="<%= basket.notice %>"><i class="fa fa-file-text"></i>  Notiz </button>
+
+          <button type="button" class="btn btn-default btn-xs btn-block popover-top" data-toggle="popover" title="Notiz" data-content="<%= basket.notice %>"><i class="fa fa-file-text"></i>  Notiz </button>
+
         </div>
         <div class="panel-footer">
           <%= link_to edit_basket_path(basket) do %>  <button class="btn btn-default"> <i class="fa fa-pencil-square-o"></i> Ändern </button> <% end %>
