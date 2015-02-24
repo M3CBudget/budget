@@ -28,11 +28,12 @@
                       <td><%= basket.amount %> &euro;</td>
                     </tr>
                 <% end %>
-            <% end %>
+
             <tr>
               <td colspan="2"><strong>Summe:</strong></td>
               <td> <%= sum_amount(@lastBaskets) %> &euro; </td>
             </tr>
+            <% end %>
             </tbody>
           </table>
         </div>
@@ -49,7 +50,16 @@
       <div class="list-group">
         <% if !@lastBaskets.nil? %>
           <% @lastIncomes.each do |income| %>
-                <%= link_to income.name, item_path(income) , :class => 'list-group-item', :role => 'button' %>
+
+                <%= link_to item_path(income) do %>
+                    <li class="list-group-item">
+                    <%= income.name %>
+                    <span class="badge pull-right">
+                      <%= income.price %> &euro;
+                    </span>
+                    </li>
+                <% end %>
+
          <% end %>
         <%end%>
         <%= link_to '+', income_new_path , :class => 'list-group-item', :role => 'button' %>

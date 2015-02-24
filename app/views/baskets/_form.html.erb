@@ -1,108 +1,191 @@
 <!-- Artikel hinzufügen angular -->
-
-<div class="panel panel-default" >
-  <div class="panel-heading">
-    <h3 class="panel-title">Anlegen</h3>
-  </div>
-
-  <div class="panel-body">
-
-    <input hidden ng-model="income" value="false"></input>
-    <input hidden ng-model="launch" value="<%=@getPurchaseDate%>"></input>
-    <input hidden ng-model="user_id" value="<%= current_user.id %>"></input>
-
-    <div class="col-xs-12">
-      <div class="form-group">
-        <label class="" for="">Name</label>
-        <div class="input-group">
-          <div class="input-group-addon"><i class="fa fa-file-text"></i></div>
-          <input ng-model="name" placeholder="Name" class="form-control"></input>
-        </div>
-      </div>
+<div class="col-xs-12 col-md-8">
+  <div class="panel panel-default" >
+    <div class="panel-heading">
+      <h3 class="panel-title">Anlegen</h3>
     </div>
 
-    <div class="col-xs-6">
-      <div class="form-group">
-        <label class="" for="">Preis und Menge</label>
-        <div class="input-group">
-          <div class="input-group-addon"><i class="fa fa-euro"></i></div>
-          <input ng-model="price" placeholder="Preis" class="form-control"></input>
-          <input ng-model="quantity" placeholder="Menge" class="form-control"></input>
+    <div class="panel-body">
+
+      <input hidden ng-model="income" value="false"></input>
+      <input hidden ng-model="launch" value="<%=@getPurchaseDate%>"></input>
+      <input hidden ng-model="user_id" value="<%= current_user.id %>"></input>
+
+      <div class="col-xs-12">
+        <div class="form-group">
+          <label class="" for="">Name</label>
+          <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-file-text"></i></div>
+            <input ng-model="name" placeholder="Name" class="form-control"></input>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col-xs-6">
-      <div class="form-group">
-        <label class="" for="">Kategorie</label>
-        <div class="input-group">
-          <div class="input-group-addon"><i class="fa fa-files-o"></i></div>
-          <select class="selectpicker" data-live-search="true" ng-model="category">
-            <!-- http://silviomoreto.github.io/bootstrap-select/ -->
-            <% Category.where(:income => false, :user_id => current_user.id).each do |category| %>
-                <option> <%= category.name %> </option>
-            <% end %>
-          </select>
 
+      <div class="col-xs-6">
+        <div class="form-group">
+          <label class="" for="">Preis und Menge</label>
+          <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-euro"></i></div>
+            <input ng-model="price" placeholder="Preis" class="form-control"></input>
+            <input ng-model="quantity" placeholder="Menge" class="form-control"></input>
+          </div>
         </div>
       </div>
-    </div>
+      <div class="col-xs-6">
+        <div class="form-group">
+          <label class="" for="">Kategorie</label>
+          <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-files-o"></i></div>
+            <select class="selectpicker" data-live-search="true" ng-model="category">
+              <!-- http://silviomoreto.github.io/bootstrap-select/ -->
+              <% Category.where(:income => false, :user_id => current_user.id).each do |category| %>
+                  <option> <%= category.name %> </option>
+              <% end %>
+            </select>
 
-    <div class="col-xs-12">
-      <div class="form-group">
-        <label class="" for="">Notiz</label>
-        <div class="input-group form-inline">
-          <div class="input-group-addon"><i class="fa fa-file-text"></i></div>
-          <textarea ng-model="notice" class="form-control" placeholder="Notiz" ng-disabled="!hasNotice"></textarea>
-          <div class="input-group-addon">
-            <div class="checkbox">
-              <label>
-                <input ng-model="hasNotice" type="checkbox" aria-label="Notiz">
-              </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-12">
+        <div class="form-group">
+          <label class="" for="">Notiz</label>
+          <div class="input-group form-inline">
+            <div class="input-group-addon"><i class="fa fa-file-text"></i></div>
+            <textarea ng-model="notice" class="form-control" placeholder="Notiz" ng-disabled="!hasNotice"></textarea>
+            <div class="input-group-addon">
+              <div class="checkbox">
+                <label>
+                  <input ng-model="hasNotice" type="checkbox" aria-label="Notiz">
+                </label>
+              </div>
             </div>
           </div>
         </div>
       </div>
+
+    </div>
+    <div class="panel-footer">
+      <button ng-click="add($index)" class="btn btn-default">Hinzufügen</button>
+    </div>
+  </div>
+</div>
+<div class="col-md-4">
+  <%= form_for(@basket) do |f| %>
+
+      <% if @basket.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@basket.errors.count, "error") %> prohibited this basket from being saved:</h2>
+
+            <ul>
+              <% @basket.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+      <% end %>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+
+      </div>
+      <div class="panel-body">
+        <div class="form-group">
+          <label class="" for="">Händler: </label>
+          <select class="selectpicker" data-live-search="true">
+            <% Vendor.where(:user_id => current_user.id).each do |vendor| %>
+                <option> <%= vendor.name %> </option>
+            <% end %>
+          </select>
+
+        </div>
+        <div class="form-group">
+          <label class="" for="">Einkaufsdatum: </label>
+          <%= f.text_field :purchase_date, :value => Time.now.to_s(:db), :data => {:provide => "datepicker"} %>
+        </div>
+      </div>
+      <div class="panel-footer">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">
+          <i class="fa fa-save"></i> Anlegen
+        </button>
+
+      </div>
+
     </div>
 
-  </div>
-  <div class="panel-footer">
-    <button ng-click="add($index)" class="btn btn-default">Hinzufügen</button>
-  </div>
+
+
+
+
 </div>
 
 
-<h4>Artikel</h4>
-<ul ng-repeat="item in items">
-  <li > {{ item }} <a href="" ng-click="rem($index)">x</a></li>
-</ul>
 
-<%= form_for(@basket) do |f| %>
 
-    <% if @basket.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@basket.errors.count, "error") %> prohibited this basket from being saved:</h2>
 
-          <ul>
-            <% @basket.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-            <% end %>
-          </ul>
+
+      <div class="col-xs-12">
+
+        <h4>Artikel</h4>
+        <ul ng-repeat="item in items">
+          <li > {{ item }} <a href="" ng-click="rem($index)">x</a></li>
+        </ul>
+
+
+
+
+        <div class="table table-hover">
+          <table class="table">
+            <thead>
+            <tr>
+              <th>Name</th>
+              <th>Qunatity</th>
+              <th>Price</th>
+              <th>Notice</th>
+              <th>Category</th>
+              <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="item in items">
+              <td>
+                <input id="basket_items_attributes_{{id}}_name" name="basket[items_attributes][{{id}}][name]" value="{{ name }}" type="text">
+                </input>
+              </td>
+              <td><input id="basket_items_attributes_{{id}}_quantity" name="basket[items_attributes][{{id}}][quantity]" value="{{ quantity }}" type="text">
+                </input></td>
+              <td>
+                <input id="basket_items_attributes_{{id}}_price" name="basket[items_attributes][{{id}}][price]" value="{{ price }}" type="text">
+                </input>
+              </td>
+              <td>
+                <input id="basket_items_attributes_{{id}}_notice" name="basket[items_attributes][{{id}}][notice]" value="{{ notice }}" type="text">
+                </input>
+              </td>
+              <td>
+                <input id="basket_items_attributes_{{id}}_category_id" name="basket[items_attributes][{{id}}][category_id]" value="{{ category }}"></input>
+                </input>
+              </td>
+              <td> <input id="basket_items_attributes_{{id}}_income" name="basket[items_attributes][{{id}}][income]" value="false" type="hidden">
+                </input></td>
+              <td><input id="basket_items_attributes_{{id}}_launch" name="basket[items_attributes][{{id}}][launch]" type="hidden" value="<%= @getPurchaseDate%>">
+                </input></td>
+              <td>
+                <input id="basket_items_attributes_{{id}}_user_id" name="basket[items_attributes][{{id}}][user_id]" value="<%=current_user.id%>" type="hidden">
+                </input>
+              </td>
+              <td>
+                <button class="btn btn-default" ng-click="rem($index)"><i class="fa fa-times"> </i></button>
+              </td>
+
+            </tr>
+            </tbody>
+          </table>
         </div>
-    <% end %>
 
 
-
-
-
-
-    <div class="form-group">
-      <label class="" for="">Händler wählen</label>
-      <%= f.collection_select :vendor_id, Vendor.all, :id, :name, multiple: false, :class =>"form-control" %>
-    </div>
-    <div class="form-group">
-      <label class="" for="">Einkaufsdatum</label>
-      <%= f.text_field :purchase_date, :value => Time.now.to_s(:db), :data => {:provide => "datepicker"} %>
-    </div>
+      </div>
 
 
 
@@ -111,63 +194,6 @@
 
 
 
-
-
-
-    <div class="table table-hover">
-      <table class="table">
-        <thead>
-        <tr>
-          <th>Name</th>
-          <th>Qunatity</th>
-          <th>Price</th>
-          <th>Notice</th>
-          <th>Category</th>
-          <th></th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr ng-repeat="item in items">
-          <td>
-            <input id="basket_items_attributes_{{id}}_name" name="basket[items_attributes][{{id}}][name]" value="{{ name }}" type="text">
-            </input>
-          </td>
-          <td><input id="basket_items_attributes_{{id}}_quantity" name="basket[items_attributes][{{id}}][quantity]" value="{{ quantity }}" type="text">
-            </input></td>
-          <td>
-            <input id="basket_items_attributes_{{id}}_price" name="basket[items_attributes][{{id}}][price]" value="{{ price }}" type="text">
-            </input>
-          </td>
-          <td>
-            <input id="basket_items_attributes_{{id}}_notice" name="basket[items_attributes][{{id}}][notice]" value="{{ notice }}" type="text">
-            </input>
-          </td>
-          <td>
-            <input id="basket_items_attributes_{{id}}_category_id" name="basket[items_attributes][{{id}}][category_id]" value="{{ category }}"></input>
-            </input>
-          </td>
-          <td> <input id="basket_items_attributes_{{id}}_income" name="basket[items_attributes][{{id}}][income]" value="false" type="hidden">
-            </input></td>
-          <td><input id="basket_items_attributes_{{id}}_launch" name="basket[items_attributes][{{id}}][launch]" type="hidden" value="<%= @getPurchaseDate%>">
-            </input></td>
-          <td>
-            <input id="basket_items_attributes_{{id}}_user_id" name="basket[items_attributes][{{id}}][user_id]" value="<%=current_user.id%>" type="hidden">
-            </input>
-          </td>
-          <td>
-            <button class="btn btn-default" ng-click="rem($index)"><i class="fa fa-times"> </i></button>
-          </td>
-
-        </tr>
-        </tbody>
-      </table>
-    </div>
-
-
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">
-      <i class="fa fa-save"></i> Anlegen
-    </button>
 
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
