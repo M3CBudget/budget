@@ -24,6 +24,9 @@ Nächstes Meeting Sonntag 22. Feburar
 - Standard Datensätze um nullpointer zu verhinden (Kategorien / Zahlungsmethoden / Vendors) -> null prüfung dann standard form rendern
 - Category Index: Falsche ANzeige. 7tes Feld ist leer
 - highcharts
+- schöne seeds
+- kategorie index in zwei Bereiche teilen, Einnahmen und Ausgaben Kategorie
+- Fehlermeldungen im devise style
 
 == Done
 - Destroy Function von Items im Basket reparieren
