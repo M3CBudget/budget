@@ -122,10 +122,8 @@
                         <thead>
                             <tr>
                                 <th>Name</th>
-                                <th>Qunatity</th>
-                                <th>Price</th>
-                                <th>Notice</th>
-                                <th>Category</th>
+                                <th>Anzahl</th>
+                                <th>Preis</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -141,10 +139,10 @@
                                     <input id="basket_items_attributes_{{item.id}}_price" name="basket[items_attributes][{{item.id}}][price]" value="{{ item.price }}" type="text"></input>
                                 </td>
                                 <td>
-                                    <input id="basket_items_attributes_{{item.id}}_notice" name="basket[items_attributes][{{item.id}}][notice]" value="{{ item.notice }}" type="text"></input>
+                                    <input id="basket_items_attributes_{{item.id}}_notice" name="basket[items_attributes][{{item.id}}][notice]" value="{{ item.notice }}" type="hidden"></input>
                                 </td>
                                 <td>
-                                    <input id="basket_items_attributes_{{item.id}}_category_id" name="basket[items_attributes][{{item.id}}][category_id]" value="{{ item.category }}"></input>
+                                    <input id="basket_items_attributes_{{item.id}}_category_id" name="basket[items_attributes][{{item.id}}][category_id]" value="{{ item.category }}" type="hidden"></input>
                                 </td>
                                 <td>
                                     <input id="basket_items_attributes_{{item.id}}_income" name="basket[items_attributes][{{item.id}}][income]" value="false" type="hidden"></input>
@@ -214,8 +212,6 @@
                   <th>Name</th>
                   <th>Anzahl</th>
                   <th>Preis</th>
-                  <th>Kategorie</th>
-                  <th>Notiz</th>
                   <th></th>
                 </tr>
                 </thead>
@@ -229,12 +225,6 @@
                   </td>
                   <td>
                     {{item.price}} &euro;
-                  </td>
-                  <td>
-                    {{item.category}}
-                  </td>
-                  <td>
-                    {{item.notice}}
                   </td>
                   <td>
                     <button type="button" class="btn btn-default" ng-click="rem($index)"><i class="fa fa-times" ></i></button>

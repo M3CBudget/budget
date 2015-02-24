@@ -28,6 +28,7 @@ $(document).ready(function () {
         $('.row-offcanvas').toggleClass('active')
     });
 });
+
 /*
 function addItemRow() {
     var mSec = 0;
@@ -142,6 +143,9 @@ angular.module('app', []).config(function() { });
 
 angular.module('app').controller('ItemController', function ($scope) {
 
+   // Clear Category initial
+    $scope.category = '';
+
     $id = 0;
 
     $scope.items = [];
@@ -149,6 +153,8 @@ angular.module('app').controller('ItemController', function ($scope) {
     $scope.add = function() {
         // Count Items
         $id++;
+
+
 
         // Validation
         if(!$scope.valid()) {
@@ -197,12 +203,11 @@ angular.module('app').controller('ItemController', function ($scope) {
 
     // Clear
     $scope.reset = function () {
-        $scope.id = '',
-        $scope.name = '',
-        $scope.price = '',
-        $scope.quantity = 1,
-        $scope.category = '',
-        $scope.notice= ''
+        $scope.id = '';
+        $scope.name = '';
+        $scope.price = '';
+        $scope.quantity = 1;
+        $scope.notice= '';
     };
 
     $scope.error = function() {
