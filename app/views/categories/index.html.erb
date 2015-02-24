@@ -42,7 +42,14 @@
           <h4 data-toggle="tooltip" data-placement="bottom" title="Summe der bisherigen Ausgaben beim Händler">  <%=sum_price(find_items_of_category(category.id)) %> <i class="fa fa-euro"></i></h4>
         </div>
         <hr>
-        <p><i class="fa fa-file-text"></i> <small><%= category.notice %></small></p>
+
+          <i class="fa fa-file-text"></i>
+        <br>
+          <span class="label label-default">
+
+            <%= category.notice %>
+              </span>
+
       </div>
 
       <div class="panel-footer">

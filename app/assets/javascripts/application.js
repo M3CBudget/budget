@@ -27,6 +27,20 @@ $(document).ready(function () {
     $('[data-toggle="offcanvas"]').click(function () {
         $('.row-offcanvas').toggleClass('active')
     });
+
+    $('.foto_enlarge img').on('click', function(){
+        img_src = $(this).attr('src');
+        if(img_src.indexOf('normal_') > 0)
+        {
+            $(this).attr('src', img_src.replace("normal_", ""));
+            $(this).attr('class','img-responsive');
+        }
+        else
+        {
+            $(this).attr('src', img_src.replace("org_", "normal_org_"));
+            $(this).attr('class','thumbnail');
+        }
+    });
 });
 /*
 function addItemRow() {
