@@ -13,7 +13,7 @@
 
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">Übersicht</h3>
+    <h3 class="panel-title">Einkauf abändern</h3>
     <p id="notice"><%= notice %></p>
   </div>
 
@@ -79,9 +79,10 @@
       <div class="col-xs-6">
           <div class="form-group">
                 <label class="" for="">Dokument:</label>
-                <br>
-                <%= image_tag @basket.document.url(:normal), :class => "thumbnail" if @basket.document? %>
-                <div class="field">
+                <div class="foto_enlarge">
+                  <%= image_tag @basket.document.url(:normal), :class => "thumbnail" if @basket.document? %>
+                </div>
+                  <div class="field">
                   <%= f.file_field :document %>
                 </div>
           </div>
