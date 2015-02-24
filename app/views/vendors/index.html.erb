@@ -1,8 +1,7 @@
 <div class="page-header">
 
   <h1>
-    <i class="fa fa-plus"></i>
-
+    <%= link_to '+', new_vendor_path, :class => 'btn btn-success ', :role => 'button' %>
     Händler
     <i class="fa fa-building-o pull-right"></i>
   </h1>
@@ -39,20 +38,21 @@
                 <% end %>
               </div>
               <div class="panel-body">
-                <div class="col-xs-12">
-                  <% if vendor.logo? %>
-                      <%= image_tag vendor.logo.url(:thumb), :class => 'image-responsive'%>
-                      <hr>
-                  <% end %>
-                </div>
                 <div class="text-center">
                   <h4 data-toggle="tooltip" data-placement="bottom" title="Summe der bisherigen Ausgaben beim Händler">  <%= sum_amount(find_baskets_of_vendor(vendor.id)) %> <i class="fa fa-euro"></i></h4>
                 </div>
+                <div class="text-center">
+                  <% if vendor.logo? %>
+                      <hr>
+                      <%= image_tag vendor.logo.url(:thumb), :class => 'img-thumbnail'%>
+                  <% end %>
+                </div>
+
 
               </div>
               <div class="panel-footer">
                 <%= link_to edit_vendor_path(vendor) do %>  <button class="btn btn-default"> <i class="fa fa-pencil-square-o"></i> Ändern </button> <% end %>
-                <%= link_to vendor, method: :delete, data: { confirm: 'Are you sure?' } do %> <button class="btn btn-default"> <i class="fa fa-trash-o"></i> Löschen </button>  <% end %>
+                <%= link_to vendor, method: :delete, data: { confirm: 'Wollen Sie den Händler löschen?' } do %> <button class="btn btn-default"> <i class="fa fa-trash-o"></i> Löschen </button>  <% end %>
               </div>
             </div>
           </div>
@@ -73,6 +73,7 @@
           </div>
     </div>
 
+    <%= link_to '+', new_vendor_path, :class => 'btn btn-default', :role => 'button' %>
 
   </div>
 

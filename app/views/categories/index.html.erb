@@ -1,5 +1,9 @@
 <div class="page-header">
-  <h1>Kategorien<i class="fa fa-files-o pull-right"></i></h1>
+  <h1>
+    <%= link_to '+', new_category_path, :class => 'btn btn-success', :role => 'button' %>
+    Kategorien
+    <i class="fa fa-files-o pull-right"></i>
+  </h1>
 </div>
 
 <% @categories.each do |category| %>
@@ -52,7 +56,7 @@
 
       <div class="panel-footer">
         <%= link_to edit_category_path(category) do %>  <button class="btn btn-default"> <i class="fa fa-pencil-square-o"></i> Ändern </button> <% end %>
-        <%= link_to category, method: :delete, data: { confirm: 'Are you sure?' } do %> <button class="btn btn-default"> <i class="fa fa-trash-o"></i> Löschen </button>  <% end %>
+        <%= link_to category, method: :delete, data: { confirm: 'Wollen Sie die Kategorie löschen?' } do %> <button class="btn btn-default"> <i class="fa fa-trash-o"></i> Löschen </button>  <% end %>
       </div>
 
       </div>
