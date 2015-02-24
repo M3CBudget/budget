@@ -181,3 +181,4 @@ angular.module('app').controller('ItemController', function ($scope) {
         $scope.notice= ''
     };
 });
+
