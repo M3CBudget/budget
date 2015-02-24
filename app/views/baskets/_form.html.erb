@@ -40,7 +40,7 @@
             <select class="selectpicker" data-live-search="true" ng-model="category">
               <!-- http://silviomoreto.github.io/bootstrap-select/ -->
               <% Category.where(:income => false, :user_id => current_user.id).each do |category| %>
-                  <option selected > <%= category.name %> </option>
+                  <option value="<%= category.id %>" > <%= category.name %> </option>
               <% end %>
             </select>
 

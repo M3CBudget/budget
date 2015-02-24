@@ -12,7 +12,7 @@
               <li class="list-group-item">
                 <%= category.name %>
                 <span class="badge pull-right">
-                      <%= category.glyphicon %> &euro;
+                      <%= category.glyphicon %>
                     </span>
               </li>
               <%end%>
@@ -23,7 +23,3 @@
     </div>
 
 </div>
-
-<% #Category.where(:user_id => current_user.id).each do |category| %>
-    <%= #link_to category.name, category_path(category), :class => 'list-group-item'%>
-<%#end%>
