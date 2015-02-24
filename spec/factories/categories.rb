@@ -5,5 +5,4 @@ FactoryGirl.define do
     active true
     income false
   end
-
 end

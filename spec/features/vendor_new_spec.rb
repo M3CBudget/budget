@@ -12,13 +12,13 @@ describe 'Vendor' do
     click_button 'Sign in'
 
     visit ('/vendors/new')
-    expect(page).to have_content 'Händler anlegen'
+    expect(page).to have_content 'Händler'
   end
 
   it 'allows to mount new vendors' do
     fill_in 'vendor_name', with: vendor.name
-    expect { click_button 'Speichern' }.to change {Vendor.count}.by(1)
 
+    expect { click_button 'Neu Anlegen' }.to change {Vendor.count}.by(1)
     expect(page).to have_content vendor.name
   end
 end

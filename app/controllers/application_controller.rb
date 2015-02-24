@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   helper_method :sum_amount, :show_vendor_name, :show_category_name, :find_items_of_basket, :show_payment_name, :find_items_of_category
   helper_method :find_baskets_of_vendor
   helper_method :find_baskets_of_payment, :is_active, :sum_price, :find_baskets_of_user, :items_of_user
+  helper_method :find_basket_for_time_period
 
   protected
 
@@ -39,6 +40,10 @@ class ApplicationController < ActionController::Base
     Basket.where(:vendor_id => vendor_id, :user_id => current_user.id)
   end
 
+  def find_basket_for_time_period(start_date, end_date)
+    Basket.where(:user_id => current_user.id, :purchase_date => (start_date..end_date))
+  end
+
   def find_baskets_of_payment(payment_id)
     Basket.where(:payment_id => payment_id, :user_id => current_user.id)
   end
@@ -65,7 +70,9 @@ class ApplicationController < ActionController::Base
     sum = 0.0
     if !items.nil?
       items.each do |b|
+        if !b.quantity.nil?
         sum = sum + (b.price * b.quantity)
+          end
       end
     end
     return sum

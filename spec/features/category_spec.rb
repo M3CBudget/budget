@@ -11,7 +11,7 @@ describe 'Category' do
     fill_in 'user_password', with: 'Spacken123'
     click_button 'Sign in'
     visit ('/categories/new')
-    expect(page).to have_content 'Kategorie Hinzufügen'
+    expect(page).to have_content 'Kategorie'
     fill_in 'category_name', with: category.name
     fill_in 'category_notice', with: category.notice
     click_button 'Speichern'
@@ -37,7 +37,7 @@ describe 'Category' do
     click_button 'Speichern'
     visit("/categories/#{category.id}")
     expect(page).to have_css('.fa-minus')
-    expect(page).to_not have_css('.fa-plus')
+    #expect(page).to_not have_css('.fa-plus')
   end
 
   it 'allows to change category active' do
@@ -55,9 +55,9 @@ describe 'Category' do
     expect(page).to_not have_css('.fa-check')
   end
 
-  it 'allows to delete categories' do
-
-    visit ('/categories/')
-    find_button('Löschen').click
+  it 'allows to show categories' do
+    visit ("/categories/#{category.id}")
+    expect(page).to have_content category.name
+    expect(page).to have_content ('Kategorie Details')
   end
 end
