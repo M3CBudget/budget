@@ -40,20 +40,11 @@
           <div class="form-group">
             <label class="" for="">Kategorie:</label>
             <div class="input-group">
-              <%= f.collection_select :category_id, Category.all, :id, :name, multiple: false %>
+              <%= f.collection_select :category_id, Category.all, :id, :name, {multiple: false}, {:class => "selectpicker"} %>
             </div>
           </div>
         </div>
 
-        <div class="col-xs-12">
-          <div class="form-group">
-            <label class="" for="">Notiz:</label>
-            <div class="input-group">
-              <div class="input-group-addon"><i class="fa fa-file-text"></i></div>
-              <%= f.text_field :notice ,:class =>"form-control"%>
-            </div>
-          </div>
-        </div>
 
 
         <div class="col-xs-4">
@@ -78,6 +69,17 @@
 
         <div class="col-xs-4">
           <div class="form-group">
+            <label class="" for="">Einkommen:</label>
+            <div class="input-group">
+              <%= f.check_box :income ,:class =>"form-control" %>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="col-xs-4">
+          <div class="form-group">
             <label class="" for="">Intervall:</label>
             <div class="input-group">
               <%= f.number_field :period ,:class =>"form-control" %>
@@ -92,32 +94,34 @@
           <div class="form-group">
             <label class="" for="">Start:</label>
             <div class="input-group">
-              <%= f.date_select :launch ,:class =>"form-control" %>
-
+              <%= f.text_field :launch , :data => {:provide => "datepicker"}  %>
             </div>
           </div>
         </div>
+
+
 
         <!-- Moritz  hier evtl noch Datepicker integrieren -->
         <div class="col-xs-4">
           <div class="form-group">
-            <label class="" for="">End:</label>
+            <label class="" for="">Ende:</label>
             <div class="input-group">
-              <%= f.date_select :finish ,:class =>"form-control" %>
-
+              <%= f.text_field :finish , :data => {:provide => "datepicker"}  %>
             </div>
           </div>
         </div>
 
-        <div class="col-xs-4">
+
+
+        <div class="col-xs-12">
           <div class="form-group">
-            <label class="" for="">Ist-Einkommen:</label>
+            <label class="" for="">Notiz:</label>
             <div class="input-group">
-              <%= f.check_box :income ,:class =>"form-control" %>
+              <div class="input-group-addon"><i class="fa fa-file-text"></i></div>
+              <%= f.text_area :notice ,:class =>"form-control"%>
             </div>
           </div>
         </div>
-
 
 
       </div>
