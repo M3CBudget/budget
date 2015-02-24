@@ -5,12 +5,10 @@ describe 'Payment' do
   let!(:payment) { FactoryGirl.create(:payment) }
   before(:each) do
     visit root_path
-
     click_link 'Login'
     fill_in 'user_email', with: user.email
     fill_in 'user_password', with: 'Spacken123'
     click_button 'Sign in'
-
     visit ('/payments/new')
     expect(page).to have_content 'Zahlungsmethode anlegen'
     fill_in 'payment_name', with: payment.name
@@ -43,4 +41,9 @@ describe 'Payment' do
     expect(page).to_not have_css('.fa-check')
   end
 
+  it 'allows to show payments' do
+    visit ("/payments/#{payment.id}")
+    expect(page).to have_content payment.name
+    expect(page).to have_content ('Zahlungsmethoden Details')
+  end
 end

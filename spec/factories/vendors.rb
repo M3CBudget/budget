@@ -3,5 +3,4 @@ FactoryGirl.define do
     name "EBAY"
     logo ""
   end
-
 end

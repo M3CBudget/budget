@@ -6,5 +6,4 @@ FactoryGirl.define do
     active true
     name "Girokonto"
   end
-
 end
