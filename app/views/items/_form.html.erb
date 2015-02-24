@@ -11,54 +11,119 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :basket_id %><br>
-    <%= f.text_field :basket_id %>
-  </div>
-  <div class="field">
-    <%= f.label :category_id %><br>
-    <%= f.collection_select :category_id, Category.all, :id, :name, multiple: false %>
-  </div>
-  <div class="field">
-    <%= f.label :article_id %><br>
-    <%= f.text_field :article_id %>
-  </div>
-  <div class="field">
-    <%= f.hidden_field :user_id, :value => current_user.id %>
-  </div>
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :quantity %><br>
-    <%= f.text_field :quantity %>
-  </div>
-  <div class="field">
-    <%= f.label :price %><br>
-    <%= f.text_field :price %>
-  </div>
-  <div class="field">
-    <%= f.label :notice %><br>
-    <%= f.text_field :notice %>
-  </div>
-  <div class="field">
-    <%= f.label :income %><br>
-    <%= f.check_box :income %>
-  </div>
-  <div class="field">
-    <%= f.label :period %><br>
-    <%= f.number_field :period %>
-  </div>
-  <div class="field">
-    <%= f.label :launch %><br>
-    <%= f.date_select :launch %>
-  </div>
-  <div class="field">
-    <%= f.label :finish %><br>
-    <%= f.date_select :finish %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
+
+    <div class="panel panel-default">
+
+
+      <div class="panel-heading">
+        <h3 class="panel-title">Übersicht</h3>
+      </div>
+
+      <div class="panel-body">
+          <%= f.hidden_field :basket_id %>
+          <%= f.hidden_field :article_id %>
+          <%= f.hidden_field :user_id, :value => current_user.id %>
+
+
+        <div class="col-xs-6">
+          <div class="form-group">
+            <label class="" for="">Name:</label>
+            <div class="input-group">
+              <div class="input-group-addon"><i class="fa fa-file-text"></i></div>
+              <%= f.text_field :name, :class =>"form-control" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-6">
+          <div class="form-group">
+            <label class="" for="">Kategorie:</label>
+            <div class="input-group">
+              <%= f.collection_select :category_id, Category.all, :id, :name, multiple: false %>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label class="" for="">Notiz:</label>
+            <div class="input-group">
+              <div class="input-group-addon"><i class="fa fa-file-text"></i></div>
+              <%= f.text_field :notice ,:class =>"form-control"%>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-xs-4">
+          <div class="form-group">
+            <label class="" for="">Anzahl:</label>
+            <div class="input-group">
+              <%= f.text_field :quantity ,:class =>"form-control" %>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-4">
+          <div class="form-group">
+            <label class="" for="">Preis:</label>
+            <div class="input-group">
+              <%= f.text_field :price ,:class =>"form-control" %>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-4">
+          <div class="form-group">
+            <label class="" for="">Intervall:</label>
+            <div class="input-group">
+              <%= f.number_field :period ,:class =>"form-control" %>
+            </div>
+          </div>
+        </div>
+
+
+
+        <!-- Moritz  hier evtl noch Datepicker integrieren -->
+        <div class="col-xs-4">
+          <div class="form-group">
+            <label class="" for="">Start:</label>
+            <div class="input-group">
+              <%= f.date_select :launch ,:class =>"form-control" %>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Moritz  hier evtl noch Datepicker integrieren -->
+        <div class="col-xs-4">
+          <div class="form-group">
+            <label class="" for="">End:</label>
+            <div class="input-group">
+              <%= f.date_select :finish ,:class =>"form-control" %>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-4">
+          <div class="form-group">
+            <label class="" for="">Ist-Einkommen:</label>
+            <div class="input-group">
+              <%= f.check_box :income ,:class =>"form-control" %>
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+
+      <div class="panel-footer">
+         <%= f.submit "Speichern" , :class => "btn btn-default"  %>
+      </div>
+    </div>
 <% end %>
