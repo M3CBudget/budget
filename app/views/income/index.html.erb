@@ -16,13 +16,26 @@
           <% end %>
         </div>
         <div class="panel-body">
-            <p><i class="fa fa-money"></i> <%= income.price %> &euro;</p>
-          <p><small><%= income.notice %></small></p>
+
+
+
+          <div class="text-center">
+            <h4 data-toggle="tooltip" data-placement="bottom" title="Summe der bisherigen Ausgaben beim Händler">  <%=income.price %> <i class="fa fa-euro"></i></h4>
+          </div>
+          <hr>
+          <p><i class="fa fa-file-text"></i> <small><%= income.notice %></small></p>
           <% if(income.period) %>
-          <p>Perioden: <%= income.period %></p>
+              <p><i class="fa fa-file-text"></i>Intervall: <small><%= income.period %></small></p>
           <% end %>
           <% if(income.finish) %>
-          <p><%= income.launch %> - <%= income.finish %></p>
+              <div class="col-xs-6">
+                <label>Von</label>
+                <small><%= income.launch %></small>
+              </div>
+              <div class="col-xs-6">
+                <label>Bis</label>
+                <small><%= income.finish %></small>
+              </div>
           <% end %>
         </div>
       <div class="panel-footer">
