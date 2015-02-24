@@ -23,7 +23,9 @@
               </div>
               <hr>
 
-              <button type="button" class="btn btn-primary btn-xs btn-block popover-top" data-toggle="popover" title="Notiz" data-content="<%= income.notice %>"><i class="fa fa-file-text"></i>  Notiz </button>
+              <% if income.notice? %>
+              <button type="button" class="btn btn-default btn-xs btn-block popover-top" data-toggle="popover" title="Notiz" data-content="<%= income.notice %>"><i class="fa fa-file-text"></i>  Notiz </button>
+              <% end %>
 
               <% if(income.period) %>
                   <p><i class="fa fa-file-text"></i>Intervall: <small><%= income.period %></small></p>
