@@ -41,6 +41,14 @@ $(document).ready(function () {
             $(this).attr('class','thumbnail');
         }
     });
+
+    $(".popover-top").popover({
+        placement : 'top'
+    });
+
+    $(".popover-bottom").popover({
+        placement : 'bottom'
+    });
 });
 
 /*
