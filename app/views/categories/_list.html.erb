@@ -7,12 +7,23 @@
     <div class="panel-body">
 
         <div class="list-group">
-            <% Category.where(:user_id => current_user.id).each do |category| %>
-            <%= link_to category.name, category_path(category), :class => 'list-group-item'%>
-            <%end%>
+          <% Category.where(:user_id => current_user.id).each do |category| %>
+          <%= link_to category_path(category) do %>
+              <li class="list-group-item">
+                <%= category.name %>
+                <span class="badge pull-right">
+                      <%= category.glyphicon %> &euro;
+                    </span>
+              </li>
+              <%end%>
+          <% end %>
+
         </div>
 
     </div>
 
 </div>
 
+<% #Category.where(:user_id => current_user.id).each do |category| %>
+    <%= #link_to category.name, category_path(category), :class => 'list-group-item'%>
+<%#end%>

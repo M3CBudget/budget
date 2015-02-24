@@ -147,9 +147,32 @@ angular.module('app').controller('ItemController', function ($scope) {
     $scope.items = [];
 
     $scope.add = function() {
-
+        // Count Items
         $id++;
 
+        // Validation
+        if(!$scope.valid()) {
+            $scope.error();
+        };
+
+        // Check if Quantity is empty, if put 1
+        if($scope.quantity == 0) {
+            $scope.quantity = 1;
+        }
+
+        // Check if Notice is used, if not put false
+
+        if(!$scope.notice) {
+            $scope.hasNotice = false;
+        } else if (!$scope.notice.trim()) {
+            $scope.hasNotice = false;
+        }
+
+        $scope.name = $scope.name.substring(1, $scope.name.length-1);
+        $scope.notice = $scope.notice.substring(1, $scope.notice.length-1);
+        $scope.category = $scope.category.substring(1, $scope.category.length-1);
+
+        // Push Input Data to Model
         $scope.items.push(
             {
                 id: $id,
@@ -161,24 +184,39 @@ angular.module('app').controller('ItemController', function ($scope) {
                 category: $scope.category,
                 notice: $scope.notice,
                 hasNotice: $scope.hasNotice
-            });
-        $scope.reset;
+            }
+        );
+
+        $scope.reset();
     };
 
+    // Delet Item in Model
     $scope.rem = function($index) {
         $scope.items.splice($index, 1);
-        $scope.id--;
     };
 
+    // Clear
     $scope.reset = function () {
         $scope.id = '',
-        $scope.launch = '',
-        $scope.user_id = '',
         $scope.name = '',
         $scope.price = '',
-        $scope.quantity = '',
+        $scope.quantity = 1,
         $scope.category = '',
         $scope.notice= ''
     };
+
+    $scope.error = function() {
+        alert("Fehler");
+    };
+
+    $scope.valid = function() {
+        if (!$scope.name || !$scope.price || !$scope.category) {
+            return false;
+        }
+        return true;
+    };
+
+    $scope.reset();
+
 });
 
