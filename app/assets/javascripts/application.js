@@ -305,11 +305,15 @@ $(document).ready(function() {
     else if(getFormId() == "new_vendor") {
         vendorValidation();
     }
-    else if(getFormId() == "new_paymentr") {
+    else if(getFormId() == "new_payment") {
         paymentValidation();
     }
-
-
+    else if(getFormId() == "new_item") {
+        incomeValidation();
+    }
+    else if(getFormId() == "new_basket") {
+        basketValidation();
+    }
 });
 
 function getFormId() {
@@ -359,13 +363,13 @@ function paymentValidation() {
             "payment[number]": {
                 required: true,
                 minlength: 3,
-                minlength: 32
+                maxlength: 32
             },
             "payment[bic]": {
                 required: true,
                 minlength: 12,
                 maxlength: 12
-            },
+            }
         },
         // Specify the validation error messages
         messages: {
@@ -378,5 +382,46 @@ function paymentValidation() {
         }
     });
 }
+
+function incomeValidation() {
+    $("#new_item").validate({
+        errorElement: 'div',
+        // Specify the validation rules
+        rules: {
+            "item[name]": "required",
+            "item[price]": {
+                required: true,
+                number:true
+            },
+            "item[category_id]": "required",
+            "item[period]": {
+                required: true,
+                number: true
+            },
+            "item[launch]": {
+                required: true,
+                date: true
+            },
+            "item[finish]": {
+                required: false,
+                date: true
+            }
+        },
+        // Specify the validation error messages
+        messages: {
+            "item[name]": "Bitte einen Namen eingeben",
+            "item[price]": "Bitte die Höhe des Einkommens eingeben",
+            "item[category_id]": "Bitte eine Kategorie eingeben",
+            "item[period]": "Bitte eine Periode eingeben",
+            "item[launch]": "Bitte ein Startdatum eingeben",
+            "item[finish]": "Bitte ein valides Enddatum eingeben"
+        },
+        submitHandler: function(form) {
+            form.submit();
+        }
+    });
+}
+
+
 
 // $('.selectpicker').selectpicker('val', 'Mustard');
