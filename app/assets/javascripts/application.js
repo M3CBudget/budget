@@ -21,6 +21,7 @@
 //= require highcharts/highcharts-more
 //= require highcharts/highstock
 //= require_tree .
+$('[data-behaviour~=datepicker]').datepicker({"format": "yyyy-mm-dd", "weekStart": 1, "autoclose": true});
 
 
 $(document).ready(function () {
