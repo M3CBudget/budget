@@ -257,7 +257,7 @@ angular.module('app').controller('ItemController', function ($scope) {
     $scope.getSum = function(){
         var sum = 0;
 
-        
+
         for(var i=0; i<$scope.items.length; i++){
             sum = sum + ($scope.items[i].price * $scope.items[i].quantity)
         }
