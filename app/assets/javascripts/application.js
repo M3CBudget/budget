@@ -49,6 +49,9 @@ $(document).ready(function () {
     $(".popover-bottom").popover({
         placement : 'bottom'
     });
+
+
+
 });
 
 /*
