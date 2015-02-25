@@ -1,6 +1,11 @@
 <div class="page-header">
+
   <div class="text-center">
-    <h1><%= link_to '+', new_payment_path, :class => 'btn btn-success pull-left', :role => 'button' %>  Zahlungsmethoden<i class="fa fa-credit-card pull-right"></i></h1>
+    <h1>
+      <%= link_to '+', new_payment_path, :class => 'btn btn-success pull-left', :role => 'button' %>
+      Zahlungsmethoden
+      <i class="fa fa-credit-card pull-right"></i>
+    </h1>
 
   </div>
 </div>
@@ -58,7 +63,7 @@
 
             <div class="panel-footer">
               <%= link_to edit_payment_path(payment) do %>  <button class="btn btn-default"> <i class="fa fa-pencil-square-o"></i> Ändern </button> <% end %>
-              <%= link_to payment, method: :delete, data: { confirm: 'Are you sure?' } do %> <button class="btn btn-default"> <i class="fa fa-trash-o"></i> Löschen </button>  <% end %>
+              <%= link_to payment, method: :delete, data: { confirm: 'Wollen Sie die Zahlungsmethode löschen?' } do %> <button class="btn btn-default"> <i class="fa fa-trash-o"></i> Löschen </button>  <% end %>
             </div>
             </div>
             </div>
@@ -85,7 +90,6 @@
 
 
   </div>
-
 </div>
 
 
