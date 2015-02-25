@@ -1,44 +1,93 @@
 <div class="page-header">
-  <h1>Zahlungsmethoden<i class="fa fa-credit-card pull-right"></i></h1>
-</div>
+  <div class="text-center">
+    <h1><%= link_to '+', new_payment_path, :class => 'btn btn-success pull-left', :role => 'button' %>  Zahlungsmethoden<i class="fa fa-credit-card pull-right"></i></h1>
 
-<% @payments.each do |payment| %>
-    <div class="col-xs-6 col-lg-4">
-      <% if (payment.active) %>
-          <div class="panel panel-success">
-      <% else %>
-          <div class="panel panel-warning">
+  </div>
+</div>
+<div role="tabpanel">
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active">
+      <a href="#grid" aria-controls="grid" role="tab" data-toggle="tab">
+        <i class="fa fa-th"></i> Grid Einnahme
+      </a>
+    </li>
+
+    <li role="presentation">
+      <a href="#list" aria-controls="list" role="tab" data-toggle="tab">
+        <i class="fa fa-bars"></i> List
+      </a>
+    </li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <br>
+    <div role="tabpanel" class="tab-pane fade active in" id="grid">
+
+      <% @payments.each do |payment| %>
+          <div class="col-xs-6 col-lg-4">
+            <% if (payment.active) %>
+                <div class="panel panel-success">
+            <% else %>
+                <div class="panel panel-default">
+            <% end %>
+            <div class="panel-heading">
+              <%= link_to payment do %>
+                  <h3 class="panel-title"><%= payment.name %>
+                    <% if (payment.active) %>
+                        <i class="fa fa-check pull-right" data-toggle="tooltip" data-placement="left" title="Account ist aktiv"></i>
+                    <% else %>
+                        <i class="fa fa-times pull-right" data-toggle="tooltip" data-placement="left" title="Account ist inaktiv"></i>
+                    <% end %>
+                  </h3>
+              <% end %>
+            </div>
+            <div class="panel-body">
+              <div class="text-center">
+                <h4 data-toggle="tooltip" data-placement="bottom" title="Summe der bisherigen Ausgaben beim Händler">  <%= sum_amount(find_baskets_of_payment(payment.id)) %> <i class="fa fa-euro"></i></h4>
+
+              </div>
+              <hr>
+
+
+              <p><i class="fa fa-university"></i> IBAN: <small><%= payment.number %></small></p>
+              <p><i class="fa fa-university"></i> BIC: <small><%= payment.bic %></small></p>
+            </div>
+
+            <div class="panel-footer">
+              <%= link_to edit_payment_path(payment) do %>  <button class="btn btn-default"> <i class="fa fa-pencil-square-o"></i> Ändern </button> <% end %>
+              <%= link_to payment, method: :delete, data: { confirm: 'Are you sure?' } do %> <button class="btn btn-default"> <i class="fa fa-trash-o"></i> Löschen </button>  <% end %>
+            </div>
+            </div>
+            </div>
       <% end %>
-      <div class="panel-heading">
-        <%= link_to payment do %>
-        <h3 class="panel-title"><%= payment.name %>
-          <% if (payment.active) %>
-              <i class="fa fa-check pull-right" data-toggle="tooltip" data-placement="left" title="Account ist aktiv"></i>
-          <% else %>
-              <i class="fa fa-times pull-right" data-toggle="tooltip" data-placement="left" title="Account ist inaktiv"></i>
-          <% end %>
-        </h3>
+
+      </div>
+
+      <div role="tabpanel" class="tab-pane fade" id="list">
+      <div class="list-group">
+        <%@payments.each do |payment| %>
+            <%= link_to payment_path(payment) do %>
+                <% if !payment.active? %>
+                <li class="list-group-item">
+                  <% else %>
+                    <li class="list-group-item list-group-item-success">
+                    <% end %>
+                  <%= payment.name %>
+                  <span class="badge pull-right"> <%= sum_amount(find_baskets_of_payment(payment.id))  %> &euro;</span>
+                </li>
+            <% end %>
         <% end %>
       </div>
-      <div class="panel-body">
-        <div class="text-center">
-          <h4 data-toggle="tooltip" data-placement="bottom" title="Summe der bisherigen Ausgaben beim Händler">  <%= sum_amount(find_baskets_of_payment(payment.id)) %> <i class="fa fa-euro"></i></h4>
-
-        </div>
-        <hr>
+    </div>
 
 
-        <p><i class="fa fa-university"></i> IBAN: <small><%= payment.number %></small></p>
-        <p><i class="fa fa-university"></i> BIC: <small><%= payment.bic %></small></p>
-      </div>
+  </div>
 
-      <div class="panel-footer">
-        <%= link_to edit_payment_path(payment) do %>  <button class="btn btn-default"> <i class="fa fa-pencil-square-o"></i> Ändern </button> <% end %>
-        <%= link_to payment, method: :delete, data: { confirm: 'Are you sure?' } do %> <button class="btn btn-default"> <i class="fa fa-trash-o"></i> Löschen </button>  <% end %>
-      </div>
-      </div>
-      </div>
-<% end %>
+</div>
+
 
 
 

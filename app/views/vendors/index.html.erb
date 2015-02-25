@@ -1,13 +1,12 @@
 <div class="page-header">
+  <div class="text-center">
+    <h1>
+      <%= link_to '+', new_vendor_path, :class => 'btn btn-success pull-left', :role => 'button' %>
+      Händler
+      <i class="fa fa-building-o pull-right"></i>
+    </h1>
 
-  <h1>
-    <i class="fa fa-plus"></i>
-
-    Händler
-    <i class="fa fa-building-o pull-right"></i>
-  </h1>
-
-
+  </div>
 </div>
 
 <div role="tabpanel">
@@ -28,7 +27,7 @@
 
   <!-- Tab panes -->
   <div class="tab-content">
-
+    <br>
     <div role="tabpanel" class="tab-pane fade active in" id="grid">
       <% @vendors.each do |vendor| %>
           <div class="col-xs-6 col-lg-4">
@@ -79,4 +78,4 @@
 </div>
 
 
-
+<%= link_to '+', new_vendor_path, :class => 'btn btn-default pull-left', :role => 'button' %>

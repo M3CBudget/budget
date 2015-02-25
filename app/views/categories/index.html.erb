@@ -1,64 +1,154 @@
 <div class="page-header">
-  <h1>Kategorien<i class="fa fa-files-o pull-right"></i></h1>
+    <div class="text-center">
+      <h1><%= link_to '+', new_category_path, :class => 'btn btn-success pull-left', :role => 'button' %>  Kategorie <i class="fa fa-files-o pull-right"></i></h1>
+
+    </div>
 </div>
+<div role="tabpanel">
 
-<% @categories.each do |category| %>
-    <div class="col-xs-6 col-lg-4">
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active">
+      <a href="#gridIncome" aria-controls="gridIncome" role="tab" data-toggle="tab">
+        <i class="fa fa-th"></i> Grid Einnahme
+      </a>
+    </li>
+    <li role="presentation">
+      <a href="#gridSpending" aria-controls="gridSpending" role="tab" data-toggle="tab">
+        <i class="fa fa-th"></i> Grid Ausgabe
+      </a>
+    </li>
+    <li role="presentation">
+      <a href="#list" aria-controls="list" role="tab" data-toggle="tab">
+        <i class="fa fa-bars"></i> List
+      </a>
+    </li>
+  </ul>
 
-      <% if (category.active) %>
-          <% if (category.income) %>
-            <div class="panel panel-success">
-          <% else %>
-            <div class="panel panel-danger">
-          <% end %>
-      <% else %>
-          <div class="panel panel-primary">
-      <% end %>
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <br>
+    <div role="tabpanel" class="tab-pane fade active in" id="gridIncome">
 
-
-
-      <div class="panel-heading">
-        <%= link_to category do %>
-        <h3 class="panel-title text-center">
-          <% if (category.income) %>
-              <i class="fa fa-plus pull-left" data-toggle="tooltip" data-placement="left" title="Einnahme"></i>
-          <% else %>
-              <i class="fa fa-minus pull-left" data-toggle="tooltip" data-placement="left" title="Ausgabe"></i>
-          <% end %>
-
-
-          <%= category.name %>
-
-          <% if (category.active) %>
-              <i class="fa fa-check pull-right" data-toggle="tooltip" data-placement="left" title="Category ist aktiv"></i>
-          <% else %>
-              <i class="fa fa-times pull-right" data-toggle="tooltip" data-placement="left" title="Category ist inaktiv"></i>
-          <% end %>
-        </h3>
+        <% @categories.each do |category| %>
+          <% if category.income? %>
+            <div class="col-xs-6 col-lg-4">
+              <% if (category.active) %>
+                    <div class="panel panel-success">
+              <% else %>
+                  <div class="panel panel-primary">
+              <% end %>
+              <div class="panel-heading">
+                <%= link_to category do %>
+                <h3 class="panel-title text-center">
+                      <i class="fa fa-plus pull-left" data-toggle="tooltip" data-placement="left" title="Einnahme"></i>
+                  <%= category.name %>
+                  <% if (category.active) %>
+                      <i class="fa fa-check pull-right" data-toggle="tooltip" data-placement="left" title="Category ist aktiv"></i>
+                  <% else %>
+                      <i class="fa fa-times pull-right" data-toggle="tooltip" data-placement="left" title="Category ist inaktiv"></i>
+                  <% end %>
+                </h3>
+                <% end %>
+              </div>
+              <div class="panel-body">
+                <div class="text-center">
+                  <h4 data-toggle="tooltip" data-placement="bottom" title="Summe der bisherigen Ausgaben beim Händler">  <%=sum_price(find_items_of_category(category.id)) %> <i class="fa fa-euro"></i></h4>
+                </div>
+                <hr>
+                <button type="button" class="btn btn-default btn-xs btn-block popover-top" data-toggle="popover" title="Notiz" data-content="<%= category.notice %>"><i class="fa fa-file-text"></i>  Notiz </button>
+              </div>
+              <div class="panel-footer">
+                <%= link_to edit_category_path(category) do %>  <button class="btn btn-default"> <i class="fa fa-pencil-square-o"></i> Ändern </button> <% end %>
+                <%= link_to category, method: :delete, data: { confirm: 'Are you sure?' } do %> <button class="btn btn-default"> <i class="fa fa-trash-o"></i> Löschen </button>  <% end %>
+              </div>
+              </div>
+            </div>
+              <% end %>
         <% end %>
       </div>
 
+      <div role="tabpanel" class="tab-pane fade" id="gridSpending">
+
+        <% @categories.each do |category| %>
+            <% if !category.income? %>
 
 
-      <div class="panel-body">
+            <div class="col-xs-6 col-lg-4">
 
-        <div class="text-center">
-          <h4 data-toggle="tooltip" data-placement="bottom" title="Summe der bisherigen Ausgaben beim Händler">  <%=sum_price(find_items_of_category(category.id)) %> <i class="fa fa-euro"></i></h4>
+              <% if (category.active) %>
+                  <div class="panel panel-success">
+              <% else %>
+                  <div class="panel panel-primary">
+              <% end %>
+
+
+
+              <div class="panel-heading">
+                <%= link_to category do %>
+                    <h3 class="panel-title text-center">
+
+                      <i class="fa fa-minus pull-left" data-toggle="tooltip" data-placement="left" title="Ausgabe"></i>
+
+
+
+                      <%= category.name %>
+
+                      <% if (category.active) %>
+                          <i class="fa fa-check pull-right" data-toggle="tooltip" data-placement="left" title="Category ist aktiv"></i>
+                      <% else %>
+                          <i class="fa fa-times pull-right" data-toggle="tooltip" data-placement="left" title="Category ist inaktiv"></i>
+                      <% end %>
+                    </h3>
+                <% end %>
+              </div>
+
+
+
+              <div class="panel-body">
+
+                <div class="text-center">
+                  <h4 data-toggle="tooltip" data-placement="bottom" title="Summe der bisherigen Ausgaben beim Händler">  <%=sum_price(find_items_of_category(category.id)) %> <i class="fa fa-euro"></i></h4>
+                </div>
+                <hr>
+
+                <button type="button" class="btn btn-default btn-xs btn-block popover-top" data-toggle="popover" title="Notiz" data-content="<%= category.notice %>"><i class="fa fa-file-text"></i>  Notiz </button>
+              </div>
+
+              <div class="panel-footer">
+                <%= link_to edit_category_path(category) do %>  <button class="btn btn-default"> <i class="fa fa-pencil-square-o"></i> Ändern </button> <% end %>
+                <%= link_to category, method: :delete, data: { confirm: 'Are you sure?' } do %> <button class="btn btn-default"> <i class="fa fa-trash-o"></i> Löschen </button>  <% end %>
+              </div>
+
+              </div>
+              </div>
+                <% end %>
+        <% end %>
         </div>
-        <hr>
 
-        <button type="button" class="btn btn-default btn-xs btn-block popover-top" data-toggle="popover" title="Notiz" data-content="<%= category.notice %>"><i class="fa fa-file-text"></i>  Notiz </button>
+        <div role="tabpanel" class="tab-pane fade" id="list">
+          <div class="list-group">
+            <% @categories.each do |category| %>
+                <%= link_to category_path(category) do %>
+                    <% if !category.active? %>
+                        <li class="list-group-item">
+                    <% elsif category.income? %>
+                        <li class="list-group-item list-group-item-success">
+                    <% else %>
+                        <li class="list-group-item list-group-item-danger">
+                    <% end %>
+                    <%= category.name %>
+                    <span class="badge pull-right"> <%=sum_price(find_items_of_category(category.id)) %> &euro;</span>
+                    </li>
+                <% end %>
+            <% end %>
+          </div>
+        </div>
+
+
       </div>
 
-      <div class="panel-footer">
-        <%= link_to edit_category_path(category) do %>  <button class="btn btn-default"> <i class="fa fa-pencil-square-o"></i> Ändern </button> <% end %>
-        <%= link_to category, method: :delete, data: { confirm: 'Are you sure?' } do %> <button class="btn btn-default"> <i class="fa fa-trash-o"></i> Löschen </button>  <% end %>
-      </div>
-
-      </div>
     </div>
-<% end %>
 
-<br>
 
 <%= link_to '+', new_category_path, :class => 'btn btn-default', :role => 'button' %>

@@ -1,55 +1,99 @@
 <div class="page-header">
-  <h1>Einnahmen<i class="fa fa-money pull-right"></i></h1>
+  <div class="text-center">
+    <h1>
+      <%= link_to '+', income_new_path, :class => 'btn btn-success pull-left', :role => 'button' %>
+        Einnahmen
+      <i class="fa fa-money pull-right"></i>
+    </h1>
+  </div>
 </div>
 
-<% @incomes.each do |income| %>
+<div role="tabpanel">
 
-    <div class="col-xs-6 col-lg-4">
-      <% if (true) #incomes.active %>
-          <div class="panel panel-success">
-      <% else %>
-          <div class="panel panel-primary">
-      <% end %>
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active">
+      <a href="#grid" aria-controls="grid" role="tab" data-toggle="tab">
+        <i class="fa fa-th"></i> Grid
+      </a>
+    </li>
+    <li role="presentation">
+      <a href="#list" aria-controls="list" role="tab" data-toggle="tab">
+        <i class="fa fa-bars"></i> List
+      </a>
+    </li>
+  </ul>
 
-            <div class="panel-heading">
-              <%= link_to income do %>
-              <h3 class="panel-title"><%= income.name %></h3>
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <br>
+    <div role="tabpanel" class="tab-pane fade active in" id="grid">
+
+        <% @incomes.each do |income| %>
+
+            <div class="col-xs-6 col-lg-4">
+              <% if is_active(income.id) %>
+                  <div class="panel panel-success">
+              <% else %>
+                  <div class="panel panel-default">
               <% end %>
+
+                    <div class="panel-heading">
+                      <%= link_to income do %>
+                      <h3 class="panel-title"><%= income.name %></h3>
+                      <% end %>
+                    </div>
+
+                    <div class="panel-body">
+                      <div class="text-center">
+                        <h4 data-toggle="tooltip" data-placement="bottom" title="Summe der bisherigen Ausgaben beim Händler">  <%=income.price %> <i class="fa fa-euro"></i></h4>
+                      </div>
+                      <hr>
+
+
+                      <button type="button" class="btn btn-default btn-xs btn-block popover-top" data-toggle="popover" title="Notiz" data-content="<%= income.notice %>"><i class="fa fa-file-text"></i>  Notiz </button>
+
+                      <% if(income.period) %>
+                          <p><i class="fa fa-file-text"></i>Intervall: <small><%= income.period %></small></p>
+                      <% end %>
+
+                      <% if(income.finish) %>
+                          <div class="col-xs-6">
+                            <label>Von</label>
+                            <small><%= income.launch %></small>
+                          </div>
+                          <div class="col-xs-6">
+                            <label>Bis</label>
+                            <small><%= income.finish %></small>
+                          </div>
+                      <% end %>
+                    </div>
+
+                      <div class="panel-footer">
+                        <%= link_to "items/#{income.id}/edit" do %>  <button class="btn btn-default"> <i class="fa fa-pencil-square-o"></i> Ändern </button> <% end %>
+                        <%= link_to income, method: :delete, data: { confirm: 'Are you sure?' } do %> <button class="btn btn-default"> <i class="fa fa-trash-o"></i> Löschen </button>  <% end %>
+                      </div>
+
+                </div>
             </div>
+        <% end %>
+      </div>
 
-            <div class="panel-body">
-              <div class="text-center">
-                <h4 data-toggle="tooltip" data-placement="bottom" title="Summe der bisherigen Ausgaben beim Händler">  <%=income.price %> <i class="fa fa-euro"></i></h4>
-              </div>
-              <hr>
-
-
-              <button type="button" class="btn btn-default btn-xs btn-block popover-top" data-toggle="popover" title="Notiz" data-content="<%= income.notice %>"><i class="fa fa-file-text"></i>  Notiz </button>
-
-              <% if(income.period) %>
-                  <p><i class="fa fa-file-text"></i>Intervall: <small><%= income.period %></small></p>
+      <div role="tabpanel" class="tab-pane fade" id="list">
+        <div class="list-group">
+          <% @incomes.each do |income| %>
+              <%= link_to incomes_path(income) do %>
+                  <li class="list-group-item list-group-item-success">
+                    <%= income.name %>
+                    <span class="badge pull-right"> <%= income.price %> &euro;</span>
+                  </li>
               <% end %>
-
-              <% if(income.finish) %>
-                  <div class="col-xs-6">
-                    <label>Von</label>
-                    <small><%= income.launch %></small>
-                  </div>
-                  <div class="col-xs-6">
-                    <label>Bis</label>
-                    <small><%= income.finish %></small>
-                  </div>
-              <% end %>
-            </div>
-
-              <div class="panel-footer">
-                <%= link_to "items/#{income.id}/edit" do %>  <button class="btn btn-default"> <i class="fa fa-pencil-square-o"></i> Ändern </button> <% end %>
-                <%= link_to income, method: :delete, data: { confirm: 'Are you sure?' } do %> <button class="btn btn-default"> <i class="fa fa-trash-o"></i> Löschen </button>  <% end %>
-              </div>
-
+          <% end %>
         </div>
+      </div>
+
     </div>
-<% end %>
+  </div>
 
 <br>
 

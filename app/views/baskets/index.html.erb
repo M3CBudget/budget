@@ -1,36 +1,75 @@
 <div class="page-header">
-  <h1>
-    <%= link_to '+', new_basket_path, :class => 'btn btn-success', :role => 'button' %>
-    Ausgaben
-    <i class="fa fa-building-o pull-right"></i>
-  </h1>
+  <div class="text-center">
+    <h1>
+      <%= link_to '+', new_basket_path, :class => 'btn btn-success pull-left', :role => 'button' %>
+        Ausgaben
+      <i class="fa fa-building-o pull-right"></i>
+    </h1>
+  </div>
 </div>
+<div role="tabpanel">
 
-<% @baskets.each do |basket| %>
-    <div class="col-xs-6 col-lg-4">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <%= link_to basket do %><h3 class="panel-title text-center"><i class="fa fa-calendar pull-left"></i> <%= basket.purchase_date.strftime("%d/%m/%Y")  %></h3><% end %>
-        </div>
-        <div class="panel-body">
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active">
+      <a href="#grid" aria-controls="grid" role="tab" data-toggle="tab">
+        <i class="fa fa-th"></i> Grid
+      </a>
+    </li>
+    <li role="presentation">
+      <a href="#list" aria-controls="list" role="tab" data-toggle="tab">
+        <i class="fa fa-bars"></i> List
+      </a>
+    </li>
+  </ul>
 
-          <div class="text-center">
-            <h4 data-toggle="tooltip" data-placement="bottom" title="Summe der Artikel"> <%= basket.amount %> <i class="fa fa-euro"></i></h4>
-          </div>
-          <hr>
-          <p><i class="fa fa-building-o"></i> <small><%= show_vendor_name(basket.vendor_id) %></small></p>
-          <p><i class="fa fa-credit-card"></i> <small><%= show_payment_name(basket.payment_id) %></small></p>
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <br>
+    <div role="tabpanel" class="tab-pane fade active in" id="grid">
+        <% @baskets.each do |basket| %>
+            <div class="col-xs-6 col-lg-4">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <%= link_to basket do %><h3 class="panel-title text-center"><i class="fa fa-calendar pull-left"></i> <%= basket.purchase_date.strftime("%d/%m/%Y")  %></h3><% end %>
+                </div>
+                <div class="panel-body">
 
-          <button type="button" class="btn btn-default btn-xs btn-block popover-top" data-toggle="popover" title="Notiz" data-content="<%= basket.notice %>"><i class="fa fa-file-text"></i>  Notiz </button>
+                  <div class="text-center">
+                    <h4 data-toggle="tooltip" data-placement="bottom" title="Summe der Artikel"> <%= basket.amount %> <i class="fa fa-euro"></i></h4>
+                  </div>
+                  <hr>
+                  <p><i class="fa fa-building-o"></i> <small><%= show_vendor_name(basket.vendor_id) %></small></p>
+                  <p><i class="fa fa-credit-card"></i> <small><%= show_payment_name(basket.payment_id) %></small></p>
 
-        </div>
-        <div class="panel-footer">
-          <%= link_to edit_basket_path(basket) do %>  <button class="btn btn-default"> <i class="fa fa-pencil-square-o"></i> Ändern </button> <% end %>
-          <%= link_to basket, method: :delete, data: { confirm: 'Are you sure?' } do %> <button class="btn btn-default"> <i class="fa fa-trash-o"></i> Löschen </button>  <% end %>
-        </div>
+                  <button type="button" class="btn btn-default btn-xs btn-block popover-top" data-toggle="popover" title="Notiz" data-content="<%= basket.notice %>"><i class="fa fa-file-text"></i>  Notiz </button>
+
+                </div>
+                <div class="panel-footer">
+                  <%= link_to edit_basket_path(basket) do %>  <button class="btn btn-default"> <i class="fa fa-pencil-square-o"></i> Ändern </button> <% end %>
+                  <%= link_to basket, method: :delete, data: { confirm: 'Are you sure?' } do %> <button class="btn btn-default"> <i class="fa fa-trash-o"></i> Löschen </button>  <% end %>
+                </div>
+              </div>
+            </div>
+        <% end %>
+    </div>
+
+    <div role="tabpanel" class="tab-pane fade" id="list">
+      <div class="list-group">
+        <% @baskets.each do |basket| %>
+            <%= link_to baskets_path(basket) do %>
+                <li class="list-group-item">
+                  <%= basket.purchase_date.strftime("%d/%m/%Y") %>
+                  <span class="badge pull-right"> <%= basket.amount %> &euro;</span>
+                </li>
+            <% end %>
+        <% end %>
       </div>
     </div>
-<% end %>
+
+  </div>
+</div>
+
 
 
 <%= link_to '+', new_basket_path, :class => 'btn btn-default', :role => 'button' %>

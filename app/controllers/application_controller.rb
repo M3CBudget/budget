@@ -98,7 +98,10 @@ class ApplicationController < ActionController::Base
   end
 
   def is_active(id) Item.find(id)
-    if Item.find(id).finish.to_s < Time.now.to_s
+      fin = Item.find(id).finish
+      if fin.nil?
+        active = true
+      elsif fin.to_s < Time.now.to_s
       active = false
     else
       active = true
