@@ -24,6 +24,9 @@ html,
 body {
     overflow-x: hidden; /* Prevent scroll on narrow devices */
 }
+div.error {
+    color: blue;
+}
 body {
     padding-top: 70px;
 }
