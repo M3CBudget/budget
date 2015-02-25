@@ -422,6 +422,52 @@ function incomeValidation() {
     });
 }
 
+function basketValidation() {
+    $("#new_basket").validate({
+        errorElement: 'div',
+        // Specify the validation rules
+        rules: {
+            "basket[vendor_id]": "required",
+            "basket[purchase_date]": {
+                required: false,
+                date: true
+            },
+            "basket[items_attributes][{{item.id}}][name]": {
+                required: true
+            },
+            "basket[items_attributes][{{item.id}}][quantity]": {
+                required: true,
+                min: 1,
+                number: true
+            },
+            "basket[items_attributes][{{item.id}}][price]": {
+                required: true,
+                number: true
+            },
+            "basket[items_attributes][{{item.id}}][category_id]": "required",
+            "basket[payment_id]": "required",
+            "basket[amount]": {
+                required: true,
+                number: true
+            }
+        },
+        // Specify the validation error messages
+        messages: {
+            "basket[vendor_id]": "Bitte einen Händler eingeben",
+            "basket[purchase_date]": "Bitte ein datum eingeben",
+            "basket[items_attributes][{{item.id}}][name]": "Bitte einen Artikelnamen eingeben",
+            "basket[items_attributes][{{item.id}}][quantity]": "Bitte eine Artikelanzahl eingeben",
+            "basket[items_attributes][{{item.id}}][price]": "Bitte einen Artikelprice eingeben",
+            "basket[items_attributes][{{item.id}}][category_id]": "Bitte eine Artikel Kategorie eingeben",
+            "basket[payment_id]": "Bitte eine Zahlungsmethode eingeben",
+            "basket[amount]": "Biitte einen Betrag eingeben"
+        },
+        submitHandler: function(form) {
+            form.submit();
+        }
+    });
+}
+
 
 
 // $('.selectpicker').selectpicker('val', 'Mustard');
