@@ -274,45 +274,24 @@ angular.module('app').controller('ItemController', function ($scope) {
 
 });
 
-
-/*
- $(document).ready(function () {
- $form = getForm();
- $form.addEventListener('submit', function (event) {
- alert("hallo");
- $form.validate({
- rules: {
- category_name: "required",
- category_active: "required"
- },
- messages: {
- category_name: "Bitte einen Namen eingeben!",
- category_active: "Bitte Aktivieren!"
- },
- submitHandler: function(form) {
- alert("vor submit");
- form.submit();
- alert("Submit");
- }
- });
- });
- });
- */
 $(document).ready(function() {
-    if(getFormId() == "new_category"){
-        categoryValidation();
+    var formId = getFormId();
+    var param = "#".concat(formId);
+
+    if(formId == "new_category" || formId.substring(0, 13) == "edit_category"){
+        categoryValidation(param);
     }
-    else if(getFormId() == "new_vendor") {
-        vendorValidation();
+    else if(formId == "new_vendor" || formId.substring(0, 11) == "edit_vendor") {
+        vendorValidation(param);
     }
-    else if(getFormId() == "new_payment") {
-        paymentValidation();
+    else if(formId == "new_payment" || formId.substring(0, 12) == "edit_payment") {
+        paymentValidation(param);
     }
-    else if(getFormId() == "new_item") {
-        incomeValidation();
+    else if(formId == "new_item" || formId.substring(0, 9) == "edit_item") {
+        incomeValidation(param);
     }
-    else if(getFormId() == "new_basket") {
-        basketValidation();
+    else if(formId == "new_basket" || formId.substring(0, 11) == "edit_basket") {
+        basketValidation(param);
     }
 });
 
@@ -320,8 +299,9 @@ function getFormId() {
     return document.getElementsByTagName('form')[0].id;
 }
 
-function categoryValidation() {
-    $("#new_category").validate({
+
+function categoryValidation(formId) {
+    $(formId).validate({
         errorElement: 'div',
         // Specify the validation rules
         rules: {
@@ -337,8 +317,8 @@ function categoryValidation() {
     });
 }
 
-function vendorValidation() {
-    $("#new_vendor").validate({
+function vendorValidation(formId) {
+    $(formId).validate({
         errorElement: 'div',
         // Specify the validation rules
         rules: {
@@ -354,8 +334,8 @@ function vendorValidation() {
     });
 }
 
-function paymentValidation() {
-    $("#new_payment").validate({
+function paymentValidation(formId) {
+    $(formId).validate({
         errorElement: 'div',
         // Specify the validation rules
         rules: {
@@ -383,8 +363,8 @@ function paymentValidation() {
     });
 }
 
-function incomeValidation() {
-    $("#new_item").validate({
+function incomeValidation(formId) {
+    $(formId).validate({
         errorElement: 'div',
         // Specify the validation rules
         rules: {
@@ -422,8 +402,8 @@ function incomeValidation() {
     });
 }
 
-function basketValidation() {
-    $("#new_basket").validate({
+function basketValidation(formId) {
+    $(formId).validate({
         errorElement: 'div',
         // Specify the validation rules
         rules: {
