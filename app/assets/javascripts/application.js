@@ -21,6 +21,9 @@
 //= require highcharts/highcharts-more
 //= require highcharts/highstock
 //= require_tree .
+//= require jquery.validate
+//= require jquery.validate.additional-methods
+//= require jquery.validate.localization/messages_de
 
 $.fn.datepicker.defaults.format = "yyyy-mm-dd";
 $.fn.datepicker.defaults.todayHighlight = true;
@@ -257,7 +260,7 @@ angular.module('app').controller('ItemController', function ($scope) {
     $scope.getSum = function(){
         var sum = 0;
 
-        
+
         for(var i=0; i<$scope.items.length; i++){
             sum = sum + ($scope.items[i].price * $scope.items[i].quantity)
         }
@@ -270,5 +273,110 @@ angular.module('app').controller('ItemController', function ($scope) {
     $scope.reset();
 
 });
+
+
+/*
+ $(document).ready(function () {
+ $form = getForm();
+ $form.addEventListener('submit', function (event) {
+ alert("hallo");
+ $form.validate({
+ rules: {
+ category_name: "required",
+ category_active: "required"
+ },
+ messages: {
+ category_name: "Bitte einen Namen eingeben!",
+ category_active: "Bitte Aktivieren!"
+ },
+ submitHandler: function(form) {
+ alert("vor submit");
+ form.submit();
+ alert("Submit");
+ }
+ });
+ });
+ });
+ */
+$(document).ready(function() {
+    if(getFormId() == "new_category"){
+        categoryValidation();
+    }
+    else if(getFormId() == "new_vendor") {
+        vendorValidation();
+    }
+    else if(getFormId() == "new_paymentr") {
+        paymentValidation();
+    }
+
+
+});
+
+function getFormId() {
+    return document.getElementsByTagName('form')[0].id;
+}
+
+function categoryValidation() {
+    $("#new_category").validate({
+        errorElement: 'div',
+        // Specify the validation rules
+        rules: {
+            "category[name]": "required"
+        },
+        // Specify the validation error messages
+        messages: {
+            "category[name]": "Bitte Namen eingeben!"
+        },
+        submitHandler: function(form) {
+            form.submit();
+        }
+    });
+}
+
+function vendorValidation() {
+    $("#new_vendor").validate({
+        errorElement: 'div',
+        // Specify the validation rules
+        rules: {
+            "vendor[name]": "required"
+        },
+        // Specify the validation error messages
+        messages: {
+            "vendor[name]": "Bitte Namen eingeben!"
+        },
+        submitHandler: function(form) {
+            form.submit();
+        }
+    });
+}
+
+function paymentValidation() {
+    $("#new_payment").validate({
+        errorElement: 'div',
+        // Specify the validation rules
+        rules: {
+            "payment[name]": "required",
+            "payment[number]": {
+                required: true,
+                minlength: 3,
+                minlength: 32
+            },
+            "payment[bic]": {
+                required: true,
+                minlength: 12,
+                maxlength: 12
+            },
+        },
+        // Specify the validation error messages
+        messages: {
+            "payment[name]": "Bitte einen Namen eingeben",
+            "payment[number]": "Bitte eine valide Kontoummer eingeben",
+            "payment[bic]": "Bitte einen validen BIC eingeben"
+        },
+        submitHandler: function(form) {
+            form.submit();
+        }
+    });
+}
 
 // $('.selectpicker').selectpicker('val', 'Mustard');
