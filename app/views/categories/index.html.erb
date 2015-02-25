@@ -58,7 +58,7 @@
               </div>
               <div class="panel-body">
                 <div class="text-center">
-                  <h4 data-toggle="tooltip" data-placement="bottom" title="Summe der bisherigen Ausgaben beim Händler">  <%=sum_price(find_items_of_category(category.id)) %> <i class="fa fa-euro"></i></h4>
+                  <h4 data-toggle="tooltip" data-placement="bottom" title="Summe der bisherigen Ausgaben beim Händler">  <%=sum_price(find_income_items_of_category(category.id)) %> <i class="fa fa-euro"></i></h4>
                 </div>
                 <hr>
                 <button type="button" class="btn btn-default btn-xs btn-block popover-top" data-toggle="popover" title="Notiz" data-content="<%= category.notice %>"><i class="fa fa-file-text"></i>  Notiz </button>
