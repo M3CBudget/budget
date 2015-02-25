@@ -7,7 +7,6 @@ Prio 1 = wichtig , 2 , 3 = unwichtig
 
 3 Welcome Page mit Signup Form
 
-1 Dynamische Erweiterung der Items zeilen im neuen Basket (final test) (mark)
 1 seeds (christopher)
 1 highcharts einbinden in Dash (christopher mark)
 1 Methode Monate (hochrechnung) (chritopher und marco)
