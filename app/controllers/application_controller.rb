@@ -105,7 +105,7 @@ class ApplicationController < ActionController::Base
         sum = sum + b.amount
       end
     end
-    return sum
+    return sum.to_f
   end
 
   def sum_price(items)
@@ -119,7 +119,7 @@ class ApplicationController < ActionController::Base
         end
        end
     end
-    return sum
+    return sum.to_f
   end
 
   def is_active(id) Item.find(id)
