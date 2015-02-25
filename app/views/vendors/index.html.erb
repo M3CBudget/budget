@@ -36,7 +36,7 @@
                         <h3 class="panel-title pull-left" style="padding-top: 22px;"><%= vendor.name %></h3>
                         <div class="pull-right" style="height: 50px;">
                           <% if vendor.logo? %>
-                            <%= image_tag vendor.logo.url(:thumb), :class => 'img-thumbnail '%>
+                            <%= image_tag vendor.logo.url(:thumb), :class => 'img-thumbnail hidden-xs hidden-sm'%>
                           <% end %>
                         </div>
                     <% end %>
