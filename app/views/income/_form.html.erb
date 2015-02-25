@@ -58,22 +58,47 @@
         </div>
 
 
+        <div class="col-xs-8">
+          <div class="form-group">
+            <label class="" for=""> Zeitraum:</label>
+        <div class="input-daterange input-group date" id="datepicker">
+          <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+          <%= f.text_field :launch, :data => {:provide => "datepicker"}, :class => "form-control input-sm"%>
+          <span class="input-group-addon">bis</span>
+          <%= f.text_field :finish, :data => {:provide => "datepicker"}, :class => "form-control input-sm"%>
+        </div>
+            </div>
+        </div>
+
+        <div class="col-xs-4">
+          <div class="form-group">
+            <label class="" for="">Intervall:</label>
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-repeat"></i></span>
+              <%= f.number_field :period ,:class =>"form-control", :min => "1",  :step => "1" %>
+            </div>
+          </div>
+        </div>
+
 
 
         <div class="col-xs-4">
           <div class="form-group">
             <label class="" for="">Start:</label>
-            <div class="input-group">
-              <%= f.text_field :launch, :data => {:provide => "datepicker"} %>
+            <div class="input-group date">
+              <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+              <%= f.text_field :launch, :data => {:provide => "datepicker"}, :class => "form-control"%>
+
             </div>
           </div>
         </div>
 
         <div class="col-xs-4">
         <div class="form-group">
-          <label class="" for="">End:</label>
-          <div class="input-group">
-            <%= f.text_field :finish, :data => {:provide => "datepicker"} %>
+          <label class="" for="">Ende:</label>
+          <div class="input-group date">
+            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+            <%= f.text_field :finish, :data => {:provide => "datepicker"}, :class => "form-control" %>
           </div>
         </div>
       </div>
@@ -82,6 +107,7 @@
           <div class="form-group">
             <label class="" for="">Intervall:</label>
             <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-repeat"></i></span>
               <%= f.number_field :period ,:class =>"form-control", :min => "1",  :step => "1" %>
             </div>
           </div>

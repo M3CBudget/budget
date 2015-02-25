@@ -34,12 +34,7 @@
         <div class="form-group">
           <label class="" for="">Kategorie</label>
           <div class="input-group">
-            <select class="selectpicker"  ng-model="category">
-              <% Category.where(:income => false, :user_id => current_user.id, :active => true).each do |category| %>
-                  <option value="<%= category.id %>" ><%= category.name %></option>
-              <% end %>
-            </select>
-
+          <%= select_tag "Kategorie", options_from_collection_for_select(@categorys, "id", "name"), :class =>"selectpicker", "ng-model" =>"category"   %>
           </div>
         </div>
       </div>
@@ -104,12 +99,15 @@
 
           <div class="col-xs-6">
             <div class="form-group">
-              <label class="" for="">Einkaufsdatum: </label>
-              <div class="input-group">
-                <%= f.text_field :purchase_date, :value => Time.now.to_s(:db), :data => {:provide => "datepicker"}%>
+              <label class="" for="">Einkaufsdatum:</label>
+              <div class="input-group date">
+                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                <%= f.text_field :purchase_date, :data => {:provide => "datepicker"}, :class => "form-control"%>
+
               </div>
             </div>
           </div>
+
 
           <!-- Tabelle der Anzulegenden Items -->
             <div class="col-xs-12">
@@ -127,13 +125,13 @@
                         <tbody>
                             <tr ng-repeat="item in items">
                                 <td>
-                                    <input id="basket_items_attributes_{{item.id}}_name" name="basket[items_attributes][{{item.id}}][name]" value="{{ item.name }}" type="text"></input>
+                                    <input disabled id="basket_items_attributes_{{item.id}}_name" name="basket[items_attributes][{{item.id}}][name]" value="{{ item.name }}" type="text"></input>
                                 </td>
                                 <td>
-                                    <input id="basket_items_attributes_{{item.id}}_quantity" name="basket[items_attributes][{{item.id}}][quantity]" value="{{ item.quantity }}" type="text"></input>
+                                    <input disabled id="basket_items_attributes_{{item.id}}_quantity" name="basket[items_attributes][{{item.id}}][quantity]" value="{{ item.quantity }}" type="text"></input>
                                 </td>
                                 <td>
-                                    <input id="basket_items_attributes_{{item.id}}_price" name="basket[items_attributes][{{item.id}}][price]" value="{{ item.price }}" type="text"></input>
+                                    <input disabled id="basket_items_attributes_{{item.id}}_price" name="basket[items_attributes][{{item.id}}][price]" value="{{ item.price }}" type="text"></input>
                                 </td>
                                 <td>
                                     <button class="btn btn-default" ng-click="rem($index)" data-toggle="tooltip" data-placement="bottom" title="Artikel löschen"><i class="fa fa-times"> </i></button>

@@ -15,13 +15,16 @@ class BasketsController < ApplicationController
   def new
     @basket = Basket.new
     @basket.items.build
-    respond_with(@basket, @item)
+    @categorys =  Category.where(:income => false, :user_id => current_user.id, :active => true)
+    respond_with(@basket, @item, @categorys)
   end
 
   def edit
+
   end
 
   def create
+
     @basket = Basket.new(basket_params)
     @basket.save
     respond_with(@basket)

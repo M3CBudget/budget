@@ -23,9 +23,12 @@
 //= require_tree .
 
 $.fn.datepicker.defaults.format = "yyyy-mm-dd";
+$.fn.datepicker.defaults.todayHighlight = true;
+$.fn.datepicker.defaults.language = 'de';
+$.fn.datepicker.defaults.autoclose = true;
 
 $(document).ready(function () {
-    
+
     $('[data-toggle="offcanvas"]').click(function () {
         $('.row-offcanvas').toggleClass('active')
     });
@@ -218,8 +221,8 @@ angular.module('app').controller('ItemController', function ($scope) {
             }
         );
 
-        $scope.sum = $scope.sum();
-        $scope.sum = Math.round($scope.sum * 100) / 100;
+        $scope.sum = $scope.getSum();
+
 
         $scope.reset();
     };
@@ -227,6 +230,7 @@ angular.module('app').controller('ItemController', function ($scope) {
     // Delet Item in Model
     $scope.rem = function($index) {
         $scope.items.splice($index, 1);
+        $scope.sum = $scope.getSum();
     };
 
     // Clear
@@ -243,17 +247,23 @@ angular.module('app').controller('ItemController', function ($scope) {
     };
 
     $scope.valid = function() {
+
         if (!$scope.name || !$scope.price || !$scope.category) {
             return false;
         }
         return true;
     };
 
-    $scope.sum = function(){
+    $scope.getSum = function(){
         var sum = 0;
-        for (var item in $scope.items) {
-            sum += (item.quantity * item.price);
+
+        
+        for(var i=0; i<$scope.items.length; i++){
+            sum = sum + ($scope.items[i].price * $scope.items[i].quantity)
         }
+
+        sum = Math.round(sum * 100) / 100;
+
         return sum;
     };
 
