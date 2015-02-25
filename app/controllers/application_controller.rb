@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   helper_method :sum_amount, :show_vendor_name, :show_category_name, :find_items_of_basket, :show_payment_name, :find_items_of_category
   helper_method :find_baskets_of_vendor
   helper_method :find_baskets_of_payment, :is_active, :sum_price, :find_baskets_of_user, :items_of_user
-  helper_method :find_basket_for_time_period, :find_income_items_of_category, :find_baskets_for_month, :find_incomes_for_time_period, :find_incomes_for_month
+  helper_method :find_basket_for_time_period, :find_income_items_of_category, :find_baskets_for_month, :find_incomes_for_time_period, :find_incomes_for_month, :get_months_of_baskets
 
   protected
 
@@ -87,6 +87,15 @@ class ApplicationController < ActionController::Base
 
   def find_incomes_of_user
     Item.where(:user_id => current_user.id, :income => true)
+  end
+
+  def get_months_of_baskets(baskets)
+    months = []
+    baskets.each do |b|
+        months.insert(b.purchase_date.month)
+    end
+    months.uniq!
+    return months
   end
 
   def sum_amount(baskets)
