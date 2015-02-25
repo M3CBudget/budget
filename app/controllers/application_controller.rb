@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   helper_method :sum_amount, :show_vendor_name, :show_category_name, :find_items_of_basket, :show_payment_name, :find_items_of_category
   helper_method :find_baskets_of_vendor
   helper_method :find_baskets_of_payment, :is_active, :sum_price, :find_baskets_of_user, :items_of_user
-  helper_method :find_basket_for_time_period
+  helper_method :find_basket_for_time_period, :find_income_items_of_category
 
   protected
 
@@ -34,6 +34,10 @@ class ApplicationController < ActionController::Base
 
   def find_items_of_category(category_id)
     Item.where(:category_id => category_id, :user_id => current_user.id, :income => false)
+  end
+
+  def find_income_items_of_category(category_id)
+    Item.where(:category_id => category_id, :user_id => current_user.id, :income => true)
   end
 
   def find_baskets_of_vendor(vendor_id)
@@ -90,9 +94,11 @@ class ApplicationController < ActionController::Base
     if !items.nil?
       items.each do |b|
         if !b.quantity.nil?
-        sum = sum + (b.price * b.quantity)
-          end
-      end
+              sum = sum + (b.price * b.quantity)
+        else
+            sum = sum + b.price
+        end
+       end
     end
     return sum
   end

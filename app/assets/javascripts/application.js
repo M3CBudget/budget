@@ -22,8 +22,10 @@
 //= require highcharts/highstock
 //= require_tree .
 
+$.fn.datepicker.defaults.format = "yyyy-mm-dd";
 
 $(document).ready(function () {
+    
     $('[data-toggle="offcanvas"]').click(function () {
         $('.row-offcanvas').toggleClass('active')
     });

@@ -50,18 +50,36 @@
                   </tr>
               </thead>
               <tbody>
-              <% find_items_of_category(@category.id).each do |item| %>
-                  <tr onclick="location.href='/items/<%= item.id %>'">
-                    <td><%= item.launch %></td>
-                    <td><%= item.name %></td>
-                    <td><%= item.notice %></td>
-                    <td><%= item.quantity %></td>
-                    <td><%= item.price  %> &euro;</td>
-                  </tr>
+              <% if (@category.income) %>
+
+                  <% find_income_items_of_category(@category.id).each do |item| %>
+                      <tr onclick="location.href='/items/<%= item.id %>'">
+                        <td><%= item.launch %></td>
+                        <td><%= item.name %></td>
+                        <td><%= item.notice %></td>
+                        <td><%= item.quantity %></td>
+                        <td><%= item.price  %> &euro;</td>
+                      </tr>
+                  <% end %>
+              <% else %>
+                  <% find_items_of_category(@category.id).each do |item| %>
+                      <tr onclick="location.href='/items/<%= item.id %>'">
+                        <td><%= item.launch %></td>
+                        <td><%= item.name %></td>
+                        <td><%= item.notice %></td>
+                        <td><%= item.quantity %></td>
+                        <td><%= item.price  %> &euro;</td>
+                      </tr>
+                  <% end %>
               <% end %>
               <tr>
                 <td colspan="4"><strong>Summe:</strong></td>
-                <td> <%= sum_price(find_items_of_category(@category.id)) %> &euro; </td>
+                <td> <% if (@category.income) %>
+                      <%= sum_price(find_income_items_of_category(@category.id)) %> &euro;
+                      <%else %>
+                      <%= sum_price(find_items_of_category(@category.id)) %> &euro;
+                <%end%>
+                      </td>
               </tr>
               </tbody>
             </table>

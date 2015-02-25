@@ -34,10 +34,8 @@
         <div class="form-group">
           <label class="" for="">Kategorie</label>
           <div class="input-group">
-
-            <select class="selectpicker" data-live-search="true" ng-model="category">
-              <!-- http://silviomoreto.github.io/bootstrap-select/ -->
-              <% Category.where(:income => false, :user_id => current_user.id).each do |category| %>
+            <select class="selectpicker"  ng-model="category">
+              <% Category.where(:income => false, :user_id => current_user.id, :active => true).each do |category| %>
                   <option value="<%= category.id %>" ><%= category.name %></option>
               <% end %>
             </select>
