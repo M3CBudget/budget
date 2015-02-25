@@ -21,10 +21,11 @@
 //= require highcharts/highcharts-more
 //= require highcharts/highstock
 //= require_tree .
-$('[data-behaviour~=datepicker]').datepicker({"format": "yyyy-mm-dd", "weekStart": 1, "autoclose": true});
 
+$.fn.datepicker.defaults.format = "yyyy-mm-dd";
 
 $(document).ready(function () {
+    
     $('[data-toggle="offcanvas"]').click(function () {
         $('.row-offcanvas').toggleClass('active')
     });
