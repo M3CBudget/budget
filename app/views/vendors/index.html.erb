@@ -31,20 +31,24 @@
       <% @vendors.each do |vendor| %>
           <div class="col-xs-6 col-lg-4">
             <div class="panel panel-default">
-              <div class="panel-heading">
-                <%= link_to vendor do%>
-                    <h3 class="panel-title"><%= vendor.name %></h3>
-                <% end %>
+              <div class="panel-heading clearfix">
+                    <%= link_to vendor do%>
+                        <h3 class="panel-title pull-left" style="padding-top: 22px;"><%= vendor.name %></h3>
+                        <div class="pull-right" style="height: 50px;">
+                          <% if vendor.logo? %>
+                            <%= image_tag vendor.logo.url(:thumb), :class => 'img-thumbnail '%>
+                          <% end %>
+                        </div>
+                    <% end %>
+
               </div>
               <div class="panel-body">
                 <div class="text-center">
                   <h4 data-toggle="tooltip" data-placement="bottom" title="Summe der bisherigen Ausgaben beim Händler">  <%= sum_amount(find_baskets_of_vendor(vendor.id)) %> <i class="fa fa-euro"></i></h4>
                 </div>
                 <div class="text-center">
-                  <% if vendor.logo? %>
-                      <hr>
-                      <%= image_tag vendor.logo.url(:thumb), :class => 'img-thumbnail'%>
-                  <% end %>
+
+
                 </div>
 
 
