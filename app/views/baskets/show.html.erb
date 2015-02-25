@@ -44,6 +44,7 @@
     <div class="col-xs-12 col-sm-12 col-md-6">
       <div class="form-group">
         <label class="" for="">Dokument:</label>
+        <p><%= @basket.document %></p>
         <div class="foto_enlarge">
             <%= image_tag @basket.document.url(:normal), :class => "thumbnail" if @basket.document? %>
         </div>
