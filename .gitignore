@@ -26,4 +26,4 @@
 
 # Ignore Upload Pics
 
-/public/uploads/*
+#/public/uploads/*
