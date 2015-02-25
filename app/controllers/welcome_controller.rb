@@ -6,8 +6,8 @@ class WelcomeController < ApplicationController
     @lastIncomes = Item.where(:user_id => current_user.id, :income => true).last(5)
 
     @chart = LazyHighCharts::HighChart.new('column') do |f|
-      f.series(:name=>'Einnahmen', :data=> [ sum_price(find_incomes_of_user).to_i ] )
-      f.series(:name=>'Ausgaben', :data=> [ sum_amount(find_baskets_of_user).to_i ] )
+      f.series(:name=>'Einnahmen', :data=> [ sum_price(find_incomes_for_month).to_i ] )
+      f.series(:name=>'Ausgaben', :data=> [ sum_amount(find_baskets_for_month).to_i ] )
       f.options[:chart][:defaultSeriesType] = "column"
       f.plot_options({:column=>{:stacking=>"normal"}})
     end

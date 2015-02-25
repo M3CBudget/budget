@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   helper_method :sum_amount, :show_vendor_name, :show_category_name, :find_items_of_basket, :show_payment_name, :find_items_of_category
   helper_method :find_baskets_of_vendor
   helper_method :find_baskets_of_payment, :is_active, :sum_price, :find_baskets_of_user, :items_of_user
-  helper_method :find_basket_for_time_period, :find_income_items_of_category
+  helper_method :find_basket_for_time_period, :find_income_items_of_category, :find_baskets_for_month, :find_incomes_for_time_period, :find_incomes_for_month
 
   protected
 
@@ -48,15 +48,25 @@ class ApplicationController < ActionController::Base
     Basket.where(:user_id => current_user.id, :purchase_date => (start_date..end_date))
   end
 
+  def find_incomes_for_time_period(start_date, end_date)
+    Item.where(:user_id => current_user.id, :launch => (start_date..end_date), :income => true)
+  end
+
+  def find_incomes_for_month
+    date = Time.now
+    start_date = date.beginning_of_month
+    return find_incomes_for_time_period(start_date, date)
+  end
+
   def find_baskets_for_month
-    date = Date.now
-    start_date = date.beginn_of_month
+    date = Time.now
+    start_date = date.beginning_of_month
     return find_basket_for_time_period(start_date, date)
   end
 
   def forecast_costs_for_month
     date = Date.now
-    start_date = date.beginn_of_month
+    start_date = date.beginning_of_month
     sum = sum_amount(find_basket_for_time_period(start_date, date))
     dif = (date - start_date).to_i
     month = date.to_a[4]
