@@ -380,11 +380,9 @@ function incomeValidation(formId) {
             },
             "item[launch]": {
                 required: true,
-                date: true
             },
             "item[finish]": {
                 required: false,
-                date: true
             }
         },
         // Specify the validation error messages
@@ -410,7 +408,6 @@ function basketValidation(formId) {
             "basket[vendor_id]": "required",
             "basket[purchase_date]": {
                 required: false,
-                date: true
             },
             "basket[items_attributes][{{item.id}}][name]": {
                 required: true
