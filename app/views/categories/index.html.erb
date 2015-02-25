@@ -41,7 +41,7 @@
               <% if (category.active) %>
                     <div class="panel panel-success">
               <% else %>
-                  <div class="panel panel-info">
+                  <div class="panel panel-default">
               <% end %>
               <div class="panel-heading">
                 <%= link_to category do %>
@@ -64,8 +64,14 @@
                 <button type="button" class="btn btn-default btn-xs btn-block popover-top" data-toggle="popover" title="Notiz" data-content="<%= category.notice %>"><i class="fa fa-file-text"></i>  Notiz </button>
               </div>
               <div class="panel-footer">
-                <%= link_to edit_category_path(category) do %>  <button class="btn btn-default"> <i class="fa fa-pencil-square-o"></i> Ändern </button> <% end %>
-                <%= link_to category, method: :delete, data: { confirm: 'Are you sure?' } do %> <button class="btn btn-default"> <i class="fa fa-trash-o"></i> Löschen </button>  <% end %>
+                <% if (category.active) %>
+                    <%= link_to edit_category_path(category) do %>  <button class="btn btn-default"> <i class="fa fa-pencil-square-o"></i> Ändern </button> <% end %>
+                <% else %>
+                    <%= link_to edit_category_path(category) do %>  <button class="btn btn-default"> <i class="fa fa-wrench"></i> Aktivieren </button> <% end %>
+                <% end %>
+                <%= link_to category, method: :delete, data: { confirm: 'Wollen Sie die Kategorie löschen?' } do %> <button class="btn btn-default"> <i class="fa fa-trash-o"></i> Löschen </button>  <% end %>
+
+
               </div>
               </div>
             </div>
@@ -84,7 +90,7 @@
               <% if (category.active) %>
                   <div class="panel panel-danger">
               <% else %>
-                  <div class="panel panel-info">
+                  <div class="panel panel-default">
               <% end %>
 
 
@@ -121,8 +127,13 @@
               </div>
 
               <div class="panel-footer">
-                <%= link_to edit_category_path(category) do %>  <button class="btn btn-default"> <i class="fa fa-pencil-square-o"></i> Ändern </button> <% end %>
+                <% if (category.active) %>
+                    <%= link_to edit_category_path(category) do %>  <button class="btn btn-default"> <i class="fa fa-pencil-square-o"></i> Ändern </button> <% end %>
+                <% else %>
+                    <%= link_to edit_category_path(category) do %>  <button class="btn btn-default"> <i class="fa fa-wrench"></i> Aktivieren </button> <% end %>
+                <% end %>
                 <%= link_to category, method: :delete, data: { confirm: 'Wollen Sie die Kategorie löschen?' } do %> <button class="btn btn-default"> <i class="fa fa-trash-o"></i> Löschen </button>  <% end %>
+
               </div>
 
               </div>

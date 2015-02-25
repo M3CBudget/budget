@@ -41,58 +41,9 @@ rake db:create
 rake db:migrate
 rake db:seeds
 
-== da  postgree bytea column seed insert nicht funktioniert
-
-update vendors
-set logo='aldi-logo.png'
-where Id = 1;
+SQL Scripts ebenfalls im seeds.rb untergebracht
 
 
-update vendors
-set logo='500px-Amazon_com_logo_svg.png'
-where Id = 2;
-
-
-update vendors
-set logo='pik_vermieter.jpg'
-where Id = 3;
-
-update vendors
-set logo='1000px-Deutsche_Telekom-Logo.svg.png'
-where Id = 4;
-
-update vendors
-set logo='Stadtwerke_M_nster_Logo.svg.png'
-where Id = 5;
-
-update vendors
-set logo='Edeka-logo.jpg'
-where Id = 6;
-
-update vendors
-set logo='lotto_mit_kugeln.jpeg'
-where Id = 7;
-
-
-update vendors
-set logo='Logo_FH_Muenster_cmyk.svg.png'
-where Id = 8;
-
-update vendors
-set logo='Zalando_Logo.png'
-where Id = 9;
-
-update vendors
-set logo='bogazici.jpg'
-where Id = 10;
-
-update vendors
-set logo='org_220px-Q1_Tankstellenvertrieb_logo.svg.png'
-where Id = 11;
-
-update vendors
-set logo='org_mensa.png'
-where Id = 12;
 
 
 
