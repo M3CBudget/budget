@@ -3,35 +3,17 @@
 Nächstes Meeting Sonntag 22. Feburar
 
 == TODO
-- How to CSS?
-- Welcome Page ohne Login
-- Welcome Page mit Signup Form
-- Generell Userstorys
-- Dynamische Erweiterung der Items zeilen im neuen Basket
-- Einbindung des Artikel an das Item
-- Null Prüfung
-- Summe über Zahlungsmethoden -> in Zahlungsmethoden index View und Detail
-- Summe über Kategorien -> ""
-- Summe über ...
-- Einnahmen und Ausgaben _form View
-- + Button CSSn
-- highcharts einbinden in Dash
-- hochrechnung
-- autocomplete
-- angular items Erweiterung
-- modal prüfung des baskets (bestätigung)
-- landing page designen
-- Standard Datensätze um nullpointer zu verhinden (Kategorien / Zahlungsmethoden / Vendors) -> null prüfung dann standard form rendern
-- Category Index: Falsche ANzeige. 7tes Feld ist leer
-- highcharts
-- schöne seeds
-- kategorie index in zwei Bereiche teilen, Einnahmen und Ausgaben Kategorie
-- Fehlermeldungen im devise style
+Prio 1 = wichtig , 2 , 3 = unwichtig
 
-== Done
-- Destroy Function von Items im Basket reparieren
-- Glypicons wie werden diese eingebunden?
-- is_active Methode
+3 Welcome Page mit Signup Form
+
+1 Dynamische Erweiterung der Items zeilen im neuen Basket (final test) (mark)
+1 seeds (christopher)
+1 highcharts einbinden in Dash (christopher mark)
+1 Methode Monate (hochrechnung) (chritopher und marco)
+1 Fehler und success meldungen im devise style
+
+
 
 == Konfiguration
 
@@ -39,14 +21,8 @@ ruby version 2.1.2
 rails version 4.1.8
 postgres version 0.17
 
-== Anleitung Einbindung
 
-rake db:drop
-rake db:create
-rake db:migrate
-rake db:seeds
-
-
+== Benötigte Komponenten
 Für Bildresizing - ImageMagick installieren
 
 Für Mac: Mit Homebrew installieren. Im Terminal:
@@ -55,6 +31,15 @@ brew install imagemagick
 
 Für Linux:
 sudo apt-get install imagemagick
+
+
+
+== Anleitung Einbindung
+
+rake db:drop
+rake db:create
+rake db:migrate
+rake db:seeds
 
 
 
