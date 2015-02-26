@@ -80,7 +80,6 @@
                   <li><%= message %></li>
               <% end %>
             </ul>
-            {{sum}}
           </div>
       <% end %>
 
@@ -106,7 +105,7 @@
               <label class="" for="">Einkaufsdatum:</label>
               <div class="input-group date">
                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                <%= f.text_field :purchase_date, :data => {:provide => "datepicker"}, :class => "form-control"%>
+                <%= f.text_field :purchase_date, :value => Time.now.strftime("%d-%m-%Y"), :data => {:provide => "datepicker"}, :class => "form-control"%>
 
               </div>
             </div>
@@ -129,10 +128,10 @@
                         <tbody>
                             <tr ng-repeat="item in items">
                                 <td>
-                                    <input id="basket_items_attributes_{{item.id}}_name" name="basket[items_attributes][{{item.id}}][name]" value="{{ item.name }}" type="text"></input>
+                                    <input id="basket_items_attributes_{{item.id}}_name bianame" name="basket[items_attributes][{{item.id}}][name]" value="{{ item.name }}" type="text"></input>
                                 </td>
                                 <td>
-                                    <input id="basket_items_attributes_{{item.id}}_quantity" name="basket[items_attributes][{{item.id}}][quantity]" value="{{ item.quantity }}" type="text"></input>
+                                    <input id="basket_items_attributes_{{item.id}}_quantity biaquantity" name="basket[items_attributes][{{item.id}}][quantity]" value="{{ item.quantity }}" type="text"></input>
                                 </td>
                                 <td>
                                     <input id="basket_items_attributes_{{item.id}}_price" name="basket[items_attributes][{{item.id}}][price]" value="{{ item.price }}" type="text"></input>
