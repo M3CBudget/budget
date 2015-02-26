@@ -9,7 +9,7 @@ class IncomeController < ApplicationController
     year = Time.now.year
     @chartIncomes = LazyHighCharts::HighChart.new('graph') do |f|
       f.options[:xAxis][:categories] = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September','Oktober', 'November', 'Dezember']
-      f.series(:type=> 'column',:name=> 'Einnahmen',:data=> [ sum_price(find_incomes_for_time_period("01-01-#{year}","01-31-#{year}")),
+      f.series(:type=> 'column',:name=> 'Einnahmen',  :showInLegend => false, :data=> [ sum_price(find_incomes_for_time_period("01-01-#{year}","01-31-#{year}")),
                                                               sum_price(find_incomes_for_time_period("02-01-#{year}","02-28-#{year}")),
                                                               sum_price(find_incomes_for_time_period("03-01-#{year}","03-31-#{year}")),
                                                               sum_price(find_incomes_for_time_period("04-01-#{year}","04-30-#{year}")),

@@ -17,6 +17,7 @@ class PaymentsController < ApplicationController
       f.chart({:defaultSeriesType=>"pie"} )
       series = {
           :type=> 'pie',
+          :showInLegend => false,
           :data=> [
           [payment_name[0], payment_amount[0]],
           [ payment_name[1], payment_amount[1]],
@@ -46,6 +47,7 @@ class PaymentsController < ApplicationController
       f.chart({:defaultSeriesType=>"pie" } )
       series = {
           :type=> 'pie',
+          :showInLegend => false,
           :data=> [
               [ payment_name[0], Basket.where(:user_id => current_user.id, :payment_id => Payment.where(:user_id => current_user.id, :name => payment_name[0]).pluck(:id)).count],
               [ payment_name[1], Basket.where(:user_id => current_user.id, :payment_id => Payment.where(:user_id => current_user.id, :name => payment_name[1]).pluck(:id)).count],

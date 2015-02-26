@@ -9,7 +9,7 @@ class BasketsController < ApplicationController
     year = Time.now.year
     @chartBaskets = LazyHighCharts::HighChart.new('graph') do |f|
       f.options[:xAxis][:categories] = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September','Oktober', 'November', 'Dezember']
-      f.series(:type=> 'column',:name=> 'Ausgaben',:data=> [ sum_amount(find_basket_for_time_period("01-01-#{year}","01-31-#{year}")),
+      f.series(:type=> 'column',:name=> 'Ausgaben',  :showInLegend => false, :data=> [ sum_amount(find_basket_for_time_period("01-01-#{year}","01-31-#{year}")),
                                                              sum_amount(find_basket_for_time_period("02-01-#{year}","02-28-#{year}")),
                                                              sum_amount(find_basket_for_time_period("03-01-#{year}","03-31-#{year}")),
                                                              sum_amount(find_basket_for_time_period("04-01-#{year}","04-30-#{year}")),
