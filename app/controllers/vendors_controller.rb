@@ -5,6 +5,19 @@ class VendorsController < ApplicationController
 
   def index
     @vendors = Vendor.where(:user_id => current_user.id)
+
+    vendor_name = []
+    vendor_amount = []
+    @vendors.each do |v|
+      vendor_name << v.name
+      vendor_amount << sum_amount(find_baskets_of_vendor(v.id))
+    end
+
+    @chartVendor = LazyHighCharts::HighChart.new('graph') do |f|
+      f.options[:xAxis][:categories] = vendor_name
+      f.series(:type=> 'column',:name=> 'Ausgaben',:data=> vendor_amount)
+    end
+
     respond_with(@vendors)
   end
 

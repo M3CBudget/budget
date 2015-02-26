@@ -55,6 +55,6 @@ class WelcomeController < ApplicationController
       f.series(:type=> 'spline',:name=> 'Average', :data=> [3, 2.67])
       end
 
-    respond_with(@lastBaskets, @lastCategories, @chart, @chartGraph, @chartYear)
+    respond_with(@lastBaskets, @chart, @chartGraph, @chartYear)
   end
 end
