@@ -84,7 +84,7 @@ Vendor.create!([
 
 connection = ActiveRecord::Base.connection()
 connection.execute("
-ALTER DATABASE database_name SET datestyle TO 'ISO, MDY';
+ALTER DATABASE budget_development SET datestyle TO 'ISO, MDY';
 
 SET datestyle TO 'ISO, MDY';
 

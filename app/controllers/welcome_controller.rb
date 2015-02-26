@@ -9,6 +9,7 @@ class WelcomeController < ApplicationController
       f.series(:name=>'Ausgaben', :data=> [ sum_amount(find_baskets_for_month).to_i ] )
       f.series(:name=>'Einnahmen', :data=> [ sum_price(find_incomes_for_month).to_i ] )
          f.options[:chart][:defaultSeriesType] = "column"
+      f.options[:chart][:backgroundColor] = 'rgba(0, 0, 0, 0)'
     end
 
    # Datenaufbereitung für das chartGraph Chart (letzten 5 Baskets)
@@ -23,6 +24,7 @@ class WelcomeController < ApplicationController
       f.options[:xAxis][:categories] = (Basket.where(:user_id => current_user.id).pluck(:purchase_date).last(5))
       f.series(:type=> 'column',:name=> 'Ausgaben',:data=>   tmp)
       f.series(:type=> 'spline',:name=> 'Trend', :data=> trend)
+      f.options[:chart][:backgroundColor] = 'rgba(0, 0, 0, 0)'
     end
 
 
@@ -53,7 +55,7 @@ class WelcomeController < ApplicationController
                                                               sum_price(find_incomes_for_time_period("10-01-#{year}","10-31-#{year}")),
                                                               sum_price(find_incomes_for_time_period("11-01-#{year}","11-30-#{year}")),
                                                               sum_price(find_incomes_for_time_period("12-01-#{year}","12-31-#{year}")),])
-      f.series(:type=> 'spline',:name=> 'Average', :data=> [3, 2.67])
+      f.options[:chart][:backgroundColor] = 'rgba(0, 0, 0, 0)'
       end
 
     respond_with(@lastBaskets, @chart, @chartGraph, @chartYear)
