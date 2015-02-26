@@ -85,9 +85,20 @@
       </div>
 
       <div role="tabpanel" class="tab-pane fade" id="list">
+        <div class="col-lg-12">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Entwicklung der Einnahmen im aktuellen Jahr</h3>
+            </div>
+            <div class="panel-body">
+              <%= high_chart("my_id11", @chartIncomes)  %>
+            </div>
+          </div>
+
+
         <div class="list-group">
           <% @incomes.each do |income| %>
-              <%= link_to incomes_path(income) do %>
+              <%= link_to item_path(income) do %>
                   <li class="list-group-item list-group-item-success">
                     <%= income.name %>
                     <span class="badge pull-right"> <%= income.price %> &euro;</span>
@@ -95,6 +106,7 @@
               <% end %>
           <% end %>
         </div>
+      </div>
       </div>
 
     </div>
