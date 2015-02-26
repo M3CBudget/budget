@@ -13,13 +13,13 @@
 
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active">
+    <li role="presentation" >
       <a href="#grid" aria-controls="grid" role="tab" data-toggle="tab">
         <i class="fa fa-th"></i> Grid
       </a>
     </li>
 
-    <li role="presentation">
+    <li role="presentation" class="active">
       <a href="#list" aria-controls="list" role="tab" data-toggle="tab">
         <i class="fa fa-bars"></i> List
       </a>
@@ -29,7 +29,7 @@
   <!-- Tab panes -->
   <div class="tab-content">
     <br>
-    <div role="tabpanel" class="tab-pane fade active in" id="grid">
+    <div role="tabpanel" class="tab-pane fade " id="grid">
 
       <% @payments.each do |payment| %>
           <div class="col-xs-6 col-lg-4">
@@ -73,7 +73,7 @@
 
       </div>
 
-      <div role="tabpanel" class="tab-pane fade" id="list">
+      <div role="tabpanel" class="tab-pane fade active in" id="list">
       <div class="list-group">
         <div class="col-lg-12">
           <div class="panel panel-default">

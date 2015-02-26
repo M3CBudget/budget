@@ -40,6 +40,10 @@ class ApplicationController < ActionController::Base
     Item.where(:category_id => category_id, :user_id => current_user.id, :income => true)
   end
 
+  def find_items_of_category(category_id)
+    Item.where(:category_id => category_id, :user_id => current_user.id)
+  end
+
   def find_baskets_of_vendor(vendor_id)
     Basket.where(:vendor_id => vendor_id, :user_id => current_user.id)
   end
@@ -122,7 +126,7 @@ class ApplicationController < ActionController::Base
     return sum.to_f
   end
 
-  def is_active(id) Item.find(id)
+  def is_active(id)
       fin = Item.find(id).finish
       if fin.nil?
         active = true
