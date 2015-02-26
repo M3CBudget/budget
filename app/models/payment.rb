@@ -1,5 +1,5 @@
 class Payment < ActiveRecord::Base
   belongs_to :user
-  belongs_to :basket
+  has_many :basket
   validates :name, :bic, :number, presence: true
 end

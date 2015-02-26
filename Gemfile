@@ -47,6 +47,7 @@ gem 'devise-bootstrap-views'
 
 group :development, :test do
   gem 'rspec-rails'
+  gem 'shoulda-matchers', require: false
   gem 'factory_girl_rails'
   gem 'guard-rspec'
   gem 'faker'
