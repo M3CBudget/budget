@@ -5,6 +5,40 @@ class PaymentsController < ApplicationController
 
   def index
     @payments = Payment.where(:user_id => current_user.id)
+
+    payment_name = []
+    payment_amount = []
+    @payments.each do |p|
+      payment_name << p.name
+      payment_amount << sum_amount(find_baskets_of_payment(p.id))
+    end
+
+    @chartPayments = LazyHighCharts::HighChart.new('pie') do |f|
+      f.chart({:defaultSeriesType=>"pie"} )
+      series = {
+          :type=> 'pie',
+          :data=> [
+              [payment_name[0], payment_amount[0]],
+          [ payment_name[1], payment_amount[1]],
+          [ payment_name[2], payment_amount[2]],
+          [ payment_name[3], payment_amount[3]]
+          ]
+      }
+      f.series(series)
+      f.legend(:layout=> 'vertical',:style=> {:left=> 'auto', :bottom=> 'auto',:right=> '50px',:top=> '100px'})
+      f.plot_options(:pie=>{
+                         :allowPointSelect=>true,
+                         :cursor=>"pointer" ,
+                         :dataLabels=>{
+                             :enabled=>true,
+                             :color=>"black",
+                             :style=>{
+                                 :font=>"13px Trebuchet MS, Verdana, sans-serif"
+                             }
+                         }
+                     })
+    end
+
     respond_with(@payments)
   end
 
