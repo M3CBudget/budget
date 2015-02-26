@@ -59,10 +59,10 @@ class ApplicationController < ActionController::Base
   def find_incomes_for_time_period(start_date, end_date)
     incomes_in_period_array = []
     incomes_array = Item.where(:user_id => current_user.id, :income => true)
-    start = Date.parse(start_date.to_s).strftime(%d-%m-%Y)
+    start = start_date
     incomes_array.each do |i|
-      if Date.parse(i.finish.to_s) > start && Date.parse(i.launch.to_s) < Date.parse(end_date.to_s)
-        while start <= Date.parse(end_date.to_s)
+      if Date.parse(i.finish).strftime("%m-%d-%Y") > start && Date.parse(i.launch).strftime("%m-%d-%Y") < end_date
+        while start <= end_date
           incomes_in_period_array.insert(i)
           start = start.next_month
         end
