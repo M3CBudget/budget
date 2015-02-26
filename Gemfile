@@ -32,6 +32,9 @@ gem 'jquery-validation-rails', '~> 1.13.1'
 gem 'seed_dump'
 gem 'devise'
 gem 'devise-bootstrap-views'
+# wal devise translation
+gem  'devise-i18n'
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
