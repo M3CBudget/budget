@@ -35,7 +35,11 @@
   </div>
       <div class="panel-body">
         <div class="text-center">
+          <% if !@category.glyphicon.nil? %>
+          <p><i class="fa <%= @category.glyphicon.name%>"></i> <%= @category.notice %></p>
+           <% else%>
           <p><i class="fa fa-file-text"></i> <%= @category.notice %></p>
+              <%end%>
           </div>
 
         <div class="table">

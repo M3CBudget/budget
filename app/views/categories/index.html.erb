@@ -153,8 +153,17 @@
                     <% else %>
                         <li class="list-group-item list-group-item-danger">
                     <% end %>
+                    <% if !category.glyphicon.nil? %>
+                    <i class="fa <%=category.glyphicon.name%>"></i>
+                    <% else%>
+                        <i class="fa fa-file-text"></i>
+                     <%end%>
                     <%= category.name %>
+                    <% if !category.income %>
                     <span class="badge pull-right"> <%=sum_price(find_items_of_category(category.id)) %> &euro;</span>
+                    <%else%>
+                        <span class="badge pull-right"> <%=sum_price(find_income_items_of_category(category.id)) %> &euro;</span>
+                    <%end%>
                     </li>
                 <% end %>
             <% end %>
