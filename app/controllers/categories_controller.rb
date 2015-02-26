@@ -5,6 +5,20 @@ class CategoriesController < ApplicationController
 
   def index
     @categories = Category.where(:user_id => current_user.id).order(active: :desc, income: :desc)
+    category_name = []
+    category_amount = []
+    @categories.each do |c|
+      category_name << c.name
+      category_amount << (sum_price(find_income_items_of_category(c.id)) + sum_price(find_items_of_category(c.id)))
+    end
+
+    @chartCategories = LazyHighCharts::HighChart.new('bar') do |f|
+      f.series(:name=> 'Betrag',:data=> category_amount)
+      f.options[:chart][:defaultSeriesType] = "bar"
+      f.options[:xAxis] = {:plot_bands => "none", :title=>{:text=>"Kategorien"}, :categories => category_name}
+      f.options[:yAxis][:title] = {:text=>"Euro"}
+    end
+
     respond_with(@categories)
   end
 
