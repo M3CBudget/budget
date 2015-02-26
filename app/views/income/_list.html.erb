@@ -1,0 +1,16 @@
+
+<div class="list-group">
+  <% Item.where(:user_id => current_user.id, :income => true,  ).each do |income| %>
+      <%= link_to item_path(income) do %>
+          <li class="list-group-item">
+          <%= income.name %>
+          <span class="badge pull-right"> <%= income.price %> &euro;</span>
+          </li>
+
+      <% end %>
+  <% end %>
+</div>
+
+
+
+

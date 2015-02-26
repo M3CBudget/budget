@@ -17,6 +17,7 @@ class CategoriesController < ApplicationController
       f.options[:chart][:defaultSeriesType] = "bar"
       f.options[:xAxis] = {:plot_bands => "none", :title=>{:text=>"Kategorien"}, :categories => category_name}
       f.options[:yAxis][:title] = {:text=>"Euro"}
+      f.options[:chart][:backgroundColor] = 'rgba(0, 0, 0, 0)'
     end
 
     respond_with(@categories)
