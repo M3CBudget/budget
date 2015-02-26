@@ -71,9 +71,10 @@
                     <h3 class="panel-title">Übersicht</h3>
                 </div>
                 <div class="panel-body">
-                <%= high_chart("my_id6", @chartVendor)  %>
-            </div>
-            </div>
+                    <%= high_chart("my_id6", @chartVendor)  %>
+                </div>
+          </div>
+
 
           <div class="list-group">
             <% Vendor.where(:user_id => current_user.id).each do |vendor| %>
@@ -94,3 +95,4 @@
 
 
 <%= link_to '+', new_vendor_path, :class => 'btn btn-default pull-left', :role => 'button' %>
+</div>
