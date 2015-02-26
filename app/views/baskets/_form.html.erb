@@ -105,7 +105,7 @@
               <label class="" for="">Einkaufsdatum:</label>
               <div class="input-group date">
                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                <%= f.text_field :purchase_date, :value => @model_instance.now.strftime("%d-%m-%Y"), :data => {:provide => "datepicker"}, :class => "form-control"%>
+                <%= f.text_field :purchase_date, :value => Time.now.strftime("%d-%m-%Y"), :data => {:provide => "datepicker"}, :class => "form-control"%>
 
               </div>
             </div>
