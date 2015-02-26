@@ -13,9 +13,11 @@ class VendorsController < ApplicationController
       vendor_amount << sum_amount(find_baskets_of_vendor(v.id))
     end
 
-    @chartVendor = LazyHighCharts::HighChart.new('graph') do |f|
-      f.options[:xAxis][:categories] = vendor_name
-      f.series(:type=> 'column',:name=> 'Ausgaben',:data=> vendor_amount)
+    @chartVendor = LazyHighCharts::HighChart.new('bar') do |f|
+      f.series(:name=> 'Betrag',:data=> vendor_amount)
+      f.options[:chart][:defaultSeriesType] = "bar"
+      f.options[:xAxis] = {:plot_bands => "none", :title=>{:text=>"Kategorien"}, :categories => vendor_name}
+      f.options[:yAxis][:title] = {:text=>"Euro"}
     end
 
     respond_with(@vendors)
