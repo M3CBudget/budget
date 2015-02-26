@@ -21,6 +21,7 @@ class IncomeController < ApplicationController
                                                               sum_price(find_incomes_for_time_period("10-01-#{year}","10-31-#{year}")),
                                                               sum_price(find_incomes_for_time_period("11-01-#{year}","11-30-#{year}")),
                                                               sum_price(find_incomes_for_time_period("12-01-#{year}","12-31-#{year}")),])
+      f.options[:chart][:backgroundColor] = 'rgba(0, 0, 0, 0)'
     end
     respond_with(@incomes)
   end

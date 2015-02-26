@@ -26,6 +26,7 @@ class PaymentsController < ApplicationController
       }
       f.series(series)
       f.options[:title][:text] = 'Wertmäßiger Anteil'
+      f.options[:chart][:backgroundColor] = 'rgba(0, 0, 0, 0)'
       f.legend(:layout=> 'vertical',:style=> {:left=> 'auto', :bottom=> 'auto',:right=> 'auto',:top=> 'auto'})
       f.plot_options(:pie=>{
                          :allowPointSelect=>true,
@@ -54,6 +55,7 @@ class PaymentsController < ApplicationController
       }
       f.series(series)
       f.options[:title][:text] = 'Anzahl der Bezahlvorgänge'
+      f.options[:chart][:backgroundColor] = 'rgba(0, 0, 0, 0)'
       f.legend(:layout=> 'vertical',:style=> {:left=> 'auto', :bottom=> 'auto',:right=> 'auto',:top=> 'auto'})
       f.plot_options(:pie=>{
                          :allowPointSelect=>true,
