@@ -176,19 +176,6 @@
 
 
 
-      <div class="col-xs-12">
-        <h4> Debugg</h4>
-        <ul ng-repeat="item in items">
-          <li > {{ item }} <a href="" ng-click="rem($index)">x</a></li>
-        </ul>
-      </div>
-
-
-
-
-
-
-
 
 
     <!-- Modal -->
@@ -282,7 +269,7 @@
           <div class="modal-footer">
             <%= f.hidden_field :user_id, :value => current_user.id %>
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <%= f.submit "Speichern" , :class => "btn btn-default pull-left" %>
+            <%= f.submit "Speichern" , :class => "btn btn-default" %>
           </div>
 
         </div>
