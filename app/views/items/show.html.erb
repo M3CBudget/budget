@@ -10,7 +10,7 @@
   <% if is_active(@item.id) %>
       <div class="panel panel-success">
   <% else %>
-      <div class="panel panel-warning">
+      <div class="panel panel-default">
   <% end %>
   <div class="panel-heading">
     <%= link_to @item do %>
@@ -32,26 +32,100 @@
           <% end %>
         </h3>
     <% end %>
-    <small class="pull-right"><%= @item.launch %></small>
+    <div class="text-center">
+        <small><%= @item.launch %></small>
+    </div>
   </div>
   <div class="panel-body">
-    <div class="col-xs-4">
-      <%= show_category_name(@item.category) %>
+
+    <div class="col-xs-12">
+      <div class="form-group">
+        <label class="" for="">Name:</label>
+        <%= @item.name %>
+        <div class="input-group">
+          <div class="input-group-addon"><i class="fa fa-file-text"></i></div>
+          <input id="" class="form-control" type="text" value="<%= @item.name %>" placeholder="<%= @item.name %>" disabled="disabled">
+        </div>
+      </div>
     </div>
-    <div class="col-xs-4">
-      <% unless @item.finish.nil? %>
-          <%= @item.launch %> - <%= @item.finish %>
-          <%= @item.period %>
-          <% end %>
+
+    <div class="col-xs-6">
+      <div class="form-group">
+        <label class="" for="">Preis und Menge:</label>
+        <% if @item.quantity? %>
+            <%= @item.quantity%> x
+            <% end  %>
+        <%= @item.price %> &euro;
+        <div class="input-group">
+          <div class="input-group-addon"><i class="fa fa-money"></i></div>
+          <input id="" class="form-control" type="text" value="<%= @item.price %> &euro;" placeholder="<%= @item.price %> &euro;" disabled="disabled">
+          <% if @item.quantity? %>
+              <input id="" class="form-control" type="text" value="<%= @item.quantity %>" placeholder="<%= @item.quantity %>" disabled="disabled">
+
+        <% end %>
+        </div>
+      </div>
     </div>
-    <div class="col-xs-4">
-      <%= @item.price %> &euro;
+
+    <div class="col-xs-6">
+      <div class="form-group">
+        <label class="" for="">Kategorie:</label>
+        <%= show_category_name(@item.category) %>
+        <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-files-o"></i></span>
+          <input id="" class="form-control" type="text" value="<%= show_category_name(@item.category) %>" placeholder="<%= show_category_name(@item.category) %>" disabled="disabled">
+        </div>
+      </div>
     </div>
-    <div class="col-xs-12"><%= @item.notice %></div>
+
+    <div class="col-xs-8">
+      <div class="form-group">
+        <label class="" for=""> Zeitraum:</label>
+        <%= @item.launch %> -   <%= @item.finish %>
+        <div class="input-daterange input-group date" id="datepicker">
+          <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+          <input id="" class="form-control" type="text" value=" <%= @item.launch %>" placeholder=" <%= @item.launch %>" disabled="disabled">
+          <span class="input-group-addon">bis</span>
+          <input id="" class="form-control" type="text" value=" <%= @item.finish %>" placeholder=" <%= @item.finish %>" disabled="disabled">
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xs-4">
+      <div class="form-group">
+        <label class="" for="">Intervall:</label>
+        <%= @item.period %>
+        <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-repeat"></i></span>
+          <input id="" class="form-control" type="text" value=" <%= @item.period %>" placeholder=" <%= @item.period %>" disabled="disabled">
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-xs-12">
+      <div class="form-group">
+        <label class="" for="">Notiz:</label>
+        <div class="input-group">
+          <div class="input-group-addon"><i class="fa fa-file-text"></i></div>
+          <input id="" class="form-control" type="area" value=" <%= @item.notice %>" placeholder="<%= @item.notice %>" disabled="disabled">
+        </div>
+      </div>
+    </div>
+
+
+
 
   </div>
   <div class="panel-footer">
-    <%= link_to edit_item_path(@item) do %>  <button class="btn btn-default"> <i class="fa fa-pencil-square-o"></i> Ändern </button> <% end %>
+    <% if (@item.income == true) %>
+        <%= link_to "/incomes" do %> <button class="btn btn-default btn-xs"> <i class="fa fa-arrow-left"></i> Zurück </button> <% end %> |
+    <% else %>
+        <%= link_to items_path do %> <button class="btn btn-default btn-xs"> <i class="fa fa-arrow-left"></i> Zurück </button> <% end %> |
+    <%end %>
+
+    <%= link_to edit_item_path(@item) do %> <button class="btn btn-default btn-xs"> <i class="fa fa-pencil-square-o"></i> Ändern </button> <% end %>
+
   </div>
   </div>
 </div>
