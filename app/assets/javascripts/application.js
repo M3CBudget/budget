@@ -392,7 +392,7 @@ function incomeValidation(formId) {
                 required: true
             },
             "item[finish]": {
-                required: false
+                required: true
             }
         },
         // Specify the validation error messages
