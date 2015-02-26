@@ -14,7 +14,7 @@ class VendorsController < ApplicationController
     end
 
     @chartVendor = LazyHighCharts::HighChart.new('bar') do |f|
-      f.series(:name=> 'Betrag',:data=> vendor_amount)
+      f.series(:name=> 'Betrag', :showInLegend => false, :data=> vendor_amount)
       f.options[:chart][:defaultSeriesType] = "bar"
       f.options[:xAxis] = {:plot_bands => "none", :title=>{:text=>"Kategorien"}, :categories => vendor_name}
       f.options[:yAxis][:title] = {:text=>"Euro"}

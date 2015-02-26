@@ -13,7 +13,7 @@ class CategoriesController < ApplicationController
     end
 
     @chartCategories = LazyHighCharts::HighChart.new('bar') do |f|
-      f.series(:name=> 'Betrag',:data=> category_amount)
+      f.series(:name=> 'Betrag', :showInLegend => false, :data=> category_amount)
       f.options[:chart][:defaultSeriesType] = "bar"
       f.options[:xAxis] = {:plot_bands => "none", :title=>{:text=>"Kategorien"}, :categories => category_name}
       f.options[:yAxis][:title] = {:text=>"Euro"}
