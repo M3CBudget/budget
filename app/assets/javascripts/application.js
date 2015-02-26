@@ -12,9 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require twitter/bootstrap
 //= require turbolinks
 //= require angular
+//= require twitter/bootstrap
 //= require bootstrap-select
 //= require bootstrap-datepicker
 //= require highcharts/highcharts
