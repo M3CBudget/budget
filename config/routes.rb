@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :items
   resources :vendors
   resources :baskets
+  resources :income
 
   get 'welcome/index'
   get 'landing/index'
