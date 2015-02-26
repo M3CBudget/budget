@@ -1,5 +1,4 @@
 FactoryGirl.define do
-  category = FactoryGirl.create(:category)
   factory :item do
     basket_id 1
     category_id 1
