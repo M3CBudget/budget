@@ -83,7 +83,9 @@ Vendor.create!([
 
 
 connection = ActiveRecord::Base.connection()
-connection.execute("update vendors
+connection.execute("SET datestyle TO 'ISO, MDY';
+
+update vendors
 set logo='aldi-logo.png'
 where Id = 1;
 
