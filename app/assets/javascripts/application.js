@@ -411,6 +411,7 @@ function incomeValidation(formId) {
 }
 
 function basketValidation(formId) {
+    alert("HAllo");
     $(formId).validate({
         errorElement: 'div',
         // Specify the validation rules

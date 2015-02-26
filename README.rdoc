@@ -11,7 +11,8 @@ Prio 1 = wichtig , 2 , 3 = unwichtig
 1 highcharts einbinden in Dash (christopher mark)
 1 Methode Monate (hochrechnung) (chritopher und marco)
 1 Fehler und success meldungen im devise style
-
+1 Basketnotiz nicht verfügbar
+1 Design von Basket edit
 
 
 == Konfiguration
