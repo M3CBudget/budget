@@ -243,7 +243,7 @@
               <div class="form-group">
                 <label class="" for="">Zahlungsmethode</label>
                 <div class="input-group">
-                  <%= f.collection_select(:payment_id, Payment.all, :id, :name, {multiple: false}, :class=>'selectpicker')%>
+                  <%= f.collection_select(:payment_id, Payment.where(:user_id => current_user.id, :active => true), :id, :name, {multiple: false}, :class=>'selectpicker')%>
                 </div>
               </div>
             </div>
