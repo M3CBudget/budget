@@ -411,7 +411,6 @@ function incomeValidation(formId) {
 }
 
 function basketValidation(formId) {
-    alert("HAllo");
     $(formId).validate({
         errorElement: 'div',
         // Specify the validation rules
@@ -420,22 +419,22 @@ function basketValidation(formId) {
             "basket[purchase_date]": {
                 required: false
             },
-            "basket[items_attributes][{{item.id}}][name]": {
+            "basket[items_attributes][1][name]": {
                 required: true
             },
-            "basket[items_attributes][{{item.id}}][quantity]": {
+            "basket[items_attributes][1][quantity]": {
                 required: true,
                 min: 1,
                 number: true,
                 noDecimalPlace: true
             },
-            "basket[items_attributes][{{item.id}}][price]": {
+            "basket[items_attributes][1][price]": {
                 required: true,
                 number: true,
                 decimalPlace: true
 
             },
-            "basket[items_attributes][{{item.id}}][category_id]": "required",
+            "basket[items_attributes][1[category_id]": "required",
             "basket[payment_id]": "required",
             "basket[amount]": {
                 required: true,
@@ -447,10 +446,10 @@ function basketValidation(formId) {
         messages: {
             "basket[vendor_id]": "Bitte einen Händler eingeben",
             "basket[purchase_date]": "Bitte ein datum eingeben",
-            "basket[items_attributes][{{item.id}}][name]": "Bitte einen Artikelnamen eingeben",
-            "basket[items_attributes][{{item.id}}][quantity]": "Bitte eine Artikelanzahl eingeben",
-            "basket[items_attributes][{{item.id}}][price]": "Bitte einen Artikelprice eingeben",
-            "basket[items_attributes][{{item.id}}][category_id]": "Bitte eine Artikel Kategorie eingeben",
+            "basket[items_attributes][1][name]": "Bitte einen Artikelnamen eingeben",
+            "basket[items_attributes][1][quantity]": "Bitte eine Artikelanzahl eingeben",
+            "basket[items_attributes][1][price]": "Bitte einen Artikelprice eingeben",
+            "basket[items_attributes][1][category_id]": "Bitte eine Artikel Kategorie eingeben",
             "basket[payment_id]": "Bitte eine Zahlungsmethode eingeben",
             "basket[amount]": "Biitte einen Betrag eingeben"
         },
