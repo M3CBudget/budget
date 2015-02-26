@@ -425,7 +425,8 @@ function basketValidation(formId) {
             "basket[items_attributes][{{item.id}}][quantity]": {
                 required: true,
                 min: 1,
-                number: true
+                number: true,
+                noDecimalPlace: true
             },
             "basket[items_attributes][{{item.id}}][price]": {
                 required: true,

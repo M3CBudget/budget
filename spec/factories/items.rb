@@ -1,17 +1,17 @@
 FactoryGirl.define do
+  category = FactoryGirl.create(:category)
   factory :item do
-    basket nil
-    category nil
+    basket_id 1
+    category_id 1
     article nil
     user nil
-    name "MyString"
-    quantity "9.99"
-    price "9.99"
-    notice "MyString"
+    name 'Milch'
+    quantity 5
+    price 1000.99
+    notice 'Dies ist meine Milch'
     income false
     period 1
-    launch "2015-02-17"
-    finish "2015-02-17"
+    launch "25.02.2015"
+    finish "25.02.2015"
   end
-
 end
