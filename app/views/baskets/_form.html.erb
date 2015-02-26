@@ -129,13 +129,13 @@
                         <tbody>
                             <tr ng-repeat="item in items">
                                 <td>
-                                    <input disabled id="basket_items_attributes_{{item.id}}_name" name="basket[items_attributes][{{item.id}}][name]" value="{{ item.name }}" type="text"></input>
+                                    <input id="basket_items_attributes_{{item.id}}_name" name="basket[items_attributes][{{item.id}}][name]" value="{{ item.name }}" type="text"></input>
                                 </td>
                                 <td>
-                                    <input disabled id="basket_items_attributes_{{item.id}}_quantity" name="basket[items_attributes][{{item.id}}][quantity]" value="{{ item.quantity }}" type="text"></input>
+                                    <input id="basket_items_attributes_{{item.id}}_quantity" name="basket[items_attributes][{{item.id}}][quantity]" value="{{ item.quantity }}" type="text"></input>
                                 </td>
                                 <td>
-                                    <input disabled id="basket_items_attributes_{{item.id}}_price" name="basket[items_attributes][{{item.id}}][price]" value="{{ item.price }}" type="text"></input>
+                                    <input id="basket_items_attributes_{{item.id}}_price" name="basket[items_attributes][{{item.id}}][price]" value="{{ item.price }}" type="text"></input>
                                 </td>
                                 <td>
                                     <button class="btn btn-default" ng-click="rem($index)" data-toggle="tooltip" data-placement="bottom" title="Artikel löschen"><i class="fa fa-times"> </i></button>

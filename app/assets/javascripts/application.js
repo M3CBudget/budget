@@ -299,6 +299,14 @@ function getFormId() {
     return document.getElementsByTagName('form')[0].id;
 }
 
+jQuery.validator.addMethod("decimalPlace", function(value, element) {
+    return this.optional(element) || /^\d{0,9}(\.\d{0,2})?$/i.test(value);
+}, "You must include two decimal places");
+
+jQuery.validator.addMethod("noDecimalPlace", function(value, element) {
+    return this.optional(element) || /^\d{0,9}$/i.test(value);
+}, "You must include two decimal places");
+
 
 function categoryValidation(formId) {
     $(formId).validate({
@@ -371,18 +379,20 @@ function incomeValidation(formId) {
             "item[name]": "required",
             "item[price]": {
                 required: true,
-                number:true
+                number:true,
+                decimalPlace: true
             },
             "item[category_id]": "required",
             "item[period]": {
                 required: true,
-                number: true
+                number: true,
+                noDecimalPlace: true
             },
             "item[launch]": {
-                required: true,
+                required: true
             },
             "item[finish]": {
-                required: false,
+                required: false
             }
         },
         // Specify the validation error messages
@@ -407,7 +417,7 @@ function basketValidation(formId) {
         rules: {
             "basket[vendor_id]": "required",
             "basket[purchase_date]": {
-                required: false,
+                required: false
             },
             "basket[items_attributes][{{item.id}}][name]": {
                 required: true
@@ -419,13 +429,16 @@ function basketValidation(formId) {
             },
             "basket[items_attributes][{{item.id}}][price]": {
                 required: true,
-                number: true
+                number: true,
+                decimalPlace: true
+
             },
             "basket[items_attributes][{{item.id}}][category_id]": "required",
             "basket[payment_id]": "required",
             "basket[amount]": {
                 required: true,
-                number: true
+                number: true,
+                decimalPlace: true
             }
         },
         // Specify the validation error messages
@@ -444,7 +457,6 @@ function basketValidation(formId) {
         }
     });
 }
-
 
 
 // $('.selectpicker').selectpicker('val', 'Mustard');
