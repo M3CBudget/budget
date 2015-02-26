@@ -10,13 +10,13 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require twitter/bootstrap
-//= require bootstrap-select
-//= require bootstrap-datepicker
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
 //= require angular
+//= require twitter/bootstrap
+//= require bootstrap-select
+//= require bootstrap-datepicker
 //= require highcharts/highcharts
 //= require highcharts/highcharts-more
 //= require highcharts/highstock
