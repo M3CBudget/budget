@@ -9,18 +9,18 @@ class IncomeController < ApplicationController
     year = Time.now.year
     @chartIncomes = LazyHighCharts::HighChart.new('graph') do |f|
       f.options[:xAxis][:categories] = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September','Oktober', 'November', 'Dezember']
-      f.series(:type=> 'column',:name=> 'Einnahmen',:data=> [ sum_price(find_incomes_for_time_period("01-01-#{year}","31-01-#{year}")),
-                                                              sum_price(find_incomes_for_time_period("01-02-#{year}","28-02-#{year}")),
-                                                              sum_price(find_incomes_for_time_period("01-03-#{year}","31-03-#{year}")),
-                                                              sum_price(find_incomes_for_time_period("01-04-#{year}","30-04-#{year}")),
-                                                              sum_price(find_incomes_for_time_period("01-05-#{year}","31-05-#{year}")),
-                                                              sum_price(find_incomes_for_time_period("01-06-#{year}","30-06-#{year}")),
-                                                              sum_price(find_incomes_for_time_period("01-07-#{year}","31-07-#{year}")),
-                                                              sum_price(find_incomes_for_time_period("01-08-#{year}","31-08-#{year}")),
-                                                              sum_price(find_incomes_for_time_period("01-09-#{year}","30-09-#{year}")),
-                                                              sum_price(find_incomes_for_time_period("01-10-#{year}","31-10-#{year}")),
-                                                              sum_price(find_incomes_for_time_period("01-11-#{year}","30-11-#{year}")),
-                                                              sum_price(find_incomes_for_time_period("01-12-#{year}","31-12-#{year}")),])
+      f.series(:type=> 'column',:name=> 'Einnahmen',:data=> [ sum_price(find_incomes_for_time_period("01-01-#{year}","01-31-#{year}")),
+                                                              sum_price(find_incomes_for_time_period("02-01-#{year}","02-28-#{year}")),
+                                                              sum_price(find_incomes_for_time_period("03-01-#{year}","03-31-#{year}")),
+                                                              sum_price(find_incomes_for_time_period("04-01-#{year}","04-30-#{year}")),
+                                                              sum_price(find_incomes_for_time_period("05-01-#{year}","05-30-#{year}")),
+                                                              sum_price(find_incomes_for_time_period("06-01-#{year}","06-30-#{year}")),
+                                                              sum_price(find_incomes_for_time_period("07-01-#{year}","07-31-#{year}")),
+                                                              sum_price(find_incomes_for_time_period("08-01-#{year}","08-31-#{year}")),
+                                                              sum_price(find_incomes_for_time_period("09-01-#{year}","09-30-#{year}")),
+                                                              sum_price(find_incomes_for_time_period("10-01-#{year}","10-31-#{year}")),
+                                                              sum_price(find_incomes_for_time_period("11-01-#{year}","11-30-#{year}")),
+                                                              sum_price(find_incomes_for_time_period("12-01-#{year}","12-31-#{year}")),])
       f.series(:type=> 'spline',:name=> 'Average', :data=> [3, 2.67])
     end
     respond_with(@incomes)
