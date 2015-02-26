@@ -18,7 +18,7 @@ class PaymentsController < ApplicationController
       series = {
           :type=> 'pie',
           :data=> [
-              [payment_name[0], payment_amount[0]],
+          [payment_name[0], payment_amount[0]],
           [ payment_name[1], payment_amount[1]],
           [ payment_name[2], payment_amount[2]],
           [ payment_name[3], payment_amount[3]]
