@@ -22,5 +22,9 @@ module BudgetV1
 
     # for Heroku
     config.serve_static_assets = true
+
+
+
+
   end
 end
