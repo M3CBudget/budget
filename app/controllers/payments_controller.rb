@@ -42,7 +42,7 @@ class PaymentsController < ApplicationController
 
 
     @chartPaymentsCount = LazyHighCharts::HighChart.new('pie') do |f|
-      f.chart({:defaultSeriesType=>"pie"} )
+      f.chart({:defaultSeriesType=>"pie" } )
       series = {
           :type=> 'pie',
           :data=> [
