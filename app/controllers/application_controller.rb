@@ -52,17 +52,18 @@ class ApplicationController < ActionController::Base
     Basket.where(:user_id => current_user.id, :purchase_date => (start_date..end_date))
   end
 
-  #def find_incomes_for_time_period(start_date, end_date)
-   # Item.where(:user_id => current_user.id, :launch => (start_date..end_date), :income => true)
-  #end
-
   def find_incomes_for_time_period(start_date, end_date)
+    Item.where(:user_id => current_user.id, :launch => (start_date..end_date), :income => true)
+  end
+
+  def find_incomes_for_time_periodee(start_date, end_date)
     incomes_in_period_array = []
     incomes_array = Item.where(:user_id => current_user.id, :income => true)
-    start = start_date
+    start = Date.parse(start_date.to_s)
+    ende = Date.parse(end_date.to_s)
     incomes_array.each do |i|
-      if Date.parse(i.finish).strftime("%m-%d-%Y") > start && Date.parse(i.launch).strftime("%m-%d-%Y") < end_date
-        while start <= end_date
+      if i.finish > start && i.launch < ende
+        while start <= ende
           incomes_in_period_array.insert(i)
           start = start.next_month
         end
