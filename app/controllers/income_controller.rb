@@ -9,7 +9,7 @@ class IncomeController < ApplicationController
     year = Time.now.year
     @chartIncomes = LazyHighCharts::HighChart.new('graph') do |f|
       f.options[:xAxis][:categories] = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September','Oktober', 'November', 'Dezember']
-      f.series(:type=> 'column',:name=> 'Einnahmen',:data=> [ sum_price(find_incomes_for_time_period("01-01-#{year}","01-31-#{year}")),
+      f.series(:type=> 'column',:name=> 'Einnahmen',  :showInLegend => false, :data=> [ sum_price(find_incomes_for_time_period("01-01-#{year}","01-31-#{year}")),
                                                               sum_price(find_incomes_for_time_period("02-01-#{year}","02-28-#{year}")),
                                                               sum_price(find_incomes_for_time_period("03-01-#{year}","03-31-#{year}")),
                                                               sum_price(find_incomes_for_time_period("04-01-#{year}","04-30-#{year}")),
@@ -21,7 +21,7 @@ class IncomeController < ApplicationController
                                                               sum_price(find_incomes_for_time_period("10-01-#{year}","10-31-#{year}")),
                                                               sum_price(find_incomes_for_time_period("11-01-#{year}","11-30-#{year}")),
                                                               sum_price(find_incomes_for_time_period("12-01-#{year}","12-31-#{year}")),])
-      f.series(:type=> 'spline',:name=> 'Average', :data=> [3, 2.67])
+      f.options[:chart][:backgroundColor] = 'rgba(0, 0, 0, 0)'
     end
     respond_with(@incomes)
   end

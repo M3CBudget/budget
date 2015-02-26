@@ -8,7 +8,7 @@ class WelcomeController < ApplicationController
     @chart = LazyHighCharts::HighChart.new('column') do |f|
       f.series(:name=>'Ausgaben', :data=> [ sum_amount(find_baskets_for_month).to_i ] )
       f.series(:name=>'Einnahmen', :data=> [ sum_price(find_incomes_for_month).to_i ] )
-         f.options[:chart][:defaultSeriesType] = "column"
+      f.options[:chart][:defaultSeriesType] = "column"
       f.options[:chart][:backgroundColor] = 'rgba(0, 0, 0, 0)'
     end
 
@@ -22,8 +22,8 @@ class WelcomeController < ApplicationController
 
     @chartGraph = LazyHighCharts::HighChart.new('graph') do |f|
       f.options[:xAxis][:categories] = (Basket.where(:user_id => current_user.id).pluck(:purchase_date).last(5))
-      f.series(:type=> 'column',:name=> 'Ausgaben',:data=>   tmp)
-      f.series(:type=> 'spline',:name=> 'Trend', :data=> trend)
+      f.series(:type=> 'column',:name=> 'Ausgaben',  :showInLegend => false,:data=>   tmp)
+      f.series(:type=> 'spline',:name=> 'Trend', :showInLegend => false, :data=> trend)
       f.options[:chart][:backgroundColor] = 'rgba(0, 0, 0, 0)'
     end
 
@@ -31,7 +31,7 @@ class WelcomeController < ApplicationController
     year = Time.now.year
     @chartYear = LazyHighCharts::HighChart.new('graph') do |f|
       f.options[:xAxis][:categories] = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September','Oktober', 'November', 'Dezember']
-      f.series(:type=> 'column',:name=> 'Ausgaben',:data=> [ sum_amount(find_basket_for_time_period("01-01-#{year}","01-31-#{year}")),
+      f.series(:type=> 'column',:name=> 'Ausgaben', :showInLegend => false, :data=> [ sum_amount(find_basket_for_time_period("01-01-#{year}","01-31-#{year}")),
                                                              sum_amount(find_basket_for_time_period("02-01-#{year}","02-28-#{year}")),
                                                              sum_amount(find_basket_for_time_period("03-01-#{year}","03-31-#{year}")),
                                                              sum_amount(find_basket_for_time_period("04-01-#{year}","04-30-#{year}")),
@@ -43,7 +43,7 @@ class WelcomeController < ApplicationController
                                                              sum_amount(find_basket_for_time_period("10-01-#{year}","10-31-#{year}")),
                                                              sum_amount(find_basket_for_time_period("11-01-#{year}","11-30-#{year}")),
                                                              sum_amount(find_basket_for_time_period("12-01-#{year}","12-31-#{year}")),])
-      f.series(:type=> 'column',:name=> 'Einnahmen',:data=> [ sum_price(find_incomes_for_time_period("01-01-#{year}","01-31-#{year}")),
+      f.series(:type=> 'column',:name=> 'Einnahmen',  :showInLegend => false, :data=> [ sum_price(find_incomes_for_time_period("01-01-#{year}","01-31-#{year}")),
                                                               sum_price(find_incomes_for_time_period("02-01-#{year}","02-28-#{year}")),
                                                               sum_price(find_incomes_for_time_period("03-01-#{year}","03-31-#{year}")),
                                                               sum_price(find_incomes_for_time_period("04-01-#{year}","04-30-#{year}")),

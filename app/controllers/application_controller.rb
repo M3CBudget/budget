@@ -56,6 +56,22 @@ class ApplicationController < ActionController::Base
     Item.where(:user_id => current_user.id, :launch => (start_date..end_date), :income => true)
   end
 
+  def find_incomes_for_time_periodee(start_date, end_date)
+    incomes_in_period_array = []
+    incomes_array = Item.where(:user_id => current_user.id, :income => true)
+    start = Date.parse(start_date.to_s)
+    ende = Date.parse(end_date.to_s)
+    incomes_array.each do |i|
+      if i.finish > start && i.launch < ende
+        while start <= ende
+          incomes_in_period_array.insert(i)
+          start = start.next_month
+        end
+      end
+    end
+    return incomes_in_period_array
+  end
+
   def find_incomes_for_month
     date = Time.now
     start_date = date.beginning_of_month
