@@ -2,13 +2,13 @@ User.create!([
   {email: "g@gurke.de", password: "12345678", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 3, current_sign_in_at: "2015-02-25 12:52:55", last_sign_in_at: "2015-02-24 13:35:52", current_sign_in_ip: "192.168.178.25", last_sign_in_ip: "127.0.0.1", first_name: "Günther", last_name: "Gurke"}
 ])
 Basket.create!([
-  {notice: "Wocheneinkauf", amount: "25.0", document: nil, user_id: 1, payment_id: 3, vendor_id: 4, purchase_date: "2015-01-30"},
+  {notice: nil, amount: "25.0", document: nil, user_id: 1, payment_id: 3, vendor_id: 4, purchase_date: "2015-01-30"},
   {notice: nil, amount: "15.44", document: nil, user_id: 1, payment_id: 3, vendor_id: 1, purchase_date: "2015-02-01"},
   {notice: nil, amount: "4.5", document: nil, user_id: 1, payment_id: 1, vendor_id: 8, purchase_date: "2015-01-15"},
   {notice: nil, amount: "50.0", document: "6F72675F626F6E5F71312E6A7067", user_id: 1, payment_id: 3, vendor_id: 11, purchase_date: "2015-01-20"},
-  {notice: "Monatseinkauf", amount: "234.75", document: nil, user_id: 1, payment_id: 3, vendor_id: 8, purchase_date: "2015-01-31"},
+  {notice: "Semesterbeitrag", amount: "234.75", document: nil, user_id: 1, payment_id: 3, vendor_id: 8, purchase_date: "2015-01-31"},
   {notice: nil, amount: "25.9", document: nil, user_id: 1, payment_id: 2, vendor_id: 6, purchase_date: "2015-02-25"},
-  {notice: nil, amount: "5.2", document: nil, user_id: 1, payment_id: 1, vendor_id: 10, purchase_date: "2015-02-05"}
+  {notice: "Jeden Donnerstag Pizza bei Bogazici", amount: "5.2", document: nil, user_id: 1, payment_id: 1, vendor_id: 10, purchase_date: "2015-02-05"}
 ])
 Category.create!([
   {name: "Gehalt", notice: "Gehalt + Sonderzahlungen von ZEB", active: true, income: true, user_id: 1, glyphicon_id: 170},
@@ -31,28 +31,28 @@ Item.create!([
   {basket_id: nil, category_id: 2, article_id: nil, user_id: 1, name: "Oma Weihnachten", quantity: nil, price: "50.0", notice: "Omi ist die Beste!", income: true, period: nil, launch: "2014-12-24", finish: "2014-12-24", period_id: 1},
   {basket_id: nil, category_id: 1, article_id: nil, user_id: 1, name: "Bafög", quantity: nil, price: "500.0", notice: "", income: true, period: nil, launch: "2014-01-04", finish: "2015-08-01", period_id: 2},
   {basket_id: nil, category_id: 2, article_id: nil, user_id: 1, name: "Onkel Tom Zeugnis", quantity: nil, price: "25.0", notice: "Nächstes Mal mehr anstrengen!", income: true, period: nil, launch: "2015-01-16", finish: "2015-01-16", period_id: 1},
-  {basket_id: 1, category_id: 5, article_id: nil, user_id: 1, name: "Mittagessen", quantity: "1.0", price: "5.2", notice: "Aktionstag Pizza", income: false, period: nil, launch: "2015-02-05", finish: "2015-02-05", period_id: nil},
-  {basket_id: 2, category_id: 9, article_id: nil, user_id: 1, name: "Semesterbeitrag SS2014", quantity: "1.0", price: "234.75", notice: "", income: false, period: nil, launch: "2015-01-31", finish: "2015-01-31", period_id: nil},
-  {basket_id: 3, category_id: 6, article_id: nil, user_id: 1, name: "Sprit", quantity: "1.0", price: "50.0", notice: "Sprit für Januar", income: false, period: nil, launch: "2015-01-20", finish: "2015-01-20", period_id: nil},
-  {basket_id: 4, category_id: 9, article_id: nil, user_id: 1, name: "Klausurskript Software Entwicklung II", quantity: "1.0", price: "4.5", notice: "", income: false, period: nil, launch: "2015-01-15", finish: "2015-01-15", period_id: nil},
-  {basket_id: 5, category_id: 3, article_id: nil, user_id: 1, name: "Quark", quantity: "0.59", price: "3.0", notice: "", income: false, period: nil, launch: "2015-02-01", finish: "2015-02-01", period_id: nil},
-  {basket_id: 5, category_id: 3, article_id: nil, user_id: 1, name: "Coca Cola", quantity: "1.25", price: "6.0", notice: "", income: false, period: nil, launch: "2015-02-01", finish: "2015-02-01", period_id: nil},
-  {basket_id: 5, category_id: 9, article_id: nil, user_id: 1, name: "Ringblock DIN A4", quantity: "0.89", price: "2.0", notice: "", income: false, period: nil, launch: "2015-02-01", finish: "2015-02-01", period_id: nil},
-  {basket_id: 5, category_id: 3, article_id: nil, user_id: 1, name: "Milch", quantity: "0.65", price: "3.0", notice: "", income: false, period: nil, launch: "2015-02-01", finish: "2015-02-01", period_id: nil},
-  {basket_id: 5, category_id: 3, article_id: nil, user_id: 1, name: "Lachgummi", quantity: "0.99", price: "1.0", notice: "", income: false, period: nil, launch: "2015-02-01", finish: "2015-02-01", period_id: nil},
-  {basket_id: 5, category_id: 3, article_id: nil, user_id: 1, name: "Sahne", quantity: "0.35", price: "2.0", notice: "", income: false, period: nil, launch: "2015-02-01", finish: "2015-02-01", period_id: nil},
-  {basket_id: 5, category_id: 3, article_id: nil, user_id: 1, name: "WC Reiniger", quantity: "0.75", price: "1.0", notice: "", income: false, period: nil, launch: "2015-02-01", finish: "2015-02-01", period_id: nil},
-  {basket_id: 6, category_id: 7, article_id: nil, user_id: 1, name: "Internet L", quantity: "1.0", price: "25.0", notice: "", income: false, period: nil, launch: "2015-01-30", finish: "2015-01-30", period_id: nil},
-  {basket_id: 7, category_id: 3, article_id: nil, user_id: 1, name: "Spagetti Carbonara", quantity: "3.0", price: "0.65", notice: "", income: false, period: nil, launch: "2015-02-25", finish: "2015-02-25", period_id: nil},
-  {basket_id: 7, category_id: 3, article_id: nil, user_id: 1, name: "Seife", quantity: "1.0", price: "0.7", notice: "", income: false, period: nil, launch: "2015-02-25", finish: "2015-02-25", period_id: nil},
-  {basket_id: 7, category_id: 3, article_id: nil, user_id: 1, name: "Baguette", quantity: "2.0", price: "1.0", notice: "", income: false, period: nil, launch: "2015-02-25", finish: "2015-02-25", period_id: nil},
-  {basket_id: 7, category_id: 3, article_id: nil, user_id: 1, name: "Joghurt", quantity: "1.0", price: "4.0", notice: "", income: false, period: nil, launch: "2015-02-25", finish: "2015-02-25", period_id: nil},
-  {basket_id: 7, category_id: 3, article_id: nil, user_id: 1, name: "ct Dezember", quantity: "1.0", price: "4.5", notice: "", income: false, period: nil, launch: "2015-02-25", finish: "2015-02-25", period_id: nil},
-  {basket_id: 7, category_id: 10, article_id: nil, user_id: 1, name: "Tischtennisball", quantity: "1.0", price: "2.5", notice: "", income: false, period: nil, launch: "2015-02-25", finish: "2015-02-25", period_id: nil},
-  {basket_id: 7, category_id: 9, article_id: nil, user_id: 1, name: "10x Kugelschreiber", quantity: "1.0", price: "1.2", notice: "", income: false, period: nil, launch: "2015-02-25", finish: "2015-02-25", period_id: nil},
-  {basket_id: 7, category_id: 8, article_id: nil, user_id: 1, name: "Apfelkorn", quantity: "1.0", price: "6.0", notice: "", income: false, period: nil, launch: "2015-02-25", finish: "2015-02-25", period_id: nil},
-  {basket_id: 7, category_id: 3, article_id: nil, user_id: 1, name: "Cracker", quantity: "1.0", price: "2.45", notice: "", income: false, period: nil, launch: "2015-02-25", finish: "2015-02-25", period_id: nil},
-  {basket_id: 7, category_id: 8, article_id: nil, user_id: 1, name: "Veltins Six Pack", quantity: "1.0", price: "4.0", notice: "", income: false, period: nil, launch: "2015-02-25", finish: "2015-02-25", period_id: nil}
+  {basket_id: 7, category_id: 5, article_id: nil, user_id: 1, name: "Mittagessen", quantity: "1.0", price: "5.2", notice: "Aktionstag Pizza", income: false, period: nil, launch: "2015-02-05", finish: "2015-02-05", period_id: nil},
+  {basket_id: 5, category_id: 9, article_id: nil, user_id: 1, name: "Semesterbeitrag SS2014", quantity: "1.0", price: "234.75", notice: "", income: false, period: nil, launch: "2015-01-31", finish: "2015-01-31", period_id: nil},
+  {basket_id: 4, category_id: 6, article_id: nil, user_id: 1, name: "Sprit", quantity: "1.0", price: "50.0", notice: "Sprit für Januar", income: false, period: nil, launch: "2015-01-20", finish: "2015-01-20", period_id: nil},
+  {basket_id: 3, category_id: 9, article_id: nil, user_id: 1, name: "Klausurskript Software Entwicklung II", quantity: "1.0", price: "4.5", notice: "", income: false, period: nil, launch: "2015-01-15", finish: "2015-01-15", period_id: nil},
+  {basket_id: 2, category_id: 3, article_id: nil, user_id: 1, name: "Quark", quantity: "0.59", price: "3.0", notice: "", income: false, period: nil, launch: "2015-02-01", finish: "2015-02-01", period_id: nil},
+  {basket_id: 2, category_id: 3, article_id: nil, user_id: 1, name: "Coca Cola", quantity: "1.25", price: "6.0", notice: "", income: false, period: nil, launch: "2015-02-01", finish: "2015-02-01", period_id: nil},
+  {basket_id: 2, category_id: 9, article_id: nil, user_id: 1, name: "Ringblock DIN A4", quantity: "0.89", price: "2.0", notice: "", income: false, period: nil, launch: "2015-02-01", finish: "2015-02-01", period_id: nil},
+  {basket_id: 2, category_id: 3, article_id: nil, user_id: 1, name: "Milch", quantity: "0.65", price: "3.0", notice: "", income: false, period: nil, launch: "2015-02-01", finish: "2015-02-01", period_id: nil},
+  {basket_id: 2, category_id: 3, article_id: nil, user_id: 1, name: "Lachgummi", quantity: "0.99", price: "1.0", notice: "", income: false, period: nil, launch: "2015-02-01", finish: "2015-02-01", period_id: nil},
+  {basket_id: 2, category_id: 3, article_id: nil, user_id: 1, name: "Sahne", quantity: "0.35", price: "2.0", notice: "", income: false, period: nil, launch: "2015-02-01", finish: "2015-02-01", period_id: nil},
+  {basket_id: 2, category_id: 3, article_id: nil, user_id: 1, name: "WC Reiniger", quantity: "0.75", price: "1.0", notice: "", income: false, period: nil, launch: "2015-02-01", finish: "2015-02-01", period_id: nil},
+  {basket_id: 1, category_id: 7, article_id: nil, user_id: 1, name: "Internet L", quantity: "1.0", price: "25.0", notice: "", income: false, period: nil, launch: "2015-01-30", finish: "2015-01-30", period_id: nil},
+  {basket_id: 6, category_id: 3, article_id: nil, user_id: 1, name: "Spagetti Carbonara", quantity: "3.0", price: "0.65", notice: "", income: false, period: nil, launch: "2015-02-25", finish: "2015-02-25", period_id: nil},
+  {basket_id: 6, category_id: 3, article_id: nil, user_id: 1, name: "Seife", quantity: "1.0", price: "0.7", notice: "", income: false, period: nil, launch: "2015-02-25", finish: "2015-02-25", period_id: nil},
+  {basket_id: 6, category_id: 3, article_id: nil, user_id: 1, name: "Baguette", quantity: "2.0", price: "1.0", notice: "", income: false, period: nil, launch: "2015-02-25", finish: "2015-02-25", period_id: nil},
+  {basket_id: 6, category_id: 3, article_id: nil, user_id: 1, name: "Joghurt", quantity: "1.0", price: "4.0", notice: "", income: false, period: nil, launch: "2015-02-25", finish: "2015-02-25", period_id: nil},
+  {basket_id: 6, category_id: 3, article_id: nil, user_id: 1, name: "ct Dezember", quantity: "1.0", price: "4.5", notice: "", income: false, period: nil, launch: "2015-02-25", finish: "2015-02-25", period_id: nil},
+  {basket_id: 6, category_id: 10, article_id: nil, user_id: 1, name: "Tischtennisball", quantity: "1.0", price: "2.5", notice: "", income: false, period: nil, launch: "2015-02-25", finish: "2015-02-25", period_id: nil},
+  {basket_id: 6, category_id: 9, article_id: nil, user_id: 1, name: "10x Kugelschreiber", quantity: "1.0", price: "1.2", notice: "", income: false, period: nil, launch: "2015-02-25", finish: "2015-02-25", period_id: nil},
+  {basket_id: 6, category_id: 8, article_id: nil, user_id: 1, name: "Apfelkorn", quantity: "1.0", price: "6.0", notice: "", income: false, period: nil, launch: "2015-02-25", finish: "2015-02-25", period_id: nil},
+  {basket_id: 6, category_id: 3, article_id: nil, user_id: 1, name: "Cracker", quantity: "1.0", price: "2.45", notice: "", income: false, period: nil, launch: "2015-02-25", finish: "2015-02-25", period_id: nil},
+  {basket_id: 6, category_id: 8, article_id: nil, user_id: 1, name: "Veltins Six Pack", quantity: "1.0", price: "4.0", notice: "", income: false, period: nil, launch: "2015-02-25", finish: "2015-02-25", period_id: nil}
 ])
 Payment.create!([
   {user_id: 1, number: "0", bic: "0", active: true, name: "Barzahlung"},
