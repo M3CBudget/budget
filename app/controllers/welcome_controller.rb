@@ -8,7 +8,7 @@ class WelcomeController < ApplicationController
     @chart = LazyHighCharts::HighChart.new('column') do |f|
       f.series(:name=>'Ausgaben', :data=> [ sum_amount(find_baskets_for_month).to_i ] )
       f.series(:name=>'Einnahmen', :data=> [ sum_price(find_incomes_for_month).to_i ] )
-         f.options[:chart][:defaultSeriesType] = "column"
+      f.options[:chart][:defaultSeriesType] = "column"
       f.options[:chart][:backgroundColor] = 'rgba(0, 0, 0, 0)'
     end
 
