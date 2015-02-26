@@ -19,8 +19,5 @@
       <%= f.label :password_confirmation, "Passwort wiederholen"  %>
       <%= f.password_field :password_confirmation, class: "form-control", :placeholder => "Passwort wiederholen"  %>
     </div>
-    <i class="fa fa-sign-in"></i>
-    <%= f.submit do %>
-        t('.sign_up', :default => "Anmelden!"), class: "btn btn-default" %>
-        <% end %>
+    <%= f.submit t('Anmelden', :default => "Anmelden!"), class: "btn btn-default" %>
 <% end %>

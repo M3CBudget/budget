@@ -31,7 +31,7 @@
         <div class="container">
           <div class="carousel-caption">
             <h1>Fully Responsive</h1>
-            <p>Starte Bud$et auf all deinen Geräten, von überall wo du willst. Egal ob Smartphone, Tablet, Laptop, im Internetcafé auf Reisen oder vor dem Einkaufsladen - wir begleiten dich!</p>
+            <p>Starte Bud$et auf all deinen Geräten.</p>
             <p></p>
           </div>
         </div>
@@ -45,38 +45,39 @@
 <div class="container marketing">
 
   <!-- Three columns of text below the carousel -->
-  <div class="row">
+  <div class="row text-center">
     <div class="col-sm-4">
-      <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" style="width: 140px; height: 140px;">
+      <%= image_tag("Access.jpg", :class=>"img-circle", :style=>"width: 140px; height: 140px")%>
+      <h2>Access</h2>
+      <p>Auf einen Blick, alles im Blick. Egal ob im Internetcafé auf Reisen oder vor dem Einkaufsladen - wir begleiten dich! Behalte aber auch zu Hause die Kontrolle und starte <strong>Bud$et</strong> in dem Browser deiner Wahl.</p>
+      <p><a class="btn btn-default" href="#Access" role="button">View details »</a></p>
+    </div><!-- /.col-lg-4 -->
+    <div class="col-sm-4">
+      <%= image_tag("Responsive.jpg", :class=>"img-circle", :style=>"width: 140px; height: 140px")%>
+      <h2>Responsive</h2>
+      <p>Von überall wo du willst. Egal ob Smartphone, Tablet, Laptop. Die für mobile Geräte optimierte Webseite lässt dich niemals im Stich. Egal welche Marke, ob iPhone, Android oder Windwos - <strong>Bud$et</strong> passt in jede Tasche und ist immer dabei.</p>
+      <p><%= link_to "Sign up", new_user_registration_path, :class => 'btn btn-lg btn-success' %></p>
+    </div><!-- /.col-lg-4 -->
+    <div class="col-sm-4">
+      <%= image_tag("Dashboard.jpg", :class=>"img-circle", :style=>"width: 140px; height: 140px")%>
       <h2>Dashboard</h2>
-      <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-      <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+      <p>Überblick über deine Daten. Mit excelent designten Tabellen und informativen Diagramme behälst du die Übersicht, in <strong>Bud$et</strong>, über deine Finanzen und kannst ganz einfach aufschlussreiche Informationen über deine aktuellen Finanziellen Status erhalten.</p>
+      <p><a class="btn btn-default" href="#Dashboard" role="button">View details »</a></p>
     </div><!-- /.col-lg-4 -->
-    <div class="col-sm-4">
-      <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" style="width: 140px; height: 140px;">
-      <h2>Heading</h2>
-      <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
-      <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
-    </div><!-- /.col-lg-4 -->
-    <div class="col-sm-4">
-      <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" style="width: 140px; height: 140px;">
-      <h2>Heading</h2>
-      <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-      <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
-    </div><!-- /.col-lg-4 -->
+
   </div><!-- /.row -->
 
 
   <!-- START THE FEATURETTES -->
 
-  <hr class="featurette-divider">
+  <hr class="featurette-divider" id="Access">
 
-  <div class="row featurette">
+  <div class="row featurette" >
     <div class="col-md-7">
       <h2 class="featurette-heading">Strukturier deine Ausgaben. <span class="text-muted">Von Überall zu jeder Zeit.</span></h2>
       <p class="lead">Erstelle kinderleicht <strong>Kategorien</strong>, <strong>Händler</strong> und <strong>Zahlungsmethoden</strong>  um jederzeit und überall einen Überblick über dine Ausgaben zu erhalten. </div>
     <div class="col-md-5">
-      <img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="500x500" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDUwMCA1MDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjE5MC4zMDQ2ODc1IiB5PSIyNTAiIHN0eWxlPSJmaWxsOiNBQUFBQUE7Zm9udC13ZWlnaHQ6Ym9sZDtmb250LWZhbWlseTpBcmlhbCwgSGVsdmV0aWNhLCBPcGVuIFNhbnMsIHNhbnMtc2VyaWYsIG1vbm9zcGFjZTtmb250LXNpemU6MjNwdDtkb21pbmFudC1iYXNlbGluZTpjZW50cmFsIj41MDB4NTAwPC90ZXh0PjwvZz48L3N2Zz4=" data-holder-rendered="true">
+      <%= image_tag("Struktur.jpg", :class=>"featurette-image img-responsive", :style=>"width: 500px; height: 500px", "data-holder-rendered"=>"true")%>
     </div>
   </div>
 
@@ -102,25 +103,25 @@
     </div>
     </div>
 
-  <hr class="featurette-divider">
+  <hr class="featurette-divider" id="Dashboard">
 
-  <div class="row featurette">
+  <div class="row featurette" >
     <div class="col-md-7">
       <h2 class="featurette-heading">Dashboard. <span class="text-muted">Überblicke alles.</span></h2>
       <p class="lead">Eine Dashboard gibt dir jeden Tag die Fakten über deine <strong>Einnahmen</strong> und <strong>Ausgaben</strong> , so hast du die volle Kontrolle über dein Budget</p>
     </div>
     <div class="col-md-5">
-      <img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="500x500" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDUwMCA1MDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjE5MC4zMDQ2ODc1IiB5PSIyNTAiIHN0eWxlPSJmaWxsOiNBQUFBQUE7Zm9udC13ZWlnaHQ6Ym9sZDtmb250LWZhbWlseTpBcmlhbCwgSGVsdmV0aWNhLCBPcGVuIFNhbnMsIHNhbnMtc2VyaWYsIG1vbm9zcGFjZTtmb250LXNpemU6MjNwdDtkb21pbmFudC1iYXNlbGluZTpjZW50cmFsIj41MDB4NTAwPC90ZXh0PjwvZz48L3N2Zz4=" data-holder-rendered="true">
+      <%= image_tag("Überblick.jpg", :class=>"featurette-image img-responsive", :style=>"width: 500px; height: 500px", "data-holder-rendered"=>"true")%>
     </div>
   </div>
 
   <hr class="featurette-divider">
 </div>
   <!-- /END THE FEATURETTES -->
-<div class="row text-center">
+<div class="container text-center">
   <div class="jumbotron ">
     <h1>Überzeugt?</h1>
-    <p class="lead">Melde dich schnell an, wir können es kaum erwarten dich endlich bei deinen Finazen zu unterstützten - kostenlos und verlässlich.</p>
+    <p class="lead">Melde dich schnell an, wir können es kaum erwarten dich endlich zu unterstützten - kostenlos und verlässlich.</p>
     <p> <%= link_to "Sign up", new_user_registration_path, :class => 'btn btn-lg btn-success' %></p>
   </div>
 
