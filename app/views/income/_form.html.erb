@@ -1,7 +1,7 @@
 <%= form_for(@income) do |f| %>
 <% if @income.errors.any? %>
-<div id="error_explanation">
-    <h2><%= pluralize(@income.errors.count, "error") %> prohibited this income from being saved:</h2>
+<div id="error_explanation" class="alert fade in alert-danger">
+    <h3><%= pluralize(@income.errors.count, "Fehler") %> beim anlegen eines Einkommens:</h3>
 
     <ul>
         <% @income.errors.full_messages.each do |message| %>

@@ -9,8 +9,11 @@ Prio 1 = wichtig , 2 , 3 = unwichtig
 
 1 Methode Monate (hochrechnung) (chritopher und marco)
 1 Fehler und success meldungen im devise style
-1 Basketnotiz nicht verfügbar
-1 Design von Basket edit
+1 Basketnotiz nicht verfügbar ( Javascript on Ready Function zickt rum )
+1 Design von Basket edit ( evlt für abgabe Notiz feld rauswerfen )
+
+1 Nicht exitente Routen auf 404 leiten -> Routen anlegen
+404 Page ansehbar ??
 
 
 == Konfiguration

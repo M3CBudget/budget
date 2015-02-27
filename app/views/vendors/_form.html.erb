@@ -1,7 +1,7 @@
 <%= form_for(@vendor, :html => {:multipart => true}) do |f| %>
   <% if @vendor.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@vendor.errors.count, "Fehler") %> verhindert das Anlegen eines Händlers:</h2>
+    <div id="error_explanation" class="alert fade in alert-danger">
+      <h3><%= pluralize(@vendor.errors.count, "Fehler") %> beim anlegen eines Händlers:</h3>
 
       <ul>
       <% @vendor.errors.full_messages.each do |message| %>

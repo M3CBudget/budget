@@ -1,7 +1,7 @@
 <%= form_for(@item) do |f| %>
   <% if @item.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
+    <div id="error_explanation" class="alert fade in alert-danger">
+      <h3><%= pluralize(@item.errors.count, "Fehler") %> beim anlegen des Items:</h3>
 
       <ul>
       <% @item.errors.full_messages.each do |message| %>
