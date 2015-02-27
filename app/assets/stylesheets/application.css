@@ -96,6 +96,18 @@ label {
     margin-bottom: 10px;
 }
 
+.btn-basket:hover {
+    background-color: #f2dede;
+    border-color: #ebccd1;
+
+}
+
+.btn-income:hover {
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+
+}
+
 .panel {
     background-color: rgba(0,0,0,0);
     width: 100%;
