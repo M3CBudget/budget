@@ -31,7 +31,7 @@ URL : http://budget1.herokuapp.com
 * rspec 3.2.0
 
 == Verwendete Gems
-* rails_12factor              --> Heroku Deployment
+* rails_12factor              => Heroku Deployment
 * pg                          --> PostgresSQL als DBMS
 * jquery-validation-rails     --> Formvaliderung
 * seed_dump                   --> automatische Seeds erstellen
@@ -53,9 +53,11 @@ URL : http://budget1.herokuapp.com
 Für Bildresizing - ImageMagick installieren
 
 Für Mac: Mit Homebrew installieren. Im Terminal:
+
 brew install imagemagick
 
 Für Linux:
+
 sudo apt-get install imagemagick
 
 == Anleitung Einbindung des Repositories
