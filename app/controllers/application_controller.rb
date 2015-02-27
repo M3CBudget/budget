@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   helper_method :sum_amount, :show_vendor_name, :show_category_name, :find_items_of_basket, :show_payment_name, :find_items_of_category
   helper_method :find_baskets_of_vendor
-  helper_method :find_baskets_of_payment, :is_active, :sum_price, :find_baskets_of_user, :items_of_user
+  helper_method :find_baskets_of_payment, :is_active, :sum_price, :find_baskets_of_user, :items_of_user, :find_incomes_for_time_periodee
   helper_method :find_basket_for_time_period, :find_income_items_of_category, :find_baskets_for_month, :find_incomes_for_time_period, :find_incomes_for_month, :get_months_of_baskets
 
   protected
@@ -56,16 +56,47 @@ class ApplicationController < ActionController::Base
     Item.where(:user_id => current_user.id, :launch => (start_date..end_date), :income => true)
   end
 
-  def find_incomes_for_time_periodee(start_date, end_date)
+  def find_incomes_for_time_periodHelp(start_date, end_date)
+    string_start_date = start_date.to_s
+    # Get first two Chars for month 01 - 12
+   return Integer(string_start_date[6..9])
+  end
+
+  def find_incomes_for_time_periodHelper(start_date, end_date)
     incomes_in_period_array = []
     incomes_array = Item.where(:user_id => current_user.id, :income => true)
-    start = Date.parse(start_date.to_s)
-    ende = Date.parse(end_date.to_s)
+    #start = Date.parse(start_date.to_s)
+    #ende = Date.parse(end_date.to_s)
+
+    #input: mm-dd-yyyy
+    # Put Startdate in String
+    string_start_date = start_date.to_s
+    # Get first two Chars for month 01 - 12
+    string_start_month = string_start_date[0..1]
+    # Wrap into Integer
+    i_start_month = Integer(string_start_month )
+    # Get last for Char for year 1999 - 2111
+    string_start_year = string_start_date[6..9]
+    # Wrap into Integer
+    i_start_year = Integer(string_start_year)
+
+    startdate = DateTime.new(i_start_year, i_start_month, 1)
+
+    # Same for Enddate
+    string_end_date = end_date.to_s
+    string_end_month = string_end_date[0..1]
+    i_end_month = Integer(string_end_month)
+    string_end_year = string_end_date[6..9]
+    i_end_year = Integer(string_end_year)
+
+
+    enddate = DateTime.new(i_end_year, i_end_month,  1)
+
     incomes_array.each do |i|
-      if i.finish > start && i.launch < ende
-        while start <= ende
+      if i.finish > startdate || i.launch < enddate
+        while startdate <= enddate
           incomes_in_period_array.insert(i)
-          start = start.next_month
+          startdate = startdate.next_month
         end
       end
     end
