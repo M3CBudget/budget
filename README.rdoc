@@ -81,6 +81,7 @@ SET datestyle TO 'ISO, MDY';
 == Known Bugs
 * Heroku --> assets werden nicht geladen (Javascript/CSS)
 * Development --> Javascript wird erst nach einem Refresh der Seite geladen
+* Die Geschäftslogik zum Hochrechnen der zukünftigen Einnahmen ist fehlerhaft (deswegen nicht genutzt)
 
 == Lessons Learned
-* 
+* Umwandlungen zwischen verschiedenen Typen gestaltet sich oftmals als schwierig (BigDecimal -> Float, String -> Date)
