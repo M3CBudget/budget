@@ -11,7 +11,7 @@ Prio 1 = wichtig , 2 , 3 = unwichtig
 1 Fehler und success meldungen im devise style
 1 Basketnotiz nicht verfügbar ( Javascript on Ready Function zickt rum )
 1 Design von Basket edit ( evlt für abgabe Notiz feld rauswerfen )
-3 safe delete vom account und article model (wenn das sicher ist dass es uns nicht das ganze Projekt zerfetzt)
+
 1 Nicht exitente Routen auf 404 leiten -> Routen anlegen
 404 Page ansehbar ??
 
