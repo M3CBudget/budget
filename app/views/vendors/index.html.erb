@@ -1,7 +1,6 @@
 <div class="page-header">
   <div class="text-center">
     <h1>
-      <%= link_to '+', new_vendor_path, :class => 'btn btn-success pull-left', :role => 'button' %>
       Händler
       <i class="fa fa-building-o pull-right"></i>
     </h1>
@@ -9,7 +8,7 @@
 </div>
 
 <div role="tabpanel">
-
+  <%= link_to '+ Hinzufügen', new_vendor_path, :class => 'btn btn-success pull-left', :role => 'button' %>
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" >

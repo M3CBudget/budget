@@ -2,7 +2,6 @@
 
   <div class="text-center">
     <h1>
-      <%= link_to '+', income_new_path, :class => 'btn btn-success pull-left', :role => 'button' %>
         Einnahmen
       <i class="fa fa-money pull-right"></i>
     </h1>
@@ -10,7 +9,7 @@
 </div>
 
 <div role="tabpanel">
-
+  <%= link_to '+ Hinzufügen', income_new_path, :class => 'btn btn-success pull-left', :role => 'button' %>
 
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
