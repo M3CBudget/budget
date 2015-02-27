@@ -10754,12 +10754,12 @@ return jQuery;
 
 })( jQuery );
 (function() {
-  var CSRFToken, Click, ComponentUrl, EVENTS, Link, ProgressBar, browserIsntBuggy, browserSupportsCustomEvents, browserSupportsPushState, browserSupportsTurbolinks, bypassOnLoadPopstate, cacheCurrentPage, cacheSize, changePage, clone, constrainPageCacheTo, createDocument, crossOriginRedirect, currentState, enableProgressBar, enableTransitionCache, executeScriptTags, extractTitleAndBody, fetch, fetchHistory, fetchReplacement, historyStateIsDefined, initializeTurbolinks, installDocumentReadyPageEventTriggers, installHistoryChangeHandler, installJqueryAjaxSuccessPageUpdateTrigger, loadedAssets, manuallyTriggerHashChangeForFirefox, pageCache, pageChangePrevented, pagesCached, popCookie, processResponse, progressBar, recallScrollPosition, referer, reflectNewUrl, reflectRedirectedUrl, rememberCurrentState, rememberCurrentUrl, rememberReferer, removeNoscriptTags, requestMethodIsSafe, resetScrollPosition, setAutofocusElement, transitionCacheEnabled, transitionCacheFor, triggerEvent, visit, xhr, _ref,
-    __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; },
-    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
-    __hasProp = {}.hasOwnProperty,
-    __slice = [].slice,
-    __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
+  var CSRFToken, Click, ComponentUrl, EVENTS, Link, ProgressBar, browserIsntBuggy, browserSupportsCustomEvents, browserSupportsPushState, browserSupportsTurbolinks, bypassOnLoadPopstate, cacheCurrentPage, cacheSize, changePage, clone, constrainPageCacheTo, createDocument, crossOriginRedirect, currentState, enableProgressBar, enableTransitionCache, executeScriptTags, extractTitleAndBody, fetch, fetchHistory, fetchReplacement, historyStateIsDefined, initializeTurbolinks, installDocumentReadyPageEventTriggers, installHistoryChangeHandler, installJqueryAjaxSuccessPageUpdateTrigger, loadedAssets, manuallyTriggerHashChangeForFirefox, pageCache, pageChangePrevented, pagesCached, popCookie, processResponse, progressBar, recallScrollPosition, ref, referer, reflectNewUrl, reflectRedirectedUrl, rememberCurrentState, rememberCurrentUrl, rememberReferer, removeNoscriptTags, requestMethodIsSafe, resetScrollPosition, setAutofocusElement, transitionCacheEnabled, transitionCacheFor, triggerEvent, visit, xhr,
+    indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; },
+    extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+    hasProp = {}.hasOwnProperty,
+    slice = [].slice,
+    bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
   pageCache = {};
 
@@ -10921,23 +10921,23 @@ return jQuery;
   };
 
   constrainPageCacheTo = function(limit) {
-    var cacheTimesRecentFirst, key, pageCacheKeys, _i, _len, _results;
+    var cacheTimesRecentFirst, i, key, len, pageCacheKeys, results;
     pageCacheKeys = Object.keys(pageCache);
     cacheTimesRecentFirst = pageCacheKeys.map(function(url) {
       return pageCache[url].cachedAt;
     }).sort(function(a, b) {
       return b - a;
     });
-    _results = [];
-    for (_i = 0, _len = pageCacheKeys.length; _i < _len; _i++) {
-      key = pageCacheKeys[_i];
+    results = [];
+    for (i = 0, len = pageCacheKeys.length; i < len; i++) {
+      key = pageCacheKeys[i];
       if (!(pageCache[key].cachedAt <= cacheTimesRecentFirst[limit])) {
         continue;
       }
       triggerEvent(EVENTS.EXPIRE, pageCache[key]);
-      _results.push(delete pageCache[key]);
+      results.push(delete pageCache[key]);
     }
-    return _results;
+    return results;
   };
 
   changePage = function(title, body, csrfToken, runScripts) {
@@ -10960,17 +10960,17 @@ return jQuery;
   };
 
   executeScriptTags = function() {
-    var attr, copy, nextSibling, parentNode, script, scripts, _i, _j, _len, _len1, _ref, _ref1;
+    var attr, copy, i, j, len, len1, nextSibling, parentNode, ref, ref1, script, scripts;
     scripts = Array.prototype.slice.call(document.body.querySelectorAll('script:not([data-turbolinks-eval="false"])'));
-    for (_i = 0, _len = scripts.length; _i < _len; _i++) {
-      script = scripts[_i];
-      if (!((_ref = script.type) === '' || _ref === 'text/javascript')) {
+    for (i = 0, len = scripts.length; i < len; i++) {
+      script = scripts[i];
+      if (!((ref = script.type) === '' || ref === 'text/javascript')) {
         continue;
       }
       copy = document.createElement('script');
-      _ref1 = script.attributes;
-      for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
-        attr = _ref1[_j];
+      ref1 = script.attributes;
+      for (j = 0, len1 = ref1.length; j < len1; j++) {
+        attr = ref1[j];
         copy.setAttribute(attr.name, attr.value);
       }
       if (!script.hasAttribute('async')) {
@@ -11070,8 +11070,8 @@ return jQuery;
   };
 
   popCookie = function(name) {
-    var value, _ref;
-    value = ((_ref = document.cookie.match(new RegExp(name + "=(\\w+)"))) != null ? _ref[1].toUpperCase() : void 0) || '';
+    var ref, value;
+    value = ((ref = document.cookie.match(new RegExp(name + "=(\\w+)"))) != null ? ref[1].toUpperCase() : void 0) || '';
     document.cookie = name + '=; expires=Thu, 01-Jan-70 00:00:01 GMT; path=/';
     return value;
   };
@@ -11098,24 +11098,24 @@ return jQuery;
   processResponse = function() {
     var assetsChanged, clientOrServerError, doc, extractTrackAssets, intersection, validContent;
     clientOrServerError = function() {
-      var _ref;
-      return (400 <= (_ref = xhr.status) && _ref < 600);
+      var ref;
+      return (400 <= (ref = xhr.status) && ref < 600);
     };
     validContent = function() {
       var contentType;
       return ((contentType = xhr.getResponseHeader('Content-Type')) != null) && contentType.match(/^(?:text\/html|application\/xhtml\+xml|application\/xml)(?:;|$)/);
     };
     extractTrackAssets = function(doc) {
-      var node, _i, _len, _ref, _results;
-      _ref = doc.querySelector('head').childNodes;
-      _results = [];
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        node = _ref[_i];
+      var i, len, node, ref, results;
+      ref = doc.querySelector('head').childNodes;
+      results = [];
+      for (i = 0, len = ref.length; i < len; i++) {
+        node = ref[i];
         if ((typeof node.getAttribute === "function" ? node.getAttribute('data-turbolinks-track') : void 0) != null) {
-          _results.push(node.getAttribute('src') || node.getAttribute('href'));
+          results.push(node.getAttribute('src') || node.getAttribute('href'));
         }
       }
-      return _results;
+      return results;
     };
     assetsChanged = function(doc) {
       var fetchedAssets;
@@ -11124,18 +11124,18 @@ return jQuery;
       return fetchedAssets.length !== loadedAssets.length || intersection(fetchedAssets, loadedAssets).length !== loadedAssets.length;
     };
     intersection = function(a, b) {
-      var value, _i, _len, _ref, _results;
+      var i, len, ref, results, value;
       if (a.length > b.length) {
-        _ref = [b, a], a = _ref[0], b = _ref[1];
+        ref = [b, a], a = ref[0], b = ref[1];
       }
-      _results = [];
-      for (_i = 0, _len = a.length; _i < _len; _i++) {
-        value = a[_i];
-        if (__indexOf.call(b, value) >= 0) {
-          _results.push(value);
+      results = [];
+      for (i = 0, len = a.length; i < len; i++) {
+        value = a[i];
+        if (indexOf.call(b, value) >= 0) {
+          results.push(value);
         }
       }
-      return _results;
+      return results;
     };
     if (!clientOrServerError() && validContent()) {
       doc = createDocument(xhr.responseText);
@@ -11181,8 +11181,8 @@ return jQuery;
   };
 
   ComponentUrl = (function() {
-    function ComponentUrl(_at_original) {
-      this.original = _at_original != null ? _at_original : document.location.href;
+    function ComponentUrl(original1) {
+      this.original = original1 != null ? original1 : document.location.href;
       if (this.original.constructor === ComponentUrl) {
         return this.original;
       }
@@ -11206,9 +11206,9 @@ return jQuery;
     };
 
     ComponentUrl.prototype._parse = function() {
-      var _ref;
+      var ref;
       (this.link != null ? this.link : this.link = document.createElement('a')).href = this.original;
-      _ref = this.link, this.href = _ref.href, this.protocol = _ref.protocol, this.host = _ref.host, this.hostname = _ref.hostname, this.port = _ref.port, this.pathname = _ref.pathname, this.search = _ref.search, this.hash = _ref.hash;
+      ref = this.link, this.href = ref.href, this.protocol = ref.protocol, this.host = ref.host, this.hostname = ref.hostname, this.port = ref.port, this.pathname = ref.pathname, this.search = ref.search, this.hash = ref.hash;
       this.origin = [this.protocol, '//', this.hostname].join('');
       if (this.port.length !== 0) {
         this.origin += ":" + this.port;
@@ -11221,23 +11221,23 @@ return jQuery;
 
   })();
 
-  Link = (function(_super) {
-    __extends(Link, _super);
+  Link = (function(superClass) {
+    extend(Link, superClass);
 
     Link.HTML_EXTENSIONS = ['html'];
 
     Link.allowExtensions = function() {
-      var extension, extensions, _i, _len;
-      extensions = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
-      for (_i = 0, _len = extensions.length; _i < _len; _i++) {
-        extension = extensions[_i];
+      var extension, extensions, i, len;
+      extensions = 1 <= arguments.length ? slice.call(arguments, 0) : [];
+      for (i = 0, len = extensions.length; i < len; i++) {
+        extension = extensions[i];
         Link.HTML_EXTENSIONS.push(extension);
       }
       return Link.HTML_EXTENSIONS;
     };
 
-    function Link(_at_link) {
-      this.link = _at_link;
+    function Link(link1) {
+      this.link = link1;
       if (this.link.constructor === Link) {
         return this.link;
       }
@@ -11289,8 +11289,8 @@ return jQuery;
       return new Click(event);
     };
 
-    function Click(_at_event) {
-      this.event = _at_event;
+    function Click(event1) {
+      this.event = event1;
       if (this.event.defaultPrevented) {
         return;
       }
@@ -11331,9 +11331,9 @@ return jQuery;
 
     className = 'turbolinks-progress-bar';
 
-    function ProgressBar(_at_elementSelector) {
-      this.elementSelector = _at_elementSelector;
-      this._trickle = __bind(this._trickle, this);
+    function ProgressBar(elementSelector) {
+      this.elementSelector = elementSelector;
+      this._trickle = bind(this._trickle, this);
       this.value = 0;
       this.content = '';
       this.speed = 300;
@@ -11359,8 +11359,8 @@ return jQuery;
     };
 
     ProgressBar.prototype.advanceTo = function(value) {
-      var _ref;
-      if ((value > (_ref = this.value) && _ref <= 100)) {
+      var ref;
+      if ((value > (ref = this.value) && ref <= 100)) {
         this.value = value;
         this._updateStyle();
         if (this.value === 100) {
@@ -11472,8 +11472,8 @@ return jQuery;
   };
 
   installHistoryChangeHandler = function(event) {
-    var cachedPage, _ref;
-    if ((_ref = event.state) != null ? _ref.turbolinks : void 0) {
+    var cachedPage, ref;
+    if ((ref = event.state) != null ? ref.turbolinks : void 0) {
       if (cachedPage = pageCache[(new ComponentUrl(event.state.url)).absolute]) {
         cacheCurrentPage();
         return fetchHistory(cachedPage);
@@ -11502,7 +11502,7 @@ return jQuery;
 
   browserIsntBuggy = !navigator.userAgent.match(/CriOS\//);
 
-  requestMethodIsSafe = (_ref = popCookie('request_method')) === 'GET' || _ref === '';
+  requestMethodIsSafe = (ref = popCookie('request_method')) === 'GET' || ref === '';
 
   browserSupportsTurbolinks = browserSupportsPushState && browserIsntBuggy && requestMethodIsSafe;
 
@@ -47086,7 +47086,7 @@ function incomeValidation(formId) {
                 required: true
             },
             "item[finish]": {
-                required: false
+                required: true
             }
         },
         // Specify the validation error messages
