@@ -60,9 +60,9 @@
                 <tr>
                   <%= items_form.hidden_field :id %>
                   <td><%= items_form.text_field :name %></td>
-                  <td><%= items_form.number_field :price, :step => 'any' %></td>
-                  <td><%= items_form.number_field :quantity, :min => 1 %></td>
-                  <td><%= items_form.text_field :notice %></td>
+                  <td><%= items_form.number_field :price, :step => 'any' , :class => "columnbasket" %></td>
+                  <td><%= items_form.number_field :quantity, :min => 1 ,:class => "columnbasket"%></td>
+                  <td><%= items_form.text_field :notice ,:class => "columnbasket" %></td>
                   <td><%= items_form.collection_select :category_id, Category.where(:income => false, :active => true, :user_id => current_user.id), :id, :name, multiple: false %></td>
                   <td><%= items_form.check_box :_destroy %></td>
                 </tr>
