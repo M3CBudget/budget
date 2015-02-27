@@ -1,6 +1,9 @@
 = README bud$et
 
-Eine Mehrbenutzerapplikation zum Verwalten und Analysieren von Einnahmen und Ausgaben über die Zeit.
+Eine Mehrbenutzerapplikation zum Verwalten und Analysieren von Einnahmen und Ausgaben über die
+Zeit und unter Berücksichtigung verschiedener Kategorien, Händler und Zahlungsmethoden.
+Das Zahlungsverhalten des Nutzers wird mittels Diagrammen und Graphiken übersichtlich
+dargestellt.
 
 == UML Diagramm des Datenbank Modells
 
