@@ -1,0 +1,71 @@
+<%= form_for(@payment) do |f| %>
+  <% if @payment.errors.any? %>
+    <div id="error_explanation" class="alert fade in alert-danger">
+      <h3><%= pluralize(@payment.errors.count, "Fehler") %> beim anlegen einer Zahlungsmethode:</h3>
+
+      <ul>
+      <% @payment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+    <div class="panel panel-default">
+
+
+      <div class="panel-heading">
+        <h3 class="panel-title">Anlegen</h3>
+      </div>
+
+      <div class="panel-body">
+
+        <div class="col-xs-6">
+          <%= f.check_box :active, :checked => true %>
+          <%= f.label :active %><br>
+          <%= f.hidden_field :user_id, :value => current_user.id %><br>
+        </div>
+
+
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label class="" for="">Name:</label>
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-file-text"></i></div>
+                <%= f.text_field :name, :class =>"form-control", :placeholder => "Name" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-6">
+          <div class="form-group">
+            <label class="" for="">Nummer:</label>
+            <div class="input-group">
+              <div class="input-group-addon"><i class="fa fa-university"></i></div>
+              <%= f.text_field :number, :class =>"form-control", :placeholder => "BIC" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-6">
+          <div class="form-group">
+            <label class="" for="">BIC:</label>
+            <div class="input-group">
+              <div class="input-group-addon"><i class="fa fa-university"></i></div>
+              <%= f.text_field :bic, :class =>"form-control", :placeholder => "BIC" %>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <div class="panel-footer">
+        <%= f.submit "Speichern" , :class => "btn btn-default" %>
+      </div>
+    </div>
+<% end %>
+
+
+
+
+

@@ -1,0 +1,67 @@
+<%= form_for(@account) do |f| %>
+  <% if @account.errors.any? %>
+    <div id="error_explanation" class="alert fade in alert-danger">
+      <h3><%= pluralize(@account.errors.count, "Fehler") %> verhindert das Speichern Ihrer Änderungen:</h3>
+
+      <ul>
+          <% @account.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :number %><br>
+    <%= f.text_field :number %>
+  </div>
+  <div class="field">
+    <%= f.label :bic %><br>
+    <%= f.text_field :bic %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :active %><br>
+    <%= f.check_box :active, :checked => true %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+
+    <div class="form-group">
+
+      <div class="col-xs-6">
+        <%= f.label :active %><br>
+        <%= f.check_box :active, :checked => true %>
+      </div>
+      <div class="col-xs-6">
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+      </div>
+
+      <div class="col-xs-12">
+
+        <div class="input-group">
+          <div class="input-group-addon"><i class="fa fa-font"></i></div>
+          <%= f.text_field :name, :class =>"form-control", :placeholder => "Zahlungsmethoden Name" %>
+        </div>
+        <div class="input-group">
+          <div class="input-group-addon"><i class="fa fa-file-text-o"></i></div>
+          <%= f.text_field :number, :class =>"form-control", :placeholder => "IBAN" %>
+        </div>
+        <div class="input-group">
+          <div class="input-group-addon"><i class="fa fa-file-text-o"></i></div>
+          <%= f.text_field :bic, :class =>"form-control", :placeholder => "BIC" %>
+        </div>
+        <%= f.submit "Ändern" , :class => "btn btn-default" %>
+
+      </div>
+    </div>

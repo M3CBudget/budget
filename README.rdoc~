@@ -1,0 +1,66 @@
+== README
+
+
+== TODO
+Prio 1 = wichtig , 2 , 3 = unwichtig
+
+3 Welcome Page mit Signup Form
+
+
+1 Methode Monate (hochrechnung) (chritopher und marco)
+1 Fehler und success meldungen im devise style
+1 Basketnotiz nicht verfügbar ( Javascript on Ready Function zickt rum )
+1 Design von Basket edit ( evlt für abgabe Notiz feld rauswerfen )
+
+1 Nicht exitente Routen auf 404 leiten -> Routen anlegen
+404 Page ansehbar ??
+
+
+== Konfiguration
+
+ruby version 2.1.2
+rails version 4.1.8
+postgres version 0.17
+
+
+== Benötigte Komponenten
+Für Bildresizing - ImageMagick installieren
+
+Für Mac: Mit Homebrew installieren. Im Terminal:
+brew install imagemagick
+
+
+Für Linux:
+sudo apt-get install imagemagick
+
+
+
+== Anleitung Einbindung
+
+rake db:drop
+rake db:create
+rake db:migrate
+rake db:seeds
+
+DB muss Datestyle MDY besitzen! Heroku setzt dies vorraus.
+SET datestyle TO "ISO, MDY";
+
+SQL Scripts ebenfalls im seeds.rb untergebracht
+
+
+
+
+
+
+== Anleitung Git
+git add . (Alles) git add folder/files
+
+git add .
+git commit -am 'your commit'
+git pull
+// Merge Konflikts?
+// lösen dann wieder
+git add .
+git commit -am 'your commit'
+git push origin .. (develop)
+

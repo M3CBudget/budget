@@ -1,0 +1,105 @@
+<div class="page-header">
+  <h1>Dashboard</h1>
+  <%= @test %>
+</div>
+
+  <div class="col-lg-6"><%= link_to 'Neue Ausgabe', new_basket_path, :class => 'btn btn-default btn-basket', :role => 'button' %></div>
+  <div class="col-lg-6"><%= link_to 'Neue Einnahme', income_new_path, :class => 'btn btn-default btn-income', :role => 'button' %></div>
+
+
+<div class="col-lg-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+      <h3 class="panel-title">Ausgaben</h3>
+      </div>
+      <div class="panel-body">
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+            <tr>
+              <th><i class="fa fa-calendar"></i> Datum</th>
+              <th><i class="fa fa-building-o"></i> Händler</th>
+              <th><i class="fa fa-euro"></i> Wert</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% if !@lastBaskets.nil? %>
+                 <% @lastBaskets.each do |basket| %>
+                    <tr onclick="location.href='/baskets/<%= basket.id %>'">
+                      <td><%= basket.purchase_date.strftime("%d/%m/%Y")  %></td>
+                      <td><%= show_vendor_name(basket.vendor_id) %></td>
+                      <td><%= basket.amount %> &euro;</td>
+                    </tr>
+                <% end %>
+
+            <tr>
+              <td colspan="2"><strong>Summe:</strong></td>
+              <td> <%= sum_amount(@lastBaskets) %> &euro; </td>
+            </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+</div>
+<div class="col-lg-4 hidden-xs hidden-sm">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Einnahmen</h3>
+    </div>
+    <div class="panel-body">
+      <div class="list-group">
+        <% if !@lastBaskets.nil? %>
+          <% @lastIncomes.each do |income| %>
+
+                <%= link_to item_path(income) do %>
+                    <li class="list-group-item">
+                    <%= income.name %>
+                    <span class="badge pull-right">
+                      <%= income.price %> &euro;
+                    </span>
+                    </li>
+                <% end %>
+
+         <% end %>
+        <%end%>
+      </div>
+    </div>
+   </div>
+</div>
+
+<div class="col-lg-8">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Entwicklung der letzten 5 Einkäufe</h3>
+    </div>
+    <div class="panel-body">
+      <%= high_chart("my_id4", @chartGraph)  %>
+    </div>
+  </div>
+</div>
+
+<div class="col-lg-4">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Aktueller Monat</h3>
+
+    </div>
+    <div class="panel-body">
+      <%= high_chart("my_id", @chart) %>
+    </div>
+  </div>
+</div>
+
+<div class="col-lg-12">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Entwicklung im aktuellen Jahr</h3>
+    </div>
+    <div class="panel-body">
+      <%= high_chart("my_id5", @chartYear)  %>
+    </div>
+  </div>
+</div>

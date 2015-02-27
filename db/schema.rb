@@ -11,10 +11,112 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150208145333) do
+ActiveRecord::Schema.define(version: 20150222175935) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "accounts", force: true do |t|
+    t.string   "number"
+    t.string   "bic"
+    t.string   "name"
+    t.boolean  "active"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "accounts", ["user_id"], name: "index_accounts_on_user_id", using: :btree
+
+  create_table "articles", force: true do |t|
+    t.string   "name"
+    t.decimal  "price"
+    t.boolean  "active"
+    t.integer  "category_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "articles", ["category_id"], name: "index_articles_on_category_id", using: :btree
+
+  create_table "baskets", force: true do |t|
+    t.string   "notice"
+    t.decimal  "amount"
+    t.binary   "document"
+    t.integer  "user_id"
+    t.integer  "payment_id"
+    t.integer  "vendor_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.date     "purchase_date"
+  end
+
+  add_index "baskets", ["payment_id"], name: "index_baskets_on_payment_id", using: :btree
+  add_index "baskets", ["user_id"], name: "index_baskets_on_user_id", using: :btree
+  add_index "baskets", ["vendor_id"], name: "index_baskets_on_vendor_id", using: :btree
+
+  create_table "categories", force: true do |t|
+    t.string   "name"
+    t.string   "notice"
+    t.boolean  "active"
+    t.boolean  "income"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "glyphicon_id"
+  end
+
+  add_index "categories", ["glyphicon_id"], name: "index_categories_on_glyphicon_id", using: :btree
+  add_index "categories", ["user_id"], name: "index_categories_on_user_id", using: :btree
+
+  create_table "glyphicons", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "items", force: true do |t|
+    t.integer  "basket_id"
+    t.integer  "category_id"
+    t.integer  "article_id"
+    t.integer  "user_id"
+    t.string   "name"
+    t.decimal  "quantity"
+    t.decimal  "price"
+    t.string   "notice"
+    t.boolean  "income"
+    t.integer  "period"
+    t.date     "launch"
+    t.date     "finish"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "period_id"
+  end
+
+  add_index "items", ["article_id"], name: "index_items_on_article_id", using: :btree
+  add_index "items", ["basket_id"], name: "index_items_on_basket_id", using: :btree
+  add_index "items", ["category_id"], name: "index_items_on_category_id", using: :btree
+  add_index "items", ["period_id"], name: "index_items_on_period_id", using: :btree
+  add_index "items", ["user_id"], name: "index_items_on_user_id", using: :btree
+
+  create_table "payments", force: true do |t|
+    t.integer  "user_id"
+    t.string   "number"
+    t.string   "bic"
+    t.boolean  "active"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "payments", ["user_id"], name: "index_payments_on_user_id", using: :btree
+
+  create_table "periods", force: true do |t|
+    t.string   "name"
+    t.integer  "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -35,5 +137,15 @@ ActiveRecord::Schema.define(version: 20150208145333) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "vendors", force: true do |t|
+    t.string   "name"
+    t.binary   "logo"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
+  add_index "vendors", ["user_id"], name: "index_vendors_on_user_id", using: :btree
 
 end

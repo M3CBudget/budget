@@ -1,0 +1,22 @@
+
+
+          <div class="list-group">
+            <% Category.where(:user_id => current_user.id).each do |category| %>
+                <%= link_to category_path(category) do %>
+                    <% if !category.active? %>
+                        <li class="list-group-item">
+                    <% elsif category.income? %>
+                        <li class="list-group-item list-group-item-success">
+                    <% else %>
+                        <li class="list-group-item list-group-item-danger">
+                    <% end %>
+                    <%= category.name %>
+                    <span class="badge pull-right"> <%=sum_price(find_items_of_category(category.id)) %> &euro;</span>
+                    </li>
+                <% end %>
+            <% end %>
+          </div>
+
+
+
+

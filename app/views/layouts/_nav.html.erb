@@ -1,0 +1,39 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <button type="button" class="navbar-toggle" data-toggle="offcanvas">
+      <!-- data-toggle="offcanvas" -->
+      <!-- data-toggle="collapse" -->
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+
+    <a class="navbar-brand" href="/">Bud$et</a><div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav">
+      <li><%= link_to new_basket_path do %><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm">Ausgabe</span> <% end %> </li>
+      <li><%= link_to income_new_path do %><i class="fa fa-money"></i> <span class="hidden-xs hidden-sm">Einnahme</span><% end %> </li>
+      <li><%= link_to new_category_path do %><i class="fa fa-files-o"></i> <span class="hidden-xs hidden-sm">Kategorie</span><% end %> </li>
+      <li><%= link_to new_vendor_path do %><i class="fa fa-building-o"></i> <span class="hidden-xs hidden-sm">Händler</span><% end %> </li>
+      <li><%= link_to new_payment_path do %><i class="fa fa-credit-card"></i> <span class="hidden-xs hidden-sm">Zahlungsmethode</span><% end %> </li>
+    </ul>
+
+    <p class="navbar-text pull-right hidden-xs">
+      <% if user_signed_in? %>
+          <i class="fa fa-user"></i>
+          <strong>
+            <%= link_to current_user.first_name, edit_user_registration_path, :class => 'navbar-link' %> |
+          </strong>
+          <i class="fa fa-sign-out"></i>
+          <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+      <% else %>
+          <i class="fa fa-user-plus"></i>
+          <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link' %> |
+          <i class="fa fa-sign-in"></i>
+          <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+      <% end %>
+    </p>
+  </div>
+  </div>
+  </div>
+  </div>
+</nav>
