@@ -58,6 +58,7 @@ group :development, :test do
 end
 
   gem 'therubyracer'
+  gem 'execjs'
   gem 'twitter-bootstrap-rails'
   gem 'less-rails'
 
