@@ -12,12 +12,9 @@
 </div>
 
 <div role="tabpanel">
-
+  <%= link_to '+ Hinzufügen', new_category_path, :class => 'btn btn-success pull-left', :role => 'button' %>
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" >
-        <%= link_to '+', new_category_path, :class => 'btn btn-success', :role => 'tab' %>
-    </li>
     <li role="presentation" >
       <a href="#gridIncome" aria-controls="gridIncome" role="tab" data-toggle="tab">
         <i class="fa fa-th"></i> Grid Einnahme
