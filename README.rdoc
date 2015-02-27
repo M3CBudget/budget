@@ -1,28 +1,87 @@
-== README
+= README bud$et
+Eine Mehrbenutzerapplikation zum Verwalten und Analysieren von Einnahmen und Ausgaben über die Zeit.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+== UML Diagramm des Datenbank Modells
+http://www.gliffy.com/go/publish/7261691 
 
-Things you may want to cover:
+== Userstories
+https://bdsuev-my.sharepoint.com/personal/c_werning_kreaktiv-muenster_de/_layouts/15/guestaccess.aspx?guestaccesstoken=uUc6l1tbll8ot8WbfLYfA%2fyOJeKqRvKmSV81Tb%2fzRiE%3d&docid=1e3b3d1b961dc4bffa6c52dc9c0ec9685 
 
-* Ruby version
+== TODO
+Prio 1 = wichtig , 2 , 3 = unwichtig
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+3 Welcome Page mit Signup Form
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+1 Methode Monate (hochrechnung) (chritopher und marco)
+1 Fehler und success meldungen im devise style
+1 Basketnotiz nicht verfügbar ( Javascript on Ready Function zickt rum )
+1 Design von Basket edit ( evlt für abgabe Notiz feld rauswerfen )
+3 safe delete vom account und article model (wenn das sicher ist dass es uns nicht das ganze Projekt zerfetzt)
+1 Nicht exitente Routen auf 404 leiten -> Routen anlegen
+404 Page ansehbar ??
+
+== Heroku
+URL : http://budget1.herokuapp.com
+
+== Konfiguration
+* ruby version 2.1.2
+* rails version 4.1.8
+* postgres version 0.18.1
+* rspec 3.2.0
+
+== Verwendete Gems
+rails_12factor              --> Heroku Deployment
+pg                          --> PostgresSQL als DBMS
+jquery-validation-rails     --> Formvaliderung
+seed_dump                   --> automatische Seeds erstellen
+devise                      --> Benutzerauthentifizierung
+devise-bootstrap-views      --> Layout für Devise
+devise-i18n'                --> Languagepack für Devise
+rspec-rails                 --> Testfälle
+shoulda-matchers            --> Ergänzung zu rspec
+carrierwave                 --> Dateiübertragungen
+mini_magick                 --> Bildresizing
+angularjs-rails             --> 
+bootstrap-datepicker-rails  --> 
+lazy_high_charts            --> Highcharts Generierung
+bootstrap-select-rails      --> 
+
+
+
+== Benötigte Komponenten
+Für Bildresizing - ImageMagick installieren
+
+Für Mac: Mit Homebrew installieren. Im Terminal:
+brew install imagemagick
+
+Für Linux:
+sudo apt-get install imagemagick
+
+== Anleitung Einbindung des Repositories
+git clone https://github.com/M3CBudget/budget.git
+bundle install
+rake db:drop
+rake db:create
+rake db:migrate
+rake db:seeds
+
+Ein Beispielnutzer ist bereits angelegt. 
+Email: g@gurke.de
+Passwort: 12345678
+
+=== Datestyle der PostgreSQL DB
+Wichtig ist das die lokale Postgres SQL Datenbank den gleichen Datestyle wie die Heroku DB besitzt.
+Dieser muss auf manchen Systmen manuell auf MDY gesetzt werden. Die hierfür notwendigen Datenbank Statements sind in der seeds.rb untergebracht. 
+Alternativ können die Kommandos auch von Hand abgesetzt werden.
+
+ALTER DATABASE budget_development SET datestyle TO 'ISO, MDY'; 
+SET datestyle TO 'ISO, MDY'; 
+
+== Known Bugs
+* Heroku --> assets werden nicht geladen (Javascript/CSS)
+* Development --> Javascript wird erst nach einem Refresh der Seite geladen
+* Die Geschäftslogik zum Hochrechnen der zukünftigen Einnahmen ist fehlerhaft (deswegen nicht genutzt)
+
+== Lessons Learned
+* Umwandlungen zwischen verschiedenen Typen gestaltet sich oftmals als schwierig (BigDecimal -> Float, String -> Date)

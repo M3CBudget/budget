@@ -1,0 +1,102 @@
+<%= form_for(@item) do |f| %>
+  <% if @item.errors.any? %>
+    <div id="error_explanation" class="alert fade in alert-danger">
+      <h3><%= pluralize(@item.errors.count, "Fehler") %> beim anlegen des Items:</h3>
+
+      <ul>
+      <% @item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+    <div class="panel panel-default">
+
+
+      <div class="panel-heading">
+        <h3 class="panel-title">Anlegen</h3>
+      </div>
+
+      <div class="panel-body">
+        <%= f.hidden_field :income, :value => true %>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+
+
+
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label class="" for="">Name:</label>
+            <div class="input-group">
+              <div class="input-group-addon"><i class="fa fa-file-text"></i></div>
+              <%= f.text_field :name, :class =>"form-control", :placeholder => "Name" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-6">
+          <div class="form-group">
+            <label class="" for="">Wert:</label>
+            <div class="input-group">
+              <div class="input-group-addon"><i class="fa fa-money"></i></div>
+              <%= f.text_field :price, :class =>"form-control", :placeholder => "Wert" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-6">
+          <div class="form-group">
+            <label class="" for="">Kategorie:</label>
+            <div class="input-group">
+              <%= f.collection_select(:category_id, Category.where(:income => true, :active => true, :user_id => current_user.id ), :id, :name, {multiple: false}, {:class=>'selectpicker'}) %>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-xs-8">
+          <div class="form-group">
+            <label class="" for=""> Zeitraum:</label>
+            <div class="input-daterange input-group date" id="datepicker">
+              <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+              <%= f.text_field :launch, :data => {:provide => "datepicker"}, :class => "form-control input-sm"%>
+              <span class="input-group-addon">bis</span>
+              <%= f.text_field :finish, :data => {:provide => "datepicker"}, :class => "form-control input-sm"%>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-4">
+          <div class="form-group">
+            <label class="" for="">Intervall:</label>
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-repeat"></i></span>
+              <%= f.number_field :period ,:class =>"form-control", :min => "1",  :step => "1" %>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label class="" for="">Notiz:</label>
+            <div class="input-group">
+              <div class="input-group-addon"><i class="fa fa-file-text"></i></div>
+              <%= f.text_area :notice, :class =>"form-control", :placeholder => "Notiz" %>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div class="panel-footer">
+        <%= f.submit "Speichern" , :class => "btn btn-default" %>
+      </div>
+
+    </div>
+<% end %>
+
+

@@ -1,0 +1,137 @@
+<%= form_for(@basket) do |f| %>
+  <% if @basket.errors.any? %>
+    <div id="error_explanation" class="alert fade in alert-danger">
+      <h3><%= pluralize(@basket.errors.count, "Fehler") %> beim anlegen einer Ausgabe:</h3>
+
+      <ul>
+      <% @basket.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Einkauf abändern</h3>
+    <p id="notice"><%= notice %></p>
+  </div>
+
+  <div class="panel-body">
+    <div class="col-xs-6">
+      <div class="form-group">
+        <label class="" for="">Händler: </label>
+        <div class="input-group">
+          <select class="selectpicker" data-live-search="true">
+            <% Vendor.where(:user_id => current_user.id).each do |vendor| %>
+                <option> <%= vendor.name %> </option>
+            <% end %>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xs-6">
+      <div class="form-group">
+        <label class="" for="">Einkaufsdatum: </label>
+        <div class="input-group">
+          <%= f.text_field :purchase_date, :value => Time.now.to_s(:db), :data => {:provide => "datepicker"} %>
+        </div>
+      </div>
+    </div>
+
+
+      <div class="col-xs-12">
+        <div class="tables tables-hover">
+          <label class="" for="">Artikel:</label>
+          <table class="table">
+            <thead>
+            <tr>
+              <th>Name</th>
+              <th>Preis</th>
+              <th>Menge</th>
+              <th>Notiz</th>
+              <th>Kategorie</th>
+              <th>Löschen</th>
+            </tr>
+            </thead>
+            <tbody>
+            <%= f.fields_for :items do |items_form| %>
+                <tr>
+                  <%= items_form.hidden_field :id %>
+                  <td><%= items_form.text_field :name %></td>
+                  <td><%= items_form.number_field :price, :step => 'any' %></td>
+                  <td><%= items_form.number_field :quantity, :min => 1 %></td>
+                  <td><%= items_form.text_field :notice %></td>
+                  <td><%= items_form.collection_select :category_id, Category.where(:income => false, :active => true, :user_id => current_user.id), :id, :name, multiple: false %></td>
+                  <td><%= items_form.check_box :_destroy %></td>
+                </tr>
+            <% end %>
+            </tbody>
+          </table>
+
+
+        </div>
+
+
+      </div>
+
+      <div class="col-xs-6">
+          <div class="form-group">
+                <label class="" for="">Dokument:</label>
+                <div class="foto_enlarge">
+                  <%= image_tag @basket.document.url(:normal), :class => "thumbnail" if @basket.document? %>
+                </div>
+                  <div class="field">
+                  <%= f.file_field :document, :class =>"form-control btn-file" %>
+                </div>
+          </div>
+      </div>
+
+
+
+      <div class="col-xs-6">
+        <div class="form-group">
+            <label class="" for="">Summe:</label>
+            <%= f.number_field :amount ,:class =>"form-control", :step => 'any' %>
+        </div>
+      </div>
+
+
+    <div class="col-xs-6">
+      <div class="form-group">
+        <label class="" for="">Zahlungsmethode: </label>
+        <div class="input-group">
+          <select class="selectpicker" data-live-search="true">
+            <% Payment.where(:user_id => current_user.id, :active => true).each do |payment| %>
+                <option <%= "selected" if payment.id == @basket.payment_id %> value="<%= payment.id %>"><%= payment.name %></option>
+            <% end %>
+          </select>
+        </div>
+      </div>
+    </div>
+
+
+      <div class="col-xs-12">
+        <div class="form-group">
+            <label class="" for="">Notiz:</label>
+            <%= f.text_field :notice ,:class =>"form-control" %>
+        </div>
+      </div>
+
+  </div>
+
+  <div class="panel-footer">
+      <%= f.submit "Speichern" , :class => "btn btn-default" %>
+  </div>
+
+</div>
+
+
+    <div class="field">
+      <%= f.hidden_field :user_id, :value => current_user.id %>
+    </div>
+
+
+
+<% end %>

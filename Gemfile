@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+# Insert ruby Version to Gemfile, for heroku-deploy wal
+ruby '2.1.2'
+gem 'rails_12factor'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.8'
@@ -25,9 +28,13 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
-
+gem 'jquery-validation-rails', '~> 1.13.1'
+gem 'seed_dump'
 gem 'devise'
 gem 'devise-bootstrap-views'
+# wal devise translation
+gem  'devise-i18n'
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -43,11 +50,22 @@ gem 'devise-bootstrap-views'
 
 group :development, :test do
   gem 'rspec-rails'
+  gem 'shoulda-matchers', require: false
   gem 'factory_girl_rails'
   gem 'guard-rspec'
   gem 'faker'
+  gem 'capybara'
 end
 
   gem 'therubyracer'
   gem 'twitter-bootstrap-rails'
   gem 'less-rails'
+
+  #Image_Uploader gems
+  gem 'carrierwave'
+  gem 'mini_magick'
+
+  gem 'angularjs-rails'
+  gem 'bootstrap-datepicker-rails'
+  gem 'lazy_high_charts'
+  gem 'bootstrap-select-rails'

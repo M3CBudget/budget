@@ -1,0 +1,114 @@
+<div class="page-header">
+
+  <div class="text-center">
+    <h1>
+        Einnahmen
+      <i class="fa fa-money pull-right"></i>
+    </h1>
+  </div>
+</div>
+
+<div role="tabpanel">
+  <%= link_to '+ Hinzufügen', income_new_path, :class => 'btn btn-success pull-left', :role => 'button' %>
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" >
+      <a href="#grid" aria-controls="grid" role="tab" data-toggle="tab">
+        <i class="fa fa-th"></i> Grid
+      </a>
+    </li>
+    <li role="presentation" class="active">
+      <a href="#list" aria-controls="list" role="tab" data-toggle="tab">
+        <i class="fa fa-bars"></i> List
+      </a>
+    </li>
+  </ul>
+
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <br>
+    <div role="tabpanel" class="tab-pane fade " id="grid">
+
+        <% @incomes.each do |income| %>
+
+            <div class="col-xs-6 col-lg-4">
+              <% if is_active(income.id) %>
+                  <div class="panel panel-success">
+              <% else %>
+                  <div class="panel panel-default">
+              <% end %>
+
+                    <div class="panel-heading">
+                      <%= link_to income do %>
+                      <h3 class="panel-title"><%= income.name %></h3>
+                      <% end %>
+                    </div>
+
+                    <div class="panel-body">
+                      <div class="text-center">
+                        <h4 data-toggle="tooltip" data-placement="bottom" title="Summe der bisherigen Ausgaben beim Händler">  <%=income.price %> <i class="fa fa-euro"></i></h4>
+                      </div>
+                      <hr>
+
+
+                      <% if(income.period) %>
+                          <p><i class="fa fa-file-text"></i>Intervall: <small><%= income.period %></small></p>
+                      <% end %>
+
+                      <% if(income.finish) %>
+                          <div class="col-xs-6">
+                            <label>Von</label><br>
+                            <small><%= income.launch %></small>
+                          </div>
+                          <div class="col-xs-6">
+                            <label>Bis</label><br>
+                            <small><%= income.finish %></small>
+                          </div>
+                      <% end %>
+
+
+                      <button type="button" class="btn btn-default btn-xs btn-block popover-top" data-toggle="popover" title="Notiz" data-content="<%= income.notice %>"><i class="fa fa-file-text"></i>  Notiz </button>
+
+                    </div>
+
+                      <div class="panel-footer">
+                        <%= link_to "items/#{income.id}/edit" do %>  <button class="btn btn-default"> <i class="fa fa-pencil-square-o"></i> Ändern </button> <% end %>
+                        <%= link_to income, method: :delete, data: { confirm: 'Wollen Sie die Einnahme löschen?' } do %> <button class="btn btn-default"> <i class="fa fa-trash-o"></i> Löschen </button>  <% end %>
+                      </div>
+
+                </div>
+            </div>
+        <% end %>
+      </div>
+
+      <div role="tabpanel" class="tab-pane fade active in" id="list">
+        <div class="col-lg-12">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Entwicklung der Einnahmen im aktuellen Jahr</h3>
+            </div>
+            <div class="panel-body">
+              <%= high_chart("my_id11", @chartIncomes)  %>
+            </div>
+          </div>
+
+
+        <div class="list-group">
+          <% @incomes.each do |income| %>
+              <%= link_to item_path(income) do %>
+                  <li class="list-group-item list-group-item-success">
+                    <%= income.name %>
+                    <span class="badge pull-right"> <%= income.price %> &euro;</span>
+                  </li>
+              <% end %>
+          <% end %>
+        </div>
+      </div>
+      </div>
+
+    </div>
+  </div>
+
+<%= link_to '+', income_new_path, :class => 'btn btn-default', :role => 'button' %>

@@ -1,0 +1,278 @@
+<!-- Artikel hinzufügen angular -->
+<div class="col-xs-12">
+  <div class="panel panel-default" >
+    <div class="panel-heading">
+      <h3 class="panel-title">Artikel hinzufügen</h3>
+    </div>
+
+    <div class="panel-body">
+      <input hidden ng-model="income" value="false"></input>
+      <input hidden ng-model="launch" value="<%=@getPurchaseDate%>"></input>
+      <input hidden ng-model="user_id" value="<%= current_user.id %>"></input>
+
+      <div class="col-xs-12">
+        <div class="form-group">
+          <label class="" for="">Name</label>
+          <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-file-text"></i></div>
+            <input ng-model="name" placeholder="Name" class="form-control"></input>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-6">
+        <div class="form-group">
+          <label class="" for="">Preis und Menge</label>
+          <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-euro"></i></div>
+            <input type="number" step="any" ng-model="price" placeholder="Preis" class="form-control"></input>
+            <input type="number" ng-model="quantity" placeholder="Menge" class="form-control"></input>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-6">
+        <div class="form-group">
+          <label class="" for="">Kategorie</label>
+          <div class="input-group">
+            <select class="selectpicker"  ng-model="category">
+            <% Category.where(:income => false, :user_id => current_user.id, :active => true).each do |category| %>
+               <option value="<%= category.id %>" ><%= category.name %></option>
+              <% end %>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-12">
+        <div class="form-group">
+          <label class="" for="">Notiz</label>
+          <div class="input-group form-inline">
+            <div class="input-group-addon"><i class="fa fa-file-text"></i></div>
+            <textarea ng-model="notice" class="form-control" placeholder="Notiz" ng-disabled="!hasNotice"></textarea>
+            <div class="input-group-addon">
+              <div class="checkbox">
+                <label>
+                  <input ng-model="hasNotice" type="checkbox" aria-label="Notiz">
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="panel-footer">
+      <button ng-click="add($index)" class="btn btn-default">Hinzufügen</button>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="col-xs-12">
+  <%= form_for(@basket) do |f| %>
+
+      <% if @basket.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@basket.errors.count, "error") %> prohibited this basket from being saved:</h2>
+
+            <ul>
+              <% @basket.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+      <% end %>
+
+
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Anlegen</h3>
+        </div>
+        <div class="panel-body">
+          <div class="col-xs-6">
+            <div class="form-group">
+              <label class="" for="">Händler: </label>
+              <div class="input-group">
+                  <%= f.collection_select(:vendor_id, Vendor.where(:user_id => current_user.id), :id, :name, {multiple: false}, :class=>'selectpicker')%>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-xs-6">
+            <div class="form-group">
+              <label class="" for="">Einkaufsdatum:</label>
+              <div class="input-group date">
+                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                <%= f.text_field :purchase_date, :value => Time.now.strftime("%d-%m-%Y"), :data => {:provide => "datepicker"}, :class => "form-control"%>
+
+              </div>
+            </div>
+          </div>
+
+
+          <!-- Tabelle der Anzulegenden Items -->
+            <div class="col-xs-12">
+                <div class="table table-hover">
+                    <label class="" for="">Artikel:</label>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Anzahl</th>
+                                <th>Preis</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in items">
+                                <td>
+                                    <input id="basket_items_attributes_{{item.id}}_name bianame" name="basket[items_attributes][{{item.id}}][name]" value="{{ item.name }}" type="text"></input>
+                                </td>
+                                <td>
+                                    <input id="basket_items_attributes_{{item.id}}_quantity biaquantity" name="basket[items_attributes][{{item.id}}][quantity]" value="{{ item.quantity }}" type="text"></input>
+                                </td>
+                                <td>
+                                    <input id="basket_items_attributes_{{item.id}}_price" name="basket[items_attributes][{{item.id}}][price]" value="{{ item.price }}" type="text"></input>
+                                </td>
+                                <td>
+                                    <button class="btn btn-default" ng-click="rem($index)" data-toggle="tooltip" data-placement="bottom" title="Artikel löschen"><i class="fa fa-times"> </i></button>
+                                </td>
+                                  <td>
+                                    <input id="basket_items_attributes_{{item.id}}_notice" name="basket[items_attributes][{{item.id}}][notice]" value="{{ item.notice }}" type="hidden"></input>
+                                  </td>
+                                  <td>
+                                    <input id="basket_items_attributes_{{item.id}}_category_id" name="basket[items_attributes][{{item.id}}][category_id]" value="{{ item.category }}" type="hidden"></input>
+                                  </td>
+                                  <td>
+                                    <input id="basket_items_attributes_{{item.id}}_income" name="basket[items_attributes][{{item.id}}][income]" value="false" type="hidden"></input>
+                                  </td>
+                                  <td>
+                                    <input id="basket_items_attributes_{{item.id}}_launch" name="basket[items_attributes][{{item.id}}][launch]" type="hidden" value=""></input>
+                                  </td>
+                                  <td>
+                                    <input id="basket_items_attributes_{{item.id}}_user_id" name="basket[items_attributes][{{item.id}}][user_id]" value="<%=current_user.id%>" type="hidden"></input>
+                                  </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer">
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">
+            <i class="fa fa-save"></i> Anlegen
+          </button>
+        </div>
+
+    </div><!--/.panel panel-default-->
+
+</div><!--/.col-xs-12-->
+
+
+
+
+
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Ausgabe bestätigen</h4>
+          </div>
+
+          <div class="modal-body">
+
+            <div class="table table-hover">
+              <caption><h3>Artikel Liste</h3></caption>
+              <table class="table">
+                <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Anzahl</th>
+                  <th>Preis</th>
+                  <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="item in items">
+                  <td>
+                    {{item.name}}
+                  </td>
+                  <td>
+                    {{item.quantity}}
+                  </td>
+                  <td>
+                    {{item.price}} &euro;
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-default" ng-click="rem($index)" data-toggle="tooltip" data-placement="bottom" title="Artikel löschen"><i class="fa fa-times" ></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2"><strong>Summe</strong></td>
+                  <td><strong>{{sum}} &euro;</strong></td>
+                  <td></td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+
+
+            <div class="col-xs-6">
+              <div class="form-group">
+                <label class="" for="">Zahlungsmethode</label>
+                <div class="input-group">
+                  <%= f.collection_select(:payment_id, Payment.where(:user_id => current_user.id, :active => true), :id, :name, {multiple: false}, :class=>'selectpicker')%>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col-xs-6">
+              <div class="form-group">
+                <label class="" for="">Summe der Ausgaben</label>
+                <div class="input-group">
+                  <div class="input-group-addon"><i class="fa fa-money"></i></div>
+                  <%= f.number_field :amount, :class =>"form-control", :placeholder => "Summe der Ausgabe", :step =>'any', :value => "{{sum}}"%>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col-xs-12">
+              <div class="form-group">
+                <label class="" for="">Notiz</label>
+                <div class="input-group">
+                  <div class="input-group-addon"><i class="fa fa-file-text"></i></div>
+                  <%= f.text_area :notice, :class =>"form-control", :placeholder => "Notiz"%>
+                </div>
+              </div>
+            </div>
+
+
+
+              <!-- Moritz Form für Dateiupload -->
+              <div class="field">
+                <%= f.label :document %><br>
+                <%= f.file_field :document %>
+              </div>
+
+          </div>
+
+          <div class="modal-footer">
+            <%= f.hidden_field :user_id, :value => current_user.id %>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <%= f.submit "Speichern" , :class => "btn btn-default" %>
+          </div>
+
+        </div>
+      </div>
+    </div>
+<% end %>

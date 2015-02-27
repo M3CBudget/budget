@@ -1,0 +1,19 @@
+
+<div class="list-group">
+  <% Payment.where(:user_id => current_user.id).each do |payment| %>
+      <%= link_to payment_path(payment) do %>
+          <% if !payment.active? %>
+              <li class="list-group-item">
+          <% else %>
+              <li class="list-group-item list-group-item-success">
+          <% end %>
+          <%= payment.name %>
+          <span class="badge pull-right"> <%=sum_price(find_items_of_basket(find_baskets_of_payment(payment.id))) %> &euro;</span>
+          </li>
+      <% end %>
+  <% end %>
+</div>
+
+
+
+

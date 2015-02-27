@@ -1,0 +1,93 @@
+<div class="page-header">
+
+      <h1> <%= link_to baskets_path do %>  <i class="fa fa-arrow-left"></i> <% end %> Ausgabe Details <i class="fa fa-building-o pull-right"></i> </h1>
+
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Einkauf vom <%= @basket.purchase_date.strftime("%d.%m.%Y") %> </h3>
+
+
+  </div>
+
+  <div class="panel-body">
+
+    <div class="col-xs-12">
+      <div class="tables tables-hover">
+        <label class="" for="">Artikel:</label>
+        <table class="table table-condensed">
+          <thead>
+          <tr>
+            <th>Name</th>
+            <th>Preis</th>
+            <th>Anzahl</th>
+            <th>Notiz</th>
+            <th>Kategorie</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% find_items_of_basket(@basket).each do |item| %>
+              <tr>
+                <td><%= item.name %></td>
+                <td><%= item.price %> &euro;</td>
+                <td><%= item.quantity %></td>
+                <td><%= item.notice %></td>
+                <td><%= show_category_name(item.category_id) %></td>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-6">
+      <div class="form-group">
+        <label class="" for="">Dokument:</label>
+        <div class="foto_enlarge">
+            <%= image_tag @basket.document.url(:normal), :class => "thumbnail" if @basket.document? %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xs-6">
+      <div class="form-group">
+        <label class="" for="">Händler:</label>
+        <input id="vendor_id" class="form-control" type="text" value="<%= show_vendor_name(@basket.vendor_id) %>" placeholder="<%= show_vendor_name(@basket.vendor_id) %>" disabled="disabled">
+      </div>
+    </div>
+
+
+    <div class="col-xs-6">
+      <div class="form-group">
+        <label class="" for="">Summe:</label>
+        <input id="amount" class="form-control" type="text" value="<%= @basket.amount %> &euro;" placeholder="<%= @basket.amount %>" disabled="disabled">
+      </div>
+    </div>
+
+    <div class="col-xs-6">
+      <div class="form-group">
+        <label class="" for="">Zahlungsmethode:</label>
+        <input id="amount" class="form-control" type="text" value="<%= show_payment_name(@basket.payment_id) %>" placeholder="<%= show_payment_name(@basket.payment_id) %>" disabled="disabled">
+      </div>
+    </div>
+
+    <div class="col-xs-12">
+      <div class="form-group">
+        <label class="" for="">Notiz:</label>
+        <input id="notice" class="form-control" type="text" value="<%= @basket.notice %>" placeholder="<%= @basket.notice %>" disabled="disabled">
+      </div>
+    </div>
+  </div>
+
+  <div class="panel-footer">
+    <%= link_to baskets_path do %> <button class="btn btn-default btn-xs"> <i class="fa fa-arrow-left"></i> Zurück </button> <% end %>
+    <%= link_to edit_basket_path(@basket) do %> <button class="btn btn-default btn-xs"> <i class="fa fa-pencil-square-o"></i> Ändern </button> <% end %>
+  </div>
+
+
+</div>
+
+
+
+
