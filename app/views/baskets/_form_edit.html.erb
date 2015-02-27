@@ -83,7 +83,7 @@
                   <%= image_tag @basket.document.url(:normal), :class => "thumbnail" if @basket.document? %>
                 </div>
                   <div class="field">
-                  <%= f.file_field :document %>
+                  <%= f.file_field :document, :class =>"form-control btn-file" %>
                 </div>
           </div>
       </div>
