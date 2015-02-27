@@ -76,7 +76,7 @@
   </div>
   </div>
 </nav>
-<div class="row row-offcanvas row-offcanvas-right">
+<div id="top" class="row row-offcanvas row-offcanvas-right">
   <section class="container">
 
     <!-- yield -->
@@ -112,8 +112,7 @@
   </div>
 </footer>
 <!-- <aside class="visible-xs"> -->
-<aside class="dropdown visible-xs">
-
+<aside class="smallnav dropdown visible-xs">
     <button class="btn btn-default" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       <i class="fa fa-plus"></i>
       <span class="caret"></span>
@@ -129,5 +128,7 @@
       <li class="show-xs"> <%= link_to destroy_user_session_path do %> <i class="fa fa-sign-out"></i> Logout<% end %> </li>
     </ul>
 </aside>
+
+<aside class="down pull-right"><a href="#top" class="btn btn-default"><i class="fa fa-chevron-up"></i></a> </aside>
 </body>
 </html>

@@ -39,8 +39,18 @@ footer {
 
 aside {
     position: fixed !important;
+}
+
+.smallnav {
+    z-index:1000;
     top: 75px;
     padding-left: 2px;
+}
+
+.down {
+    z-index:1000;
+    bottom: 1%;
+    right: 5%;
 }
 
 h1 {
