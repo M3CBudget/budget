@@ -31,21 +31,21 @@ URL : http://budget1.herokuapp.com
 * rspec 3.2.0
 
 == Verwendete Gems
-rails_12factor              --> Heroku Deployment
-pg                          --> PostgresSQL als DBMS
-jquery-validation-rails     --> Formvaliderung
-seed_dump                   --> automatische Seeds erstellen
-devise                      --> Benutzerauthentifizierung
-devise-bootstrap-views      --> Layout für Devise
-devise-i18n'                --> Languagepack für Devise
-rspec-rails                 --> Testfälle
-shoulda-matchers            --> Ergänzung zu rspec
-carrierwave                 --> Dateiübertragungen
-mini_magick                 --> Bildresizing
-angularjs-rails             --> 
-bootstrap-datepicker-rails  --> 
-lazy_high_charts            --> Highcharts Generierung
-bootstrap-select-rails      --> 
+* rails_12factor              --> Heroku Deployment
+* pg                          --> PostgresSQL als DBMS
+* jquery-validation-rails     --> Formvaliderung
+* seed_dump                   --> automatische Seeds erstellen
+* devise                      --> Benutzerauthentifizierung
+* devise-bootstrap-views      --> Layout für Devise
+* devise-i18n'                --> Languagepack für Devise
+* rspec-rails                 --> Testfälle
+* shoulda-matchers            --> Ergänzung zu rspec
+* carrierwave                 --> Dateiübertragungen
+* mini_magick                 --> Bildresizing
+* angularjs-rails             -->
+* bootstrap-datepicker-rails  -->
+* lazy_high_charts            --> Highcharts Generierung
+* bootstrap-select-rails      -->
 
 
 
