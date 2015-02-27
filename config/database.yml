@@ -84,8 +84,8 @@ test:
 #
 production:
   <<: *default
-  database: budget_production
-  host: localhost
-  username: admin
-  password: admin
+  database: d6p66bo1jqek1f
+  host: ec2-23-21-231-14.compute-1.amazonaws.com
+  username: qodybjcdohklul
+  password: -iLarABTf9_M8kmBZ-aJQu-IJv
   port: 5432
