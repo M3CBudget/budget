@@ -25,10 +25,10 @@ Prio 1 = wichtig , 2 , 3 = unwichtig
 URL : http://budget1.herokuapp.com
 
 == Konfiguration
-ruby version 2.1.2
-rails version 4.1.8
-postgres version 0.18.1
-rspec 3.2.0
+* ruby version 2.1.2
+* rails version 4.1.8
+* postgres version 0.18.1
+* rspec 3.2.0
 
 == Verwendete Gems
 rails_12factor              --> Heroku Deployment
