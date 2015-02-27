@@ -1,7 +1,8 @@
 source 'https://rubygems.org'
 
-# Insert ruby Version to Gemfile, for heroku-deploy wal
+# Insert ruby Version to Gemfile,
 ruby '2.1.2'
+# for heroku-deploy wal
 gem 'rails_12factor'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -32,7 +33,8 @@ gem 'jquery-validation-rails', '~> 1.13.1'
 gem 'seed_dump'
 gem 'devise'
 gem 'devise-bootstrap-views'
-# wal devise translation
+
+# wal devise translation -inactive im moment
 gem  'devise-i18n'
 
 
@@ -61,7 +63,7 @@ end
   gem 'twitter-bootstrap-rails'
   gem 'less-rails'
 
-  #Image_Uploader gems
+  #Image_Uploader gems wal
   gem 'carrierwave'
   gem 'mini_magick'
 

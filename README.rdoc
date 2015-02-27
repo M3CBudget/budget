@@ -47,6 +47,7 @@ URL : http://budget1.herokuapp.com
 * angularjs-rails
 * bootstrap-datepicker-rails
 * bootstrap-select-rails
+* sass-rails
 
 
 == Benötigte Komponenten
@@ -91,9 +92,9 @@ URL : http://budget1.herokuapp.com
 
 == Known Bugs
 
-* Heroku => assets werden nicht geladen (Javascript/CSS)
+* Heroku => assets werden nicht geladen (Javascript)
 
-* Development => Javascript wird erst nach einem Refresh der Seite geladen
+* Development => Javascript wird erst nach einem Refresh der Seite geladen(Document.ready(funtion))
 
 * Die Geschäftslogik zum Hochrechnen der zukünftigen Einnahmen ist fehlerhaft (deswegen nicht genutzt)
 
