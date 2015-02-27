@@ -20,8 +20,8 @@ module BudgetV1
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
-    # for Heroku
-    config.serve_static_assets = true
+
+
 
 
 
