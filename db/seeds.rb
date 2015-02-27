@@ -2,6 +2,10 @@ User.create!([
   {email: "g@gurke.de", password: "12345678", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 3, current_sign_in_at: "2015-02-25 12:52:55", last_sign_in_at: "2015-02-24 13:35:52", current_sign_in_ip: "192.168.178.25", last_sign_in_ip: "127.0.0.1", first_name: "Günther", last_name: "Gurke"}
 ])
 Basket.create!([
+  {notice: "", amount: "53.94", document: nil, user_id: 1, payment_id: 2, vendor_id: 5, purchase_date: "2015-04-01"},
+  {notice: "GEZ nervt", amount: "53.94", document: nil, user_id: 1, payment_id: 1, vendor_id: 12, purchase_date: "2015-07-01"},
+  {notice: "", amount: "53.94", document: nil, user_id: 1, payment_id: 2, vendor_id: 5, purchase_date: "2015-01-01"},
+  {notice: "", amount: "150.0", document: nil, user_id: 1, payment_id: 4, vendor_id: 2, purchase_date: "2015-04-09"},
   {notice: nil, amount: "25.0", document: nil, user_id: 1, payment_id: 3, vendor_id: 4, purchase_date: "2015-01-30"},
   {notice: nil, amount: "15.44", document: nil, user_id: 1, payment_id: 3, vendor_id: 1, purchase_date: "2015-02-01"},
   {notice: nil, amount: "4.5", document: nil, user_id: 1, payment_id: 1, vendor_id: 8, purchase_date: "2015-01-15"},
@@ -25,6 +29,17 @@ Category.create!([
 ])
 
 Item.create!([
+  {basket_id: nil, category_id: 1, article_id: nil, user_id: 1, name: "Bafög", quantity: nil, price: "500.0", notice: "", income: true, period: 1, launch: "2015-02-02", finish: "2015-02-02", period_id: nil},
+  {basket_id: nil, category_id: 4, article_id: nil, user_id: 1, name: "Bafög", quantity: nil, price: "500.0", notice: "", income: true, period: 1, launch: "2015-05-01", finish: "2015-05-04", period_id: nil},
+  {basket_id: nil, category_id: 1, article_id: nil, user_id: 1, name: "Bafög", quantity: nil, price: "500.0", notice: "", income: true, period: 1, launch: "2015-07-01", finish: "2015-07-02", period_id: nil},
+  {basket_id: 10, category_id: 7, article_id: nil, user_id: 1, name: "GEZ", quantity: "1.0", price: "53.94", notice: "GEZ nervt", income: false, period: nil, launch: nil, finish: nil, period_id: nil},
+  {basket_id: 11, category_id: 7, article_id: nil, user_id: 1, name: "GEZ", quantity: "1.0", price: "53.94", notice: "", income: false, period: nil, launch: nil, finish: nil, period_id: nil},
+  {basket_id: 12, category_id: 7, article_id: nil, user_id: 1, name: "GEZ", quantity: "1.0", price: "53.94", notice: "", income: false, period: nil, launch: nil, finish: nil, period_id: nil},
+  {basket_id: 13, category_id: 8, article_id: nil, user_id: 1, name: "Urlaub", quantity: "1.0", price: "150.0", notice: "Anzahlung", income: false, period: nil, launch: nil, finish: nil, period_id: nil},
+  {basket_id: nil, category_id: 4, article_id: nil, user_id: 1, name: "Bafög", quantity: nil, price: "500.0", notice: "Bafög", income: true, period: 1, launch: "2015-08-01", finish: "2015-08-05", period_id: nil},
+  {basket_id: nil, category_id: 2, article_id: nil, user_id: 1, name: "Bafög", quantity: nil, price: "500.0", notice: "", income: true, period: 1, launch: "2015-04-01", finish: "2015-04-02", period_id: nil},
+  {basket_id: nil, category_id: 4, article_id: nil, user_id: 1, name: "Bafög", quantity: nil, price: "500.0", notice: "", income: true, period: 1, launch: "2015-03-03", finish: "2015-03-04", period_id: nil},
+  {basket_id: nil, category_id: 2, article_id: nil, user_id: 1, name: "Bafög", quantity: nil, price: "500.0", notice: "", income: true, period: 1, launch: "2015-06-01", finish: "2015-06-02", period_id: nil},
   {basket_id: nil, category_id: 4, article_id: nil, user_id: 1, name: "Mittagessen 30.11.2014", quantity: nil, price: "9.6", notice: "", income: true, period: nil, launch: "2014-12-30", finish: "2014-12-30", period_id: 1},
   {basket_id: nil, category_id: 4, article_id: nil, user_id: 1, name: "Spesenrückerstattung", quantity: nil, price: "89.5", notice: "War ein guter Workshop von P3 zum Thema BigData", income: true, period: nil, launch: "2015-02-16", finish: "2015-02-16", period_id: 1},
   {basket_id: nil, category_id: 1, article_id: nil, user_id: 1, name: "monatliches Gehalt", quantity: nil, price: "450.0", notice: "Gehalt ZEB", income: true, period: nil, launch: "2014-09-30", finish: "2015-09-30", period_id: 3},
@@ -54,6 +69,7 @@ Item.create!([
   {basket_id: 6, category_id: 3, article_id: nil, user_id: 1, name: "Cracker", quantity: "1.0", price: "2.45", notice: "", income: false, period: nil, launch: "2015-02-25", finish: "2015-02-25", period_id: nil},
   {basket_id: 6, category_id: 8, article_id: nil, user_id: 1, name: "Veltins Six Pack", quantity: "1.0", price: "4.0", notice: "", income: false, period: nil, launch: "2015-02-25", finish: "2015-02-25", period_id: nil}
 ])
+
 Payment.create!([
   {user_id: 1, number: "0", bic: "0", active: true, name: "Barzahlung"},
   {user_id: 1, number: "999999999", bic: "26550105", active: true, name: "Visa"},
